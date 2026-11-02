@@ -1,0 +1,960 @@
+{
+ "definitions": {
+  "level": "OSV ID 와 모듈 쌍마다 govulncheck finding 중 가장 높은 수준. symbol=호출 경로 있음, package=취약 패키지 import, module=모듈만 있음",
+  "counts": "서로 다른 OSV ID 개수. 한 ID가 여러 모듈(예: 표준 라이브러리와 x/net)에 걸치면 범위 안에서 가장 높은 수준으로 센다",
+  "scopes": "all=표준 라이브러리 포함, without_stdlib=표준 라이브러리 제외, stdlib_only=표준 라이브러리만",
+  "gomod_baseline": "go.mod require 목록(직접+간접)과 표준 라이브러리 버전을 같은 DB 범위에 맞춘 OSV ID 수. 코드 사용과 무관한 버전 매칭 기준선",
+  "per_commit": "그 커밋 Go 서비스 4개의 합집합. ID마다 서비스 중 가장 높은 수준",
+  "not_linux_amd64": "OSV imports의 goos, goarch 제한 때문에 linux/amd64에는 해당하지 않는 ID 수(all 범위, 수준별). govulncheck 소스 모드는 플랫폼으로 거르지 않아 이런 ID도 센다. 위 counts에는 포함돼 있다"
+ },
+ "db": {
+  "kind": "builddb v1 DB",
+  "path": "/home/user/work/reachtmp/db_osvzip",
+  "source_url": "https://osv-vulnerabilities.storage.googleapis.com/Go/all.zip",
+  "filter": "GO-* only",
+  "local_file": "/home/user/work/osvdb/osv-scalibr/Go/all.zip",
+  "sha256": "71e545dbaca20a60937a081582ac704f08cc96e65ebc0dd76644261fbce9303a",
+  "bytes": 12701800,
+  "file_mtime_utc": "2026-11-02T08:41:01Z",
+  "zip_stats": {
+   "records_all": 9815,
+   "records_go": 4731,
+   "max_modified_all": "2026-10-30T23:30:04.079827623Z"
+  },
+  "index_db_json": {
+   "modified": "2026-10-30T10:55:54.969590579Z"
+  },
+  "build": "entries=4731 modules=1449 db_modified=2026-10-30T10:55:54.969590579Z "
+ },
+ "per_service": {
+  "main-c7cb6d5": {
+   "checkoutservice": {
+    "loader_gotoolchain": "go1.27.0",
+    "goversion_for_stdlib": "go1.27.0",
+    "config_go_version": "go1.27.0",
+    "govulncheck_rc": 0,
+    "govulncheck_wall_s": 9,
+    "n_modules_in_sbom": 43,
+    "counts": {
+     "all": {
+      "module": 5,
+      "package": 4,
+      "symbol": 10,
+      "total": 19
+     },
+     "without_stdlib": {
+      "module": 5,
+      "package": 0,
+      "symbol": 5,
+      "total": 10
+     },
+     "stdlib_only": {
+      "module": 0,
+      "package": 5,
+      "symbol": 9,
+      "total": 14
+     }
+    },
+    "gomod_baseline": {
+     "n_require": 41,
+     "without_stdlib": 10,
+     "stdlib_only": 14,
+     "all": 19
+    },
+    "query_mode": {
+     "raw_ids": 19,
+     "after_version_filter": 19,
+     "note": "x/vuln v1.9.0 client.byModule 은 버전으로 거른 목록을 만들고도 거르기 전 목록을 돌려준다. raw 는 그 출력"
+    },
+    "check_govulncheck_within_gomod_baseline": {
+     "not_in_baseline": [],
+     "version_mismatch": []
+    },
+    "not_linux_amd64": {
+     "module": 0,
+     "package": 1,
+     "symbol": 0,
+     "ids": [
+      "GO-2026-6604"
+     ]
+    },
+    "key_module_versions": {
+     "golang.org/x/net": "v0.58.0",
+     "google.golang.org/grpc": "v1.83.2",
+     "stdlib": "v1.27.0"
+    },
+    "openvex": {
+     "n_statements": 19,
+     "by_status": {
+      "affected": 10,
+      "not_affected/vulnerable_code_not_in_execute_path": 4,
+      "not_affected/vulnerable_code_not_present": 5
+     }
+    }
+   },
+   "frontend": {
+    "loader_gotoolchain": "go1.27.0",
+    "goversion_for_stdlib": "go1.27.0",
+    "config_go_version": "go1.27.0",
+    "govulncheck_rc": 0,
+    "govulncheck_wall_s": 9,
+    "n_modules_in_sbom": 49,
+    "counts": {
+     "all": {
+      "module": 5,
+      "package": 1,
+      "symbol": 13,
+      "total": 19
+     },
+     "without_stdlib": {
+      "module": 5,
+      "package": 0,
+      "symbol": 5,
+      "total": 10
+     },
+     "stdlib_only": {
+      "module": 0,
+      "package": 1,
+      "symbol": 13,
+      "total": 14
+     }
+    },
+    "gomod_baseline": {
+     "n_require": 47,
+     "without_stdlib": 10,
+     "stdlib_only": 14,
+     "all": 19
+    },
+    "query_mode": {
+     "raw_ids": 19,
+     "after_version_filter": 19,
+     "note": "x/vuln v1.9.0 client.byModule 은 버전으로 거른 목록을 만들고도 거르기 전 목록을 돌려준다. raw 는 그 출력"
+    },
+    "check_govulncheck_within_gomod_baseline": {
+     "not_in_baseline": [],
+     "version_mismatch": []
+    },
+    "not_linux_amd64": {
+     "module": 0,
+     "package": 1,
+     "symbol": 0,
+     "ids": [
+      "GO-2026-6604"
+     ]
+    },
+    "key_module_versions": {
+     "golang.org/x/net": "v0.58.0",
+     "google.golang.org/grpc": "v1.83.2",
+     "stdlib": "v1.27.0"
+    },
+    "openvex": {
+     "n_statements": 19,
+     "by_status": {
+      "affected": 13,
+      "not_affected/vulnerable_code_not_in_execute_path": 1,
+      "not_affected/vulnerable_code_not_present": 5
+     }
+    }
+   },
+   "productcatalogservice": {
+    "loader_gotoolchain": "go1.27.0",
+    "goversion_for_stdlib": "go1.27.0",
+    "config_go_version": "go1.27.0",
+    "govulncheck_rc": 0,
+    "govulncheck_wall_s": 11,
+    "n_modules_in_sbom": 59,
+    "counts": {
+     "all": {
+      "module": 5,
+      "package": 4,
+      "symbol": 10,
+      "total": 19
+     },
+     "without_stdlib": {
+      "module": 5,
+      "package": 0,
+      "symbol": 5,
+      "total": 10
+     },
+     "stdlib_only": {
+      "module": 0,
+      "package": 5,
+      "symbol": 9,
+      "total": 14
+     }
+    },
+    "gomod_baseline": {
+     "n_require": 57,
+     "without_stdlib": 10,
+     "stdlib_only": 14,
+     "all": 19
+    },
+    "query_mode": {
+     "raw_ids": 19,
+     "after_version_filter": 19,
+     "note": "x/vuln v1.9.0 client.byModule 은 버전으로 거른 목록을 만들고도 거르기 전 목록을 돌려준다. raw 는 그 출력"
+    },
+    "check_govulncheck_within_gomod_baseline": {
+     "not_in_baseline": [],
+     "version_mismatch": []
+    },
+    "not_linux_amd64": {
+     "module": 0,
+     "package": 1,
+     "symbol": 0,
+     "ids": [
+      "GO-2026-6604"
+     ]
+    },
+    "key_module_versions": {
+     "golang.org/x/net": "v0.58.0",
+     "google.golang.org/grpc": "v1.83.2",
+     "stdlib": "v1.27.0"
+    },
+    "openvex": {
+     "n_statements": 19,
+     "by_status": {
+      "affected": 10,
+      "not_affected/vulnerable_code_not_in_execute_path": 4,
+      "not_affected/vulnerable_code_not_present": 5
+     }
+    }
+   },
+   "shippingservice": {
+    "loader_gotoolchain": "go1.27.0",
+    "goversion_for_stdlib": "go1.27.0",
+    "config_go_version": "go1.27.0",
+    "govulncheck_rc": 0,
+    "govulncheck_wall_s": 7,
+    "n_modules_in_sbom": 35,
+    "counts": {
+     "all": {
+      "module": 3,
+      "package": 4,
+      "symbol": 10,
+      "total": 17
+     },
+     "without_stdlib": {
+      "module": 3,
+      "package": 0,
+      "symbol": 5,
+      "total": 8
+     },
+     "stdlib_only": {
+      "module": 0,
+      "package": 5,
+      "symbol": 9,
+      "total": 14
+     }
+    },
+    "gomod_baseline": {
+     "n_require": 33,
+     "without_stdlib": 8,
+     "stdlib_only": 14,
+     "all": 17
+    },
+    "query_mode": {
+     "raw_ids": 17,
+     "after_version_filter": 17,
+     "note": "x/vuln v1.9.0 client.byModule 은 버전으로 거른 목록을 만들고도 거르기 전 목록을 돌려준다. raw 는 그 출력"
+    },
+    "check_govulncheck_within_gomod_baseline": {
+     "not_in_baseline": [],
+     "version_mismatch": []
+    },
+    "not_linux_amd64": {
+     "module": 0,
+     "package": 1,
+     "symbol": 0,
+     "ids": [
+      "GO-2026-6604"
+     ]
+    },
+    "key_module_versions": {
+     "golang.org/x/net": "v0.59.0",
+     "google.golang.org/grpc": "v1.83.2",
+     "stdlib": "v1.27.0"
+    },
+    "openvex": {
+     "n_statements": 17,
+     "by_status": {
+      "affected": 10,
+      "not_affected/vulnerable_code_not_in_execute_path": 4,
+      "not_affected/vulnerable_code_not_present": 3
+     }
+    }
+   }
+  },
+  "v0.5.0-3c0d659": {
+   "checkoutservice": {
+    "loader_gotoolchain": "go1.20.4",
+    "goversion_for_stdlib": "go1.19.4",
+    "config_go_version": "go1.19.4",
+    "govulncheck_rc": 0,
+    "govulncheck_wall_s": 6,
+    "n_modules_in_sbom": 36,
+    "counts": {
+     "all": {
+      "module": 29,
+      "package": 29,
+      "symbol": 73,
+      "total": 131
+     },
+     "without_stdlib": {
+      "module": 17,
+      "package": 7,
+      "symbol": 15,
+      "total": 39
+     },
+     "stdlib_only": {
+      "module": 13,
+      "package": 26,
+      "symbol": 64,
+      "total": 103
+     }
+    },
+    "gomod_baseline": {
+     "n_require": 36,
+     "without_stdlib": 39,
+     "stdlib_only": 103,
+     "all": 131
+    },
+    "query_mode": {
+     "raw_ids": 145,
+     "after_version_filter": 131,
+     "note": "x/vuln v1.9.0 client.byModule 은 버전으로 거른 목록을 만들고도 거르기 전 목록을 돌려준다. raw 는 그 출력"
+    },
+    "check_govulncheck_within_gomod_baseline": {
+     "not_in_baseline": [],
+     "version_mismatch": []
+    },
+    "not_linux_amd64": {
+     "module": 1,
+     "package": 1,
+     "symbol": 4,
+     "ids": [
+      "GO-2023-1568",
+      "GO-2023-2185",
+      "GO-2025-3447",
+      "GO-2025-3750",
+      "GO-2026-5024",
+      "GO-2026-6604"
+     ]
+    },
+    "key_module_versions": {
+     "golang.org/x/net": "v0.4.0",
+     "google.golang.org/grpc": "v1.51.0",
+     "stdlib": "v1.19.4"
+    },
+    "openvex": {
+     "n_statements": 131,
+     "by_status": {
+      "affected": 73,
+      "not_affected/vulnerable_code_not_in_execute_path": 29,
+      "not_affected/vulnerable_code_not_present": 29
+     }
+    }
+   },
+   "frontend": {
+    "loader_gotoolchain": "go1.20.4",
+    "goversion_for_stdlib": "go1.19.4",
+    "config_go_version": "go1.19.4",
+    "govulncheck_rc": 0,
+    "govulncheck_wall_s": 6,
+    "n_modules_in_sbom": 39,
+    "counts": {
+     "all": {
+      "module": 29,
+      "package": 16,
+      "symbol": 87,
+      "total": 132
+     },
+     "without_stdlib": {
+      "module": 17,
+      "package": 11,
+      "symbol": 12,
+      "total": 40
+     },
+     "stdlib_only": {
+      "module": 13,
+      "package": 9,
+      "symbol": 81,
+      "total": 103
+     }
+    },
+    "gomod_baseline": {
+     "n_require": 39,
+     "without_stdlib": 40,
+     "stdlib_only": 103,
+     "all": 132
+    },
+    "query_mode": {
+     "raw_ids": 147,
+     "after_version_filter": 132,
+     "note": "x/vuln v1.9.0 client.byModule 은 버전으로 거른 목록을 만들고도 거르기 전 목록을 돌려준다. raw 는 그 출력"
+    },
+    "check_govulncheck_within_gomod_baseline": {
+     "not_in_baseline": [],
+     "version_mismatch": []
+    },
+    "not_linux_amd64": {
+     "module": 1,
+     "package": 1,
+     "symbol": 4,
+     "ids": [
+      "GO-2023-1568",
+      "GO-2023-2185",
+      "GO-2025-3447",
+      "GO-2025-3750",
+      "GO-2026-5024",
+      "GO-2026-6604"
+     ]
+    },
+    "key_module_versions": {
+     "golang.org/x/net": "v0.4.0",
+     "google.golang.org/grpc": "v1.51.0",
+     "stdlib": "v1.19.4"
+    },
+    "openvex": {
+     "n_statements": 132,
+     "by_status": {
+      "affected": 87,
+      "not_affected/vulnerable_code_not_in_execute_path": 16,
+      "not_affected/vulnerable_code_not_present": 29
+     }
+    }
+   },
+   "productcatalogservice": {
+    "loader_gotoolchain": "go1.20.4",
+    "goversion_for_stdlib": "go1.19.4",
+    "config_go_version": "go1.19.4",
+    "govulncheck_rc": 0,
+    "govulncheck_wall_s": 6,
+    "n_modules_in_sbom": 35,
+    "counts": {
+     "all": {
+      "module": 29,
+      "package": 29,
+      "symbol": 73,
+      "total": 131
+     },
+     "without_stdlib": {
+      "module": 17,
+      "package": 7,
+      "symbol": 15,
+      "total": 39
+     },
+     "stdlib_only": {
+      "module": 13,
+      "package": 26,
+      "symbol": 64,
+      "total": 103
+     }
+    },
+    "gomod_baseline": {
+     "n_require": 35,
+     "without_stdlib": 39,
+     "stdlib_only": 103,
+     "all": 131
+    },
+    "query_mode": {
+     "raw_ids": 145,
+     "after_version_filter": 131,
+     "note": "x/vuln v1.9.0 client.byModule 은 버전으로 거른 목록을 만들고도 거르기 전 목록을 돌려준다. raw 는 그 출력"
+    },
+    "check_govulncheck_within_gomod_baseline": {
+     "not_in_baseline": [],
+     "version_mismatch": []
+    },
+    "not_linux_amd64": {
+     "module": 1,
+     "package": 1,
+     "symbol": 4,
+     "ids": [
+      "GO-2023-1568",
+      "GO-2023-2185",
+      "GO-2025-3447",
+      "GO-2025-3750",
+      "GO-2026-5024",
+      "GO-2026-6604"
+     ]
+    },
+    "key_module_versions": {
+     "golang.org/x/net": "v0.4.0",
+     "google.golang.org/grpc": "v1.51.0",
+     "stdlib": "v1.19.4"
+    },
+    "openvex": {
+     "n_statements": 131,
+     "by_status": {
+      "affected": 73,
+      "not_affected/vulnerable_code_not_in_execute_path": 29,
+      "not_affected/vulnerable_code_not_present": 29
+     }
+    }
+   },
+   "shippingservice": {
+    "loader_gotoolchain": "go1.20.4",
+    "goversion_for_stdlib": "go1.19.4",
+    "config_go_version": "go1.19.4",
+    "govulncheck_rc": 0,
+    "govulncheck_wall_s": 6,
+    "n_modules_in_sbom": 21,
+    "counts": {
+     "all": {
+      "module": 29,
+      "package": 29,
+      "symbol": 70,
+      "total": 128
+     },
+     "without_stdlib": {
+      "module": 17,
+      "package": 7,
+      "symbol": 12,
+      "total": 36
+     },
+     "stdlib_only": {
+      "module": 13,
+      "package": 26,
+      "symbol": 64,
+      "total": 103
+     }
+    },
+    "gomod_baseline": {
+     "n_require": 21,
+     "without_stdlib": 36,
+     "stdlib_only": 103,
+     "all": 128
+    },
+    "query_mode": {
+     "raw_ids": 140,
+     "after_version_filter": 128,
+     "note": "x/vuln v1.9.0 client.byModule 은 버전으로 거른 목록을 만들고도 거르기 전 목록을 돌려준다. raw 는 그 출력"
+    },
+    "check_govulncheck_within_gomod_baseline": {
+     "not_in_baseline": [],
+     "version_mismatch": []
+    },
+    "not_linux_amd64": {
+     "module": 1,
+     "package": 1,
+     "symbol": 4,
+     "ids": [
+      "GO-2023-1568",
+      "GO-2023-2185",
+      "GO-2025-3447",
+      "GO-2025-3750",
+      "GO-2026-5024",
+      "GO-2026-6604"
+     ]
+    },
+    "key_module_versions": {
+     "golang.org/x/net": "v0.4.0",
+     "google.golang.org/grpc": "v1.51.0",
+     "stdlib": "v1.19.4"
+    },
+    "openvex": {
+     "n_statements": 128,
+     "by_status": {
+      "affected": 70,
+      "not_affected/vulnerable_code_not_in_execute_path": 29,
+      "not_affected/vulnerable_code_not_present": 29
+     }
+    }
+   }
+  },
+  "v0.8.0-d54af3d": {
+   "checkoutservice": {
+    "loader_gotoolchain": "go1.20.4",
+    "goversion_for_stdlib": "go1.20.4",
+    "config_go_version": "go1.20.4",
+    "govulncheck_rc": 0,
+    "govulncheck_wall_s": 6,
+    "n_modules_in_sbom": 36,
+    "counts": {
+     "all": {
+      "module": 28,
+      "package": 24,
+      "symbol": 66,
+      "total": 118
+     },
+     "without_stdlib": {
+      "module": 17,
+      "package": 7,
+      "symbol": 14,
+      "total": 38
+     },
+     "stdlib_only": {
+      "module": 12,
+      "package": 21,
+      "symbol": 57,
+      "total": 90
+     }
+    },
+    "gomod_baseline": {
+     "n_require": 36,
+     "without_stdlib": 38,
+     "stdlib_only": 90,
+     "all": 118
+    },
+    "query_mode": {
+     "raw_ids": 130,
+     "after_version_filter": 118,
+     "note": "x/vuln v1.9.0 client.byModule 은 버전으로 거른 목록을 만들고도 거르기 전 목록을 돌려준다. raw 는 그 출력"
+    },
+    "check_govulncheck_within_gomod_baseline": {
+     "not_in_baseline": [],
+     "version_mismatch": []
+    },
+    "not_linux_amd64": {
+     "module": 1,
+     "package": 1,
+     "symbol": 3,
+     "ids": [
+      "GO-2023-2185",
+      "GO-2025-3447",
+      "GO-2025-3750",
+      "GO-2026-5024",
+      "GO-2026-6604"
+     ]
+    },
+    "key_module_versions": {
+     "golang.org/x/net": "v0.10.0",
+     "google.golang.org/grpc": "v1.55.0",
+     "stdlib": "v1.20.4"
+    },
+    "openvex": {
+     "n_statements": 118,
+     "by_status": {
+      "affected": 66,
+      "not_affected/vulnerable_code_not_in_execute_path": 24,
+      "not_affected/vulnerable_code_not_present": 28
+     }
+    }
+   },
+   "frontend": {
+    "loader_gotoolchain": "go1.20.4",
+    "goversion_for_stdlib": "go1.20.4",
+    "config_go_version": "go1.20.4",
+    "govulncheck_rc": 0,
+    "govulncheck_wall_s": 6,
+    "n_modules_in_sbom": 39,
+    "counts": {
+     "all": {
+      "module": 28,
+      "package": 16,
+      "symbol": 75,
+      "total": 119
+     },
+     "without_stdlib": {
+      "module": 17,
+      "package": 11,
+      "symbol": 11,
+      "total": 39
+     },
+     "stdlib_only": {
+      "module": 12,
+      "package": 9,
+      "symbol": 69,
+      "total": 90
+     }
+    },
+    "gomod_baseline": {
+     "n_require": 39,
+     "without_stdlib": 39,
+     "stdlib_only": 90,
+     "all": 119
+    },
+    "query_mode": {
+     "raw_ids": 131,
+     "after_version_filter": 119,
+     "note": "x/vuln v1.9.0 client.byModule 은 버전으로 거른 목록을 만들고도 거르기 전 목록을 돌려준다. raw 는 그 출력"
+    },
+    "check_govulncheck_within_gomod_baseline": {
+     "not_in_baseline": [],
+     "version_mismatch": []
+    },
+    "not_linux_amd64": {
+     "module": 1,
+     "package": 1,
+     "symbol": 3,
+     "ids": [
+      "GO-2023-2185",
+      "GO-2025-3447",
+      "GO-2025-3750",
+      "GO-2026-5024",
+      "GO-2026-6604"
+     ]
+    },
+    "key_module_versions": {
+     "golang.org/x/net": "v0.10.0",
+     "google.golang.org/grpc": "v1.55.0",
+     "stdlib": "v1.20.4"
+    },
+    "openvex": {
+     "n_statements": 119,
+     "by_status": {
+      "affected": 75,
+      "not_affected/vulnerable_code_not_in_execute_path": 16,
+      "not_affected/vulnerable_code_not_present": 28
+     }
+    }
+   },
+   "productcatalogservice": {
+    "loader_gotoolchain": "go1.20.4",
+    "goversion_for_stdlib": "go1.20.4",
+    "config_go_version": "go1.20.4",
+    "govulncheck_rc": 0,
+    "govulncheck_wall_s": 5,
+    "n_modules_in_sbom": 35,
+    "counts": {
+     "all": {
+      "module": 28,
+      "package": 24,
+      "symbol": 66,
+      "total": 118
+     },
+     "without_stdlib": {
+      "module": 17,
+      "package": 7,
+      "symbol": 14,
+      "total": 38
+     },
+     "stdlib_only": {
+      "module": 12,
+      "package": 21,
+      "symbol": 57,
+      "total": 90
+     }
+    },
+    "gomod_baseline": {
+     "n_require": 35,
+     "without_stdlib": 38,
+     "stdlib_only": 90,
+     "all": 118
+    },
+    "query_mode": {
+     "raw_ids": 130,
+     "after_version_filter": 118,
+     "note": "x/vuln v1.9.0 client.byModule 은 버전으로 거른 목록을 만들고도 거르기 전 목록을 돌려준다. raw 는 그 출력"
+    },
+    "check_govulncheck_within_gomod_baseline": {
+     "not_in_baseline": [],
+     "version_mismatch": []
+    },
+    "not_linux_amd64": {
+     "module": 1,
+     "package": 1,
+     "symbol": 3,
+     "ids": [
+      "GO-2023-2185",
+      "GO-2025-3447",
+      "GO-2025-3750",
+      "GO-2026-5024",
+      "GO-2026-6604"
+     ]
+    },
+    "key_module_versions": {
+     "golang.org/x/net": "v0.10.0",
+     "google.golang.org/grpc": "v1.55.0",
+     "stdlib": "v1.20.4"
+    },
+    "openvex": {
+     "n_statements": 118,
+     "by_status": {
+      "affected": 66,
+      "not_affected/vulnerable_code_not_in_execute_path": 24,
+      "not_affected/vulnerable_code_not_present": 28
+     }
+    }
+   },
+   "shippingservice": {
+    "loader_gotoolchain": "go1.20.4",
+    "goversion_for_stdlib": "go1.20.4",
+    "config_go_version": "go1.20.4",
+    "govulncheck_rc": 0,
+    "govulncheck_wall_s": 5,
+    "n_modules_in_sbom": 21,
+    "counts": {
+     "all": {
+      "module": 28,
+      "package": 23,
+      "symbol": 63,
+      "total": 114
+     },
+     "without_stdlib": {
+      "module": 17,
+      "package": 6,
+      "symbol": 11,
+      "total": 34
+     },
+     "stdlib_only": {
+      "module": 12,
+      "package": 21,
+      "symbol": 57,
+      "total": 90
+     }
+    },
+    "gomod_baseline": {
+     "n_require": 21,
+     "without_stdlib": 34,
+     "stdlib_only": 90,
+     "all": 114
+    },
+    "query_mode": {
+     "raw_ids": 125,
+     "after_version_filter": 114,
+     "note": "x/vuln v1.9.0 client.byModule 은 버전으로 거른 목록을 만들고도 거르기 전 목록을 돌려준다. raw 는 그 출력"
+    },
+    "check_govulncheck_within_gomod_baseline": {
+     "not_in_baseline": [],
+     "version_mismatch": []
+    },
+    "not_linux_amd64": {
+     "module": 1,
+     "package": 1,
+     "symbol": 3,
+     "ids": [
+      "GO-2023-2185",
+      "GO-2025-3447",
+      "GO-2025-3750",
+      "GO-2026-5024",
+      "GO-2026-6604"
+     ]
+    },
+    "key_module_versions": {
+     "golang.org/x/net": "v0.10.0",
+     "google.golang.org/grpc": "v1.55.0",
+     "stdlib": "v1.20.4"
+    },
+    "openvex": {
+     "n_statements": 114,
+     "by_status": {
+      "affected": 63,
+      "not_affected/vulnerable_code_not_in_execute_path": 23,
+      "not_affected/vulnerable_code_not_present": 28
+     }
+    }
+   }
+  }
+ },
+ "per_commit": {
+  "main-c7cb6d5": {
+   "counts": {
+    "all": {
+     "module": 5,
+     "package": 1,
+     "symbol": 13,
+     "total": 19
+    },
+    "without_stdlib": {
+     "module": 5,
+     "package": 0,
+     "symbol": 5,
+     "total": 10
+    },
+    "stdlib_only": {
+     "module": 0,
+     "package": 1,
+     "symbol": 13,
+     "total": 14
+    }
+   },
+   "services": [
+    "checkoutservice",
+    "frontend",
+    "productcatalogservice",
+    "shippingservice"
+   ],
+   "dynamic_dispatch_hint": {
+    "symbol_rows": 60,
+    "rows_with_hint": 31,
+    "stdlib_rows_with_hint": 16,
+    "nonstd_rows_with_hint": 15,
+    "hints": [
+     "fmt.pp.handleMethods",
+     "sync.Once.doSlow"
+    ],
+    "note": "서비스별 줄 기준. 가장 짧은 예시 경로 하나의 전체 프레임을 본다. 단서일 뿐 오탐 판정이 아니다(다른 경로는 진짜일 수 있다)"
+   }
+  },
+  "v0.5.0-3c0d659": {
+   "counts": {
+    "all": {
+     "module": 29,
+     "package": 13,
+     "symbol": 90,
+     "total": 132
+    },
+    "without_stdlib": {
+     "module": 17,
+     "package": 8,
+     "symbol": 15,
+     "total": 40
+    },
+    "stdlib_only": {
+     "module": 13,
+     "package": 9,
+     "symbol": 81,
+     "total": 103
+    }
+   },
+   "services": [
+    "checkoutservice",
+    "frontend",
+    "productcatalogservice",
+    "shippingservice"
+   ],
+   "dynamic_dispatch_hint": {
+    "symbol_rows": 333,
+    "rows_with_hint": 98,
+    "stdlib_rows_with_hint": 98,
+    "nonstd_rows_with_hint": 0,
+    "hints": [
+     "fmt.pp.handleMethods",
+     "sync.Once.doSlow"
+    ],
+    "note": "서비스별 줄 기준. 가장 짧은 예시 경로 하나의 전체 프레임을 본다. 단서일 뿐 오탐 판정이 아니다(다른 경로는 진짜일 수 있다)"
+   }
+  },
+  "v0.8.0-d54af3d": {
+   "counts": {
+    "all": {
+     "module": 28,
+     "package": 13,
+     "symbol": 78,
+     "total": 119
+    },
+    "without_stdlib": {
+     "module": 17,
+     "package": 8,
+     "symbol": 14,
+     "total": 39
+    },
+    "stdlib_only": {
+     "module": 12,
+     "package": 9,
+     "symbol": 69,
+     "total": 90
+    }
+   },
+   "services": [
+    "checkoutservice",
+    "frontend",
+    "productcatalogservice",
+    "shippingservice"
+   ],
+   "dynamic_dispatch_hint": {
+    "symbol_rows": 296,
+    "rows_with_hint": 88,
+    "stdlib_rows_with_hint": 88,
+    "nonstd_rows_with_hint": 0,
+    "hints": [
+     "fmt.pp.handleMethods",
+     "sync.Once.doSlow"
+    ],
+    "note": "서비스별 줄 기준. 가장 짧은 예시 경로 하나의 전체 프레임을 본다. 단서일 뿐 오탐 판정이 아니다(다른 경로는 진짜일 수 있다)"
+   }
+  }
+ }
+}

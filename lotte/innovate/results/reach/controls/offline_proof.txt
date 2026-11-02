@@ -17,3 +17,6 @@ tcp_rc=1
 
 ## strace connect 집계
 control_called: rc=0 connect_total=0 connect_inet=0 connect_unix=0 findings=76
+
+v050_checkoutservice: rc=0 connect_total=0 connect_inet=0 connect_unix=0 findings=1289
+main_frontend: rc=0 connect_total=0 connect_inet=0 connect_unix=0 findings=333

@@ -1,0 +1,134 @@
+{
+ "called": {
+  "config": {
+   "db": "file:///home/user/work/reachtmp/db_osvzip",
+   "db_last_modified": "2026-10-30T10:55:54.969590579Z",
+   "go_version": "go1.24.7",
+   "scanner_version": "v1.9.0",
+   "scan_level": "symbol"
+  },
+  "x_text": {
+   "GO-2021-0113": {
+    "level": "symbol",
+    "found": "v0.3.6",
+    "fixed": "v0.3.7",
+    "vuln_symbols": "language.ParseAcceptLanguage",
+    "example_trace": "called.main -> language.ParseAcceptLanguage [called/main.go:12]"
+   },
+   "GO-2022-1059": {
+    "level": "symbol",
+    "found": "v0.3.6",
+    "fixed": "v0.3.8",
+    "vuln_symbols": "language.ParseAcceptLanguage",
+    "example_trace": "called.main -> language.ParseAcceptLanguage [called/main.go:12]"
+   },
+   "GO-2026-5970": {
+    "level": "module",
+    "found": "v0.3.6",
+    "fixed": "v0.39.0",
+    "vuln_symbols": "",
+    "example_trace": ""
+   },
+   "GO-2026-6629": {
+    "level": "module",
+    "found": "v0.3.6",
+    "fixed": "v0.41.0",
+    "vuln_symbols": "",
+    "example_trace": ""
+   }
+  },
+  "counts_all_scopes": {
+   "all": {
+    "module": 57,
+    "package": 4,
+    "symbol": 2,
+    "total": 63
+   },
+   "without_stdlib": {
+    "module": 2,
+    "package": 0,
+    "symbol": 2,
+    "total": 4
+   },
+   "stdlib_only": {
+    "module": 55,
+    "package": 4,
+    "symbol": 0,
+    "total": 59
+   }
+  }
+ },
+ "imported": {
+  "config": {
+   "db": "file:///home/user/work/reachtmp/db_osvzip",
+   "db_last_modified": "2026-10-30T10:55:54.969590579Z",
+   "go_version": "go1.24.7",
+   "scanner_version": "v1.9.0",
+   "scan_level": "symbol"
+  },
+  "x_text": {
+   "GO-2021-0113": {
+    "level": "package",
+    "found": "v0.3.6",
+    "fixed": "v0.3.7",
+    "vuln_symbols": "",
+    "example_trace": ""
+   },
+   "GO-2022-1059": {
+    "level": "package",
+    "found": "v0.3.6",
+    "fixed": "v0.3.8",
+    "vuln_symbols": "",
+    "example_trace": ""
+   },
+   "GO-2026-5970": {
+    "level": "module",
+    "found": "v0.3.6",
+    "fixed": "v0.39.0",
+    "vuln_symbols": "",
+    "example_trace": ""
+   },
+   "GO-2026-6629": {
+    "level": "module",
+    "found": "v0.3.6",
+    "fixed": "v0.41.0",
+    "vuln_symbols": "",
+    "example_trace": ""
+   }
+  },
+  "counts_all_scopes": {
+   "all": {
+    "module": 57,
+    "package": 6,
+    "symbol": 0,
+    "total": 63
+   },
+   "without_stdlib": {
+    "module": 2,
+    "package": 2,
+    "symbol": 0,
+    "total": 4
+   },
+   "stdlib_only": {
+    "module": 55,
+    "package": 4,
+    "symbol": 0,
+    "total": 59
+   }
+  }
+ },
+ "checks": {
+  "positive_expected_ids_called": [
+   "GO-2021-0113",
+   "GO-2022-1059"
+  ],
+  "positive_pass": true,
+  "negative_pass": true,
+  "negative_x_text_symbol_ids": [],
+  "negative_x_text_package_ids": [
+   "GO-2021-0113",
+   "GO-2022-1059"
+  ],
+  "note": "x/text v0.3.6. 양성은 language.ParseAcceptLanguage 호출, 음성은 language.Korean.String()만. 표준 라이브러리 수치는 GOVERSION 없이 로컬 go1.24.7 기준"
+ }
+}

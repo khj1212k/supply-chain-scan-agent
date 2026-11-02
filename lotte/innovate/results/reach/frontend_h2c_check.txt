@@ -1,0 +1,7 @@
+## grep -rn h2c src/frontend (*.go), v0.5.0
+(없음)
+
+## go list -deps ./... 중 net/http, x/net/http2, h2c (GOTOOLCHAIN=go1.20.4, 오프라인)
+net/http
+golang.org/x/net/http2
+(h2c 줄이 없으면 의존 그래프에 h2c 패키지가 없다)

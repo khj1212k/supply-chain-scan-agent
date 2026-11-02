@@ -1,0 +1,4 @@
+{"label": "main-c7cb6d5", "service": "productcatalogservice", "commit": "c7cb6d5bfd6ea3aed768634ebbcb98cb7a523712", "loader_gotoolchain": "go1.27.0", "goversion_for_stdlib": "go1.27.0",
+ "alt_loader_gotoolchain": "go1.26.10", "go_mod_download_rc": 0, "govulncheck_rc": 0, "govulncheck_wall_s": 11,
+ "openvex_convert_rc": 0, "alt_gover_rc": 0, "alt_nogover_rc": 0, "flatdb_rc": 0, "vulndb_rc": 0,
+ "query_rc": 0, "query_n_require": 57}

@@ -1,0 +1,57 @@
+{
+ "rc": {
+  "v050_frontend_rc": 0,
+  "main_frontend_rc": 1
+ },
+ "binary": "govulncheck v1.9.0, go1.26.10 빌드 (/home/user/tools/bin/govulncheck)",
+ "v050_frontend": {
+  "go1.26.10_build_counts": {
+   "all": {
+    "module": 29,
+    "package": 16,
+    "symbol": 87,
+    "total": 132
+   },
+   "without_stdlib": {
+    "module": 17,
+    "package": 11,
+    "symbol": 12,
+    "total": 40
+   },
+   "stdlib_only": {
+    "module": 13,
+    "package": 9,
+    "symbol": 81,
+    "total": 103
+   }
+  },
+  "go1.27.0_build_counts": {
+   "all": {
+    "module": 29,
+    "package": 16,
+    "symbol": 87,
+    "total": 132
+   },
+   "without_stdlib": {
+    "module": 17,
+    "package": 11,
+    "symbol": 12,
+    "total": 40
+   },
+   "stdlib_only": {
+    "module": 13,
+    "package": 9,
+    "symbol": 81,
+    "total": 103
+   }
+  },
+  "same_triples": true,
+  "n_only_go126": 0,
+  "n_only_go127": 0
+ },
+ "main_frontend_stderr_first3": [
+  "govulncheck: loading packages: ",
+  "There are errors with the provided package patterns:",
+  "golang.org/toolchain@v0.0.1-go1.27.0.linux-amd64/src/internal/poll/splice_linux.go:237:21: unknown field rfd in struct literal of type splicePipe"
+ ]
+}

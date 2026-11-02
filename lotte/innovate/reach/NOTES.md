@@ -5,15 +5,17 @@
 2. CVE-2023-44487: grpc 서버 3곳은 GO-2023-2153이 called, frontend는 grpc가 package 수준이다. 기획안 3-3 판정 초안 6칸과 모두 일치
 3. 다만 frontend의 표준 라이브러리 net/http는 ListenAndServe 때문에 called로 나온다. 직접 돌려 보니 go1.19.4 평문 서버는 HTTP/2로 답하지 않았다
 
-- 수치 기준: 실행 2026-11-02T09:09:57Z~09:18:54Z (UTC), DB modified 2026-10-30T10:55:54Z
-- 실행 시 저장소 HEAD: a1eab35 (reach 코드와 결과는 그 위의 커밋 전 작업본). 커밋한 뒤 이 줄을 실제 커밋 해시로 바꾼다
+- 수치 기준: 실행 2026-11-02T09:24:14Z~09:32:17Z (UTC), DB modified 2026-10-30T10:55:54Z
+- 코드 커밋: 9d234e9 (수치를 낸 reach 코드와 git diff 0). 실행 시 HEAD는 68242d2였다
+- 결과 폴더는 9d234e9에 실행 도중 상태로 들어갔다. 지금 `results/reach/` 전체를 다시 커밋해야 수치와 맞는다
+- run.sh를 세 번 돌렸다 (08:58, 09:10, 09:24 UTC 시작). 커밋별 집계는 세 번 같았고, 서비스별 수치는 뒤 두 번이 같았다
 - 재현: 아래 '실행' 한 줄
 
 ## 실행
 ```
 cd lotte/innovate && bash reach/run.sh
 ```
-- 약 9분 (4 vCPU 공유, GOMAXPROCS=2, nice 10)
+- 약 8분 (4 vCPU 공유, GOMAXPROCS=2, nice 10)
 - 온라인이 필요한 단계: go mod download, 툴체인 받기, golang/vulndb 받기. govulncheck 실행은 모두 오프라인
 - 결과: `results/reach/`. 임시: `/home/user/work/reachtmp` (매번 지움). 캐시: `/home/user/work/reachcache` (안 지움)
 - 집계만 다시: `.venv/bin/python -I reach/analyze.py --out results/reach --tmp /home/user/work/reachtmp --db /home/user/work/reachtmp/db_osvzip`
@@ -143,7 +145,7 @@ cd lotte/innovate && bash reach/run.sh
 - 같은 로더(go1.24.7)에서 GOVERSION=go1.19.4를 빼면 v0.5.0 frontend 표준 라이브러리 symbol이 79에서 45로 준다. 로더 툴체인 버전(go1.24.7)으로 판정하기 때문이다
 - 그래서 GOVERSION 없이 돌리면 표준 라이브러리 취약점을 크게 놓친다
 - 로더도 영향이 있다. 로더 소스에 없는 함수는 호출 경로를 못 찾고 module 수준으로 내려간다
-  - v0.5.0: go1.24.7 로더면 GO-2023-1621, GO-2025-3447이 symbol에서 module로
+  - v0.5.0: go1.24.7 로더면 GO-2023-1621, GO-2025-3447이 symbol에서 module로. 취약 패키지 crypto/internal/nistec가 go1.24.7 소스에서는 crypto/internal/fips140/nistec로 옮겨져 있다 (두 툴체인 src 폴더로 확인)
   - main: go1.26.10 로더면 표준 라이브러리 symbol 5개가 module로 (go1.27 전용 코드를 못 봄)
 - 비 표준 라이브러리 수치는 세 실행에서 같았다
 
@@ -161,8 +163,9 @@ cd lotte/innovate && bash reach/run.sh
 ## 한계
 - 리플렉션, plugin, cgo로 부르는 경로는 못 본다
 - 인터페이스 메서드와 함수 값 호출을 넓게 잡아 과다 보고할 수 있다. 실제 예:
-  - main의 x/net symbol 5건: 가장 짧은 경로가 `fmt.Sprintf -> fmt.pp.handleMethods -> http2.ConnectionError.Error`
-  - v0.5.0 GO-2026-6809: `genproto.init -> proto.RegisterFile -> ... -> tls...readServerCertificate`
+  - main checkoutservice의 x/net symbol 5건 중 4건: 가장 짧은 경로가 `checkoutservice.main -> fmt.Sprintf -> fmt.pp.handleMethods -> http2.ConnectionError.Error`. 나머지 1건(GO-2026-6610)은 sync.Once.Do를 지난다
+  - v0.5.0 checkoutservice GO-2026-6809: `genproto.init -> proto.RegisterFile -> ... -> tls...readServerCertificate` (proto 등록이 TLS 핸드셰이크로 이어지는 경로)
+  - v0.5.0 frontend GO-2025-3447 (ppc64le 전용): `os.Getenv -> syscall.Getenv -> sync.Once.Do -> sync.Once.doSlow -> ecdh.PublicKey$1 -> ...`
   - 가장 짧은 예시 경로가 fmt.pp.handleMethods나 sync.Once.doSlow를 지나는 symbol 줄: v0.5.0 98/333, v0.8.0 88/296, main 31/60 (`summary.json` dynamic_dispatch_hint). 단서일 뿐 오탐 수가 아니다
 - 플랫폼으로 거르지 않는다 (소스 모드는 affectingVulnerabilities(mv, "", "")). linux/amd64에 해당 없는 ID도 센다. `levels.csv` applies_linux_amd64 열로 따로 표시
 - 표준 라이브러리는 가정한 툴체인 버전에 달렸다. Dockerfile golang 이미지 버전을 썼다
@@ -200,7 +203,7 @@ cd lotte/innovate && bash reach/run.sh
 | # | 오류 | 처리 |
 |---|---|---|
 | 1 | /home/user/tools, /home/user/work/ob_* 없음 ($HOME이 /root) | 리드가 심볼릭 링크를 만들었다 |
-| 2 | go1.26.10 빌드 govulncheck + go1.27.0 로더: `file requires newer Go version go1.27 (application built with go1.26)` | go1.27.0으로 다시 빌드 (결정 1) |
+| 2 | go1.26.10 빌드 govulncheck + main: `x/net@v0.58.0/http2/server_wrap.go: file requires newer Go version go1.27 (application built with go1.26)`, `internal/poll/splice_linux.go:237:21: unknown field rfd` | go1.27.0으로 다시 빌드 (결정 1). run.sh가 매번 재현해 `govulncheck_build_check.json`에 남긴다 |
 | 3 | GOTOOLCHAIN=go1.19.4: `unsupported version of go: ... -pgo` | 로더 go1.20.4 + GOVERSION=go1.19.4 |
 | 4 | builddb go.mod가 go 1.26.0 요구. 원래 run.sh의 GOTOOLCHAIN=local이면 실패 | go1.27.0으로 실행 |
 | 5 | h2probe 모듈 이름 labreach/h2probe가 go1.19, 1.20에서 `import "": import of unknown directory` | 점 있는 이름 lab.local/h2probe로 |
@@ -215,7 +218,7 @@ cd lotte/innovate && bash reach/run.sh
   - `summary.json`, `cve_2023_44487.md`, `goversion_sensitivity.csv`, `db_check_compare.csv`, `controls_check.json`
   - `<커밋>/<서비스>.json.gz` (govulncheck 원본), `.openvex.json`, `.status.json`, `.download.log`
   - `controls/` (대조 원본, 오프라인 증명, 기본 DB 시도), `h2probe.jsonl`, `frontend_h2c_check.txt`
-  - `db_provenance.json`, `db_source_compare.json`, `dockerfile_go_versions.csv`, `docker_image_gotoolchain.txt`, `tool_versions.txt`
+  - `db_provenance.json`, `db_source_compare.json`, `dockerfile_go_versions.csv`, `docker_image_gotoolchain.txt`, `tool_versions.txt`, `govulncheck_build_check.json`
 
 ## 만든 방식
 - 구현과 실행은 AI 코딩 에이전트(Claude Code 클라우드 세션). 앞 세션 워커 코드를 검토하고 고쳤다

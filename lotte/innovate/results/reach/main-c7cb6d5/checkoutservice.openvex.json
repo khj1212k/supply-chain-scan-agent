@@ -1,0 +1,453 @@
+{
+  "@context": "https://openvex.dev/ns/v0.2.0",
+  "@id": "govulncheck/vex:ee59a363701fb638bc1454450f913b7eba5e31ca3efdea5d86cff924ba85318b",
+  "author": "Unknown Author",
+  "timestamp": "2026-11-02T09:28:51.325741139Z",
+  "version": 1,
+  "tooling": "https://pkg.go.dev/golang.org/x/vuln/cmd/govulncheck",
+  "statements": [
+    {
+      "vulnerability": {
+        "@id": "https://pkg.go.dev/vuln/GO-2026-5932",
+        "name": "GO-2026-5932",
+        "description": "The golang.org/x/crypto/openpgp package is unmaintained, unsafe by design, and has known security issues"
+      },
+      "products": [
+        {
+          "@id": "Unknown Product",
+          "subcomponents": [
+            {
+              "@id": "pkg:golang/golang.org%2Fx%2Fcrypto@v0.55.0"
+            }
+          ]
+        }
+      ],
+      "status": "not_affected",
+      "justification": "vulnerable_code_not_present",
+      "impact_statement": "Govulncheck determined that the vulnerable code isn't called"
+    },
+    {
+      "vulnerability": {
+        "@id": "https://pkg.go.dev/vuln/GO-2026-6354",
+        "name": "GO-2026-6354",
+        "description": "Prevent DoS on deadlocked undecided channel in golang.org/x/crypto/ssh",
+        "aliases": [
+          "CVE-2026-78662"
+        ]
+      },
+      "products": [
+        {
+          "@id": "Unknown Product",
+          "subcomponents": [
+            {
+              "@id": "pkg:golang/golang.org%2Fx%2Fcrypto@v0.55.0"
+            }
+          ]
+        }
+      ],
+      "status": "not_affected",
+      "justification": "vulnerable_code_not_present",
+      "impact_statement": "Govulncheck determined that the vulnerable code isn't called"
+    },
+    {
+      "vulnerability": {
+        "@id": "https://pkg.go.dev/vuln/GO-2026-6355",
+        "name": "GO-2026-6355",
+        "description": "Prevent DoS on deadlocked established channel in golang.org/x/crypto/ssh",
+        "aliases": [
+          "CVE-2026-56855"
+        ]
+      },
+      "products": [
+        {
+          "@id": "Unknown Product",
+          "subcomponents": [
+            {
+              "@id": "pkg:golang/golang.org%2Fx%2Fcrypto@v0.55.0"
+            }
+          ]
+        }
+      ],
+      "status": "not_affected",
+      "justification": "vulnerable_code_not_present",
+      "impact_statement": "Govulncheck determined that the vulnerable code isn't called"
+    },
+    {
+      "vulnerability": {
+        "@id": "https://pkg.go.dev/vuln/GO-2026-6599",
+        "name": "GO-2026-6599",
+        "description": "Reset context tracking on consecutive template expressions in html/template",
+        "aliases": [
+          "BIT-golang-2026-94448",
+          "CVE-2026-94448"
+        ]
+      },
+      "products": [
+        {
+          "@id": "Unknown Product",
+          "subcomponents": [
+            {
+              "@id": "pkg:golang/stdlib@v1.27.0"
+            }
+          ]
+        }
+      ],
+      "status": "not_affected",
+      "justification": "vulnerable_code_not_in_execute_path",
+      "impact_statement": "Govulncheck determined that the vulnerable code isn't called"
+    },
+    {
+      "vulnerability": {
+        "@id": "https://pkg.go.dev/vuln/GO-2026-6600",
+        "name": "GO-2026-6600",
+        "description": "Recognize yield as regexp preceder keyword in html/template",
+        "aliases": [
+          "BIT-golang-2026-97030",
+          "CVE-2026-97030"
+        ]
+      },
+      "products": [
+        {
+          "@id": "Unknown Product",
+          "subcomponents": [
+            {
+              "@id": "pkg:golang/stdlib@v1.27.0"
+            }
+          ]
+        }
+      ],
+      "status": "not_affected",
+      "justification": "vulnerable_code_not_in_execute_path",
+      "impact_statement": "Govulncheck determined that the vulnerable code isn't called"
+    },
+    {
+      "vulnerability": {
+        "@id": "https://pkg.go.dev/vuln/GO-2026-6603",
+        "name": "GO-2026-6603",
+        "description": "HTTP/2 server memory exhaustion due to Trailer headers in net/http",
+        "aliases": [
+          "BIT-golang-2026-78659",
+          "CVE-2026-78659"
+        ]
+      },
+      "products": [
+        {
+          "@id": "Unknown Product",
+          "subcomponents": [
+            {
+              "@id": "pkg:golang/stdlib@v1.27.0"
+            },
+            {
+              "@id": "pkg:golang/golang.org%2Fx%2Fnet@v0.58.0"
+            }
+          ]
+        }
+      ],
+      "status": "affected"
+    },
+    {
+      "vulnerability": {
+        "@id": "https://pkg.go.dev/vuln/GO-2026-6604",
+        "name": "GO-2026-6604",
+        "description": "Root.Mkdir(All) can follow junctions out of the root on Windows in os",
+        "aliases": [
+          "BIT-golang-2026-56857",
+          "CVE-2026-56857"
+        ]
+      },
+      "products": [
+        {
+          "@id": "Unknown Product",
+          "subcomponents": [
+            {
+              "@id": "pkg:golang/stdlib@v1.27.0"
+            }
+          ]
+        }
+      ],
+      "status": "not_affected",
+      "justification": "vulnerable_code_not_in_execute_path",
+      "impact_statement": "Govulncheck determined that the vulnerable code isn't called"
+    },
+    {
+      "vulnerability": {
+        "@id": "https://pkg.go.dev/vuln/GO-2026-6605",
+        "name": "GO-2026-6605",
+        "description": "HTTP/1 client connection desynchronization after CONNECT rejection in net/http",
+        "aliases": [
+          "BIT-golang-2026-56866",
+          "CVE-2026-56866"
+        ]
+      },
+      "products": [
+        {
+          "@id": "Unknown Product",
+          "subcomponents": [
+            {
+              "@id": "pkg:golang/stdlib@v1.27.0"
+            }
+          ]
+        }
+      ],
+      "status": "affected"
+    },
+    {
+      "vulnerability": {
+        "@id": "https://pkg.go.dev/vuln/GO-2026-6607",
+        "name": "GO-2026-6607",
+        "description": "Reject malformed ECH outer extension references in crypto/tls",
+        "aliases": [
+          "BIT-golang-2026-97031",
+          "CVE-2026-97031"
+        ]
+      },
+      "products": [
+        {
+          "@id": "Unknown Product",
+          "subcomponents": [
+            {
+              "@id": "pkg:golang/stdlib@v1.27.0"
+            }
+          ]
+        }
+      ],
+      "status": "affected"
+    },
+    {
+      "vulnerability": {
+        "@id": "https://pkg.go.dev/vuln/GO-2026-6608",
+        "name": "GO-2026-6608",
+        "description": "Memory limit bypass when parsing MIME headers in net/textproto, mime/multipart",
+        "aliases": [
+          "BIT-golang-2026-94440",
+          "CVE-2026-94440"
+        ]
+      },
+      "products": [
+        {
+          "@id": "Unknown Product",
+          "subcomponents": [
+            {
+              "@id": "pkg:golang/stdlib@v1.27.0"
+            }
+          ]
+        }
+      ],
+      "status": "affected"
+    },
+    {
+      "vulnerability": {
+        "@id": "https://pkg.go.dev/vuln/GO-2026-6609",
+        "name": "GO-2026-6609",
+        "description": "Lack of limit on size of parsed Range headers in net/http",
+        "aliases": [
+          "BIT-golang-2026-78667",
+          "CVE-2026-78667"
+        ]
+      },
+      "products": [
+        {
+          "@id": "Unknown Product",
+          "subcomponents": [
+            {
+              "@id": "pkg:golang/stdlib@v1.27.0"
+            }
+          ]
+        }
+      ],
+      "status": "not_affected",
+      "justification": "vulnerable_code_not_in_execute_path",
+      "impact_statement": "Govulncheck determined that the vulnerable code isn't called"
+    },
+    {
+      "vulnerability": {
+        "@id": "https://pkg.go.dev/vuln/GO-2026-6610",
+        "name": "GO-2026-6610",
+        "description": "HTTP/2 transport accepts malformed framing-related headers in net/http",
+        "aliases": [
+          "BIT-golang-2026-78660",
+          "CVE-2026-78660"
+        ]
+      },
+      "products": [
+        {
+          "@id": "Unknown Product",
+          "subcomponents": [
+            {
+              "@id": "pkg:golang/stdlib@v1.27.0"
+            },
+            {
+              "@id": "pkg:golang/golang.org%2Fx%2Fnet@v0.58.0"
+            }
+          ]
+        }
+      ],
+      "status": "affected"
+    },
+    {
+      "vulnerability": {
+        "@id": "https://pkg.go.dev/vuln/GO-2026-6611",
+        "name": "GO-2026-6611",
+        "description": "Excessive CPU consumption from repeated initial window changes in net/http",
+        "aliases": [
+          "BIT-golang-2026-78669",
+          "CVE-2026-78669"
+        ]
+      },
+      "products": [
+        {
+          "@id": "Unknown Product",
+          "subcomponents": [
+            {
+              "@id": "pkg:golang/golang.org%2Fx%2Fnet@v0.58.0"
+            },
+            {
+              "@id": "pkg:golang/stdlib@v1.27.0"
+            }
+          ]
+        }
+      ],
+      "status": "affected"
+    },
+    {
+      "vulnerability": {
+        "@id": "https://pkg.go.dev/vuln/GO-2026-6612",
+        "name": "GO-2026-6612",
+        "description": "Double flow control refund on HTTP/2 server streams in net/http",
+        "aliases": [
+          "BIT-golang-2026-78663",
+          "CVE-2026-78663"
+        ]
+      },
+      "products": [
+        {
+          "@id": "Unknown Product",
+          "subcomponents": [
+            {
+              "@id": "pkg:golang/golang.org%2Fx%2Fnet@v0.58.0"
+            }
+          ]
+        }
+      ],
+      "status": "affected"
+    },
+    {
+      "vulnerability": {
+        "@id": "https://pkg.go.dev/vuln/GO-2026-6613",
+        "name": "GO-2026-6613",
+        "description": "HTTP/1 server connection desynchronization after 2xx CONNECT response in net/http",
+        "aliases": [
+          "BIT-golang-2026-94439",
+          "CVE-2026-94439"
+        ]
+      },
+      "products": [
+        {
+          "@id": "Unknown Product",
+          "subcomponents": [
+            {
+              "@id": "pkg:golang/stdlib@v1.27.0"
+            }
+          ]
+        }
+      ],
+      "status": "affected"
+    },
+    {
+      "vulnerability": {
+        "@id": "https://pkg.go.dev/vuln/GO-2026-6617",
+        "name": "GO-2026-6617",
+        "description": "HTTP/2 server crash due to HPACK encoder race in net/http",
+        "aliases": [
+          "BIT-golang-2026-97032",
+          "CVE-2026-97032"
+        ]
+      },
+      "products": [
+        {
+          "@id": "Unknown Product",
+          "subcomponents": [
+            {
+              "@id": "pkg:golang/golang.org%2Fx%2Fnet@v0.58.0"
+            },
+            {
+              "@id": "pkg:golang/stdlib@v1.27.0"
+            }
+          ]
+        }
+      ],
+      "status": "affected"
+    },
+    {
+      "vulnerability": {
+        "@id": "https://pkg.go.dev/vuln/GO-2026-6809",
+        "name": "GO-2026-6809",
+        "description": "Distrust compromised intermediate certificates in crypto/x509",
+        "aliases": [
+          "BIT-golang-2026-111943",
+          "CVE-2026-111943",
+          "RUSTSEC-2026-0381",
+          "RUSTSEC-2026-0382",
+          "RUSTSEC-2026-0383"
+        ]
+      },
+      "products": [
+        {
+          "@id": "Unknown Product",
+          "subcomponents": [
+            {
+              "@id": "pkg:golang/stdlib@v1.27.0"
+            }
+          ]
+        }
+      ],
+      "status": "affected"
+    },
+    {
+      "vulnerability": {
+        "@id": "https://pkg.go.dev/vuln/GO-2026-6860",
+        "name": "GO-2026-6860",
+        "description": "Avoid quadratic complexity when coalescing text nodes in html in golang.org/x/net",
+        "aliases": [
+          "CVE-2026-78661"
+        ]
+      },
+      "products": [
+        {
+          "@id": "Unknown Product",
+          "subcomponents": [
+            {
+              "@id": "pkg:golang/golang.org%2Fx%2Fnet@v0.58.0"
+            }
+          ]
+        }
+      ],
+      "status": "not_affected",
+      "justification": "vulnerable_code_not_present",
+      "impact_statement": "Govulncheck determined that the vulnerable code isn't called"
+    },
+    {
+      "vulnerability": {
+        "@id": "https://pkg.go.dev/vuln/GO-2026-6866",
+        "name": "GO-2026-6866",
+        "description": "Check all ancestor namespace transitions when rendering raw text in html in golang.org/x/net",
+        "aliases": [
+          "CVE-2026-97045"
+        ]
+      },
+      "products": [
+        {
+          "@id": "Unknown Product",
+          "subcomponents": [
+            {
+              "@id": "pkg:golang/golang.org%2Fx%2Fnet@v0.58.0"
+            }
+          ]
+        }
+      ],
+      "status": "not_affected",
+      "justification": "vulnerable_code_not_present",
+      "impact_statement": "Govulncheck determined that the vulnerable code isn't called"
+    }
+  ]
+}
