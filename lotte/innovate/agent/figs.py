@@ -97,16 +97,18 @@ def results(run_ids: list[str]) -> Path:
     for rid in run_ids:
         with open(INNO / "results" / "agent" / "runs" / rid / "summary.csv") as f:
             rows += list(csv.DictReader(f))
-    order = ["min_target", "min_target_retry", "min_all", "latest", "agent"]
+    order = ["min_target", "min_target_retry", "min_all", "latest", "llm_single", "agent"]
     rows.sort(key=lambda r: (order.index(r["policy"]) if r["policy"] in order else 99, r["model"]))
     names = {"min_target": "최소 수정\n(1회)", "min_target_retry": "최소 수정\n+다음 후보(3회)", "min_all": "전부 고치는\n최소(1회)",
              "latest": "최신\n(1회)"}
-    labels = [names.get(r["policy"], "") or f"에이전트\n{r['model'].split(':')[-1]}" for r in rows]
+    names["llm_single"] = "LLM 1회 호출\n(고정 흐름)"
+    names["agent"] = "에이전트\n(도구 탐색)"
+    labels = [names.get(r["policy"], r["policy"]) + ("\n" + r["model"].split(":")[-1].replace("claude-", "") if r["model"] != "none" else "\n(LLM 없음)") for r in rows]
     n = [int(r["cases"]) for r in rows]
     first = [int(r["first_attempt_pass"]) for r in rows]
     final = [int(r["final_pass"]) for r in rows]
     keep = [int(r["pass_keep_go_1_19"]) for r in rows]
-    fig, ax = plt.subplots(figsize=(9.5, 4.8), dpi=160, facecolor=SURF)
+    fig, ax = plt.subplots(figsize=(11.5, 5.0), dpi=160, facecolor=SURF)
     ax.set_facecolor(SURF)
     xs = range(len(rows))
     w = 0.26
@@ -130,6 +132,10 @@ def results(run_ids: list[str]) -> Path:
         ax.spines[s].set_color(GRID)
     ax.tick_params(colors=INK2)
     ax.legend(frameon=False, fontsize=8.5, loc="upper left", ncol=3)
+    costs = {r["policy"]: float(r["cost_usd_per_case"]) for r in rows if r["model"] != "none"}
+    note = ("건당 LLM 비용(Sonnet 5.5 공식 단가): " + ", ".join(f"{names.get(k, k).splitlines()[0]} ${v:.3f}" for k, v in costs.items())
+            + ".  모든 정책이 실패한 4건은 otel 계열(C03, C04, C09, C10): 시도한 조합은 앱 코드 수정이 필요하거나 새 HIGH 권고를 끌어왔다.")
+    fig.text(0.01, -0.02, note, fontsize=7.8, color=INK2, ha="left", va="top")
     out = FIGS / "agent_results.png"
     fig.savefig(out, facecolor=SURF, bbox_inches="tight")
     plt.close(fig)

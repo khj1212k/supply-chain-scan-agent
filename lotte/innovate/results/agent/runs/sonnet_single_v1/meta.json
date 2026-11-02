@@ -1,0 +1,33 @@
+{
+ "run_id": "sonnet_single_v1",
+ "started_utc": "2026-11-02T09:18:00+00:00",
+ "repo_commit": "c930a6c2d4066733f250e7128f56d5a5fe2ca944",
+ "policies": [
+  "llm_single"
+ ],
+ "cases": [
+  "C01",
+  "C02",
+  "C03",
+  "C04",
+  "C05",
+  "C06",
+  "C07",
+  "C08",
+  "C09",
+  "C10"
+ ],
+ "auto_approve": true,
+ "osv_snapshot": {
+  "path": "/home/user/work/osvdb/osv-scalibr/Go/all.zip",
+  "records": 9815,
+  "max_modified": "2026-10-30T23:30:04.079827623Z"
+ },
+ "availability": {
+  "anthropic_key_present": true,
+  "openai_reachable": "blocked (URLError)",
+  "local_endpoint_8080": false
+ },
+ "model": "anthropic:claude-sonnet-5-5",
+ "finished_utc": "2026-11-02T09:20:24+00:00"
+}

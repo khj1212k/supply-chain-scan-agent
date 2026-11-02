@@ -109,7 +109,7 @@ async def main_async(a) -> None:
     rows = []
     out = d / "results.jsonl"
     spec = None
-    if "agent" in pols:
+    if "agent" in pols or "llm_single" in pols:
         from agent.remediation import run_case
         from agent.tracing_local import use_local_tracing
         spec = mc.parse(a.model)
@@ -120,12 +120,12 @@ async def main_async(a) -> None:
         for pol in pols:
             if pol in BASELINES:
                 r = await asyncio.to_thread(run_baseline, pol, c)
-            elif pol == "agent":
+            elif pol in ("agent", "llm_single"):
                 try:
-                    r = await run_case(c, spec, d / "patches", a.auto_approve)
+                    r = await run_case(c, spec, d / "patches", a.auto_approve, mode=pol)
                 except Exception as e:  # 공급자 오류 등은 그 사례 '오류'로 남기고 계속
                     msg = str(e).replace(os.environ.get("LAB_ANTHROPIC_API_KEY", "@@none@@"), "[KEY]")[:500]
-                    r = {"case_id": c["case_id"], "policy": "agent", "model": spec.label, "error": f"{type(e).__name__}: {msg}",
+                    r = {"case_id": c["case_id"], "policy": pol, "model": spec.label, "error": f"{type(e).__name__}: {msg}",
                          "attempts": [], "final_pass": False, "first_attempt_pass": False, "n_attempts": 0, "guardrail_trips": 0,
                          "out_of_list_proposals": 0, "final_verdict_key": None, "llm_calls": 0, "input_tokens": 0,
                          "output_tokens": 0, "cached_tokens": 0, "cost_usd": 0.0, "llm_s": 0.0, "judge_s": 0.0,
