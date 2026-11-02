@@ -1,0 +1,38 @@
+{
+ "runs": [
+  {
+   "started_utc": "2026-11-02T09:38:50+00:00",
+   "repo_head": "b83082cacb4faac1ccac4f7da8527b299ba106e5",
+   "dirty_vexpilot": "?? lotte/innovate/vexpilot/__init__.py\n?? lotte/innovate/vexpilot/cases.py\n?? lotte/innovate/vexpilot/evidence.py\n?? lotte/innovate/vexpilot/repo_tools.py\n?? lotte/innovate/vexpilot/run.py\n?? lotte/innovate/vexpilot/tests/\n?? lotte/innovate/vexpilot/vex_agent.py",
+   "model": "anthropic:claude-sonnet-5-5",
+   "budget_usd": 3.0,
+   "spent_before_usd": 0.416,
+   "max_turns": 20,
+   "time_limit_s": 600,
+   "prompt_cache": true,
+   "labels_sha256": "06c58010defd28a3165598072b36fd56e986bc4c39c91f3c0095dc82b2800ddf",
+   "osv_snapshot": {
+    "path": "/home/user/work/osvdb/osv-scalibr/Go/all.zip",
+    "records": 9815,
+    "max_modified": "2026-10-30T23:30:04.079827623Z"
+   },
+   "availability": {
+    "anthropic_key_present": true,
+    "openai_reachable": "blocked (URLError)",
+    "local_endpoint_8080": false
+   },
+   "snapshots": {
+    "caddyserver-caddy-8dc7667-CVE-2025-29785": "2026-11-02T09:27:24Z",
+    "containers-podman-6a65597-CVE-2023-48795": "2026-11-02T09:27:28Z",
+    "stretchr-testify-285adcc-CVE-2022-28948": "2026-11-02T09:27:29Z",
+    "aquasecurity-trivy-37da98d-CVE-2024-32473": "2026-11-02T09:27:32Z",
+    "aquasecurity-trivy-98e136e-CVE-2024-24791": "2026-11-02T09:27:36Z",
+    "containers-podman-38ccfa2-CVE-2024-37298": "2026-11-02T09:27:39Z",
+    "containers-podman-5ae6347-CVE-2025-47914": "2026-11-02T09:27:44Z",
+    "containers-podman-6541fc4-CVE-2025-58181": "2026-11-02T09:27:48Z"
+   },
+   "finished_utc": "2026-11-02T09:40:07+00:00",
+   "cumulative_cost_usd": 0.5434
+  }
+ ]
+}

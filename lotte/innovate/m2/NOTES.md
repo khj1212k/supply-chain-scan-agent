@@ -7,7 +7,7 @@
 
 ## 재현
 ```bash
-cd lotte/innovate && bash m2/run.sh     # 484초 (2026-11-02 09:08~09:16 UTC)
+cd lotte/innovate && bash m2/run.sh     # 약 7~8분 (439~484초)
 ```
 - 순서: `m2/scan.sh`(스캔) -> `m2/funnel.py`(깔때기) -> `m2/vex_example.py`(VEX) -> `m2/figs.py`(그림)
 - 미리 필요한 것
@@ -15,8 +15,10 @@ cd lotte/innovate && bash m2/run.sh     # 484초 (2026-11-02 09:08~09:16 UTC)
   - OSV DB: `/home/user/work/osvdb/osv-scalibr/<생태계>/all.zip` (`m2/prepare.py --osvdb /home/user/work/osvdb`)
   - 워크트리: `/home/user/work/ob_{v0.5.0,main,v0.8.0}` (scan.sh가 커밋 해시를 대조하고 다르면 멈춘다)
   - 신호: `data/raw/kev`, `data/raw/epss/epss_scores-2026-11-01.csv.gz`, `data/raw/derived/nvd_table.csv.gz` (m1)
-- 코드 커밋: 결과를 만든 때 저장소 HEAD는 `9aecd19`, m2 코드는 미커밋이었다. 리드가 커밋한 해시를 RESULTS.md에 붙인다
-- 두 번 돌렸다(08:51, 09:08 시작). 헤드라인 수치는 두 번 다 같다
+- 코드 커밋: 마지막 실행 때 저장소 HEAD는 `2f3e995`(summary.json `git.repo_head`), m2 코드는 미커밋이었다. 리드가 커밋한 해시를 RESULTS.md에 붙인다
+- 네 번 돌렸다 (2026-11-02 UTC 시작 08:51, 09:08, 09:22, 09:42). 수치 CSV와 summary.json의 커밋별 값이 전부 같다 (마지막은 최종 코드)
+  - 08:51 판은 `lock`에 호출 분석이 켜져 있었고 네트워크를 막지 않았다. 그래도 권고 목록과 수치가 같다
+  - 실행 시간 484초, 439초, 445초 (다른 작업과 CPU를 나눠 씀)
 
 ## 헤드라인 수치 (잠금 파일 경로, Go 표준 라이브러리 제외)
 | 항목 | v0.5.0 | main | v0.8.0 | 출처 |
@@ -71,7 +73,7 @@ cd lotte/innovate && bash m2/run.sh     # 484초 (2026-11-02 09:08~09:16 UTC)
 | 패키지 버전 | 74 | 61 | 41 | 36 | M |
 | 상위 5개 점유 | 35.5% | 39.6% | 57.7% | 60.0% | D |
 | 조인 별칭 / related / 없음 | 595 / 5 / 9 | 532 / 4 / 9 | 199 / 0 / 9 | 191 / 0 / 9 | M |
-| 고유 CVE | 244 | 183 | 115 | 107 | M, C |
+| 고유 CVE | 244 | 183 | 115 | 107 | M |
 | GHSA Critical(A) | 21 | 20 | 10 | 9 | M |
 | KEV 행 | 10 | 9 | 1 | 1 | M (netty) |
 | B / A와 B 겹침 | 14 / 1 | 13 / 1 | 1 / 1 | 1 / 1 | M (netty) |
@@ -96,7 +98,6 @@ cd lotte/innovate && bash m2/run.sh     # 484초 (2026-11-02 09:08~09:16 UTC)
 - T (tests csproj): 도구는 `cartservice/tests/cartservice.tests.csproj` 5개도 센다. 기획안은 뺐다. 빼면 818(v0.5.0), 852(main). 기획안과의 나머지 41, 51개는 Maven 구성요소로 추정 (산술, 미확인)
 - S (서비스 수): osv-scanner는 패키지가 나온 서비스만 센다. adservice가 빠진다. Syft는 adservice를 넣지만 cartservice(.csproj)를 못 읽어 역시 10, 11
 - D (분모): 이번 상위 5개 건수 합은 v0.5.0 216행, main 120행이다. 기획안 값으로 역산해도 216, 120이다 (35.5% x 609, 57.7% x 208. 산술). 분자는 그대로고 분모(보고 행)가 줄어서 점유가 오른다
-- C (첫 CVE 규칙): 기획안 규칙대로 권고마다 첫 CVE 별칭 하나만 쓴다. 둘 이상인 권고 v0.5.0 3개, main 1개. 그래서 고유 CVE에서 2개, 1개가 빠진다. 빠진 것 중 KEV, EPSS>=0.1은 없다 (2026-11-02 별도 점검, 코드 밖)
 - V (SSVC 출처): 기획안은 cveawg.mitre.org의 CISA ADP, 여기는 NVD 미러의 `ssvcV203`(m1/nvd_table.py). cveawg는 막혀 있다
 - 영향이 안 보인 차이
   - DB 시점: 기획안은 api.osv.dev(2026-11-02 조회), 여기는 GCS 덤프(2026-11-02 08:41 UTC 받음). 생태계별 보고 수가 같아 이번에는 차이가 안 보였다
@@ -144,7 +145,7 @@ cd lotte/innovate && bash m2/run.sh     # 484초 (2026-11-02 09:08~09:16 UTC)
 - 앞 세션의 SBOM 경로 값(패키지 416, 취약 7, 권고 9)은 DB가 빠진 상태의 값이었다. 이번에는 패키지 413, 취약 63 (v0.5.0, 스캔 범위 `src/`)
 
 ## Go 도달 확인 (reach 결과를 읽기만 함)
-- 원본: `results/reach/levels.csv` (다른 작업이 만든다). 읽은 판: 수정 시각 2026-11-02T09:20:23Z, sha256 앞 12자 `af8786389b04`
+- 원본: `results/reach/levels.csv` (다른 작업이 만든다). 읽은 판: sha256 앞 12자 `af8786389b04` (09:20 판과 09:32 판이 같은 내용)
   - reach가 다시 돌면 값이 바뀔 수 있다. 그때 `.venv/bin/python m2/funnel.py && .venv/bin/python m2/figs.py`만 다시 돌린다
 - 연결: 커밋 해시 + 서비스 + GO- 권고 ID + 모듈(= 보고 행 패키지). 행마다 가장 높은 수준
 - 보조 연결: x/net 0.4.0의 CVE-2023-44487 행(서비스 4개)은 GHSA-qppj-fm5r-hxr3로만 붙어서 GO- ID가 없다
@@ -196,7 +197,7 @@ cd lotte/innovate && bash m2/run.sh     # 484초 (2026-11-02 09:08~09:16 UTC)
 | Go (호출 분석, 탐침 아님) | go1.24.7, GOTOOLCHAIN=auto | `go version` |
 | jsonschema | 4.26.0 | VEX 검증 |
 - 기록: `results/m2/tool_versions.txt`, 명령 전체와 종료 코드와 초: `results/m2/scan_runs.csv`
-- 시간: 전체 484초. osv-scanner 1회 19~24초, 호출 분석을 켜면 44~59초, 탐침 1초 안쪽, Syft 3~10초
+- 시간: 전체 439~484초. osv-scanner 1회 17~24초, 호출 분석을 켜면 41~59초, 탐침 1초 안쪽, Syft 3~10초
 
 ## 데이터 기준 시점 (`results/m2/data_asof.csv`)
 | 자료 | 기준 | 비고 |
@@ -209,14 +210,20 @@ cd lotte/innovate && bash m2/run.sh     # 484초 (2026-11-02 09:08~09:16 UTC)
 | OSV Bitnami | 2026-10-30T20:56Z | 10,074건. 별칭(BIT-) 조회만 |
 | KEV | 2026.10.30 (dateReleased 2026-10-30T17:02Z) | 1,766건 |
 | EPSS | score_date 2026-11-01T12:00Z, model v2026.06.15 | |
-| NVD 표 (CVSS, SSVC) | fkie-cad 미러 커밋 1b66e03 (2026-11-02T07:05Z) | m1/nvd_table.py |
+| NVD 표 (CVSS, SSVC) | fkie-cad 미러 커밋 1b66e03 (2026-11-02T07:05Z) | m1/nvd_table.py. 복제가 지워진 뒤에는 `results/m1/REPRO_CHECK.md`의 고정 커밋을 적는다 |
 | Online Boutique | v0.5.0 3c0d659, main c7cb6d5, v0.8.0 d54af3d | 워크트리 HEAD 대조 |
 
 ## VEX 예시 (CycloneDX 1.6)
 - 파일: `results/m2/vex_CVE-2023-44487.cdx.json`, 검증: `results/m2/vex_validation.json`
 - 대상: v0.5.0에서 CVE-2023-44487로 조인된 행 전부. 구성요소 8개 = Go 서비스 4개 x (`golang.org/x/net 0.4.0`, `google.golang.org/grpc 1.51.0`)
-- 상태 `in_triage`. 도달성과 HTTP/2 서버 노출 확인 전, 사람 승인 전
+- 상태 `in_triage`. 사람 승인 전이라 바꾸지 않았다
+- 판단 재료 (findings_v0.5.0.csv `reach_level`, reach의 levels.csv를 읽은 값)
+  - grpc 1.51.0 (GO-2023-2153): checkoutservice, productcatalogservice, shippingservice는 symbol(호출 경로 있음), frontend는 package(import만)
+  - x/net 0.4.0: 서비스 4개 모두 package (GO-2023-2102로 보조 연결)
+  - 기획안 3-3의 주장(frontend는 grpc 클라이언트뿐, 나머지 셋은 grpc 서버)과 방향이 맞는다. 판정은 reach 작업과 사람 몫
 - 점수: NVD CVSS 3.1 7.5 (`AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H`). EPSS, KEV, 서비스별 기한은 properties
+  - 출처: NVD 미러 레코드 1건, m1 nvd_table과 같은 커밋 `1b66e03`으로 고정해 받음. nvd_table의 `cvss3_nvd`(7.5)와 같음 (`vex_validation.json` `score_check`)
+  - 처음에는 로컬 미러 복제(`/home/user/work/nvd`)를 읽었는데, 작업 중 복제가 지워져서(디스크 정리로 보임) 이렇게 바꿨다
 - 검증
   - enum 4종(state, ratings.method, ratings.severity, components.type) 1.6 스키마와 일치
   - jsonschema 4.26.0 Draft7 전체 검증 통과 (spdx, jsf 참조 포함)
@@ -263,6 +270,7 @@ cd lotte/innovate && bash m2/run.sh     # 484초 (2026-11-02 09:08~09:16 UTC)
 ## 데이터 출처
 | 자료 | URL | 받은 시각 (UTC) | sha256 앞 12자 | 라이선스 |
 |---|---|---|---|---|
+| NVD 레코드 1건 (CVE-2023-44487, VEX 점수용) | https://raw.githubusercontent.com/fkie-cad/nvd-json-data-feeds/1b66e035d87d0ddf83705ff01b4382889755f89a/CVE-2023/CVE-2023-444xx/CVE-2023-44487.json | 2026-11-02T09:41:40Z | f12ff7bc6855 | NVD 자료 (공공), 미러는 fkie-cad (DATA.md 기존 NVD 항목 따름) |
 | OSV Bitnami 덤프 (별칭 조회만) | https://osv-vulnerabilities.storage.googleapis.com/Bitnami/all.zip | 2026-11-02T08:57:07Z | ed67a6ad69e8 | Apache-2.0 (bitnami/vulndb `LICENSE.md`, 2026-11-02 확인) |
 | OSV Go, npm, PyPI, NuGet, Maven, GitHub Actions 덤프 | 같은 버킷 `<생태계>/all.zip` | 2026-11-02T08:41Z (prepare.py) | `data/manifest_m2.json` | 원본 DB마다 다름 (DATA.md 기존 OSV 항목 따름) |
 | CycloneDX 1.6 스키마 3종 | raw.githubusercontent.com/CycloneDX/specification/1.6/schema/ | 2026-11-02T08:41Z (prepare.py) | `data/manifest_m2.json` | Apache-2.0 (CycloneDX specification 저장소, 미확인) |
@@ -273,6 +281,9 @@ cd lotte/innovate && bash m2/run.sh     # 484초 (2026-11-02 09:08~09:16 UTC)
 - 소스 트리 스캔이다. 컨테이너 이미지, 베이스 이미지, OS 패키지는 안 봤다
 - go.mod의 indirect 모듈까지 다 센다. 실제 바이너리에 들어가는지는 모른다 (도달성은 reach)
 - 보고 건수는 위험 건수가 아니다
+- 첫 CVE 규칙 (기획안과 같음, 양쪽 공통이라 차이 원인은 아님): 권고마다 첫 CVE 별칭 하나만 쓴다
+  - 별칭 CVE가 둘 이상인 권고: v0.5.0 3개, main 1개. 그래서 고유 CVE에서 2개, 1개가 빠진다
+  - 빠진 것 중 KEV, EPSS>=0.1은 없다 (2026-11-02 별도 점검, 코드 밖 일회성 확인)
 - SSVC가 없는 CVE는 기획안처럼 automatable no, technical total로 둔다 (v0.5.0 15개, main 6개)
 - main CVE 2개는 NVD 표에 없다 (summary.json `nvd_missing_cves`). CVSS 칸이 비고 SSVC는 기본값
 - 노출 가정은 매니페스트의 LoadBalancer만 본다. Ingress, 메시 설정은 안 봤다

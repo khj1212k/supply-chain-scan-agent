@@ -1,5 +1,5 @@
 Scanning dir /home/user/work/m2tmp/main/stdprobe
 Starting filesystem walk for root: /
 Scanned /home/user/work/m2tmp/main/stdprobe/go.mod file and found 1 package
-End status: 1 dirs visited, 2 inodes visited, 1 Extract calls, 155.979µs elapsed, 156.031µs wall time
+End status: 1 dirs visited, 2 inodes visited, 1 Extract calls, 155.967µs elapsed, 156.02µs wall time
 Loaded Go local db from /home/user/work/osvdb/osv-scalibr/Go/all.zip

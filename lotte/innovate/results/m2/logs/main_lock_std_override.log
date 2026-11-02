@@ -12,7 +12,7 @@ Scanned /home/user/work/ob_main/src/shippingservice/go.mod file and found 34 pac
 Scanned /home/user/work/ob_main/src/currencyservice/package-lock.json file and found 257 packages
 Scanned /home/user/work/ob_main/src/checkoutservice/go.mod file and found 42 packages
 Scanned /home/user/work/ob_main/src/paymentservice/package-lock.json file and found 227 packages
-End status: 50 dirs visited, 238 inodes visited, 12 Extract calls, 52.120521ms elapsed, 52.120651ms wall time
+End status: 50 dirs visited, 238 inodes visited, 12 Extract calls, 37.942367ms elapsed, 37.94289ms wall time
 Loaded npm local db from /home/user/work/osvdb/osv-scalibr/npm/all.zip
 Loaded NuGet local db from /home/user/work/osvdb/osv-scalibr/NuGet/all.zip
 Loaded PyPI local db from /home/user/work/osvdb/osv-scalibr/PyPI/all.zip

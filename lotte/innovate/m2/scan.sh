@@ -36,6 +36,7 @@ TARGETS=(
   "v0.8.0|/home/user/work/ob_v0.8.0|d54af3d2510995d33521ac543dd885b150213f95"
 )
 
+rm -rf "$OUT/logs"   # 지난 실행의 로그가 남지 않게 (단계 이름이 바뀌면 옛 파일이 남는다)
 mkdir -p "$TMP" "$OUT/logs"
 RUNS="$OUT/scan_runs.csv"
 echo "label,step,commit,started_utc,seconds,exit_code,output,log,command" > "$RUNS"

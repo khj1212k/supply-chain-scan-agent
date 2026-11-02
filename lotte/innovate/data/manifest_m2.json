@@ -17,6 +17,12 @@
   "sha256": "baa9d3bd1ed57b6751b0887edead6b5063ff53ff7429cf85d476c6c94af0166e",
   "url": "https://raw.githubusercontent.com/CycloneDX/specification/1.6/schema/spdx.schema.json"
  },
+ "nvd/CVE-2023-44487.json": {
+  "bytes": 189154,
+  "fetched_utc": "2026-11-02T09:41:40Z",
+  "sha256": "f12ff7bc68550c09314bdbb9814810301e88283412a3e726eca755cb8af9dddb",
+  "url": "https://raw.githubusercontent.com/fkie-cad/nvd-json-data-feeds/1b66e035d87d0ddf83705ff01b4382889755f89a/CVE-2023/CVE-2023-444xx/CVE-2023-44487.json"
+ },
  "osv/Bitnami/all.zip": {
   "bytes": 10069629,
   "fetched_utc": "2026-11-02T08:57:07Z",

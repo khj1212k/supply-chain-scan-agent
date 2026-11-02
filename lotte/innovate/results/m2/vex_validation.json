@@ -24,5 +24,13 @@
   "valid": true,
   "errors": [],
   "format_note": "date-time 형식 검사는 건너뜀 (rfc3339-validator 없음)"
+ },
+ "score_check": {
+  "nvd_record_commit": "1b66e035d87d0ddf83705ff01b4382889755f89a",
+  "record_score": [
+   7.5
+  ],
+  "nvd_table_cvss3_nvd": "7.5",
+  "match": true
  }
 }

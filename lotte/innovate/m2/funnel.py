@@ -466,6 +466,10 @@ def git_info() -> dict:
             return ""
     nvd = "/home/user/work/nvd"
     nvd_head = subprocess.run(["git", "-C", nvd, "log", "-1", "--format=%H %cI"], capture_output=True, text=True).stdout.strip() if Path(nvd).exists() else ""
+    if not nvd_head:  # 미러 복제가 지워졌으면 m1 재현 기록의 고정 커밋 (nvd_table.csv.gz 를 만든 커밋)
+        rc = INNO / "results" / "m1" / "REPRO_CHECK.md"
+        m = re.search(r"nvd-json-data-feeds `([0-9a-f]{40})`", rc.read_text()) if rc.exists() else None
+        nvd_head = f"{m[1]} (results/m1/REPRO_CHECK.md 기록. 복제 없음)" if m else "미확인"
     return {"repo_head": g("rev-parse", "HEAD"), "m2_dirty": bool(g("status", "--porcelain", "--", "m2", "results/m2")),
             "nvd_feed_commit": nvd_head}
 

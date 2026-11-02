@@ -1,0 +1,9 @@
+task_id,label,label_category,pre_status,pre_justification,post_status,post_justification,check_passed,check_reason,outcome,schema_retry,llm_calls,tool_calls,input_tokens,cached_input_tokens,output_tokens,cost_usd,llm_s,wall_s
+caddyserver-caddy-8dc7667-CVE-2025-29785,exploitable,vulnerable,exploitable,vulnerable,exploitable,vulnerable,True,file:line exists and symbol on line,submitted,False,4,5,19803,13890,727,0.02483,8.5,8.6
+containers-podman-6a65597-CVE-2023-48795,exploitable,vulnerable,exploitable,vulnerable,exploitable,vulnerable,True,file:line exists and symbol on line,submitted,True,6,9,43993,33702,1467,0.04714,11.9,12.2
+stretchr-testify-285adcc-CVE-2022-28948,exploitable,vulnerable,exploitable,vulnerable,exploitable,vulnerable,True,file:line exists and symbol on line,submitted,False,3,4,13254,8191,581,0.02011,6.8,6.8
+aquasecurity-trivy-37da98d-CVE-2024-32473,not_exploitable,code_not_reachable,not_affected,code_not_reachable,not_affected,code_not_reachable,True,absence search reran with 0 hits,submitted,False,3,4,15523,9387,698,0.0242,7.4,7.5
+aquasecurity-trivy-98e136e-CVE-2024-24791,not_exploitable,code_not_reachable,exploitable,vulnerable,exploitable,vulnerable,True,file:line exists and symbol on line,submitted,False,6,7,50754,40589,1918,0.05271,17.3,17.5
+containers-podman-38ccfa2-CVE-2024-37298,not_exploitable,code_not_reachable,not_affected,code_not_reachable,not_affected,code_not_reachable,True,absence search reran with 0 hits,submitted,False,18,25,293445,266101,6314,0.18472,68.1,68.4
+containers-podman-5ae6347-CVE-2025-47914,not_exploitable,code_not_present,not_affected,code_not_present,not_affected,code_not_present,True,module/absence records verified,submitted,False,2,3,8196,3491,318,0.01564,4.0,4.1
+containers-podman-6541fc4-CVE-2025-58181,not_exploitable,code_not_reachable,not_affected,code_not_reachable,not_affected,code_not_reachable,True,absence search reran with 0 hits,submitted,False,3,5,13268,8164,686,0.02125,7.2,7.3

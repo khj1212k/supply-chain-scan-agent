@@ -1,4 +1,4 @@
-# 기록 시각 2026-11-02T09:22:21Z
+# 기록 시각 2026-11-02T09:42:08Z
 ## syft
 /home/user/tools/bin/syft: go1.26.10
 	path	github.com/anchore/syft/cmd/syft
@@ -26,3 +26,4 @@ https://proxy.golang.org,direct
 219727466 2026-11-02T08:41 /home/user/work/osvdb/osv-scalibr/npm/all.zip  
 v0.5.0 go_image=1.19.4
 main go_image=1.27.0
+v0.8.0 go_image=1.20.4

@@ -1,9 +1,9 @@
 {
- "generated_utc": "2026-11-02T09:21:39Z",
+ "generated_utc": "2026-11-02T09:49:27Z",
  "git": {
-  "repo_head": "9e64bf7165f9271e41ce4e0810238973c2bbd9a9",
+  "repo_head": "2f3e9951ca8f99a8e48e910549a6256933b134b9",
   "m2_dirty": true,
-  "nvd_feed_commit": "1b66e035d87d0ddf83705ff01b4382889755f89a 2026-11-02T07:05:52+00:00"
+  "nvd_feed_commit": "1b66e035d87d0ddf83705ff01b4382889755f89a (results/m1/REPRO_CHECK.md 기록. 복제 없음)"
  },
  "reproduce": "cd lotte/innovate && bash m2/run.sh",
  "go_reachable": {
@@ -15,7 +15,7 @@
   "source": {
    "file": "results/reach/levels.csv",
    "sha256": "af8786389b04",
-   "mtime_utc": "2026-11-02T09:20:23Z"
+   "mtime_utc": "2026-11-02T09:32:16Z"
   },
   "v0.5.0": {
    "symbol": 14,
