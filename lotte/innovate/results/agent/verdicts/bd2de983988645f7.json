@@ -1,0 +1,54 @@
+{
+ "service": "frontend",
+ "module": "golang.org/x/net",
+ "bumps": [
+  [
+   "golang.org/x/net",
+   "v0.62.0"
+  ]
+ ],
+ "key": "bd2de983988645f7",
+ "cached": false,
+ "pass": false,
+ "fail_reason": "test",
+ "test_note": null,
+ "target_gone": null,
+ "new_high": [],
+ "remaining_groups_in_module": null,
+ "groups_in_module_before": 25,
+ "go_directive_before": "1.19",
+ "go_directive_after": "1.26.0",
+ "raises_go_directive": true,
+ "toolchain": "go version go1.26.0 linux/amd64",
+ "resolved_version": "v0.62.0",
+ "modules_changed": 3,
+ "steps": [
+  {
+   "step": "go_get",
+   "rc": 0,
+   "s": 0.4,
+   "tail": ""
+  },
+  {
+   "step": "tidy",
+   "rc": 0,
+   "s": 1.5,
+   "tail": ""
+  },
+  {
+   "step": "build",
+   "rc": 0,
+   "s": 27.8,
+   "tail": ""
+  },
+  {
+   "step": "test",
+   "rc": 1,
+   "s": 11.7,
+   "tail": "FAIL\tgithub.com/GoogleCloudPlatform/microservices-demo/src/frontend [build failed]\n?   \tgithub.com/GoogleCloudPlatform/microservices-demo/src/frontend/genproto\t[no test files]\nok  \tgithub.com/GoogleCloudPlatform/microservices-demo/src/frontend/money\t0.008s\nFAIL\n\n# github.com/GoogleCloudPlatform/microservices-demo/src/frontend\n./main.go:156:12: non-constant format string in call to (*github.com/sirupsen/logrus.Logger).Infof"
+  }
+ ],
+ "wall_s": 41.3,
+ "gomod_diff": "--- a/go.mod\n+++ b/go.mod\n@@ -1,6 +1,6 @@\n module github.com/GoogleCloudPlatform/microservices-demo/src/frontend\n \n-go 1.19\n+go 1.26.0\n \n require (\n \tcloud.google.com/go/compute/metadata v0.2.2\n@@ -15,7 +15,7 @@\n \tgo.opentelemetry.io/otel v1.11.2\n \tgo.opentelemetry.io/otel/exporters/otlp/otlptrace/otlptracegrpc v1.11.2\n \tgo.opentelemetry.io/otel/sdk v1.11.2\n-\tgolang.org/x/net v0.4.0\n+\tgolang.org/x/net v0.62.0\n \tgoogle.golang.org/grpc v1.51.0\n )\n \n@@ -39,8 +39,8 @@\n \tgo.opentelemetry.io/otel/trace v1.11.2 // indirect\n \tgo.opentelemetry.io/proto/otlp v0.19.0 // indirect\n \tgolang.org/x/oauth2 v0.0.0-20221014153046-6fdb5e3db783 // indirect\n-\tgolang.org/x/sys v0.3.0 // indirect\n-\tgolang.org/x/text v0.5.0 // indirect\n+\tgolang.org/x/sys v0.49.0 // indirect\n+\tgolang.org/x/text v0.43.0 // indirect\n \tgoogle.golang.org/api v0.102.0 // indirect\n \tgoogle.golang.org/appengine v1.6.7 // indirect\n \tgoogle.golang.org/genproto v0.0.0-20221024183307-1bc688fe9f3e // indirect\n",
+ "post_scan": null
+}

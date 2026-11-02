@@ -1,0 +1,54 @@
+{
+ "service": "shippingservice",
+ "module": "golang.org/x/text",
+ "bumps": [
+  [
+   "golang.org/x/text",
+   "v0.43.0"
+  ]
+ ],
+ "key": "db26ab3da304b223",
+ "cached": false,
+ "pass": true,
+ "fail_reason": null,
+ "test_note": null,
+ "target_gone": true,
+ "new_high": [],
+ "remaining_groups_in_module": 0,
+ "groups_in_module_before": 2,
+ "go_directive_before": "1.19",
+ "go_directive_after": "1.26.0",
+ "raises_go_directive": true,
+ "toolchain": "go version go1.26.0 linux/amd64",
+ "resolved_version": "v0.43.0",
+ "modules_changed": 1,
+ "steps": [
+  {
+   "step": "go_get",
+   "rc": 0,
+   "s": 0.3,
+   "tail": ""
+  },
+  {
+   "step": "tidy",
+   "rc": 0,
+   "s": 0.1,
+   "tail": ""
+  },
+  {
+   "step": "build",
+   "rc": 0,
+   "s": 6.6,
+   "tail": ""
+  },
+  {
+   "step": "test",
+   "rc": 0,
+   "s": 1.6,
+   "tail": ""
+  }
+ ],
+ "wall_s": 19.5,
+ "gomod_diff": "--- a/go.mod\n+++ b/go.mod\n@@ -1,6 +1,6 @@\n module github.com/GoogleCloudPlatform/microservices-demo/src/shippingservice\n \n-go 1.19\n+go 1.26.0\n \n require (\n \tcloud.google.com/go/profiler v0.3.1\n@@ -22,7 +22,7 @@\n \tgo.opencensus.io v0.23.0 // indirect\n \tgolang.org/x/oauth2 v0.0.0-20221014153046-6fdb5e3db783 // indirect\n \tgolang.org/x/sys v0.3.0 // indirect\n-\tgolang.org/x/text v0.5.0 // indirect\n+\tgolang.org/x/text v0.43.0 // indirect\n \tgoogle.golang.org/api v0.102.0 // indirect\n \tgoogle.golang.org/appengine v1.6.7 // indirect\n \tgoogle.golang.org/genproto v0.0.0-20221024183307-1bc688fe9f3e // indirect\n",
+ "post_scan": "/home/user/work/agenttmp/scans/post_shippingservice_db26ab3da304b223.json"
+}

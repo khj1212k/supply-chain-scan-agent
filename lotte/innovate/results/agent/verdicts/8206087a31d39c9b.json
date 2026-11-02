@@ -1,0 +1,54 @@
+{
+ "service": "shippingservice",
+ "module": "google.golang.org/protobuf",
+ "bumps": [
+  [
+   "google.golang.org/protobuf",
+   "v1.33.0"
+  ]
+ ],
+ "key": "8206087a31d39c9b",
+ "cached": false,
+ "pass": true,
+ "fail_reason": null,
+ "test_note": null,
+ "target_gone": true,
+ "new_high": [],
+ "remaining_groups_in_module": 0,
+ "groups_in_module_before": 1,
+ "go_directive_before": "1.19",
+ "go_directive_after": "1.19",
+ "raises_go_directive": false,
+ "toolchain": "go version go1.24.7 linux/amd64",
+ "resolved_version": "v1.33.0",
+ "modules_changed": 1,
+ "steps": [
+  {
+   "step": "go_get",
+   "rc": 0,
+   "s": 0.7,
+   "tail": ""
+  },
+  {
+   "step": "tidy",
+   "rc": 0,
+   "s": 0.2,
+   "tail": ""
+  },
+  {
+   "step": "build",
+   "rc": 0,
+   "s": 8.6,
+   "tail": ""
+  },
+  {
+   "step": "test",
+   "rc": 0,
+   "s": 2.4,
+   "tail": ""
+  }
+ ],
+ "wall_s": 19.4,
+ "gomod_diff": "--- a/go.mod\n+++ b/go.mod\n@@ -26,5 +26,5 @@\n \tgoogle.golang.org/api v0.102.0 // indirect\n \tgoogle.golang.org/appengine v1.6.7 // indirect\n \tgoogle.golang.org/genproto v0.0.0-20221024183307-1bc688fe9f3e // indirect\n-\tgoogle.golang.org/protobuf v1.28.1 // indirect\n+\tgoogle.golang.org/protobuf v1.33.0 // indirect\n )\n",
+ "post_scan": "/home/user/work/agenttmp/scans/post_shippingservice_8206087a31d39c9b.json"
+}

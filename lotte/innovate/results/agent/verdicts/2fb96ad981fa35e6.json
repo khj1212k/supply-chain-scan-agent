@@ -1,0 +1,54 @@
+{
+ "service": "productcatalogservice",
+ "module": "github.com/sirupsen/logrus",
+ "bumps": [
+  [
+   "github.com/sirupsen/logrus",
+   "v1.10.2"
+  ]
+ ],
+ "key": "2fb96ad981fa35e6",
+ "cached": false,
+ "pass": true,
+ "fail_reason": null,
+ "test_note": null,
+ "target_gone": true,
+ "new_high": [],
+ "remaining_groups_in_module": 0,
+ "groups_in_module_before": 1,
+ "go_directive_before": "1.19",
+ "go_directive_after": "1.23",
+ "raises_go_directive": true,
+ "toolchain": "go version go1.24.7 linux/amd64",
+ "resolved_version": "v1.10.2",
+ "modules_changed": 2,
+ "steps": [
+  {
+   "step": "go_get",
+   "rc": 0,
+   "s": 0.1,
+   "tail": ""
+  },
+  {
+   "step": "tidy",
+   "rc": 0,
+   "s": 0.1,
+   "tail": ""
+  },
+  {
+   "step": "build",
+   "rc": 0,
+   "s": 3.9,
+   "tail": ""
+  },
+  {
+   "step": "test",
+   "rc": 0,
+   "s": 1.6,
+   "tail": ""
+  }
+ ],
+ "wall_s": 13.8,
+ "gomod_diff": "--- a/go.mod\n+++ b/go.mod\n@@ -1,13 +1,15 @@\n module github.com/GoogleCloudPlatform/microservices-demo/src/productcatalogservice\n \n-go 1.19\n+go 1.23\n+\n+toolchain go1.24.7\n \n require (\n \tcloud.google.com/go/profiler v0.3.1\n \tgithub.com/golang/protobuf v1.5.2\n \tgithub.com/google/go-cmp v0.5.9\n \tgithub.com/pkg/errors v0.9.1\n-\tgithub.com/sirupsen/logrus v1.9.0\n+\tgithub.com/sirupsen/logrus v1.10.2\n \tgo.opentelemetry.io/contrib/instrumentation/google.golang.org/grpc/otelgrpc v0.37.0\n \tgo.opentelemetry.io/otel v1.11.2\n \tgo.opentelemetry.io/otel/exporters/otlp/otlptrace/otlptracegrpc v1.11.2\n@@ -35,7 +37,7 @@\n \tgo.opentelemetry.io/otel/trace v1.11.2 // indirect\n \tgo.opentelemetry.io/proto/otlp v0.19.0 // indirect\n \tgolang.org/x/oauth2 v0.0.0-20221014153046-6fdb5e3db783 // indirect\n-\tgolang.org/x/sys v0.3.0 // indirect\n+\tgolang.org/x/sys v0.13.0 // indirect\n \tgolang.org/x/text v0.5.0 // indirect\n \tgoogle.golang.org/api v0.102.0 // indirect\n \tgoogle.golang.org/appengine v1.6.7 // indirect\n",
+ "post_scan": "/home/user/work/agenttmp/scans/post_productcatalogservice_2fb96ad981fa35e6.json"
+}

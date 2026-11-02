@@ -1,0 +1,56 @@
+{
+ "service": "frontend",
+ "module": "go.opentelemetry.io/otel/exporters/otlp/otlptrace",
+ "bumps": [
+  [
+   "go.opentelemetry.io/otel/exporters/otlp/otlptrace",
+   "v1.45.0"
+  ],
+  [
+   "go.opentelemetry.io/otel/exporters/otlp/otlptrace/otlptracegrpc",
+   "v1.45.0"
+  ],
+  [
+   "go.opentelemetry.io/otel/sdk",
+   "v1.45.0"
+  ],
+  [
+   "go.opentelemetry.io/otel",
+   "v1.45.0"
+  ],
+  [
+   "go.opentelemetry.io/contrib/instrumentation/net/http/otelhttp",
+   "v0.70.0"
+  ],
+  [
+   "go.opentelemetry.io/contrib/instrumentation/google.golang.org/grpc/otelgrpc",
+   "v0.46.0"
+  ]
+ ],
+ "key": "3e66b124904d59cd",
+ "cached": false,
+ "pass": false,
+ "fail_reason": "go_get",
+ "test_note": null,
+ "target_gone": null,
+ "new_high": [],
+ "remaining_groups_in_module": null,
+ "groups_in_module_before": 1,
+ "go_directive_before": "1.19",
+ "go_directive_after": "1.19",
+ "raises_go_directive": false,
+ "toolchain": "go version go1.24.7 linux/amd64",
+ "resolved_version": "v1.11.2",
+ "modules_changed": 0,
+ "steps": [
+  {
+   "step": "go_get",
+   "rc": 1,
+   "s": 0.3,
+   "tail": "go: go.opentelemetry.io/contrib/instrumentation/net/http/otelhttp@v0.70.0 requires go >= 1.25.0; switching to go1.26.10\ngo: go.opentelemetry.io/otel/exporters/otlp/otlptrace/otlptracegrpc@v1.45.0 indirectly requires go.opentelemetry.io/contrib/instrumentation/google.golang.org/grpc/otelgrpc@v0.61.0, not go.opentelemetry.io/contrib/instrumentation/google.golang.org/grpc/otelgrpc@v0.46.0"
+  }
+ ],
+ "wall_s": 0.3,
+ "gomod_diff": "",
+ "post_scan": null
+}

@@ -1,0 +1,123 @@
+[
+ {
+  "case_id": "C03",
+  "bumps": [
+   [
+    "go.opentelemetry.io/contrib/instrumentation/net/http/otelhttp",
+    "v0.44.0"
+   ],
+   [
+    "go.opentelemetry.io/contrib/instrumentation/google.golang.org/grpc/otelgrpc",
+    "v0.44.0"
+   ],
+   [
+    "go.opentelemetry.io/otel",
+    "v1.43.0"
+   ],
+   [
+    "go.opentelemetry.io/otel/trace",
+    "v1.43.0"
+   ],
+   [
+    "go.opentelemetry.io/otel/sdk",
+    "v1.43.0"
+   ],
+   [
+    "go.opentelemetry.io/otel/exporters/otlp/otlptrace",
+    "v1.43.0"
+   ],
+   [
+    "go.opentelemetry.io/otel/exporters/otlp/otlptrace/otlptracegrpc",
+    "v1.43.0"
+   ],
+   [
+    "golang.org/x/crypto",
+    "v0.58.0"
+   ]
+  ],
+  "pass": false,
+  "fail_reason": "build",
+  "key": "2a09ded77c1393ce",
+  "go_after": "1.26.0",
+  "new_high": [],
+  "failed_step_tail": "# google.golang.org/api/transport/grpc\n/home/user/tools/gopath/pkg/mod/google.golang.org/api@v0.126.0/transport/grpc/dial.go:162:149: too few values in struct literal of type \"google.golang.org/grpc/credentials/google\".DefaultCredentialsOptions"
+ },
+ {
+  "case_id": "C04",
+  "bumps": [
+   [
+    "go.opentelemetry.io/contrib/instrumentation/google.golang.org/grpc/otelgrpc",
+    "v0.46.0"
+   ],
+   [
+    "go.opentelemetry.io/otel",
+    "v1.43.0"
+   ],
+   [
+    "go.opentelemetry.io/otel/sdk",
+    "v1.43.0"
+   ],
+   [
+    "go.opentelemetry.io/otel/exporters/otlp/otlptrace",
+    "v1.43.0"
+   ],
+   [
+    "go.opentelemetry.io/otel/exporters/otlp/otlptrace/otlptracegrpc",
+    "v1.43.0"
+   ],
+   [
+    "golang.org/x/crypto",
+    "v0.58.0"
+   ]
+  ],
+  "pass": false,
+  "fail_reason": "build",
+  "key": "41fbf2c9f838038e",
+  "go_after": "1.26.0",
+  "new_high": [],
+  "failed_step_tail": "# google.golang.org/api/transport/grpc\n/home/user/tools/gopath/pkg/mod/google.golang.org/api@v0.126.0/transport/grpc/dial.go:162:149: too few values in struct literal of type \"google.golang.org/grpc/credentials/google\".DefaultCredentialsOptions"
+ },
+ {
+  "case_id": "C04",
+  "bumps": [
+   [
+    "go.opentelemetry.io/contrib/instrumentation/google.golang.org/grpc/otelgrpc",
+    "v0.46.0"
+   ],
+   [
+    "go.opentelemetry.io/otel",
+    "v1.43.0"
+   ],
+   [
+    "go.opentelemetry.io/otel/sdk",
+    "v1.43.0"
+   ],
+   [
+    "go.opentelemetry.io/otel/exporters/otlp/otlptrace",
+    "v1.43.0"
+   ],
+   [
+    "go.opentelemetry.io/otel/exporters/otlp/otlptrace/otlptracegrpc",
+    "v1.43.0"
+   ],
+   [
+    "golang.org/x/crypto",
+    "v0.58.0"
+   ],
+   [
+    "google.golang.org/api",
+    "v0.310.0"
+   ],
+   [
+    "cloud.google.com/go/profiler",
+    "v0.7.1"
+   ]
+  ],
+  "pass": false,
+  "fail_reason": "go_get",
+  "key": "19f0111943e6ec48",
+  "go_after": "1.19",
+  "new_high": [],
+  "failed_step_tail": "golang.org/api v0.310.0\ngo: downloading cloud.google.com/go/profiler v0.7.1\ngo: cloud.google.com/go/profiler@v0.7.1 requires go >= 1.26.0; switching to go1.26.10\ngo: cloud.google.com/go/profiler@v0.7.1 requires go.opentelemetry.io/contrib/instrumentation/google.golang.org/grpc/otelgrpc@v0.67.0, not go.opentelemetry.io/contrib/instrumentation/google.golang.org/grpc/otelgrpc@v0.46.0\ngo: google.golang.org/api@v0.310.0 requires go.opentelemetry.io/contrib/instrumentation/google.golang.org/grpc/otelgrpc@v0.67.0, not go.opentelemetry.io/contrib/instrumentation/google.golang.org/grpc/otelgrpc@v0.46.0"
+ }
+]

@@ -1,0 +1,42 @@
+{
+ "service": "frontend",
+ "module": "go.opentelemetry.io/contrib/instrumentation/net/http/otelhttp",
+ "bumps": [
+  [
+   "go.opentelemetry.io/contrib/instrumentation/net/http/otelhttp",
+   "v0.46.0"
+  ]
+ ],
+ "key": "bfe345a4cef302e0",
+ "cached": false,
+ "pass": false,
+ "fail_reason": "tidy",
+ "test_note": null,
+ "target_gone": null,
+ "new_high": [],
+ "remaining_groups_in_module": null,
+ "groups_in_module_before": 1,
+ "go_directive_before": "1.19",
+ "go_directive_after": "1.19",
+ "raises_go_directive": false,
+ "toolchain": "go version go1.24.7 linux/amd64",
+ "resolved_version": "v0.46.0",
+ "modules_changed": 7,
+ "steps": [
+  {
+   "step": "go_get",
+   "rc": 0,
+   "s": 3.8,
+   "tail": ""
+  },
+  {
+   "step": "tidy",
+   "rc": 1,
+   "s": 3.3,
+   "tail": "age go.opentelemetry.io/otel/metric/unit\ngo: finding module for package go.opentelemetry.io/otel/exporters/otlp/internal\ngo: finding module for package go.opentelemetry.io/otel/exporters/otlp/internal/envconfig\ngo: toolchain upgrade needed to resolve go.opentelemetry.io/otel/metric/global\ngo: go.opentelemetry.io/otel/metric@v1.47.0 requires go >= 1.26.0; switching to go1.26.10\ngo: finding module for package go.opentelemetry.io/otel/metric/instrument\ngo: finding module for package go.opentelemetry.io/otel/metric/global\ngo: finding module for package go.opentelemetry.io/otel/metric/instrument/syncint64\ngo: finding module for package go.opentelemetry.io/otel/metric/unit\ngo: finding module for package go.opentelemetry.io/otel/exporters/otlp/internal\ngo: finding module for package go.opentelemetry.io/otel/exporters/otlp/internal/envconfig\ngo: github.com/GoogleCloudPlatform/microservices-demo/src/frontend imports\n\tgo.opentelemetry.io/contrib/instrumentation/google.golang.org/grpc/otelgrpc imports\n\tgo.opentelemetry.io/otel/metric/global: module go.opentelemetry.io/otel/metric@latest found (v1.47.0), but does not contain package go.opentelemetry.io/otel/metric/global\ngo: github.com/GoogleCloudPlatform/microservices-demo/src/frontend imports\n\tgo.opentelemetry.io/contrib/instrumentation/google.golang.org/grpc/otelgrpc imports\n\tgo.opentelemetry.io/otel/metric/instrument: module go.opentelemetry.io/otel/metric@latest found (v1.47.0), but does not contain package go.opentelemetry.io/otel/metric/instrument\ngo: github.com/GoogleCloudPlatform/microservices-demo/src/frontend imports\n\tgo.opentelemetry.io/contrib/instrumentation/google.golang.org/grpc/otelgrpc imports\n\tgo.opentelemetry.io/otel/metric/instrument/syncint64: module go.opentelemetry.io/otel/metric@latest found (v1.47.0), but does not contain package go.opentelemetry.io/otel/metric/instrument/syncint64\ngo: github.com/GoogleCloudPlatform/microservices-demo/src/frontend imports\n\tgo.opentelemetry.io/contrib/instrumentation/google.golang.org/grpc/otelgrpc imports\n\tgo.opentelemetry.io/otel/metric/unit: module go.opentelemetry.io/otel/metric@latest found (v1.47.0), but does not contain package go.opentelemetry.io/otel/metric/unit\ngo: github.com/GoogleCloudPlatform/microservices-demo/src/frontend imports\n\tgo.opentelemetry.io/otel/exporters/otlp/otlptrace/otlptracegrpc imports\n\tgo.opentelemetry.io/otel/exporters/otlp/internal: module go.opentelemetry.io/otel/exporters/otlp@latest found (v0.20.1), but does not contain package go.opentelemetry.io/otel/exporters/otlp/internal\ngo: github.com/GoogleCloudPlatform/microservices-demo/src/frontend imports\n\tgo.opentelemetry.io/otel/exporters/otlp/otlptrace/otlptracegrpc imports\n\tgo.opentelemetry.io/otel/exporters/otlp/otlptrace/internal/otlpconfig imports\n\tgo.opentelemetry.io/otel/exporters/otlp/internal/envconfig: module go.opentelemetry.io/otel/exporters/otlp@latest found (v0.20.1), but does not contain package go.opentelemetry.io/otel/exporters/otlp/internal/envconfig"
+  }
+ ],
+ "wall_s": 7.1,
+ "gomod_diff": "--- a/go.mod\n+++ b/go.mod\n@@ -11,8 +11,8 @@\n \tgithub.com/pkg/errors v0.9.1\n \tgithub.com/sirupsen/logrus v1.9.0\n \tgo.opentelemetry.io/contrib/instrumentation/google.golang.org/grpc/otelgrpc v0.37.0\n-\tgo.opentelemetry.io/contrib/instrumentation/net/http/otelhttp v0.37.0\n-\tgo.opentelemetry.io/otel v1.11.2\n+\tgo.opentelemetry.io/contrib/instrumentation/net/http/otelhttp v0.46.0\n+\tgo.opentelemetry.io/otel v1.20.0\n \tgo.opentelemetry.io/otel/exporters/otlp/otlptrace/otlptracegrpc v1.11.2\n \tgo.opentelemetry.io/otel/sdk v1.11.2\n \tgolang.org/x/net v0.4.0\n@@ -23,11 +23,11 @@\n \tcloud.google.com/go v0.105.0 // indirect\n \tcloud.google.com/go/compute v1.12.1 // indirect\n \tgithub.com/cenkalti/backoff/v4 v4.2.0 // indirect\n-\tgithub.com/felixge/httpsnoop v1.0.3 // indirect\n-\tgithub.com/go-logr/logr v1.2.3 // indirect\n+\tgithub.com/felixge/httpsnoop v1.0.4 // indirect\n+\tgithub.com/go-logr/logr v1.3.0 // indirect\n \tgithub.com/go-logr/stdr v1.2.2 // indirect\n \tgithub.com/golang/groupcache v0.0.0-20210331224755-41bb18bfe9da // indirect\n-\tgithub.com/google/go-cmp v0.5.9 // indirect\n+\tgithub.com/google/go-cmp v0.6.0 // indirect\n \tgithub.com/google/pprof v0.0.0-20221103000818-d260c55eee4c // indirect\n \tgithub.com/googleapis/enterprise-certificate-proxy v0.2.0 // indirect\n \tgithub.com/googleapis/gax-go/v2 v2.7.0 // indirect\n@@ -35,8 +35,8 @@\n \tgo.opencensus.io v0.23.0 // indirect\n \tgo.opentelemetry.io/otel/exporters/otlp/internal/retry v1.11.2 // indirect\n \tgo.opentelemetry.io/otel/exporters/otlp/otlptrace v1.11.2 // indirect\n-\tgo.opentelemetry.io/otel/metric v0.34.0 // indirect\n-\tgo.opentelemetry.io/otel/trace v1.11.2 // indirect\n+\tgo.opentelemetry.io/otel/metric v1.20.0 // indirect\n+\tgo.opentelemetry.io/otel/trace v1.20.0 // indirect\n \tgo.opentelemetry.io/proto/otlp v0.19.0 // indirect\n \tgolang.org/x/oauth2 v0.0.0-20221014153046-6fdb5e3db783 // indirect\n \tgolang.org/x/sys v0.3.0 // indirect\n",
+ "post_scan": null
+}

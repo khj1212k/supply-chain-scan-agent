@@ -1,0 +1,55 @@
+run,case_id,service,module,current,target_ids,min_target_fix,policy,model,final_pass,n_attempts,attempt_versions,attempt_outcomes,go_after,remaining_groups,tokens,cost_usd
+baselines_v1,C01,frontend,golang.org/x/net,v0.4.0,GHSA-4374-p667-p6c8 GO-2023-2102,v0.17.0,min_target,none,True,1,v0.17.0,pass,1.19,21,0,0.0
+baselines_v1,C01,frontend,golang.org/x/net,v0.4.0,GHSA-4374-p667-p6c8 GO-2023-2102,v0.17.0,min_target_retry,none,True,1,v0.17.0,pass,1.19,21,0,0.0
+baselines_v1,C01,frontend,golang.org/x/net,v0.4.0,GHSA-4374-p667-p6c8 GO-2023-2102,v0.17.0,min_all,none,False,1,v0.62.0,test,,,0,0.0
+baselines_v1,C01,frontend,golang.org/x/net,v0.4.0,GHSA-4374-p667-p6c8 GO-2023-2102,v0.17.0,latest,none,False,1,v0.62.0,test,,,0,0.0
+baselines_v1,C02,checkoutservice,google.golang.org/grpc,v1.51.0,GHSA-m425-mq94-257g GO-2023-2153,v1.56.3,min_target,none,True,1,v1.56.3,pass,1.19,5,0,0.0
+baselines_v1,C02,checkoutservice,google.golang.org/grpc,v1.51.0,GHSA-m425-mq94-257g GO-2023-2153,v1.56.3,min_target_retry,none,True,1,v1.56.3,pass,1.19,5,0,0.0
+baselines_v1,C02,checkoutservice,google.golang.org/grpc,v1.51.0,GHSA-m425-mq94-257g GO-2023-2153,v1.56.3,min_all,none,False,1,v1.83.2,tidy,,,0,0.0
+baselines_v1,C02,checkoutservice,google.golang.org/grpc,v1.51.0,GHSA-m425-mq94-257g GO-2023-2153,v1.56.3,latest,none,False,1,v1.85.0,tidy,,,0,0.0
+baselines_v1,C03,frontend,go.opentelemetry.io/contrib/instrumentation/net/http/otelhttp,v0.37.0,GHSA-rcjv-mgp8-qvmr GO-2023-2113,v0.44.0,min_target,none,False,1,v0.44.0,tidy,,,0,0.0
+baselines_v1,C03,frontend,go.opentelemetry.io/contrib/instrumentation/net/http/otelhttp,v0.37.0,GHSA-rcjv-mgp8-qvmr GO-2023-2113,v0.44.0,min_target_retry,none,False,3,v0.44.0 | v0.45.0 | v0.46.0,tidy | tidy | tidy,,,0,0.0
+baselines_v1,C03,frontend,go.opentelemetry.io/contrib/instrumentation/net/http/otelhttp,v0.37.0,GHSA-rcjv-mgp8-qvmr GO-2023-2113,v0.44.0,min_all,none,False,1,v0.44.0,tidy,,,0,0.0
+baselines_v1,C03,frontend,go.opentelemetry.io/contrib/instrumentation/net/http/otelhttp,v0.37.0,GHSA-rcjv-mgp8-qvmr GO-2023-2113,v0.44.0,latest,none,False,1,v0.72.0,tidy,,,0,0.0
+baselines_v1,C04,productcatalogservice,go.opentelemetry.io/contrib/instrumentation/google.golang.org/grpc/otelgrpc,v0.37.0,GHSA-8pgv-569h-w5rw GO-2023-2331,v0.46.0,min_target,none,False,1,v0.46.0,tidy,,,0,0.0
+baselines_v1,C04,productcatalogservice,go.opentelemetry.io/contrib/instrumentation/google.golang.org/grpc/otelgrpc,v0.37.0,GHSA-8pgv-569h-w5rw GO-2023-2331,v0.46.0,min_target_retry,none,False,3,v0.46.0 | v0.46.1 | v0.47.0,tidy | tidy | tidy,,,0,0.0
+baselines_v1,C04,productcatalogservice,go.opentelemetry.io/contrib/instrumentation/google.golang.org/grpc/otelgrpc,v0.37.0,GHSA-8pgv-569h-w5rw GO-2023-2331,v0.46.0,min_all,none,False,1,v0.46.0,tidy,,,0,0.0
+baselines_v1,C04,productcatalogservice,go.opentelemetry.io/contrib/instrumentation/google.golang.org/grpc/otelgrpc,v0.37.0,GHSA-8pgv-569h-w5rw GO-2023-2331,v0.46.0,latest,none,False,1,v0.72.0,tidy,,,0,0.0
+baselines_v1,C05,shippingservice,google.golang.org/protobuf,v1.28.1,GHSA-8r3f-844c-mc37 GO-2024-2611,v1.33.0,min_target,none,True,1,v1.33.0,pass,1.19,0,0,0.0
+baselines_v1,C05,shippingservice,google.golang.org/protobuf,v1.28.1,GHSA-8r3f-844c-mc37 GO-2024-2611,v1.33.0,min_target_retry,none,True,1,v1.33.0,pass,1.19,0,0,0.0
+baselines_v1,C05,shippingservice,google.golang.org/protobuf,v1.28.1,GHSA-8r3f-844c-mc37 GO-2024-2611,v1.33.0,min_all,none,True,1,v1.33.0,pass,1.19,0,0,0.0
+baselines_v1,C05,shippingservice,google.golang.org/protobuf,v1.28.1,GHSA-8r3f-844c-mc37 GO-2024-2611,v1.33.0,latest,none,True,1,v1.36.12,pass,1.23,0,0,0.0
+baselines_v1,C06,checkoutservice,golang.org/x/oauth2,v0.0.0-20221014153046-6fdb5e3db783,GHSA-6v2p-p543-phr9 GO-2025-3488,v0.27.0,min_target,none,True,1,v0.27.0,pass,1.23.0,0,0,0.0
+baselines_v1,C06,checkoutservice,golang.org/x/oauth2,v0.0.0-20221014153046-6fdb5e3db783,GHSA-6v2p-p543-phr9 GO-2025-3488,v0.27.0,min_target_retry,none,True,1,v0.27.0,pass,1.23.0,0,0,0.0
+baselines_v1,C06,checkoutservice,golang.org/x/oauth2,v0.0.0-20221014153046-6fdb5e3db783,GHSA-6v2p-p543-phr9 GO-2025-3488,v0.27.0,min_all,none,True,1,v0.27.0,pass,1.23.0,0,0,0.0
+baselines_v1,C06,checkoutservice,golang.org/x/oauth2,v0.0.0-20221014153046-6fdb5e3db783,GHSA-6v2p-p543-phr9 GO-2025-3488,v0.27.0,latest,none,False,1,v0.37.0,test,,,0,0.0
+baselines_v1,C07,productcatalogservice,github.com/sirupsen/logrus,v1.9.0,GHSA-4f99-4q7p-p3gh GO-2025-4188,v1.9.1,min_target,none,True,1,v1.9.1,pass,1.19,0,0,0.0
+baselines_v1,C07,productcatalogservice,github.com/sirupsen/logrus,v1.9.0,GHSA-4f99-4q7p-p3gh GO-2025-4188,v1.9.1,min_target_retry,none,True,1,v1.9.1,pass,1.19,0,0,0.0
+baselines_v1,C07,productcatalogservice,github.com/sirupsen/logrus,v1.9.0,GHSA-4f99-4q7p-p3gh GO-2025-4188,v1.9.1,min_all,none,True,1,v1.9.1,pass,1.19,0,0,0.0
+baselines_v1,C07,productcatalogservice,github.com/sirupsen/logrus,v1.9.0,GHSA-4f99-4q7p-p3gh GO-2025-4188,v1.9.1,latest,none,True,1,v1.10.2,pass,1.23,0,0,0.0
+baselines_v1,C08,shippingservice,golang.org/x/text,v0.5.0,GO-2026-5970,v0.39.0,min_target,none,True,1,v0.39.0,pass,1.25.0,1,0,0.0
+baselines_v1,C08,shippingservice,golang.org/x/text,v0.5.0,GO-2026-5970,v0.39.0,min_target_retry,none,True,1,v0.39.0,pass,1.25.0,1,0,0.0
+baselines_v1,C08,shippingservice,golang.org/x/text,v0.5.0,GO-2026-5970,v0.39.0,min_all,none,True,1,v0.41.0,pass,1.25.0,0,0,0.0
+baselines_v1,C08,shippingservice,golang.org/x/text,v0.5.0,GO-2026-5970,v0.39.0,latest,none,True,1,v0.43.0,pass,1.26.0,0,0,0.0
+baselines_v1,C09,frontend,go.opentelemetry.io/otel/exporters/otlp/otlptrace,v1.11.2,GHSA-8wmf-6v46-5gfg GO-2026-6505,v1.45.0,min_target,none,False,1,v1.45.0,tidy,,,0,0.0
+baselines_v1,C09,frontend,go.opentelemetry.io/otel/exporters/otlp/otlptrace,v1.11.2,GHSA-8wmf-6v46-5gfg GO-2026-6505,v1.45.0,min_target_retry,none,False,3,v1.45.0 | v1.46.0 | v1.47.0,tidy | tidy | tidy,,,0,0.0
+baselines_v1,C09,frontend,go.opentelemetry.io/otel/exporters/otlp/otlptrace,v1.11.2,GHSA-8wmf-6v46-5gfg GO-2026-6505,v1.45.0,min_all,none,False,1,v1.45.0,tidy,,,0,0.0
+baselines_v1,C09,frontend,go.opentelemetry.io/otel/exporters/otlp/otlptrace,v1.11.2,GHSA-8wmf-6v46-5gfg GO-2026-6505,v1.45.0,latest,none,False,1,v1.47.0,tidy,,,0,0.0
+baselines_v1,C10,checkoutservice,go.opentelemetry.io/otel/exporters/otlp/otlptrace/otlptracegrpc,v1.11.2,GHSA-8wmf-6v46-5gfg GO-2026-6505,v1.45.0,min_target,none,False,1,v1.45.0,build,,,0,0.0
+baselines_v1,C10,checkoutservice,go.opentelemetry.io/otel/exporters/otlp/otlptrace/otlptracegrpc,v1.11.2,GHSA-8wmf-6v46-5gfg GO-2026-6505,v1.45.0,min_target_retry,none,False,3,v1.45.0 | v1.46.0 | v1.47.0,build | build | build,,,0,0.0
+baselines_v1,C10,checkoutservice,go.opentelemetry.io/otel/exporters/otlp/otlptrace/otlptracegrpc,v1.11.2,GHSA-8wmf-6v46-5gfg GO-2026-6505,v1.45.0,min_all,none,False,1,v1.45.0,build,,,0,0.0
+baselines_v1,C10,checkoutservice,go.opentelemetry.io/otel/exporters/otlp/otlptrace/otlptracegrpc,v1.11.2,GHSA-8wmf-6v46-5gfg GO-2026-6505,v1.45.0,latest,none,False,1,v1.47.0,build,,,0,0.0
+sonnet_v1,C01,frontend,golang.org/x/net,v0.4.0,GHSA-4374-p667-p6c8 GO-2023-2102,v0.17.0,agent,anthropic:claude-sonnet-5-5,True,1,v0.17.0,pass,1.19,21,8996,0.024984
+sonnet_v1,C02,checkoutservice,google.golang.org/grpc,v1.51.0,GHSA-m425-mq94-257g GO-2023-2153,v1.56.3,agent,anthropic:claude-sonnet-5-5,True,1,v1.56.3,pass,1.19,5,7743,0.020918
+sonnet_v1,C03,frontend,go.opentelemetry.io/contrib/instrumentation/net/http/otelhttp,v0.37.0,GHSA-rcjv-mgp8-qvmr GO-2023-2113,v0.44.0,agent,anthropic:claude-sonnet-5-5,False,3,v0.44.0 (+otel@v1.18.0+sdk@v1.18.0) | v0.44.0 (+otelgrpc@v0.44.0+otel@v1.18.0+sdk@v1.18.0+trace@v1.18.0+otlptracegrpc@v1.18.0) | v0.44.0,tidy | new_high | tidy,,,60455,0.17351
+sonnet_v1,C04,productcatalogservice,go.opentelemetry.io/contrib/instrumentation/google.golang.org/grpc/otelgrpc,v0.37.0,GHSA-8pgv-569h-w5rw GO-2023-2331,v0.46.0,agent,anthropic:claude-sonnet-5-5,False,3,- | v0.46.0 | v0.46.0 (+otel@v1.20.0+sdk@v1.20.0+otlptracegrpc@v1.20.0),output_guardrail | tidy | new_high,,,43422,0.120252
+sonnet_v1,C05,shippingservice,google.golang.org/protobuf,v1.28.1,GHSA-8r3f-844c-mc37 GO-2024-2611,v1.33.0,agent,anthropic:claude-sonnet-5-5,True,1,v1.33.0,pass,1.19,0,7146,0.01858
+sonnet_v1,C06,checkoutservice,golang.org/x/oauth2,v0.0.0-20221014153046-6fdb5e3db783,GHSA-6v2p-p543-phr9 GO-2025-3488,v0.27.0,agent,anthropic:claude-sonnet-5-5,True,1,v0.27.0,pass,1.23.0,0,12187,0.030942
+sonnet_v1,C07,productcatalogservice,github.com/sirupsen/logrus,v1.9.0,GHSA-4f99-4q7p-p3gh GO-2025-4188,v1.9.1,agent,anthropic:claude-sonnet-5-5,True,1,v1.9.3,pass,1.19,0,8078,0.02106
+sonnet_v1,C08,shippingservice,golang.org/x/text,v0.5.0,GO-2026-5970,v0.39.0,agent,anthropic:claude-sonnet-5-5,True,1,v0.41.0,pass,1.25.0,0,7325,0.019538
+sonnet_v1,C09,frontend,go.opentelemetry.io/otel/exporters/otlp/otlptrace,v1.11.2,GHSA-8wmf-6v46-5gfg GO-2026-6505,v1.45.0,agent,anthropic:claude-sonnet-5-5,False,3,v1.45.0 (+otlptracegrpc@v1.45.0+sdk@v1.45.0+otel@v1.45.0) | v1.45.0 (+otlptracegrpc@v1.45.0+sdk@v1.45.0+otel@v1.45.0+otelgrpc@v0.46.0+otelhttp@v0.46.0) | v1.45.0 (+otlptracegrpc@v1.45.0+sdk@v1.45.0+otel@v1.45.0+otelhttp@v0.70.0+otelgrpc@v0.70.0),build | go_get | build,,,43191,0.122662
+sonnet_v1,C10,checkoutservice,go.opentelemetry.io/otel/exporters/otlp/otlptrace/otlptracegrpc,v1.11.2,GHSA-8wmf-6v46-5gfg GO-2026-6505,v1.45.0,agent,anthropic:claude-sonnet-5-5,False,3,v1.45.0 (+otel@v1.45.0+sdk@v1.45.0) | v1.45.0 (+otel@v1.45.0+sdk@v1.45.0+otelgrpc@v0.46.0) | v1.45.0 (+otel@v1.45.0+sdk@v1.45.0+otelgrpc@v0.70.0),build | go_get | build,,,37025,0.105258
+opus_escalation_v1,C03,frontend,go.opentelemetry.io/contrib/instrumentation/net/http/otelhttp,v0.37.0,GHSA-rcjv-mgp8-qvmr GO-2023-2113,v0.44.0,agent,anthropic:claude-opus-5-5,False,3,v0.44.0 (+otelgrpc@v0.44.0+otel@v1.18.0+sdk@v1.18.0+otlptracegrpc@v1.18.0) | v0.44.0 | -,new_high | tidy | output_guardrail,,,50708,0.30192
+opus_escalation_v1,C04,productcatalogservice,go.opentelemetry.io/contrib/instrumentation/google.golang.org/grpc/otelgrpc,v0.37.0,GHSA-8pgv-569h-w5rw GO-2023-2331,v0.46.0,agent,anthropic:claude-opus-5-5,False,3,v0.46.1 (+sdk@v1.20.0+otlptracegrpc@v1.20.0) | v0.52.0 (+otel@v1.45.0+sdk@v1.45.0+otlptracegrpc@v1.45.0+crypto@v0.56.0) | v0.46.1 (+sdk@v1.20.0+otlptracegrpc@v1.20.0),new_high | go_get | new_high,,,64494,0.40484
+opus_escalation_v1,C09,frontend,go.opentelemetry.io/otel/exporters/otlp/otlptrace,v1.11.2,GHSA-8wmf-6v46-5gfg GO-2026-6505,v1.45.0,agent,anthropic:claude-opus-5-5,False,3,- | v1.45.0 (+otel@v1.45.0+sdk@v1.45.0+otlptracegrpc@v1.45.0+otelgrpc@v0.70.0+otelhttp@v0.70.0) | v1.45.0 (+otlptracegrpc@v1.45.0+sdk@v1.45.0+otel@v1.45.0+otelhttp@v0.70.0+otelgrpc@v0.46.0),output_guardrail | build | go_get,,,44704,0.260816
+opus_escalation_v1,C10,checkoutservice,go.opentelemetry.io/otel/exporters/otlp/otlptrace/otlptracegrpc,v1.11.2,GHSA-8wmf-6v46-5gfg GO-2026-6505,v1.45.0,agent,anthropic:claude-opus-5-5,False,3,v1.45.0 (+otel@v1.45.0+sdk@v1.45.0+otelgrpc@v0.70.0) | v1.45.0 (+otel@v1.45.0+sdk@v1.45.0+otelgrpc@v0.46.0) | v1.45.0 (+otel@v1.45.0+sdk@v1.45.0),build | go_get | build,,,36064,0.205536

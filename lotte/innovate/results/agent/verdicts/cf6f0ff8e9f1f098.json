@@ -1,0 +1,54 @@
+{
+ "service": "productcatalogservice",
+ "module": "github.com/sirupsen/logrus",
+ "bumps": [
+  [
+   "github.com/sirupsen/logrus",
+   "v1.9.3"
+  ]
+ ],
+ "key": "cf6f0ff8e9f1f098",
+ "cached": false,
+ "pass": true,
+ "fail_reason": null,
+ "test_note": null,
+ "target_gone": true,
+ "new_high": [],
+ "remaining_groups_in_module": 0,
+ "groups_in_module_before": 1,
+ "go_directive_before": "1.19",
+ "go_directive_after": "1.19",
+ "raises_go_directive": false,
+ "toolchain": "go version go1.24.7 linux/amd64",
+ "resolved_version": "v1.9.3",
+ "modules_changed": 1,
+ "steps": [
+  {
+   "step": "go_get",
+   "rc": 0,
+   "s": 0.8,
+   "tail": ""
+  },
+  {
+   "step": "tidy",
+   "rc": 0,
+   "s": 0.1,
+   "tail": ""
+  },
+  {
+   "step": "build",
+   "rc": 0,
+   "s": 1.4,
+   "tail": ""
+  },
+  {
+   "step": "test",
+   "rc": 0,
+   "s": 0.9,
+   "tail": ""
+  }
+ ],
+ "wall_s": 10.4,
+ "gomod_diff": "--- a/go.mod\n+++ b/go.mod\n@@ -7,7 +7,7 @@\n \tgithub.com/golang/protobuf v1.5.2\n \tgithub.com/google/go-cmp v0.5.9\n \tgithub.com/pkg/errors v0.9.1\n-\tgithub.com/sirupsen/logrus v1.9.0\n+\tgithub.com/sirupsen/logrus v1.9.3\n \tgo.opentelemetry.io/contrib/instrumentation/google.golang.org/grpc/otelgrpc v0.37.0\n \tgo.opentelemetry.io/otel v1.11.2\n \tgo.opentelemetry.io/otel/exporters/otlp/otlptrace/otlptracegrpc v1.11.2\n",
+ "post_scan": "/home/user/work/agenttmp/scans/post_productcatalogservice_cf6f0ff8e9f1f098.json"
+}

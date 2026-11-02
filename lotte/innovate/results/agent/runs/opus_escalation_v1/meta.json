@@ -1,0 +1,27 @@
+{
+ "run_id": "opus_escalation_v1",
+ "started_utc": "2026-11-02T09:10:02+00:00",
+ "repo_commit": "a1eab356a5e161e376a69e9a5f3cd40ffc4c4e66",
+ "policies": [
+  "agent"
+ ],
+ "cases": [
+  "C03",
+  "C04",
+  "C09",
+  "C10"
+ ],
+ "auto_approve": true,
+ "osv_snapshot": {
+  "path": "/home/user/work/osvdb/osv-scalibr/Go/all.zip",
+  "records": 9815,
+  "max_modified": "2026-10-30T23:30:04.079827623Z"
+ },
+ "availability": {
+  "anthropic_key_present": true,
+  "openai_reachable": "blocked (URLError)",
+  "local_endpoint_8080": false
+ },
+ "model": "anthropic:claude-opus-5-5",
+ "finished_utc": "2026-11-02T09:15:00+00:00"
+}

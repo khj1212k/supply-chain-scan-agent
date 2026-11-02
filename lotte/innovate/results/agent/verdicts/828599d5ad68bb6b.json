@@ -1,0 +1,54 @@
+{
+ "service": "checkoutservice",
+ "module": "golang.org/x/oauth2",
+ "bumps": [
+  [
+   "golang.org/x/oauth2",
+   "v0.37.0"
+  ]
+ ],
+ "key": "828599d5ad68bb6b",
+ "cached": false,
+ "pass": false,
+ "fail_reason": "test",
+ "test_note": null,
+ "target_gone": null,
+ "new_high": [],
+ "remaining_groups_in_module": null,
+ "groups_in_module_before": 1,
+ "go_directive_before": "1.19",
+ "go_directive_after": "1.26.0",
+ "raises_go_directive": true,
+ "toolchain": "go version go1.26.0 linux/amd64",
+ "resolved_version": "v0.37.0",
+ "modules_changed": 3,
+ "steps": [
+  {
+   "step": "go_get",
+   "rc": 0,
+   "s": 0.3,
+   "tail": ""
+  },
+  {
+   "step": "tidy",
+   "rc": 0,
+   "s": 0.1,
+   "tail": ""
+  },
+  {
+   "step": "build",
+   "rc": 0,
+   "s": 6.8,
+   "tail": ""
+  },
+  {
+   "step": "test",
+   "rc": 1,
+   "s": 2.0,
+   "tail": "FAIL\tgithub.com/GoogleCloudPlatform/microservices-demo/src/checkoutservice [build failed]\n?   \tgithub.com/GoogleCloudPlatform/microservices-demo/src/checkoutservice/genproto\t[no test files]\nok  \tgithub.com/GoogleCloudPlatform/microservices-demo/src/checkoutservice/money\t0.006s\nFAIL\n\n# github.com/GoogleCloudPlatform/microservices-demo/src/checkoutservice\n./main.go:244:45: non-constant format string in call to google.golang.org/grpc/status.Errorf"
+  }
+ ],
+ "wall_s": 9.2,
+ "gomod_diff": "--- a/go.mod\n+++ b/go.mod\n@@ -1,6 +1,6 @@\n module github.com/GoogleCloudPlatform/microservices-demo/src/checkoutservice\n \n-go 1.19\n+go 1.26.0\n \n require (\n \tcloud.google.com/go/profiler v0.3.1\n@@ -18,8 +18,7 @@\n \n require (\n \tcloud.google.com/go v0.105.0 // indirect\n-\tcloud.google.com/go/compute v1.12.1 // indirect\n-\tcloud.google.com/go/compute/metadata v0.2.1 // indirect\n+\tcloud.google.com/go/compute/metadata v0.3.0 // indirect\n \tgithub.com/cenkalti/backoff/v4 v4.2.0 // indirect\n \tgithub.com/go-logr/logr v1.2.3 // indirect\n \tgithub.com/go-logr/stdr v1.2.2 // indirect\n@@ -35,7 +34,7 @@\n \tgo.opentelemetry.io/otel/metric v0.34.0 // indirect\n \tgo.opentelemetry.io/otel/trace v1.11.2 // indirect\n \tgo.opentelemetry.io/proto/otlp v0.19.0 // indirect\n-\tgolang.org/x/oauth2 v0.0.0-20221014153046-6fdb5e3db783 // indirect\n+\tgolang.org/x/oauth2 v0.37.0 // indirect\n \tgolang.org/x/sys v0.3.0 // indirect\n \tgolang.org/x/text v0.5.0 // indirect\n \tgoogle.golang.org/api v0.102.0 // indirect\n",
+ "post_scan": null
+}

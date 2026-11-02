@@ -1,0 +1,54 @@
+{
+ "service": "shippingservice",
+ "module": "google.golang.org/protobuf",
+ "bumps": [
+  [
+   "google.golang.org/protobuf",
+   "v1.36.12"
+  ]
+ ],
+ "key": "16c5bc411ec4dd2e",
+ "cached": false,
+ "pass": true,
+ "fail_reason": null,
+ "test_note": null,
+ "target_gone": true,
+ "new_high": [],
+ "remaining_groups_in_module": 0,
+ "groups_in_module_before": 1,
+ "go_directive_before": "1.19",
+ "go_directive_after": "1.23",
+ "raises_go_directive": true,
+ "toolchain": "go version go1.24.7 linux/amd64",
+ "resolved_version": "v1.36.12",
+ "modules_changed": 2,
+ "steps": [
+  {
+   "step": "go_get",
+   "rc": 0,
+   "s": 0.1,
+   "tail": ""
+  },
+  {
+   "step": "tidy",
+   "rc": 0,
+   "s": 0.8,
+   "tail": ""
+  },
+  {
+   "step": "build",
+   "rc": 0,
+   "s": 9.8,
+   "tail": ""
+  },
+  {
+   "step": "test",
+   "rc": 0,
+   "s": 2.9,
+   "tail": ""
+  }
+ ],
+ "wall_s": 21.2,
+ "gomod_diff": "--- a/go.mod\n+++ b/go.mod\n@@ -1,6 +1,8 @@\n module github.com/GoogleCloudPlatform/microservices-demo/src/shippingservice\n \n-go 1.19\n+go 1.23\n+\n+toolchain go1.24.7\n \n require (\n \tcloud.google.com/go/profiler v0.3.1\n@@ -15,7 +17,7 @@\n \tcloud.google.com/go/compute v1.12.1 // indirect\n \tcloud.google.com/go/compute/metadata v0.2.1 // indirect\n \tgithub.com/golang/groupcache v0.0.0-20210331224755-41bb18bfe9da // indirect\n-\tgithub.com/google/go-cmp v0.5.9 // indirect\n+\tgithub.com/google/go-cmp v0.7.0 // indirect\n \tgithub.com/google/pprof v0.0.0-20221103000818-d260c55eee4c // indirect\n \tgithub.com/googleapis/enterprise-certificate-proxy v0.2.0 // indirect\n \tgithub.com/googleapis/gax-go/v2 v2.7.0 // indirect\n@@ -26,5 +28,5 @@\n \tgoogle.golang.org/api v0.102.0 // indirect\n \tgoogle.golang.org/appengine v1.6.7 // indirect\n \tgoogle.golang.org/genproto v0.0.0-20221024183307-1bc688fe9f3e // indirect\n-\tgoogle.golang.org/protobuf v1.28.1 // indirect\n+\tgoogle.golang.org/protobuf v1.36.12 // indirect\n )\n",
+ "post_scan": "/home/user/work/agenttmp/scans/post_shippingservice_16c5bc411ec4dd2e.json"
+}

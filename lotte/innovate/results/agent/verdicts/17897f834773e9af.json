@@ -1,0 +1,163 @@
+{
+ "service": "productcatalogservice",
+ "module": "go.opentelemetry.io/contrib/instrumentation/google.golang.org/grpc/otelgrpc",
+ "bumps": [
+  [
+   "go.opentelemetry.io/contrib/instrumentation/google.golang.org/grpc/otelgrpc",
+   "v0.46.0"
+  ],
+  [
+   "go.opentelemetry.io/otel",
+   "v1.20.0"
+  ],
+  [
+   "go.opentelemetry.io/otel/sdk",
+   "v1.20.0"
+  ],
+  [
+   "go.opentelemetry.io/otel/exporters/otlp/otlptrace/otlptracegrpc",
+   "v1.20.0"
+  ]
+ ],
+ "key": "17897f834773e9af",
+ "cached": false,
+ "pass": false,
+ "fail_reason": "new_high",
+ "test_note": null,
+ "target_gone": true,
+ "new_high": [
+  {
+   "module": "go.opentelemetry.io/otel/sdk",
+   "ids": [
+    "GHSA-hfvc-g4fc-pqhx",
+    "GO-2026-5426"
+   ],
+   "max_severity": 7.3
+  },
+  {
+   "module": "golang.org/x/crypto",
+   "ids": [
+    "GHSA-v778-237x-gjrc",
+    "GO-2024-3321"
+   ],
+   "max_severity": 9.1
+  },
+  {
+   "module": "golang.org/x/crypto",
+   "ids": [
+    "GHSA-hcg3-q754-cr77",
+    "GO-2025-3487"
+   ],
+   "max_severity": 7.5
+  },
+  {
+   "module": "golang.org/x/crypto",
+   "ids": [
+    "GHSA-jppx-rxg9-jmrx",
+    "GO-2026-5005"
+   ],
+   "max_severity": 9.1
+  },
+  {
+   "module": "golang.org/x/crypto",
+   "ids": [
+    "GHSA-f5wc-c3c7-36mc",
+    "GO-2026-5006"
+   ],
+   "max_severity": 9.1
+  },
+  {
+   "module": "golang.org/x/crypto",
+   "ids": [
+    "GHSA-q4h4-gmj2-qvw2",
+    "GO-2026-5013"
+   ],
+   "max_severity": 7.5
+  },
+  {
+   "module": "golang.org/x/crypto",
+   "ids": [
+    "GHSA-vgwf-h737-ff37",
+    "GO-2026-5017"
+   ],
+   "max_severity": 9.1
+  },
+  {
+   "module": "golang.org/x/crypto",
+   "ids": [
+    "GHSA-w879-237q-wc7r",
+    "GO-2026-5018"
+   ],
+   "max_severity": 7.5
+  },
+  {
+   "module": "golang.org/x/crypto",
+   "ids": [
+    "GHSA-89gr-r52h-f8rx",
+    "GO-2026-5019"
+   ],
+   "max_severity": 9.1
+  },
+  {
+   "module": "golang.org/x/crypto",
+   "ids": [
+    "GHSA-rm3j-f69w-wqmq",
+    "GO-2026-5020"
+   ],
+   "max_severity": 9.1
+  },
+  {
+   "module": "golang.org/x/crypto",
+   "ids": [
+    "GHSA-5cgq-3rg8-m6cv",
+    "GO-2026-5021"
+   ],
+   "max_severity": 9.1
+  },
+  {
+   "module": "golang.org/x/crypto",
+   "ids": [
+    "GHSA-x527-x647-q7gg",
+    "GO-2026-5023"
+   ],
+   "max_severity": 10.0
+  }
+ ],
+ "remaining_groups_in_module": 0,
+ "groups_in_module_before": 1,
+ "go_directive_before": "1.19",
+ "go_directive_after": "1.19",
+ "raises_go_directive": false,
+ "toolchain": "go version go1.24.7 linux/amd64",
+ "resolved_version": "v0.46.0",
+ "modules_changed": 33,
+ "steps": [
+  {
+   "step": "go_get",
+   "rc": 0,
+   "s": 4.1,
+   "tail": ""
+  },
+  {
+   "step": "tidy",
+   "rc": 0,
+   "s": 0.1,
+   "tail": ""
+  },
+  {
+   "step": "build",
+   "rc": 0,
+   "s": 8.0,
+   "tail": ""
+  },
+  {
+   "step": "test",
+   "rc": 0,
+   "s": 3.3,
+   "tail": ""
+  }
+ ],
+ "wall_s": 23.9,
+ "gomod_diff": "--- a/go.mod\n+++ b/go.mod\n@@ -4,41 +4,45 @@\n \n require (\n \tcloud.google.com/go/profiler v0.3.1\n-\tgithub.com/golang/protobuf v1.5.2\n-\tgithub.com/google/go-cmp v0.5.9\n+\tgithub.com/golang/protobuf v1.5.3\n+\tgithub.com/google/go-cmp v0.6.0\n \tgithub.com/pkg/errors v0.9.1\n \tgithub.com/sirupsen/logrus v1.9.0\n-\tgo.opentelemetry.io/contrib/instrumentation/google.golang.org/grpc/otelgrpc v0.37.0\n-\tgo.opentelemetry.io/otel v1.11.2\n-\tgo.opentelemetry.io/otel/exporters/otlp/otlptrace/otlptracegrpc v1.11.2\n-\tgo.opentelemetry.io/otel/sdk v1.11.2\n-\tgolang.org/x/net v0.4.0\n-\tgoogle.golang.org/grpc v1.51.0\n+\tgo.opentelemetry.io/contrib/instrumentation/google.golang.org/grpc/otelgrpc v0.46.0\n+\tgo.opentelemetry.io/otel v1.20.0\n+\tgo.opentelemetry.io/otel/exporters/otlp/otlptrace/otlptracegrpc v1.20.0\n+\tgo.opentelemetry.io/otel/sdk v1.20.0\n+\tgolang.org/x/net v0.17.0\n+\tgoogle.golang.org/grpc v1.59.0\n )\n \n require (\n-\tcloud.google.com/go v0.105.0 // indirect\n-\tcloud.google.com/go/compute v1.12.1 // indirect\n-\tcloud.google.com/go/compute/metadata v0.2.1 // indirect\n-\tgithub.com/cenkalti/backoff/v4 v4.2.0 // indirect\n-\tgithub.com/go-logr/logr v1.2.3 // indirect\n+\tcloud.google.com/go v0.110.7 // indirect\n+\tcloud.google.com/go/compute v1.23.0 // indirect\n+\tcloud.google.com/go/compute/metadata v0.2.3 // indirect\n+\tgithub.com/cenkalti/backoff/v4 v4.2.1 // indirect\n+\tgithub.com/go-logr/logr v1.3.0 // indirect\n \tgithub.com/go-logr/stdr v1.2.2 // indirect\n \tgithub.com/golang/groupcache v0.0.0-20210331224755-41bb18bfe9da // indirect\n \tgithub.com/google/pprof v0.0.0-20221103000818-d260c55eee4c // indirect\n-\tgithub.com/googleapis/enterprise-certificate-proxy v0.2.0 // indirect\n-\tgithub.com/googleapis/gax-go/v2 v2.7.0 // indirect\n-\tgithub.com/grpc-ecosystem/grpc-gateway/v2 v2.7.0 // indirect\n-\tgo.opencensus.io v0.23.0 // indirect\n-\tgo.opentelemetry.io/otel/exporters/otlp/internal/retry v1.11.2 // indirect\n-\tgo.opentelemetry.io/otel/exporters/otlp/otlptrace v1.11.2 // indirect\n-\tgo.opentelemetry.io/otel/metric v0.34.0 // indirect\n-\tgo.opentelemetry.io/otel/trace v1.11.2 // indirect\n-\tgo.opentelemetry.io/proto/otlp v0.19.0 // indirect\n-\tgolang.org/x/oauth2 v0.0.0-20221014153046-6fdb5e3db783 // indirect\n-\tgolang.org/x/sys v0.3.0 // indirect\n-\tgolang.org/x/text v0.5.0 // indirect\n-\tgoogle.golang.org/api v0.102.0 // indirect\n+\tgithub.com/google/s2a-go v0.1.4 // indirect\n+\tgithub.com/googleapis/enterprise-certificate-proxy v0.2.3 // indirect\n+\tgithub.com/googleapis/gax-go/v2 v2.11.0 // indirect\n+\tgithub.com/grpc-ecosystem/grpc-gateway/v2 v2.16.0 // indirect\n+\tgo.opencensus.io v0.24.0 // indirect\n+\tgo.opentelemetry.io/otel/exporters/otlp/otlptrace v1.20.0 // indirect\n+\tgo.opentelemetry.io/otel/metric v1.20.0 // indirect\n+\tgo.opentelemetry.io/otel/trace v1.20.0 // indirect\n+\tgo.opentelemetry.io/proto/otlp v1.0.0 // indirect\n+\tgolang.org/x/crypto v0.14.0 // indirect\n+\tgolang.org/x/oauth2 v0.11.0 // indirect\n+\tgolang.org/x/sync v0.3.0 // indirect\n+\tgolang.org/x/sys v0.14.0 // indirect\n+\tgolang.org/x/text v0.13.0 // indirect\n+\tgoogle.golang.org/api v0.126.0 // indirect\n \tgoogle.golang.org/appengine v1.6.7 // indirect\n-\tgoogle.golang.org/genproto v0.0.0-20221024183307-1bc688fe9f3e // indirect\n-\tgoogle.golang.org/protobuf v1.28.1 // indirect\n+\tgoogle.golang.org/genproto v0.0.0-20230822172742-b8732ec3820d // indirect\n+\tgoogle.golang.org/genproto/googleapis/api v0.0.0-20230822172742-b8732ec3820d // indirect\n+\tgoogle.golang.org/genproto/googleapis/rpc v0.0.0-20230822172742-b8732ec3820d // indirect\n+\tgoogle.golang.org/protobuf v1.31.0 // indirect\n )\n",
+ "post_scan": "/home/user/work/agenttmp/scans/post_productcatalogservice_17897f834773e9af.json"
+}

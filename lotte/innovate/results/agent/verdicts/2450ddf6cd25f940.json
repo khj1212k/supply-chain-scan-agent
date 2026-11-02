@@ -1,0 +1,68 @@
+{
+ "service": "frontend",
+ "module": "go.opentelemetry.io/otel/exporters/otlp/otlptrace",
+ "bumps": [
+  [
+   "go.opentelemetry.io/otel/exporters/otlp/otlptrace",
+   "v1.45.0"
+  ],
+  [
+   "go.opentelemetry.io/otel/exporters/otlp/otlptrace/otlptracegrpc",
+   "v1.45.0"
+  ],
+  [
+   "go.opentelemetry.io/otel/sdk",
+   "v1.45.0"
+  ],
+  [
+   "go.opentelemetry.io/otel",
+   "v1.45.0"
+  ],
+  [
+   "go.opentelemetry.io/contrib/instrumentation/net/http/otelhttp",
+   "v0.70.0"
+  ],
+  [
+   "go.opentelemetry.io/contrib/instrumentation/google.golang.org/grpc/otelgrpc",
+   "v0.70.0"
+  ]
+ ],
+ "key": "2450ddf6cd25f940",
+ "cached": false,
+ "pass": false,
+ "fail_reason": "build",
+ "test_note": null,
+ "target_gone": null,
+ "new_high": [],
+ "remaining_groups_in_module": null,
+ "groups_in_module_before": 1,
+ "go_directive_before": "1.19",
+ "go_directive_after": "1.25.0",
+ "raises_go_directive": true,
+ "toolchain": "go version go1.25.0 linux/amd64",
+ "resolved_version": "v1.45.0",
+ "modules_changed": 44,
+ "steps": [
+  {
+   "step": "go_get",
+   "rc": 0,
+   "s": 3.3,
+   "tail": ""
+  },
+  {
+   "step": "tidy",
+   "rc": 0,
+   "s": 0.1,
+   "tail": ""
+  },
+  {
+   "step": "build",
+   "rc": 1,
+   "s": 1.5,
+   "tail": "# github.com/GoogleCloudPlatform/microservices-demo/src/frontend\n./main.go:220:39: undefined: otelgrpc.UnaryClientInterceptor\n./main.go:221:40: undefined: otelgrpc.StreamClientInterceptor"
+  }
+ ],
+ "wall_s": 4.9,
+ "gomod_diff": "--- a/go.mod\n+++ b/go.mod\n@@ -1,48 +1,52 @@\n module github.com/GoogleCloudPlatform/microservices-demo/src/frontend\n \n-go 1.19\n+go 1.25.0\n \n require (\n-\tcloud.google.com/go/compute/metadata v0.2.2\n+\tcloud.google.com/go/compute/metadata v0.9.0\n \tcloud.google.com/go/profiler v0.3.1\n-\tgithub.com/golang/protobuf v1.5.2\n-\tgithub.com/google/uuid v1.3.0\n+\tgithub.com/golang/protobuf v1.5.4\n+\tgithub.com/google/uuid v1.6.0\n \tgithub.com/gorilla/mux v1.8.0\n \tgithub.com/pkg/errors v0.9.1\n \tgithub.com/sirupsen/logrus v1.9.0\n-\tgo.opentelemetry.io/contrib/instrumentation/google.golang.org/grpc/otelgrpc v0.37.0\n-\tgo.opentelemetry.io/contrib/instrumentation/net/http/otelhttp v0.37.0\n-\tgo.opentelemetry.io/otel v1.11.2\n-\tgo.opentelemetry.io/otel/exporters/otlp/otlptrace/otlptracegrpc v1.11.2\n-\tgo.opentelemetry.io/otel/sdk v1.11.2\n-\tgolang.org/x/net v0.4.0\n-\tgoogle.golang.org/grpc v1.51.0\n+\tgo.opentelemetry.io/contrib/instrumentation/google.golang.org/grpc/otelgrpc v0.70.0\n+\tgo.opentelemetry.io/contrib/instrumentation/net/http/otelhttp v0.70.0\n+\tgo.opentelemetry.io/otel v1.45.0\n+\tgo.opentelemetry.io/otel/exporters/otlp/otlptrace/otlptracegrpc v1.45.0\n+\tgo.opentelemetry.io/otel/sdk v1.45.0\n+\tgolang.org/x/net v0.57.0\n+\tgoogle.golang.org/grpc v1.83.0\n )\n \n require (\n-\tcloud.google.com/go v0.105.0 // indirect\n-\tcloud.google.com/go/compute v1.12.1 // indirect\n-\tgithub.com/cenkalti/backoff/v4 v4.2.0 // indirect\n-\tgithub.com/felixge/httpsnoop v1.0.3 // indirect\n-\tgithub.com/go-logr/logr v1.2.3 // indirect\n+\tcloud.google.com/go v0.123.0 // indirect\n+\tcloud.google.com/go/auth v0.18.2 // indirect\n+\tcloud.google.com/go/auth/oauth2adapt v0.2.8 // indirect\n+\tgithub.com/cenkalti/backoff/v5 v5.0.3 // indirect\n+\tgithub.com/cespare/xxhash/v2 v2.3.0 // indirect\n+\tgithub.com/felixge/httpsnoop v1.1.0 // indirect\n+\tgithub.com/go-logr/logr v1.4.4 // indirect\n \tgithub.com/go-logr/stdr v1.2.2 // indirect\n-\tgithub.com/golang/groupcache v0.0.0-20210331224755-41bb18bfe9da // indirect\n-\tgithub.com/google/go-cmp v0.5.9 // indirect\n \tgithub.com/google/pprof v0.0.0-20221103000818-d260c55eee4c // indirect\n-\tgithub.com/googleapis/enterprise-certificate-proxy v0.2.0 // indirect\n-\tgithub.com/googleapis/gax-go/v2 v2.7.0 // indirect\n-\tgithub.com/grpc-ecosystem/grpc-gateway/v2 v2.7.0 // indirect\n-\tgo.opencensus.io v0.23.0 // indirect\n-\tgo.opentelemetry.io/otel/exporters/otlp/internal/retry v1.11.2 // indirect\n-\tgo.opentelemetry.io/otel/exporters/otlp/otlptrace v1.11.2 // indirect\n-\tgo.opentelemetry.io/otel/metric v0.34.0 // indirect\n-\tgo.opentelemetry.io/otel/trace v1.11.2 // indirect\n-\tgo.opentelemetry.io/proto/otlp v0.19.0 // indirect\n-\tgolang.org/x/oauth2 v0.0.0-20221014153046-6fdb5e3db783 // indirect\n-\tgolang.org/x/sys v0.3.0 // indirect\n-\tgolang.org/x/text v0.5.0 // indirect\n-\tgoogle.golang.org/api v0.102.0 // indirect\n-\tgoogle.golang.org/appengine v1.6.7 // indirect\n-\tgoogle.golang.org/genproto v0.0.0-20221024183307-1bc688fe9f3e // indirect\n-\tgoogle.golang.org/protobuf v1.28.1 // indirect\n+\tgithub.com/google/s2a-go v0.1.9 // indirect\n+\tgithub.com/googleapis/enterprise-certificate-proxy v0.3.11 // indirect\n+\tgithub.com/googleapis/gax-go/v2 v2.17.0 // indirect\n+\tgithub.com/grpc-ecosystem/grpc-gateway/v2 v2.29.0 // indirect\n+\tgo.opentelemetry.io/auto/sdk v1.2.1 // indirect\n+\tgo.opentelemetry.io/otel/exporters/otlp/otlptrace v1.45.0 // indirect\n+\tgo.opentelemetry.io/otel/metric v1.45.0 // indirect\n+\tgo.opentelemetry.io/otel/trace v1.45.0 // indirect\n+\tgo.opentelemetry.io/proto/otlp v1.11.0 // indirect\n+\tgolang.org/x/crypto v0.54.0 // indirect\n+\tgolang.org/x/oauth2 v0.36.0 // indirect\n+\tgolang.org/x/sync v0.22.0 // indirect\n+\tgolang.org/x/sys v0.47.0 // indirect\n+\tgolang.org/x/text v0.40.0 // indirect\n+\tgolang.org/x/time v0.14.0 // indirect\n+\tgoogle.golang.org/api v0.264.0 // indirect\n+\tgoogle.golang.org/genproto v0.0.0-20260128011058-8636f8732409 // indirect\n+\tgoogle.golang.org/genproto/googleapis/api v0.0.0-20260803160001-6ac0973c030d // indirect\n+\tgoogle.golang.org/genproto/googleapis/rpc v0.0.0-20260803160001-6ac0973c030d // indirect\n+\tgoogle.golang.org/protobuf v1.36.11 // indirect\n )\n",
+ "post_scan": null
+}
