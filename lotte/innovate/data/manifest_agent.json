@@ -1,0 +1,530 @@
+{
+ "agent/proxy/github.com/sirupsen/logrus/list.txt": {
+  "bytes": 458,
+  "fetched_utc": "2026-11-02T08:50:02Z",
+  "sha256": "169c6d4cb3e50db5ab49260cea2c38c98655e2a6e1aa138317fe89fe85bfe27e",
+  "url": "https://proxy.golang.org/github.com/sirupsen/logrus/@v/list"
+ },
+ "agent/proxy/github.com/sirupsen/logrus/v1.10.0.mod": {
+  "bytes": 266,
+  "fetched_utc": "2026-11-02T08:50:02Z",
+  "sha256": "f6def570c0354c8260a4aaf2653ed2ec03f9cce9ec2ddb414298e10e8ff9d295",
+  "url": "https://proxy.golang.org/github.com/sirupsen/logrus/@v/v1.10.0.mod"
+ },
+ "agent/proxy/github.com/sirupsen/logrus/v1.10.1.mod": {
+  "bytes": 164,
+  "fetched_utc": "2026-11-02T08:50:02Z",
+  "sha256": "3b51bcd56de3a1b07c8c78247953f13fe57bd3c44fd5d4937faf969880b6571d",
+  "url": "https://proxy.golang.org/github.com/sirupsen/logrus/@v/v1.10.1.mod"
+ },
+ "agent/proxy/github.com/sirupsen/logrus/v1.10.2.mod": {
+  "bytes": 166,
+  "fetched_utc": "2026-11-02T08:50:02Z",
+  "sha256": "0ae1e8f2e690807fd54e3c2e3cb8326815baa54dbb2b0bf7798c73f3ec061c48",
+  "url": "https://proxy.golang.org/github.com/sirupsen/logrus/@v/v1.10.2.mod"
+ },
+ "agent/proxy/github.com/sirupsen/logrus/v1.9.1.mod": {
+  "bytes": 192,
+  "fetched_utc": "2026-11-02T08:50:02Z",
+  "sha256": "01e82122d547d1228151a623fe6cacc4d7a9cb318a0f668ce08bb6b67fdb28b1",
+  "url": "https://proxy.golang.org/github.com/sirupsen/logrus/@v/v1.9.1.mod"
+ },
+ "agent/proxy/github.com/sirupsen/logrus/v1.9.3.mod": {
+  "bytes": 192,
+  "fetched_utc": "2026-11-02T08:50:02Z",
+  "sha256": "01e82122d547d1228151a623fe6cacc4d7a9cb318a0f668ce08bb6b67fdb28b1",
+  "url": "https://proxy.golang.org/github.com/sirupsen/logrus/@v/v1.9.3.mod"
+ },
+ "agent/proxy/github.com/sirupsen/logrus/v1.9.4.mod": {
+  "bytes": 266,
+  "fetched_utc": "2026-11-02T08:50:02Z",
+  "sha256": "65bd5913b818d483bd0c92041e39a4ec17766f8907318aea02df8658f46324e8",
+  "url": "https://proxy.golang.org/github.com/sirupsen/logrus/@v/v1.9.4.mod"
+ },
+ "agent/proxy/go.opentelemetry.io/contrib/instrumentation/google.golang.org/grpc/otelgrpc/list.txt": {
+  "bytes": 591,
+  "fetched_utc": "2026-11-02T08:52:29Z",
+  "sha256": "15fd67a3f8b92f4cdabcc0cd52d2fb391834f0bd334b3bd0212006c43a00d1c4",
+  "url": "https://proxy.golang.org/go.opentelemetry.io/contrib/instrumentation/google.golang.org/grpc/otelgrpc/@v/list"
+ },
+ "agent/proxy/go.opentelemetry.io/contrib/instrumentation/google.golang.org/grpc/otelgrpc/v0.46.0.mod": {
+  "bytes": 1139,
+  "fetched_utc": "2026-11-02T08:52:29Z",
+  "sha256": "81e3284e49b80fa9e2ac8fefcaa1cac7c20ac515421809c12b33041a65d880dc",
+  "url": "https://proxy.golang.org/go.opentelemetry.io/contrib/instrumentation/google.golang.org/grpc/otelgrpc/@v/v0.46.0.mod"
+ },
+ "agent/proxy/go.opentelemetry.io/contrib/instrumentation/google.golang.org/grpc/otelgrpc/v0.46.1.mod": {
+  "bytes": 1139,
+  "fetched_utc": "2026-11-02T08:52:29Z",
+  "sha256": "bff447a115701666f89eb289b4108eef9ec3b0b4cc916df1fb5fa5f542349cde",
+  "url": "https://proxy.golang.org/go.opentelemetry.io/contrib/instrumentation/google.golang.org/grpc/otelgrpc/@v/v0.46.1.mod"
+ },
+ "agent/proxy/go.opentelemetry.io/contrib/instrumentation/google.golang.org/grpc/otelgrpc/v0.47.0.mod": {
+  "bytes": 1139,
+  "fetched_utc": "2026-11-02T08:52:29Z",
+  "sha256": "1e899a45c5ea321bedb18c1befe1ee346a80406e4fedd2a3f2b3ea7e0a48a9bc",
+  "url": "https://proxy.golang.org/go.opentelemetry.io/contrib/instrumentation/google.golang.org/grpc/otelgrpc/@v/v0.47.0.mod"
+ },
+ "agent/proxy/go.opentelemetry.io/contrib/instrumentation/google.golang.org/grpc/otelgrpc/v0.48.0.mod": {
+  "bytes": 1139,
+  "fetched_utc": "2026-11-02T08:52:29Z",
+  "sha256": "5f3e39b14b31fbad38161c910b541856a128d450d4bef161a8e089f2de9a605e",
+  "url": "https://proxy.golang.org/go.opentelemetry.io/contrib/instrumentation/google.golang.org/grpc/otelgrpc/@v/v0.48.0.mod"
+ },
+ "agent/proxy/go.opentelemetry.io/contrib/instrumentation/google.golang.org/grpc/otelgrpc/v0.49.0.mod": {
+  "bytes": 811,
+  "fetched_utc": "2026-11-02T08:52:29Z",
+  "sha256": "3fb4c8dc7b4668448c93e7d2dcecc3a9eed1d834541c2f2738bb12b2f0fbdde5",
+  "url": "https://proxy.golang.org/go.opentelemetry.io/contrib/instrumentation/google.golang.org/grpc/otelgrpc/@v/v0.49.0.mod"
+ },
+ "agent/proxy/go.opentelemetry.io/contrib/instrumentation/google.golang.org/grpc/otelgrpc/v0.50.0.mod": {
+  "bytes": 811,
+  "fetched_utc": "2026-11-02T08:52:29Z",
+  "sha256": "100025a10d33b44e643cb3ef269a35dd41d5ceb47bb26a4edb6bf664b090f82b",
+  "url": "https://proxy.golang.org/go.opentelemetry.io/contrib/instrumentation/google.golang.org/grpc/otelgrpc/@v/v0.50.0.mod"
+ },
+ "agent/proxy/go.opentelemetry.io/contrib/instrumentation/google.golang.org/grpc/otelgrpc/v0.51.0.mod": {
+  "bytes": 764,
+  "fetched_utc": "2026-11-02T08:52:29Z",
+  "sha256": "fb206d4483bbbbee8b702fe5e778103b31029ef89e2f7433d8a0142323c60f8f",
+  "url": "https://proxy.golang.org/go.opentelemetry.io/contrib/instrumentation/google.golang.org/grpc/otelgrpc/@v/v0.51.0.mod"
+ },
+ "agent/proxy/go.opentelemetry.io/contrib/instrumentation/google.golang.org/grpc/otelgrpc/v0.52.0.mod": {
+  "bytes": 764,
+  "fetched_utc": "2026-11-02T08:52:29Z",
+  "sha256": "d02c43f0e97c5a6f8ac9a12beb438a0cdfd6008c3cfaf6b78a9625bc5f89c8b0",
+  "url": "https://proxy.golang.org/go.opentelemetry.io/contrib/instrumentation/google.golang.org/grpc/otelgrpc/@v/v0.52.0.mod"
+ },
+ "agent/proxy/go.opentelemetry.io/contrib/instrumentation/google.golang.org/grpc/otelgrpc/v0.71.0.mod": {
+  "bytes": 897,
+  "fetched_utc": "2026-11-02T08:52:29Z",
+  "sha256": "11b39b1f05353a31397f6c3bd6eb339f5eba833e2a8030dd39923fd4b9590f01",
+  "url": "https://proxy.golang.org/go.opentelemetry.io/contrib/instrumentation/google.golang.org/grpc/otelgrpc/@v/v0.71.0.mod"
+ },
+ "agent/proxy/go.opentelemetry.io/contrib/instrumentation/google.golang.org/grpc/otelgrpc/v0.72.0.mod": {
+  "bytes": 947,
+  "fetched_utc": "2026-11-02T08:52:29Z",
+  "sha256": "9340b8539547543a593f0d2ba7d818f2fc07a6c912412139f46330a8c31b00c0",
+  "url": "https://proxy.golang.org/go.opentelemetry.io/contrib/instrumentation/google.golang.org/grpc/otelgrpc/@v/v0.72.0.mod"
+ },
+ "agent/proxy/go.opentelemetry.io/contrib/instrumentation/net/http/otelhttp/list.txt": {
+  "bytes": 599,
+  "fetched_utc": "2026-11-02T08:52:29Z",
+  "sha256": "4699af5ae3540ee0c00268122c542aeef0e2452bce07019fd730c3b75583623a",
+  "url": "https://proxy.golang.org/go.opentelemetry.io/contrib/instrumentation/net/http/otelhttp/@v/list"
+ },
+ "agent/proxy/go.opentelemetry.io/contrib/instrumentation/net/http/otelhttp/v0.44.0.mod": {
+  "bytes": 514,
+  "fetched_utc": "2026-11-02T08:52:29Z",
+  "sha256": "b1e8bd96f34a95133d114ccabf50e256253e7ad37cb2779259dc310c7f48271e",
+  "url": "https://proxy.golang.org/go.opentelemetry.io/contrib/instrumentation/net/http/otelhttp/@v/v0.44.0.mod"
+ },
+ "agent/proxy/go.opentelemetry.io/contrib/instrumentation/net/http/otelhttp/v0.45.0.mod": {
+  "bytes": 514,
+  "fetched_utc": "2026-11-02T08:52:29Z",
+  "sha256": "0d5890d9374af0575b8760c5bae812e8bc4f6ff4e57b0d6fabf0d1167b817276",
+  "url": "https://proxy.golang.org/go.opentelemetry.io/contrib/instrumentation/net/http/otelhttp/@v/v0.45.0.mod"
+ },
+ "agent/proxy/go.opentelemetry.io/contrib/instrumentation/net/http/otelhttp/v0.46.0.mod": {
+  "bytes": 514,
+  "fetched_utc": "2026-11-02T08:52:29Z",
+  "sha256": "2b1faa1685ee008663e6ecf505de939c5c972a9dfd8ab885c279762761e23371",
+  "url": "https://proxy.golang.org/go.opentelemetry.io/contrib/instrumentation/net/http/otelhttp/@v/v0.46.0.mod"
+ },
+ "agent/proxy/go.opentelemetry.io/contrib/instrumentation/net/http/otelhttp/v0.46.1.mod": {
+  "bytes": 514,
+  "fetched_utc": "2026-11-02T08:52:29Z",
+  "sha256": "91dbca40ce3e967e3306d3ad46d60558d0b2beced473ffac1db0546b991eda4c",
+  "url": "https://proxy.golang.org/go.opentelemetry.io/contrib/instrumentation/net/http/otelhttp/@v/v0.46.1.mod"
+ },
+ "agent/proxy/go.opentelemetry.io/contrib/instrumentation/net/http/otelhttp/v0.47.0.mod": {
+  "bytes": 514,
+  "fetched_utc": "2026-11-02T08:52:29Z",
+  "sha256": "2e06dd653fda42d96be99c7cf0dcc626cf37089b9a6788051f69576d464c82f9",
+  "url": "https://proxy.golang.org/go.opentelemetry.io/contrib/instrumentation/net/http/otelhttp/@v/v0.47.0.mod"
+ },
+ "agent/proxy/go.opentelemetry.io/contrib/instrumentation/net/http/otelhttp/v0.48.0.mod": {
+  "bytes": 514,
+  "fetched_utc": "2026-11-02T08:52:29Z",
+  "sha256": "ca783015011a9758d24e47656fd2571283d44b5707256c6df87b9677cd62f76f",
+  "url": "https://proxy.golang.org/go.opentelemetry.io/contrib/instrumentation/net/http/otelhttp/@v/v0.48.0.mod"
+ },
+ "agent/proxy/go.opentelemetry.io/contrib/instrumentation/net/http/otelhttp/v0.49.0.mod": {
+  "bytes": 514,
+  "fetched_utc": "2026-11-02T08:52:29Z",
+  "sha256": "bfe4abe95f66049b4c57e2138af235adbd9d2fc9303ab70924602c8d54993ce0",
+  "url": "https://proxy.golang.org/go.opentelemetry.io/contrib/instrumentation/net/http/otelhttp/@v/v0.49.0.mod"
+ },
+ "agent/proxy/go.opentelemetry.io/contrib/instrumentation/net/http/otelhttp/v0.50.0.mod": {
+  "bytes": 514,
+  "fetched_utc": "2026-11-02T08:52:29Z",
+  "sha256": "75352fc85637a6654acaa821746f4a409a4fe3d7651b7a8ecc1335a6feb95905",
+  "url": "https://proxy.golang.org/go.opentelemetry.io/contrib/instrumentation/net/http/otelhttp/@v/v0.50.0.mod"
+ },
+ "agent/proxy/go.opentelemetry.io/contrib/instrumentation/net/http/otelhttp/v0.71.0.mod": {
+  "bytes": 684,
+  "fetched_utc": "2026-11-02T08:52:29Z",
+  "sha256": "24abc25e39e108bc2aafeb0caf4814e2405bbfeab02a23c7e643842bb7e1a809",
+  "url": "https://proxy.golang.org/go.opentelemetry.io/contrib/instrumentation/net/http/otelhttp/@v/v0.71.0.mod"
+ },
+ "agent/proxy/go.opentelemetry.io/contrib/instrumentation/net/http/otelhttp/v0.72.0.mod": {
+  "bytes": 734,
+  "fetched_utc": "2026-11-02T08:52:29Z",
+  "sha256": "a2406bfc02fee29894dd0187bdfe0cfc47c8320eb02afecc3d1ca32d61afe7c3",
+  "url": "https://proxy.golang.org/go.opentelemetry.io/contrib/instrumentation/net/http/otelhttp/@v/v0.72.0.mod"
+ },
+ "agent/proxy/go.opentelemetry.io/otel/exporters/otlp/otlptrace/list.txt": {
+  "bytes": 552,
+  "fetched_utc": "2026-11-02T08:52:29Z",
+  "sha256": "a0f8c1c3cffc488f6df50c9d19ec24ff6a90daefdbc28971c68693e11d86cec3",
+  "url": "https://proxy.golang.org/go.opentelemetry.io/otel/exporters/otlp/otlptrace/@v/list"
+ },
+ "agent/proxy/go.opentelemetry.io/otel/exporters/otlp/otlptrace/otlptracegrpc/list.txt": {
+  "bytes": 552,
+  "fetched_utc": "2026-11-02T08:52:30Z",
+  "sha256": "a0f8c1c3cffc488f6df50c9d19ec24ff6a90daefdbc28971c68693e11d86cec3",
+  "url": "https://proxy.golang.org/go.opentelemetry.io/otel/exporters/otlp/otlptrace/otlptracegrpc/@v/list"
+ },
+ "agent/proxy/go.opentelemetry.io/otel/exporters/otlp/otlptrace/otlptracegrpc/v1.45.0.mod": {
+  "bytes": 1708,
+  "fetched_utc": "2026-11-02T08:52:30Z",
+  "sha256": "5bdfdbe5b1877e402b8ef6c1decd97e7d25e589c834a0f25f71c44e25c377545",
+  "url": "https://proxy.golang.org/go.opentelemetry.io/otel/exporters/otlp/otlptrace/otlptracegrpc/@v/v1.45.0.mod"
+ },
+ "agent/proxy/go.opentelemetry.io/otel/exporters/otlp/otlptrace/otlptracegrpc/v1.46.0.mod": {
+  "bytes": 1613,
+  "fetched_utc": "2026-11-02T08:52:30Z",
+  "sha256": "a25095b1448bc155f80939e7e1593a50994fc90603f54e42fd6fb2ce021ee4eb",
+  "url": "https://proxy.golang.org/go.opentelemetry.io/otel/exporters/otlp/otlptrace/otlptracegrpc/@v/v1.46.0.mod"
+ },
+ "agent/proxy/go.opentelemetry.io/otel/exporters/otlp/otlptrace/otlptracegrpc/v1.47.0.mod": {
+  "bytes": 1720,
+  "fetched_utc": "2026-11-02T08:52:30Z",
+  "sha256": "3121a99215285ea7a8b3ac0a69ddcd8efca7f1e71d9e6efd7815bd508135d4c8",
+  "url": "https://proxy.golang.org/go.opentelemetry.io/otel/exporters/otlp/otlptrace/otlptracegrpc/@v/v1.47.0.mod"
+ },
+ "agent/proxy/go.opentelemetry.io/otel/exporters/otlp/otlptrace/v1.45.0.mod": {
+  "bytes": 1145,
+  "fetched_utc": "2026-11-02T08:52:29Z",
+  "sha256": "d95c37571c16ae53c04144b74c4eac22df7ca1b349d1c9cfdcbc87131db2688e",
+  "url": "https://proxy.golang.org/go.opentelemetry.io/otel/exporters/otlp/otlptrace/@v/v1.45.0.mod"
+ },
+ "agent/proxy/go.opentelemetry.io/otel/exporters/otlp/otlptrace/v1.46.0.mod": {
+  "bytes": 1050,
+  "fetched_utc": "2026-11-02T08:52:30Z",
+  "sha256": "b27fbe31ab3fe3a32007bebe96e63641416a06f8923c78a54e19c4b15fe0de18",
+  "url": "https://proxy.golang.org/go.opentelemetry.io/otel/exporters/otlp/otlptrace/@v/v1.46.0.mod"
+ },
+ "agent/proxy/go.opentelemetry.io/otel/exporters/otlp/otlptrace/v1.47.0.mod": {
+  "bytes": 1154,
+  "fetched_utc": "2026-11-02T08:52:30Z",
+  "sha256": "20747da07a4451715182a39f2eb8dbece2a7a5d9918d0b93d3632a1da0ba5cdf",
+  "url": "https://proxy.golang.org/go.opentelemetry.io/otel/exporters/otlp/otlptrace/@v/v1.47.0.mod"
+ },
+ "agent/proxy/golang.org/x/net/list.txt": {
+  "bytes": 487,
+  "fetched_utc": "2026-11-02T08:50:02Z",
+  "sha256": "65308f319e46b12093096e1601595bb3bbce55f10a329ba795336744b3225595",
+  "url": "https://proxy.golang.org/golang.org/x/net/@v/list"
+ },
+ "agent/proxy/golang.org/x/net/v0.17.0.mod": {
+  "bytes": 155,
+  "fetched_utc": "2026-11-02T08:52:28Z",
+  "sha256": "cba6184b8b8e0d54560bf5a65f136ccd76a734c49c066ed803eb70bd06c17696",
+  "url": "https://proxy.golang.org/golang.org/x/net/@v/v0.17.0.mod"
+ },
+ "agent/proxy/golang.org/x/net/v0.18.0.mod": {
+  "bytes": 155,
+  "fetched_utc": "2026-11-02T08:52:28Z",
+  "sha256": "7e16dedd0b83836553ba8ac8d4c8590f92640dd6f057d4c727e83276ffe728b2",
+  "url": "https://proxy.golang.org/golang.org/x/net/@v/v0.18.0.mod"
+ },
+ "agent/proxy/golang.org/x/net/v0.19.0.mod": {
+  "bytes": 155,
+  "fetched_utc": "2026-11-02T08:52:28Z",
+  "sha256": "a8dda4340930b80851e97f32bfa6adb86be185a4aeea9fc766a6fe72f127f101",
+  "url": "https://proxy.golang.org/golang.org/x/net/@v/v0.19.0.mod"
+ },
+ "agent/proxy/golang.org/x/net/v0.20.0.mod": {
+  "bytes": 155,
+  "fetched_utc": "2026-11-02T08:52:29Z",
+  "sha256": "9dec2eaf373ee3fea5f91119cf1cb36f7f27e9d4681407ded5f6522381c0c20e",
+  "url": "https://proxy.golang.org/golang.org/x/net/@v/v0.20.0.mod"
+ },
+ "agent/proxy/golang.org/x/net/v0.21.0.mod": {
+  "bytes": 155,
+  "fetched_utc": "2026-11-02T08:52:29Z",
+  "sha256": "0eef3e9fe7f668be5b4d24c8f1251c6c502d1168953c8081ac9dc3f399c64f06",
+  "url": "https://proxy.golang.org/golang.org/x/net/@v/v0.21.0.mod"
+ },
+ "agent/proxy/golang.org/x/net/v0.22.0.mod": {
+  "bytes": 155,
+  "fetched_utc": "2026-11-02T08:52:29Z",
+  "sha256": "0b3fbaebb4668014b4dca5f5e58a4591670567ef4429ec5fde4eaed66ade6fac",
+  "url": "https://proxy.golang.org/golang.org/x/net/@v/v0.22.0.mod"
+ },
+ "agent/proxy/golang.org/x/net/v0.23.0.mod": {
+  "bytes": 155,
+  "fetched_utc": "2026-11-02T08:52:29Z",
+  "sha256": "0b3fbaebb4668014b4dca5f5e58a4591670567ef4429ec5fde4eaed66ade6fac",
+  "url": "https://proxy.golang.org/golang.org/x/net/@v/v0.23.0.mod"
+ },
+ "agent/proxy/golang.org/x/net/v0.24.0.mod": {
+  "bytes": 155,
+  "fetched_utc": "2026-11-02T08:52:29Z",
+  "sha256": "477435097fceb2797d9b318d6b0fe8955b562f1aa1eeae3dba5628762a888753",
+  "url": "https://proxy.golang.org/golang.org/x/net/@v/v0.24.0.mod"
+ },
+ "agent/proxy/golang.org/x/net/v0.61.0.mod": {
+  "bytes": 157,
+  "fetched_utc": "2026-11-02T08:52:29Z",
+  "sha256": "7bbcec6b6af859939ec01bbe5234e556c867bf80e171abc23ad16c2c8e3951fe",
+  "url": "https://proxy.golang.org/golang.org/x/net/@v/v0.61.0.mod"
+ },
+ "agent/proxy/golang.org/x/net/v0.62.0.mod": {
+  "bytes": 157,
+  "fetched_utc": "2026-11-02T08:50:02Z",
+  "sha256": "7bbcec6b6af859939ec01bbe5234e556c867bf80e171abc23ad16c2c8e3951fe",
+  "url": "https://proxy.golang.org/golang.org/x/net/@v/v0.62.0.mod"
+ },
+ "agent/proxy/golang.org/x/oauth2/list.txt": {
+  "bytes": 287,
+  "fetched_utc": "2026-11-02T08:50:02Z",
+  "sha256": "47221bcefd3ca6f9a273920f7e61df49e8b88f7a7c765bc7c6f68f01aa693d91",
+  "url": "https://proxy.golang.org/golang.org/x/oauth2/@v/list"
+ },
+ "agent/proxy/golang.org/x/oauth2/v0.27.0.mod": {
+  "bytes": 129,
+  "fetched_utc": "2026-11-02T08:50:02Z",
+  "sha256": "892a9c068542f7af1f069126ab28c38cd5fb8faa6daf7733ce2c9cd30840645e",
+  "url": "https://proxy.golang.org/golang.org/x/oauth2/@v/v0.27.0.mod"
+ },
+ "agent/proxy/golang.org/x/oauth2/v0.28.0.mod": {
+  "bytes": 129,
+  "fetched_utc": "2026-11-02T08:50:02Z",
+  "sha256": "892a9c068542f7af1f069126ab28c38cd5fb8faa6daf7733ce2c9cd30840645e",
+  "url": "https://proxy.golang.org/golang.org/x/oauth2/@v/v0.28.0.mod"
+ },
+ "agent/proxy/golang.org/x/oauth2/v0.29.0.mod": {
+  "bytes": 129,
+  "fetched_utc": "2026-11-02T08:50:02Z",
+  "sha256": "892a9c068542f7af1f069126ab28c38cd5fb8faa6daf7733ce2c9cd30840645e",
+  "url": "https://proxy.golang.org/golang.org/x/oauth2/@v/v0.29.0.mod"
+ },
+ "agent/proxy/golang.org/x/oauth2/v0.30.0.mod": {
+  "bytes": 91,
+  "fetched_utc": "2026-11-02T08:50:03Z",
+  "sha256": "8c4403cdde2123be51d5c41a684b2cb654f126db05a5c903a3307daf54678bcf",
+  "url": "https://proxy.golang.org/golang.org/x/oauth2/@v/v0.30.0.mod"
+ },
+ "agent/proxy/golang.org/x/oauth2/v0.31.0.mod": {
+  "bytes": 91,
+  "fetched_utc": "2026-11-02T08:50:03Z",
+  "sha256": "3704da25b65c267c1ca6cc527fdaf1f95ea6e15332e12ab5ff3b2c92f258cb46",
+  "url": "https://proxy.golang.org/golang.org/x/oauth2/@v/v0.31.0.mod"
+ },
+ "agent/proxy/golang.org/x/oauth2/v0.32.0.mod": {
+  "bytes": 91,
+  "fetched_utc": "2026-11-02T08:50:03Z",
+  "sha256": "3704da25b65c267c1ca6cc527fdaf1f95ea6e15332e12ab5ff3b2c92f258cb46",
+  "url": "https://proxy.golang.org/golang.org/x/oauth2/@v/v0.32.0.mod"
+ },
+ "agent/proxy/golang.org/x/oauth2/v0.33.0.mod": {
+  "bytes": 91,
+  "fetched_utc": "2026-11-02T08:50:03Z",
+  "sha256": "3704da25b65c267c1ca6cc527fdaf1f95ea6e15332e12ab5ff3b2c92f258cb46",
+  "url": "https://proxy.golang.org/golang.org/x/oauth2/@v/v0.33.0.mod"
+ },
+ "agent/proxy/golang.org/x/oauth2/v0.34.0.mod": {
+  "bytes": 91,
+  "fetched_utc": "2026-11-02T08:50:03Z",
+  "sha256": "3704da25b65c267c1ca6cc527fdaf1f95ea6e15332e12ab5ff3b2c92f258cb46",
+  "url": "https://proxy.golang.org/golang.org/x/oauth2/@v/v0.34.0.mod"
+ },
+ "agent/proxy/golang.org/x/oauth2/v0.36.0.mod": {
+  "bytes": 91,
+  "fetched_utc": "2026-11-02T08:50:03Z",
+  "sha256": "90ff0f4a036bc1c24e6c006fe18d97d6d11683431f8f197b7ad48a341da72682",
+  "url": "https://proxy.golang.org/golang.org/x/oauth2/@v/v0.36.0.mod"
+ },
+ "agent/proxy/golang.org/x/oauth2/v0.37.0.mod": {
+  "bytes": 91,
+  "fetched_utc": "2026-11-02T08:50:03Z",
+  "sha256": "90facdcd7c6602d3a28dbaa32354a0398d22bbaea3b48ca94aa2235fb427358b",
+  "url": "https://proxy.golang.org/golang.org/x/oauth2/@v/v0.37.0.mod"
+ },
+ "agent/proxy/golang.org/x/text/list.txt": {
+  "bytes": 391,
+  "fetched_utc": "2026-11-02T08:52:29Z",
+  "sha256": "15288decec891b2cc0b74b43f650c55f257bf6c05788e22c8950d952101095d5",
+  "url": "https://proxy.golang.org/golang.org/x/text/@v/list"
+ },
+ "agent/proxy/golang.org/x/text/v0.39.0.mod": {
+  "bytes": 190,
+  "fetched_utc": "2026-11-02T08:52:29Z",
+  "sha256": "40e9425e17dcc56faf496619fde6908631d57b2cce0f766c4dca6bea8fc93838",
+  "url": "https://proxy.golang.org/golang.org/x/text/@v/v0.39.0.mod"
+ },
+ "agent/proxy/golang.org/x/text/v0.40.0.mod": {
+  "bytes": 190,
+  "fetched_utc": "2026-11-02T08:52:29Z",
+  "sha256": "e69fb09b14637cab6245a1253c22d80121b79d9fe3ddd19b558629e15baadaf3",
+  "url": "https://proxy.golang.org/golang.org/x/text/@v/v0.40.0.mod"
+ },
+ "agent/proxy/golang.org/x/text/v0.41.0.mod": {
+  "bytes": 190,
+  "fetched_utc": "2026-11-02T08:52:29Z",
+  "sha256": "d9ed44f15d8656abad2642d0052ce966b8135f00c8f80c469d9e6940b49d5e0c",
+  "url": "https://proxy.golang.org/golang.org/x/text/@v/v0.41.0.mod"
+ },
+ "agent/proxy/golang.org/x/text/v0.42.0.mod": {
+  "bytes": 190,
+  "fetched_utc": "2026-11-02T08:52:29Z",
+  "sha256": "4756c4b8eeeae2a20cb43c198c10701d20c53493bd90b91c6632153c9cbac240",
+  "url": "https://proxy.golang.org/golang.org/x/text/@v/v0.42.0.mod"
+ },
+ "agent/proxy/golang.org/x/text/v0.43.0.mod": {
+  "bytes": 190,
+  "fetched_utc": "2026-11-02T08:52:29Z",
+  "sha256": "63270b8ca6290a720212e1d6e58b8d12a8aa315a1cb960411d7ec2998c0aab59",
+  "url": "https://proxy.golang.org/golang.org/x/text/@v/v0.43.0.mod"
+ },
+ "agent/proxy/google.golang.org/grpc/list.txt": {
+  "bytes": 2198,
+  "fetched_utc": "2026-11-02T08:50:02Z",
+  "sha256": "d04ef6d2c49b7fb7d58e1a3b71d2c31651dc459ed454aae099763d712f5a0fd4",
+  "url": "https://proxy.golang.org/google.golang.org/grpc/@v/list"
+ },
+ "agent/proxy/google.golang.org/grpc/v1.56.3.mod": {
+  "bytes": 932,
+  "fetched_utc": "2026-11-02T08:52:29Z",
+  "sha256": "a779eee5491a97fe0e9aa57d24e80bc3f9250a4861ef725ad7b175acb46f58fb",
+  "url": "https://proxy.golang.org/google.golang.org/grpc/@v/v1.56.3.mod"
+ },
+ "agent/proxy/google.golang.org/grpc/v1.57.1.mod": {
+  "bytes": 1166,
+  "fetched_utc": "2026-11-02T08:52:29Z",
+  "sha256": "2ee4dd95a9b827a3dfce746cb26eae7c97eb356c535233914ac395bd8bf6b865",
+  "url": "https://proxy.golang.org/google.golang.org/grpc/@v/v1.57.1.mod"
+ },
+ "agent/proxy/google.golang.org/grpc/v1.57.2.mod": {
+  "bytes": 1166,
+  "fetched_utc": "2026-11-02T08:52:29Z",
+  "sha256": "2ee4dd95a9b827a3dfce746cb26eae7c97eb356c535233914ac395bd8bf6b865",
+  "url": "https://proxy.golang.org/google.golang.org/grpc/@v/v1.57.2.mod"
+ },
+ "agent/proxy/google.golang.org/grpc/v1.58.3.mod": {
+  "bytes": 1111,
+  "fetched_utc": "2026-11-02T08:52:29Z",
+  "sha256": "ac9e1f528239e1255c9fbda3fd8691ef32f68cdef7f9807f15256a66992d73e8",
+  "url": "https://proxy.golang.org/google.golang.org/grpc/@v/v1.58.3.mod"
+ },
+ "agent/proxy/google.golang.org/grpc/v1.59.0.mod": {
+  "bytes": 1111,
+  "fetched_utc": "2026-11-02T08:52:29Z",
+  "sha256": "7b89bb85e9a034c809cedf673da83fbf66dab6816c99b25b3886bf88398cfbc9",
+  "url": "https://proxy.golang.org/google.golang.org/grpc/@v/v1.59.0.mod"
+ },
+ "agent/proxy/google.golang.org/grpc/v1.60.0.mod": {
+  "bytes": 1111,
+  "fetched_utc": "2026-11-02T08:52:29Z",
+  "sha256": "4eda82aca7bf9de54e095ce35ae4378a2919e386d30951ecf6c1dfecae11b05e",
+  "url": "https://proxy.golang.org/google.golang.org/grpc/@v/v1.60.0.mod"
+ },
+ "agent/proxy/google.golang.org/grpc/v1.60.1.mod": {
+  "bytes": 1111,
+  "fetched_utc": "2026-11-02T08:52:29Z",
+  "sha256": "4eda82aca7bf9de54e095ce35ae4378a2919e386d30951ecf6c1dfecae11b05e",
+  "url": "https://proxy.golang.org/google.golang.org/grpc/@v/v1.60.1.mod"
+ },
+ "agent/proxy/google.golang.org/grpc/v1.61.0.mod": {
+  "bytes": 1111,
+  "fetched_utc": "2026-11-02T08:52:29Z",
+  "sha256": "6de5aa9618bd00b01a7b65da489dff9baa4473fa8cac60d0b63b1577a8ade4a9",
+  "url": "https://proxy.golang.org/google.golang.org/grpc/@v/v1.61.0.mod"
+ },
+ "agent/proxy/google.golang.org/grpc/v1.83.2.mod": {
+  "bytes": 2099,
+  "fetched_utc": "2026-11-02T08:50:02Z",
+  "sha256": "60f5c004181e7c03fe84131876418d157be7eb4ebea3c598fc5e37b816436780",
+  "url": "https://proxy.golang.org/google.golang.org/grpc/@v/v1.83.2.mod"
+ },
+ "agent/proxy/google.golang.org/grpc/v1.84.0.mod": {
+  "bytes": 2143,
+  "fetched_utc": "2026-11-02T08:50:02Z",
+  "sha256": "69aa2c57344f551512cc2e3d0d9eac8ca364334963f952ca4fb152e07239b1c4",
+  "url": "https://proxy.golang.org/google.golang.org/grpc/@v/v1.84.0.mod"
+ },
+ "agent/proxy/google.golang.org/grpc/v1.85.0.mod": {
+  "bytes": 1764,
+  "fetched_utc": "2026-11-02T08:50:02Z",
+  "sha256": "cefeec472544b4affa46dcf08a02af961f421f57d4514373713a2d7fd54dcaed",
+  "url": "https://proxy.golang.org/google.golang.org/grpc/@v/v1.85.0.mod"
+ },
+ "agent/proxy/google.golang.org/protobuf/list.txt": {
+  "bytes": 325,
+  "fetched_utc": "2026-11-02T08:52:29Z",
+  "sha256": "89882a957b385f55927f8f987d69befffe1ad78d482266bb91900850e9024571",
+  "url": "https://proxy.golang.org/google.golang.org/protobuf/@v/list"
+ },
+ "agent/proxy/google.golang.org/protobuf/v1.33.0.mod": {
+  "bytes": 201,
+  "fetched_utc": "2026-11-02T08:52:29Z",
+  "sha256": "d1006aa580b9cc7caf2e1fa1c2005e39ab8733c41ce6851c1fbc17f98058e55c",
+  "url": "https://proxy.golang.org/google.golang.org/protobuf/@v/v1.33.0.mod"
+ },
+ "agent/proxy/google.golang.org/protobuf/v1.34.0.mod": {
+  "bytes": 201,
+  "fetched_utc": "2026-11-02T08:52:29Z",
+  "sha256": "d1006aa580b9cc7caf2e1fa1c2005e39ab8733c41ce6851c1fbc17f98058e55c",
+  "url": "https://proxy.golang.org/google.golang.org/protobuf/@v/v1.34.0.mod"
+ },
+ "agent/proxy/google.golang.org/protobuf/v1.34.1.mod": {
+  "bytes": 201,
+  "fetched_utc": "2026-11-02T08:52:29Z",
+  "sha256": "d1006aa580b9cc7caf2e1fa1c2005e39ab8733c41ce6851c1fbc17f98058e55c",
+  "url": "https://proxy.golang.org/google.golang.org/protobuf/@v/v1.34.1.mod"
+ },
+ "agent/proxy/google.golang.org/protobuf/v1.34.2.mod": {
+  "bytes": 201,
+  "fetched_utc": "2026-11-02T08:52:29Z",
+  "sha256": "6fde7a4dd83ec5376d74ffd6dc492dc6dade5c101877ed70f43555ef34a74350",
+  "url": "https://proxy.golang.org/google.golang.org/protobuf/@v/v1.34.2.mod"
+ },
+ "agent/proxy/google.golang.org/protobuf/v1.35.0.mod": {
+  "bytes": 201,
+  "fetched_utc": "2026-11-02T08:52:29Z",
+  "sha256": "19a404db0a71ea56c16003e0279957f04aa69363ef966c6df8d2d98e291ff953",
+  "url": "https://proxy.golang.org/google.golang.org/protobuf/@v/v1.35.0.mod"
+ },
+ "agent/proxy/google.golang.org/protobuf/v1.35.1.mod": {
+  "bytes": 201,
+  "fetched_utc": "2026-11-02T08:52:29Z",
+  "sha256": "19a404db0a71ea56c16003e0279957f04aa69363ef966c6df8d2d98e291ff953",
+  "url": "https://proxy.golang.org/google.golang.org/protobuf/@v/v1.35.1.mod"
+ },
+ "agent/proxy/google.golang.org/protobuf/v1.35.2.mod": {
+  "bytes": 201,
+  "fetched_utc": "2026-11-02T08:52:29Z",
+  "sha256": "19a404db0a71ea56c16003e0279957f04aa69363ef966c6df8d2d98e291ff953",
+  "url": "https://proxy.golang.org/google.golang.org/protobuf/@v/v1.35.2.mod"
+ },
+ "agent/proxy/google.golang.org/protobuf/v1.36.0.mod": {
+  "bytes": 201,
+  "fetched_utc": "2026-11-02T08:52:29Z",
+  "sha256": "19a404db0a71ea56c16003e0279957f04aa69363ef966c6df8d2d98e291ff953",
+  "url": "https://proxy.golang.org/google.golang.org/protobuf/@v/v1.36.0.mod"
+ },
+ "agent/proxy/google.golang.org/protobuf/v1.36.11.mod": {
+  "bytes": 124,
+  "fetched_utc": "2026-11-02T08:52:29Z",
+  "sha256": "a75c105a852fbd8da8d8cfac09c2eab9a206cfd27ed37c973737e23f632ca96e",
+  "url": "https://proxy.golang.org/google.golang.org/protobuf/@v/v1.36.11.mod"
+ },
+ "agent/proxy/google.golang.org/protobuf/v1.36.12.mod": {
+  "bytes": 124,
+  "fetched_utc": "2026-11-02T08:52:29Z",
+  "sha256": "a75c105a852fbd8da8d8cfac09c2eab9a206cfd27ed37c973737e23f632ca96e",
+  "url": "https://proxy.golang.org/google.golang.org/protobuf/@v/v1.36.12.mod"
+ }
+}
