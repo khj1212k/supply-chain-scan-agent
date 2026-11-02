@@ -1,0 +1,32 @@
+{
+ "epss/epss_scores-2025-06-01.csv.gz": {
+  "bytes": 1874754,
+  "fetched_utc": "2026-11-02T08:10:02Z",
+  "sha256": "72f56f8b47737e0a57ae5416b4065eb78c58090bdcb494042b25f3351738a4e3",
+  "url": "https://raw.githubusercontent.com/RogoLabs/EPSS-History/9b88cf4309f762ccfa830069501ef588a9cfe3cc/data/2025/06/epss_scores-2025-06-01.csv.gz"
+ },
+ "epss/epss_scores-2025-12-01.csv.gz": {
+  "bytes": 2023296,
+  "fetched_utc": "2026-11-02T08:10:02Z",
+  "sha256": "186a873eb896a48c47c6a6c663b2d75867f461b87939efb3009d610c4dc2888a",
+  "url": "https://raw.githubusercontent.com/RogoLabs/EPSS-History/9b88cf4309f762ccfa830069501ef588a9cfe3cc/data/2025/12/epss_scores-2025-12-01.csv.gz"
+ },
+ "epss/epss_scores-2026-03-31.csv.gz": {
+  "bytes": 2159156,
+  "fetched_utc": "2026-11-02T08:10:03Z",
+  "sha256": "f6ee75daf2ef2455230a3e743417bc2b664f1cbc191bffbafbca1f92c2fc7b06",
+  "url": "https://raw.githubusercontent.com/RogoLabs/EPSS-History/9b88cf4309f762ccfa830069501ef588a9cfe3cc/data/2026/03/epss_scores-2026-03-31.csv.gz"
+ },
+ "epss/epss_scores-2026-11-01.csv.gz": {
+  "bytes": 2797262,
+  "fetched_utc": "2026-11-02T08:10:03Z",
+  "sha256": "3b55e2c91409b126634d7e77ce0adc51d1af7f028edd38b1f0403acb54216687",
+  "url": "https://raw.githubusercontent.com/RogoLabs/EPSS-History/9b88cf4309f762ccfa830069501ef588a9cfe3cc/data/2026/11/epss_scores-2026-11-01.csv.gz"
+ },
+ "kev/known_exploited_vulnerabilities.json": {
+  "bytes": 1826755,
+  "fetched_utc": "2026-11-02T08:10:02Z",
+  "sha256": "3aa9cf3c01f116362a29d111702979175453c425e3733bde80fc4f6f8e2294e5",
+  "url": "https://raw.githubusercontent.com/cisagov/kev-data/7ccba8e1223ccec82d12c7736bf3fae11e5bee86/known_exploited_vulnerabilities.json"
+ }
+}
