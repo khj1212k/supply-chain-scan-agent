@@ -69,10 +69,10 @@ def main() -> None:
                 fontsize=9, color=INK2, transform=ax.transAxes)
     axes[0].set_yticks(y)
     axes[0].set_yticklabels(labels, fontsize=10, color=INK)
-    fig.suptitle("Online Boutique 스캔 깔때기 (OSV-Scanner 2.7.0 오프라인, Go 표준 라이브러리 제외)",
+    fig.suptitle("Online Boutique 스캔 깔때기 (OSV-Scanner 2.7.0 오프라인. Go 표준 라이브러리 제외, Java(adservice, Maven) 미스캔)",
                  x=0.01, ha="left", fontsize=13, color=INK)
     fig.text(0.01, 0.01,
-             "단위: 구성요소, 권고, 보고와 신호 큐는 행(서비스 x 패키지 버전 x 권고 또는 CVE), EPSS와 KEV는 고유 CVE. "
+             "단위가 섞여 있다: 구성요소, 권고, 보고, 신호 큐는 행(서비스 x 패키지 버전 x 권고 또는 CVE), 고유 CVE, EPSS, KEV는 CVE 개수. 신호 큐는 프런트엔드만 공개 가정. "
              "OSV DB 2026-11-02, EPSS 2026-11-01, KEV 2026.10.30. 재현: bash m2/run.sh",
              fontsize=8, color=MUTED)
     fig.tight_layout(rect=(0, 0.06, 1, 0.94))
