@@ -5,7 +5,7 @@
 2. 도구 없이 1회 호출(고정 흐름)도 6건이고 비용은 건당 $0.028로 에이전트($0.066)의 43%다. 기획안 규칙('이득이 없으면 고정 흐름으로 낮춘다')대로면 고정 흐름으로 낮춘다. 통과 수로는 LLM 없는 최소 수정과도 같다. LLM을 남길지는 설명 품질로 정할 일이고 재지 않았다
 3. 4건(otel 계열)은 모든 정책과 Opus 5.5 승격이 실패했다. 시도한 조합은 앱 코드 수정이 필요하거나(시도한 범위, 전수 탐색 아님), 같은 새 HIGH/CRITICAL 권고 12묶음을 끌어왔다. 그런 조합 4개, 시도 6회를 기계 판정이 모두 막았다
 
-- 기준 시점: OSV Go 덤프 레코드 최대 modified 2026-10-30T23:30Z, proxy.golang.org 목록 2026-11-02 08:5x UTC(`data/manifest_agent.json`), 실행 2026-11-02 08:57~09:20 UTC
+- 기준 시점: OSV Go 덤프(2026-11-02 08:41 UTC 받음, sha256 71e545db, 레코드 최대 modified 2026-10-30T23:30Z), proxy.golang.org 목록 2026-11-02 08:5x UTC(`data/manifest_agent.json`), 실행 2026-11-02 08:48~09:20 UTC(스모크, 배관 확인 포함. 본 평가 08:57:41부터)
 - 이 표본은 10건이고 Go 4개 서비스, 한 앱이다. 비율로 일반화하지 않는다
 
 ## 무엇을 하나
@@ -78,7 +78,7 @@
 **사례별 (O 통과, X 실패, 마지막 시도의 버전)** 전체는 `results/agent/case_table.csv`
 | 사례 | 서비스 | 모듈 | 대상 권고 | min_target | min_all | latest | 고정 흐름 | 에이전트 | Opus |
 |---|---|---|---|---|---|---|---|---|---|
-| C01 | frontend | golang.org/x/net 0.4.0 | GO-2023-2102 (CVE-2023-44487, KEV) | O v0.17.0 | X v0.62.0 (vet) | X v0.62.0 | O | O v0.17.0 | - |
+| C01 | frontend | golang.org/x/net 0.4.0 | GO-2023-2102 (별칭 CVE-2023-39325, related CVE-2023-44487 KEV) | O v0.17.0 | X v0.62.0 (vet) | X v0.62.0 | O | O v0.17.0 | - |
 | C02 | checkoutservice | google.golang.org/grpc 1.51.0 | GO-2023-2153 (CVE-2023-44487 related, KEV) | O v1.56.3 | X v1.83.2 (tidy) | X | O | O v1.56.3 | - |
 | C03 | frontend | otelhttp 0.37.0 | GO-2023-2113 | X (tidy) | X | X | X | X | X |
 | C04 | productcatalogservice | otelgrpc 0.37.0 | GO-2023-2331 | X (tidy) | X | X | X | X | X |
