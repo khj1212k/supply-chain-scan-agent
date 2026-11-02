@@ -43,7 +43,7 @@
 - 한계: 구간이 겹쳐 유의한 차이로 주장하지 않는다. KEV는 악용의 하한이고 미 연방 관점. CVSS는 현재 값(시점 값 아님). 패키지 구성요소 정답은 소수(기획안 3-1 표)
 
 ## 2. M2 연결: Online Boutique 스캔 깔때기
-- 코드와 결과: `m2/`, `results/m2/` (커밋 54bc18c), 세부 `m2/NOTES.md`. `bash m2/run.sh` 4회 실행에서 모든 CSV와 커밋별 값이 같았다
+- 코드와 결과: `m2/`, `results/m2/` (커밋 54bc18c), 세부 `m2/NOTES.md`. 커밋된 기록으로 확인되는 것은 6절 재실행 1회에서 값 파일이 같았다는 것뿐이다. 작업 중 여러 번 돌렸다는 기록은 마지막 결과만 남아 증거로 쓰지 않는다
 - 도구: Syft 1.55.0, OSV-Scanner 2.7.0(osv-scalibr: `--version` 표시는 0.5.3, 빌드 모듈은 v0.5.4-0.20261009010329-5be78a00e3c2) 오프라인 DB. 헤드라인 스캔은 `unshare -n`(네트워크 없음)으로 돌렸다. 모든 실행에서 DB 로드 오류 0 (`scan_integrity.csv`)
 - 정규화와 신호는 기획안 부록 B와 같은 규칙: 별칭 -> 별칭의 별칭 -> related 후보. KEV, EPSS(2026-11-01), SSVC(NVD 미러의 CISA ADP 값), BOD 26-04 16칸 표
 
@@ -74,7 +74,7 @@
 - 한계: Maven 미스캔. 소스 트리 스캔이라 이미지, OS 패키지 제외. indirect 모듈까지 센다. 보고 건수는 위험 건수가 아니다. SSVC 없는 CVE 15개는 기본값. 노출은 LoadBalancer만 봄
 
 ## 3. 도달성: govulncheck 오프라인
-- 코드와 결과: 커밋 f9cd533 (`reach/NOTES.md`). 실행 2026-11-02 09:24~09:32 UTC, `bash reach/run.sh` 약 8분. 같은 명령 3회 실행에서 커밋별 수가 같았다
+- 코드와 결과: 커밋 f9cd533 (`reach/NOTES.md`). 실행 2026-11-02 09:24~09:32 UTC, `bash reach/run.sh` 약 8분. 커밋된 기록으로 확인되는 것은 6절 재실행 1회에서 같았다는 것이다(작업 중 반복 실행은 마지막 결과만 남아 증거로 쓰지 않는다)
 - DB: OSV Go 덤프(2026-11-02 08:41 UTC 받음, sha256 71e545db, 레코드 최대 modified 2026-10-30T23:30Z)의 GO-* 4,731건(최대 modified 2026-10-30T10:55Z)을 govulncheck v1 DB로 변환(`reach/builddb`). golang/vulndb 8f7e390과 서비스 12개 결과가 같았다
 - 네트워크 없이 돈다: `unshare -n` + `GOPROXY=off`에서 12개 서비스 x 5회 실행 rc 0, strace connect 0회(3개 표본). 모듈과 툴체인은 미리 온라인으로 받았다
 - 네트워크 차단을 증명한 것은 govulncheck 실행과 M2 주 스캔뿐이다. 조치안 판정(`go get`, proxy.golang.org)과 LLM 호출, 데이터 받기는 네트워크를 쓴다. '전 과정 폐쇄망'이라고 쓰지 않는다
@@ -149,6 +149,7 @@
 |---|---|---|
 | M1 | 새 컨테이너에서 처음부터 전부(08:39~08:43), 그 뒤 `m1/backtest.py` 한 번 더 | `results/m1/` 바이트 동일 |
 | M2 | `bash m2/run.sh` (424초) | funnel, compare_proposal, findings 3개, stdlib_variants, path_compare CSV 동일. 바뀐 것은 생성 시각, HEAD, 로그의 메모리 주소뿐 |
+| M2 | 커밋 596ee4b 코드로 `bash m2/run.sh` (586초, 10:49 UTC) | `m2_dirty: false`. 값 파일 12개 동일. 바뀐 것은 메타데이터, 로그, VEX 예시의 시각뿐 |
 | 도달성 | `bash reach/run.sh` | levels.csv, cve_2023_44487.md 동일, summary.json은 실행 초만 다름. OpenVEX 12개는 (취약점, 제품, 상태) 집합이 같고 시각, ID, 순서만 다름 |
 | 조치안 | `agent.cases`, `agent.export`, 배관 시험 | cases.json, case_table.csv 동일. 시험 18개 통과(agent 6, vexpilot 12). LLM 실행은 다시 돌리지 않았다(샘플링이라 값이 조금 다를 수 있고 비용이 든다) |
 | 영향도 시범 | `vexpilot.report` | summary.csv, per_task.csv 동일 |

@@ -16,7 +16,6 @@ cd lotte/innovate && bash m2/run.sh     # 약 7~8분 (439~484초)
   - 워크트리: `/home/user/work/ob_{v0.5.0,main,v0.8.0}` (scan.sh가 커밋 해시를 대조하고 다르면 멈춘다)
   - 신호: `data/raw/kev`, `data/raw/epss/epss_scores-2026-11-01.csv.gz`, `data/raw/derived/nvd_table.csv.gz` (m1)
 - 코드 커밋: 마지막 실행 때 저장소 HEAD는 `2f3e995`(summary.json `git.repo_head`), m2 코드는 미커밋이었다. 리드가 커밋한 해시를 RESULTS.md에 붙인다
-- 네 번 돌렸다 (2026-11-02 UTC 시작 08:51, 09:08, 09:22, 09:42). 수치 CSV와 summary.json의 커밋별 값이 전부 같다 (마지막은 최종 코드)
   - 08:51 판은 `lock`에 호출 분석이 켜져 있었고 네트워크를 막지 않았다. 그래도 권고 목록과 수치가 같다
   - 실행 시간 484초, 439초, 445초 (다른 작업과 CPU를 나눠 씀)
 
