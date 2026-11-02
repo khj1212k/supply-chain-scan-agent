@@ -66,6 +66,8 @@ class CaseCtx:
     approvals: list[dict] = field(default_factory=list)
     patch_dir: Path | None = None
     verdict: dict | None = None
+    # 최종 도구 출력을 트립하면 SDK가 output_info 를 비운다(docs/guardrails.md). 사유는 여기에 따로 남긴다
+    last_guardrail_errors: list[str] = field(default_factory=list)
 
     @property
     def service(self) -> str:
@@ -223,6 +225,7 @@ async def plan_in_candidates(ctx: RunContextWrapper[CaseCtx], agent, output) -> 
         errs = check_plan(plan, ctx.context)
     except Exception as e:
         errs = [f"output is not a valid RemediationPlan: {type(e).__name__}"]
+    ctx.context.last_guardrail_errors = errs
     return GuardrailFunctionOutput(output_info={"errors": errs}, tripwire_triggered=bool(errs))
 
 
@@ -339,8 +342,8 @@ async def run_case(case: dict, spec: mc.ModelSpec, patch_dir: Path, auto_approve
             rec.update(outcome="input_guardrail")
             attempts.append(rec)
             break
-        except OutputGuardrailTripwireTriggered as e:
-            errs = (e.guardrail_result.output.output_info or {}).get("errors", [])
+        except OutputGuardrailTripwireTriggered:
+            errs = list(ctx.last_guardrail_errors)
             rec.update(outcome="output_guardrail", guardrail_errors=errs, llm_wall_s=round(time.time() - t0, 1))
             ctx.failures.append("GUARDRAIL REJECTED your previous plan: " + "; ".join(errs))
             attempts.append(rec)

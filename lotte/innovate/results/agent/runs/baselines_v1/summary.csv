@@ -1,0 +1,5 @@
+policy,model,cases,final_pass,first_attempt_pass,mean_attempts,guardrail_trips,out_of_list_proposals,pass_keep_go_1_19,pass_module_clean,tokens_per_case,cost_usd_total,cost_usd_per_case,llm_s_per_case,judge_s_per_case,auto_approved
+latest,none,10,3,3,1.0,0,0,0,3,0,0,0.0,0.0,7.1,0
+min_all,none,10,4,4,1.0,0,0,2,4,0,0,0.0,0.0,8.1,0
+min_target,none,10,6,6,1.0,0,0,4,3,0,0,0.0,0.0,14.8,0
+min_target_retry,none,10,6,6,1.8,0,0,4,3,0,0,0.0,0.0,6.2,0
