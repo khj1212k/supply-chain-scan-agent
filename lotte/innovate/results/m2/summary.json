@@ -1,0 +1,1134 @@
+{
+ "generated_utc": "2026-11-02T09:21:39Z",
+ "git": {
+  "repo_head": "9e64bf7165f9271e41ce4e0810238973c2bbd9a9",
+  "m2_dirty": true,
+  "nvd_feed_commit": "1b66e035d87d0ddf83705ff01b4382889755f89a 2026-11-02T07:05:52+00:00"
+ },
+ "reproduce": "cd lotte/innovate && bash m2/run.sh",
+ "go_reachable": {
+  "v0.5.0": "14 / 36",
+  "main": "5 / 9",
+  "v0.8.0": "13 / 36"
+ },
+ "go_reachable_detail": {
+  "source": {
+   "file": "results/reach/levels.csv",
+   "sha256": "af8786389b04",
+   "mtime_utc": "2026-11-02T09:20:23Z"
+  },
+  "v0.5.0": {
+   "symbol": 14,
+   "via_related_cve": 4,
+   "package": 14,
+   "module": 8,
+   "go_queue_rows": 36
+  },
+  "main": {
+   "module": 4,
+   "symbol": 5,
+   "go_queue_rows": 9
+  },
+  "v0.8.0": {
+   "symbol": 13,
+   "via_related_cve": 4,
+   "package": 15,
+   "module": 8,
+   "go_queue_rows": 36
+  }
+ },
+ "v0.5.0": {
+  "components": 823,
+  "components_unique": 823,
+  "components_by_eco": {
+   "NuGet": 10,
+   "Go": 131,
+   "npm": 580,
+   "PyPI": 102
+  },
+  "components_excl_test_csproj": 818,
+  "services": 10,
+  "vulnerable_components": 135,
+  "package_versions_all": 411,
+  "vulnerable_package_versions": 61,
+  "advisory_findings": 735,
+  "advisory_ids": 263,
+  "advisory_id_prefix": {
+   "GHSA": 168,
+   "GO": 40,
+   "PYSEC": 55
+  },
+  "alias_records_extra": 37,
+  "alias_records_missing": [],
+  "mal_ids": [],
+  "reported": 545,
+  "reported_by_eco": {
+   "Go": 164,
+   "npm": 262,
+   "PyPI": 119
+  },
+  "join": {
+   "alias": 532,
+   "related": 4,
+   "none": 9
+  },
+  "package_versions": 61,
+  "top5_share_pct": 39.6,
+  "top5": [
+   [
+    "Go|golang.org/x/net|0.4.0",
+    100
+   ],
+   [
+    "npm|node-forge|1.3.1",
+    36
+   ],
+   [
+    "PyPI|urllib3|1.26.13",
+    30
+   ],
+   [
+    "npm|tar|6.1.12",
+    26
+   ],
+   [
+    "Go|google.golang.org/grpc|1.51.0",
+    24
+   ]
+  ],
+  "unique_cves": 183,
+  "rows_with_cve": 536,
+  "ghsa_critical": 20,
+  "kev_rows": 9,
+  "kev_cves": [
+   "CVE-2023-44487",
+   "CVE-2026-111497"
+  ],
+  "epss01_cves": [
+   "CVE-2023-44487",
+   "CVE-2023-45288",
+   "CVE-2026-111497"
+  ],
+  "signal_B_rows": 13,
+  "crit_and_B": 1,
+  "ghsa_severity_missing": 80,
+  "ssvc_missing_cves": 15,
+  "nvd_missing_cves": 0,
+  "due_all_internal": {
+   "3d+F": 0,
+   "3d": 0,
+   "14d": 9,
+   "60d": 282,
+   "upgrade": 245
+  },
+  "due_frontend_only": {
+   "3d+F": 0,
+   "3d": 3,
+   "14d": 31,
+   "60d": 277,
+   "upgrade": 225
+  },
+  "due_all_public": {
+   "3d+F": 1,
+   "3d": 22,
+   "14d": 353,
+   "60d": 160,
+   "upgrade": 0
+  },
+  "queue": 37,
+  "queue_by_eco": {
+   "Go": 36,
+   "PyPI": 1
+  },
+  "queue_by_service": {
+   "checkoutservice": 3,
+   "frontend": 27,
+   "loadgenerator": 1,
+   "productcatalogservice": 3,
+   "shippingservice": 3
+  },
+  "queue_unique_cves": 27,
+  "queue_share_of_rows_with_cve_pct": 6.9,
+  "out_of_queue": 499,
+  "out_by_due": {
+   "upgrade": 225,
+   "60d": 274
+  },
+  "out_by_eco": {
+   "Go": 124,
+   "npm": 260,
+   "PyPI": 115
+  },
+  "out_package_versions": 60,
+  "sample": 15,
+  "sample_by_eco": {
+   "Go": 5,
+   "PyPI": 5,
+   "npm": 5
+  },
+  "all_public_queue": 376,
+  "all_public_queue_package_versions": 52,
+  "go_share_reported_pct": 30.1,
+  "due_split_cves": 38,
+  "kev_detail": [
+   [
+    "checkoutservice",
+    "golang.org/x/net",
+    "0.4.0",
+    "CVE-2023-44487",
+    "alias"
+   ],
+   [
+    "checkoutservice",
+    "google.golang.org/grpc",
+    "1.51.0",
+    "CVE-2023-44487",
+    "related"
+   ],
+   [
+    "frontend",
+    "golang.org/x/net",
+    "0.4.0",
+    "CVE-2023-44487",
+    "alias"
+   ],
+   [
+    "frontend",
+    "google.golang.org/grpc",
+    "1.51.0",
+    "CVE-2023-44487",
+    "related"
+   ],
+   [
+    "loadgenerator",
+    "brotli",
+    "1.0.9",
+    "CVE-2026-111497",
+    "alias"
+   ],
+   [
+    "productcatalogservice",
+    "golang.org/x/net",
+    "0.4.0",
+    "CVE-2023-44487",
+    "alias"
+   ],
+   [
+    "productcatalogservice",
+    "google.golang.org/grpc",
+    "1.51.0",
+    "CVE-2023-44487",
+    "related"
+   ],
+   [
+    "shippingservice",
+    "golang.org/x/net",
+    "0.4.0",
+    "CVE-2023-44487",
+    "alias"
+   ],
+   [
+    "shippingservice",
+    "google.golang.org/grpc",
+    "1.51.0",
+    "CVE-2023-44487",
+    "related"
+   ]
+  ],
+  "no_cve": [
+   [
+    "Go",
+    "google.golang.org/grpc",
+    "GHSA-hrxh-6v49-42gf"
+   ],
+   [
+    "PyPI",
+    "certifi",
+    "GHSA-6q48-6c7w-9gw2"
+   ],
+   [
+    "npm",
+    "markdown-it",
+    "GHSA-253c-mchw-3w2r"
+   ]
+  ],
+  "related_rows": [
+   [
+    "checkoutservice",
+    "google.golang.org/grpc",
+    "1.51.0",
+    "GHSA-m425-mq94-257g",
+    "CVE-2023-44487"
+   ],
+   [
+    "frontend",
+    "google.golang.org/grpc",
+    "1.51.0",
+    "GHSA-m425-mq94-257g",
+    "CVE-2023-44487"
+   ],
+   [
+    "productcatalogservice",
+    "google.golang.org/grpc",
+    "1.51.0",
+    "GHSA-m425-mq94-257g",
+    "CVE-2023-44487"
+   ],
+   [
+    "shippingservice",
+    "google.golang.org/grpc",
+    "1.51.0",
+    "GHSA-m425-mq94-257g",
+    "CVE-2023-44487"
+   ]
+  ],
+  "syft_components": 827,
+  "syft_by_type": {
+   "npm": 582,
+   "python": 102,
+   "go-module": 142,
+   "java-archive": 1
+  },
+  "syft_file_entries": 10,
+  "syft_unknown_version": 5,
+  "syft_services": 10,
+  "sbom_path": {
+   "components": 827,
+   "vulnerable_package_versions": 63,
+   "advisory_ids": 267,
+   "reported": 549,
+   "reported_by_eco": {
+    "npm": 262,
+    "PyPI": 119,
+    "Go": 168
+   },
+   "unique_cves": 185,
+   "kev_rows": 9,
+   "queue": 38,
+   "queue_by_eco": {
+    "PyPI": 1,
+    "Go": 37
+   }
+  },
+  "lock_resolve_identical": true,
+  "lock_call_identical_vulns": true,
+  "osv_call_analysis": {
+   "go_reported_rows": 164,
+   "go_reported_called": 48,
+   "go_no_result": 16,
+   "go_queue_rows": 36,
+   "go_queue_called": 14,
+   "go_groups_with_analysis": 148
+  },
+  "commit": "3c0d6597809d1f40dccd24b757b7ca67d40cadf8",
+  "sample_rows": [
+   [
+    "productcatalogservice",
+    "Go",
+    "golang.org/x/net",
+    "0.4.0",
+    "CVE-2026-42502"
+   ],
+   [
+    "checkoutservice",
+    "Go",
+    "golang.org/x/net",
+    "0.4.0",
+    "CVE-2023-3978"
+   ],
+   [
+    "shippingservice",
+    "Go",
+    "google.golang.org/protobuf",
+    "1.28.1",
+    "CVE-2024-24786"
+   ],
+   [
+    "frontend",
+    "Go",
+    "golang.org/x/net",
+    "0.4.0",
+    "CVE-2026-27136"
+   ],
+   [
+    "productcatalogservice",
+    "Go",
+    "golang.org/x/net",
+    "0.4.0",
+    "CVE-2026-97032"
+   ],
+   [
+    "recommendationservice",
+    "PyPI",
+    "certifi",
+    "2022.12.7",
+    "CVE-2023-37920"
+   ],
+   [
+    "emailservice",
+    "PyPI",
+    "pyasn1",
+    "0.4.8",
+    "CVE-2026-30922"
+   ],
+   [
+    "emailservice",
+    "PyPI",
+    "protobuf",
+    "3.20.3",
+    "CVE-2026-0994"
+   ],
+   [
+    "loadgenerator",
+    "PyPI",
+    "jinja2",
+    "3.1.2",
+    "CVE-2024-56201"
+   ],
+   [
+    "emailservice",
+    "PyPI",
+    "idna",
+    "3.4",
+    "CVE-2024-3651"
+   ],
+   [
+    "currencyservice",
+    "npm",
+    "protobufjs-cli",
+    "1.0.2",
+    "CVE-2026-42290"
+   ],
+   [
+    "paymentservice",
+    "npm",
+    "protobufjs",
+    "6.11.3",
+    "CVE-2026-45740"
+   ],
+   [
+    "paymentservice",
+    "npm",
+    "semver",
+    "7.3.8",
+    "CVE-2022-25883"
+   ],
+   [
+    "currencyservice",
+    "npm",
+    "protobufjs",
+    "7.1.2",
+    "CVE-2026-44293"
+   ],
+   [
+    "currencyservice",
+    "npm",
+    "protobufjs",
+    "7.1.2",
+    "CVE-2026-44290"
+   ]
+  ]
+ },
+ "main": {
+  "components": 857,
+  "components_unique": 857,
+  "components_by_eco": {
+   "NuGet": 11,
+   "Go": 178,
+   "npm": 484,
+   "PyPI": 184
+  },
+  "components_excl_test_csproj": 852,
+  "services": 11,
+  "vulnerable_components": 61,
+  "package_versions_all": 487,
+  "vulnerable_package_versions": 36,
+  "advisory_findings": 280,
+  "advisory_ids": 161,
+  "advisory_id_prefix": {
+   "GHSA": 100,
+   "GO": 10,
+   "PYSEC": 51
+  },
+  "alias_records_extra": 55,
+  "alias_records_missing": [],
+  "mal_ids": [],
+  "reported": 200,
+  "reported_by_eco": {
+   "Go": 38,
+   "npm": 42,
+   "PyPI": 120
+  },
+  "join": {
+   "none": 9,
+   "alias": 191
+  },
+  "package_versions": 36,
+  "top5_share_pct": 60.0,
+  "top5": [
+   [
+    "PyPI|pillow|12.3.0",
+    41
+   ],
+   [
+    "npm|protobufjs|6.11.4",
+    22
+   ],
+   [
+    "Go|golang.org/x/net|0.58.0",
+    21
+   ],
+   [
+    "PyPI|urllib3|2.6.3",
+    20
+   ],
+   [
+    "PyPI|pyasn1|0.5.0",
+    16
+   ]
+  ],
+  "unique_cves": 107,
+  "rows_with_cve": 191,
+  "ghsa_critical": 9,
+  "kev_rows": 1,
+  "kev_cves": [
+   "CVE-2026-111497"
+  ],
+  "epss01_cves": [
+   "CVE-2026-111497"
+  ],
+  "signal_B_rows": 1,
+  "crit_and_B": 1,
+  "ghsa_severity_missing": 38,
+  "ssvc_missing_cves": 6,
+  "nvd_missing_cves": 2,
+  "due_all_internal": {
+   "3d+F": 0,
+   "3d": 0,
+   "14d": 1,
+   "60d": 119,
+   "upgrade": 71
+  },
+  "due_frontend_only": {
+   "3d+F": 0,
+   "3d": 1,
+   "14d": 9,
+   "60d": 112,
+   "upgrade": 69
+  },
+  "due_all_public": {
+   "3d+F": 1,
+   "3d": 13,
+   "14d": 140,
+   "60d": 37,
+   "upgrade": 0
+  },
+  "queue": 10,
+  "queue_by_eco": {
+   "Go": 9,
+   "PyPI": 1
+  },
+  "queue_by_service": {
+   "frontend": 9,
+   "loadgenerator": 1
+  },
+  "queue_unique_cves": 10,
+  "queue_share_of_rows_with_cve_pct": 5.2,
+  "out_of_queue": 181,
+  "out_by_due": {
+   "60d": 112,
+   "upgrade": 69
+  },
+  "out_by_eco": {
+   "Go": 25,
+   "npm": 42,
+   "PyPI": 114
+  },
+  "out_package_versions": 32,
+  "sample": 15,
+  "sample_by_eco": {
+   "Go": 5,
+   "PyPI": 5,
+   "npm": 5
+  },
+  "all_public_queue": 154,
+  "all_public_queue_package_versions": 27,
+  "go_share_reported_pct": 19.0,
+  "due_split_cves": 9,
+  "kev_detail": [
+   [
+    "loadgenerator",
+    "brotli",
+    "1.2.0",
+    "CVE-2026-111497",
+    "alias"
+   ]
+  ],
+  "no_cve": [
+   [
+    "Go",
+    "golang.org/x/crypto",
+    "GO-2026-5932"
+   ],
+   [
+    "PyPI",
+    "certifi",
+    "GHSA-6q48-6c7w-9gw2"
+   ],
+   [
+    "PyPI",
+    "pillow",
+    "GHSA-78g4-xqwv-q3g8"
+   ]
+  ],
+  "related_rows": [],
+  "syft_components": 898,
+  "syft_by_type": {
+   "npm": 489,
+   "python": 184,
+   "go-module": 224,
+   "java-archive": 1
+  },
+  "syft_file_entries": 11,
+  "syft_unknown_version": 5,
+  "syft_services": 11,
+  "sbom_path": {
+   "components": 895,
+   "vulnerable_package_versions": 38,
+   "advisory_ids": 166,
+   "reported": 204,
+   "reported_by_eco": {
+    "npm": 42,
+    "PyPI": 120,
+    "Go": 42
+   },
+   "unique_cves": 111,
+   "kev_rows": 1,
+   "queue": 10,
+   "queue_by_eco": {
+    "PyPI": 1,
+    "Go": 9
+   }
+  },
+  "lock_resolve_identical": true,
+  "lock_call_identical_vulns": true,
+  "osv_call_analysis": {
+   "go_reported_rows": 38,
+   "go_reported_called": 20,
+   "go_no_result": 0,
+   "go_queue_rows": 9,
+   "go_queue_called": 5,
+   "go_groups_with_analysis": 38
+  },
+  "commit": "c7cb6d5bfd6ea3aed768634ebbcb98cb7a523712",
+  "sample_rows": [
+   [
+    "shippingservice",
+    "Go",
+    "golang.org/x/net",
+    "0.59.0",
+    "CVE-2026-78659"
+   ],
+   [
+    "checkoutservice",
+    "Go",
+    "golang.org/x/net",
+    "0.58.0",
+    "CVE-2026-78659"
+   ],
+   [
+    "productcatalogservice",
+    "Go",
+    "golang.org/x/net",
+    "0.58.0",
+    "CVE-2026-78660"
+   ],
+   [
+    "shippingservice",
+    "Go",
+    "golang.org/x/net",
+    "0.59.0",
+    "CVE-2026-78661"
+   ],
+   [
+    "checkoutservice",
+    "Go",
+    "golang.org/x/net",
+    "0.58.0",
+    "CVE-2026-78663"
+   ],
+   [
+    "emailservice",
+    "PyPI",
+    "urllib3",
+    "2.6.3",
+    "CVE-2026-97689"
+   ],
+   [
+    "shoppingassistantservice",
+    "PyPI",
+    "langchain-core",
+    "1.2.11",
+    "CVE-2026-40087"
+   ],
+   [
+    "emailservice",
+    "PyPI",
+    "pyasn1",
+    "0.5.0",
+    "CVE-2026-119197"
+   ],
+   [
+    "shoppingassistantservice",
+    "PyPI",
+    "pillow",
+    "12.3.0",
+    "CVE-2026-96640"
+   ],
+   [
+    "shoppingassistantservice",
+    "PyPI",
+    "requests",
+    "2.32.5",
+    "CVE-2026-25645"
+   ],
+   [
+    "paymentservice",
+    "npm",
+    "uuid",
+    "9.0.1",
+    "CVE-2026-41907"
+   ],
+   [
+    "currencyservice",
+    "npm",
+    "protobufjs",
+    "6.11.4",
+    "CVE-2026-44294"
+   ],
+   [
+    "paymentservice",
+    "npm",
+    "form-data",
+    "2.5.5",
+    "CVE-2026-12143"
+   ],
+   [
+    "paymentservice",
+    "npm",
+    "protobufjs",
+    "6.11.4",
+    "CVE-2026-44294"
+   ],
+   [
+    "paymentservice",
+    "npm",
+    "protobufjs",
+    "7.5.9",
+    "CVE-2026-59877"
+   ]
+  ]
+ },
+ "v0.8.0": {
+  "components": 843,
+  "components_unique": 843,
+  "components_by_eco": {
+   "NuGet": 12,
+   "Go": 131,
+   "npm": 591,
+   "PyPI": 109
+  },
+  "components_excl_test_csproj": 838,
+  "services": 10,
+  "vulnerable_components": 133,
+  "package_versions_all": 426,
+  "vulnerable_package_versions": 62,
+  "advisory_findings": 717,
+  "advisory_ids": 255,
+  "advisory_id_prefix": {
+   "GHSA": 164,
+   "GO": 39,
+   "PYSEC": 52
+  },
+  "alias_records_extra": 36,
+  "alias_records_missing": [],
+  "mal_ids": [],
+  "reported": 536,
+  "reported_by_eco": {
+   "NuGet": 1,
+   "Go": 159,
+   "npm": 261,
+   "PyPI": 115
+  },
+  "join": {
+   "alias": 523,
+   "related": 4,
+   "none": 9
+  },
+  "package_versions": 62,
+  "top5_share_pct": 38.4,
+  "top5": [
+   [
+    "Go|golang.org/x/net|0.10.0",
+    96
+   ],
+   [
+    "npm|node-forge|1.3.1",
+    36
+   ],
+   [
+    "npm|tar|6.1.12",
+    26
+   ],
+   [
+    "Go|google.golang.org/grpc|1.55.0",
+    24
+   ],
+   [
+    "npm|protobufjs|6.11.3",
+    24
+   ]
+  ],
+  "unique_cves": 179,
+  "rows_with_cve": 527,
+  "ghsa_critical": 20,
+  "kev_rows": 9,
+  "kev_cves": [
+   "CVE-2023-44487",
+   "CVE-2026-111497"
+  ],
+  "epss01_cves": [
+   "CVE-2023-44487",
+   "CVE-2023-45288",
+   "CVE-2026-111497"
+  ],
+  "signal_B_rows": 13,
+  "crit_and_B": 1,
+  "ghsa_severity_missing": 80,
+  "ssvc_missing_cves": 15,
+  "nvd_missing_cves": 0,
+  "due_all_internal": {
+   "3d+F": 0,
+   "3d": 0,
+   "14d": 9,
+   "60d": 277,
+   "upgrade": 241
+  },
+  "due_frontend_only": {
+   "3d+F": 0,
+   "3d": 3,
+   "14d": 31,
+   "60d": 272,
+   "upgrade": 221
+  },
+  "due_all_public": {
+   "3d+F": 1,
+   "3d": 23,
+   "14d": 350,
+   "60d": 153,
+   "upgrade": 0
+  },
+  "queue": 37,
+  "queue_by_eco": {
+   "Go": 36,
+   "PyPI": 1
+  },
+  "queue_by_service": {
+   "checkoutservice": 3,
+   "frontend": 27,
+   "loadgenerator": 1,
+   "productcatalogservice": 3,
+   "shippingservice": 3
+  },
+  "queue_unique_cves": 27,
+  "queue_share_of_rows_with_cve_pct": 7.0,
+  "out_of_queue": 490,
+  "out_by_due": {
+   "60d": 269,
+   "upgrade": 221
+  },
+  "out_by_eco": {
+   "NuGet": 1,
+   "Go": 119,
+   "npm": 259,
+   "PyPI": 111
+  },
+  "out_package_versions": 61,
+  "sample": 16,
+  "sample_by_eco": {
+   "Go": 5,
+   "NuGet": 1,
+   "PyPI": 5,
+   "npm": 5
+  },
+  "all_public_queue": 374,
+  "all_public_queue_package_versions": 54,
+  "go_share_reported_pct": 29.7,
+  "due_split_cves": 37,
+  "kev_detail": [
+   [
+    "checkoutservice",
+    "golang.org/x/net",
+    "0.10.0",
+    "CVE-2023-44487",
+    "alias"
+   ],
+   [
+    "checkoutservice",
+    "google.golang.org/grpc",
+    "1.55.0",
+    "CVE-2023-44487",
+    "related"
+   ],
+   [
+    "frontend",
+    "golang.org/x/net",
+    "0.10.0",
+    "CVE-2023-44487",
+    "alias"
+   ],
+   [
+    "frontend",
+    "google.golang.org/grpc",
+    "1.55.0",
+    "CVE-2023-44487",
+    "related"
+   ],
+   [
+    "loadgenerator",
+    "brotli",
+    "1.0.9",
+    "CVE-2026-111497",
+    "alias"
+   ],
+   [
+    "productcatalogservice",
+    "golang.org/x/net",
+    "0.10.0",
+    "CVE-2023-44487",
+    "alias"
+   ],
+   [
+    "productcatalogservice",
+    "google.golang.org/grpc",
+    "1.55.0",
+    "CVE-2023-44487",
+    "related"
+   ],
+   [
+    "shippingservice",
+    "golang.org/x/net",
+    "0.10.0",
+    "CVE-2023-44487",
+    "alias"
+   ],
+   [
+    "shippingservice",
+    "google.golang.org/grpc",
+    "1.55.0",
+    "CVE-2023-44487",
+    "related"
+   ]
+  ],
+  "no_cve": [
+   [
+    "Go",
+    "google.golang.org/grpc",
+    "GHSA-hrxh-6v49-42gf"
+   ],
+   [
+    "PyPI",
+    "certifi",
+    "GHSA-6q48-6c7w-9gw2"
+   ],
+   [
+    "npm",
+    "markdown-it",
+    "GHSA-253c-mchw-3w2r"
+   ]
+  ],
+  "related_rows": [
+   [
+    "checkoutservice",
+    "google.golang.org/grpc",
+    "1.55.0",
+    "GHSA-m425-mq94-257g",
+    "CVE-2023-44487"
+   ],
+   [
+    "frontend",
+    "google.golang.org/grpc",
+    "1.55.0",
+    "GHSA-m425-mq94-257g",
+    "CVE-2023-44487"
+   ],
+   [
+    "productcatalogservice",
+    "google.golang.org/grpc",
+    "1.55.0",
+    "GHSA-m425-mq94-257g",
+    "CVE-2023-44487"
+   ],
+   [
+    "shippingservice",
+    "google.golang.org/grpc",
+    "1.55.0",
+    "GHSA-m425-mq94-257g",
+    "CVE-2023-44487"
+   ]
+  ],
+  "syft_components": 842,
+  "syft_by_type": {
+   "npm": 593,
+   "python": 109,
+   "go-module": 139,
+   "java-archive": 1
+  },
+  "syft_file_entries": 10,
+  "syft_unknown_version": 5,
+  "syft_services": 10,
+  "sbom_path": {
+   "components": 842,
+   "vulnerable_package_versions": 61,
+   "advisory_ids": 254,
+   "reported": 535,
+   "reported_by_eco": {
+    "npm": 261,
+    "PyPI": 115,
+    "Go": 159
+   },
+   "unique_cves": 178,
+   "kev_rows": 9,
+   "queue": 37,
+   "queue_by_eco": {
+    "PyPI": 1,
+    "Go": 36
+   }
+  },
+  "lock_resolve_identical": true,
+  "lock_call_identical_vulns": true,
+  "osv_call_analysis": {
+   "go_reported_rows": 159,
+   "go_reported_called": 44,
+   "go_no_result": 16,
+   "go_queue_rows": 36,
+   "go_queue_called": 13,
+   "go_groups_with_analysis": 143
+  },
+  "commit": "d54af3d2510995d33521ac543dd885b150213f95",
+  "sample_rows": [
+   [
+    "productcatalogservice",
+    "Go",
+    "golang.org/x/net",
+    "0.10.0",
+    "CVE-2026-78659"
+   ],
+   [
+    "checkoutservice",
+    "Go",
+    "golang.org/x/net",
+    "0.10.0",
+    "CVE-2024-45338"
+   ],
+   [
+    "frontend",
+    "Go",
+    "golang.org/x/net",
+    "0.10.0",
+    "CVE-2026-42506"
+   ],
+   [
+    "productcatalogservice",
+    "Go",
+    "golang.org/x/sys",
+    "0.8.0",
+    "CVE-2026-39824"
+   ],
+   [
+    "productcatalogservice",
+    "Go",
+    "golang.org/x/text",
+    "0.9.0",
+    "CVE-2026-56852"
+   ],
+   [
+    "cartservice",
+    "NuGet",
+    "Npgsql",
+    "7.0.4",
+    "CVE-2024-32655"
+   ],
+   [
+    "emailservice",
+    "PyPI",
+    "protobuf",
+    "4.23.2",
+    "CVE-2026-0994"
+   ],
+   [
+    "loadgenerator",
+    "PyPI",
+    "jinja2",
+    "3.1.2",
+    "CVE-2024-56326"
+   ],
+   [
+    "emailservice",
+    "PyPI",
+    "idna",
+    "3.4",
+    "CVE-2024-3651"
+   ],
+   [
+    "recommendationservice",
+    "PyPI",
+    "requests",
+    "2.31.0",
+    "CVE-2024-35195"
+   ],
+   [
+    "recommendationservice",
+    "PyPI",
+    "urllib3",
+    "1.26.16",
+    "CVE-2026-44431"
+   ],
+   [
+    "currencyservice",
+    "npm",
+    "protobufjs-cli",
+    "1.0.2",
+    "CVE-2026-42290"
+   ],
+   [
+    "paymentservice",
+    "npm",
+    "protobufjs",
+    "6.11.3",
+    "CVE-2026-48712"
+   ],
+   [
+    "paymentservice",
+    "npm",
+    "taffydb",
+    "2.6.2",
+    "CVE-2019-10790"
+   ],
+   [
+    "currencyservice",
+    "npm",
+    "protobufjs",
+    "7.2.3",
+    "CVE-2026-44293"
+   ],
+   [
+    "currencyservice",
+    "npm",
+    "protobufjs",
+    "7.2.3",
+    "CVE-2026-44290"
+   ]
+  ]
+ }
+}

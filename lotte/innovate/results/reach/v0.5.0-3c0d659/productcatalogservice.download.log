@@ -1,0 +1,4 @@
+## GOTOOLCHAIN=go1.20.4
+go version go1.20.4 linux/amd64
+## GOTOOLCHAIN=local
+go version go1.24.7 linux/amd64

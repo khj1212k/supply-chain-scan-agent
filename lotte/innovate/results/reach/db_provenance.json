@@ -1,0 +1,36 @@
+{
+ "primary_db": {
+  "kind": "builddb v1 DB",
+  "path": "/home/user/work/reachtmp/db_osvzip",
+  "source_url": "https://osv-vulnerabilities.storage.googleapis.com/Go/all.zip",
+  "filter": "GO-* only",
+  "local_file": "/home/user/work/osvdb/osv-scalibr/Go/all.zip",
+  "sha256": "71e545dbaca20a60937a081582ac704f08cc96e65ebc0dd76644261fbce9303a",
+  "bytes": 12701800,
+  "file_mtime_utc": "2026-11-02T08:41:01Z",
+  "zip_stats": {
+   "records_all": 9815,
+   "records_go": 4731,
+   "max_modified_all": "2026-10-30T23:30:04.079827623Z"
+  },
+  "index_db_json": {
+   "modified": "2026-10-30T10:55:54.969590579Z"
+  },
+  "build": "entries=4731 modules=1449 db_modified=2026-10-30T10:55:54.969590579Z "
+ },
+ "check_db_flat": {
+  "kind": "same GO-* files as a flat folder; govulncheck builds its own in-memory index (hybrid source)",
+  "path": "/home/user/work/reachtmp/osvzip_go"
+ },
+ "check_db_vulndb": {
+  "kind": "builddb v1 DB",
+  "path": "/home/user/work/reachtmp/db_vulndb",
+  "source": "https://github.com/golang/vulndb.git data/osv",
+  "commit": "8f7e390a0ff7345d74ecd7a056a1073214466db9",
+  "commit_time": "2026-10-27T14:16:18-07:00",
+  "index_db_json": {
+   "modified": "2026-10-27T21:16:18Z"
+  },
+  "build": "note: entry modified 값이 모두 0이라 db.json에 -modified-fallback 값을 넣었다 entries=4712 modules=1443 db_modified=2026-10-27T21:16:18Z"
+ }
+}

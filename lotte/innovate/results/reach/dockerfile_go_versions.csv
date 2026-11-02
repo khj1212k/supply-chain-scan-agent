@@ -1,0 +1,13 @@
+commit_label,service,dockerfile_from_golang,go_mod_go,go_mod_toolchain,targets_goversion,match
+v0.5.0-3c0d659,checkoutservice,1.19.4,1.19,,go1.19.4,yes
+v0.5.0-3c0d659,frontend,1.19.4,1.19,,go1.19.4,yes
+v0.5.0-3c0d659,productcatalogservice,1.19.4,1.19,,go1.19.4,yes
+v0.5.0-3c0d659,shippingservice,1.19.4,1.19,,go1.19.4,yes
+v0.8.0-d54af3d,checkoutservice,1.20.4,1.19,,go1.20.4,yes
+v0.8.0-d54af3d,frontend,1.20.4,1.19,,go1.20.4,yes
+v0.8.0-d54af3d,productcatalogservice,1.20.4,1.19,,go1.20.4,yes
+v0.8.0-d54af3d,shippingservice,1.20.4,1.19,,go1.20.4,yes
+main-c7cb6d5,checkoutservice,1.27.0,1.25.0,go1.27.1,go1.27.0,yes
+main-c7cb6d5,frontend,1.27.0,1.25.0,go1.27.1,go1.27.0,yes
+main-c7cb6d5,productcatalogservice,1.27.0,1.25.8,go1.27.1,go1.27.0,yes
+main-c7cb6d5,shippingservice,1.27.0,1.26.0,go1.27.1,go1.27.0,yes

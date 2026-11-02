@@ -1,0 +1,53 @@
+label,item,proposal,this_run,delta
+v0.5.0,services,11,10,-1
+v0.5.0,components,859,823,-36
+v0.5.0,reported,609,545,-64
+v0.5.0,eco_npm,262,262,0
+v0.5.0,eco_Go,164,164,0
+v0.5.0,eco_PyPI,119,119,0
+v0.5.0,eco_Maven,64,0,-64
+v0.5.0,package_versions,74,61,-13
+v0.5.0,top5_share_pct,35.5,39.6,4.1
+v0.5.0,join_alias,595,532,-63
+v0.5.0,join_related,5,4,-1
+v0.5.0,join_none,9,9,0
+v0.5.0,unique_cves,244,183,-61
+v0.5.0,ghsa_critical,21,20,-1
+v0.5.0,kev_rows,10,9,-1
+v0.5.0,signal_B_rows,14,13,-1
+v0.5.0,crit_and_B,1,1,0
+v0.5.0,due_all_internal,"0, 0, 10, 323, 267","0, 0, 9, 282, 245",
+v0.5.0,due_frontend_only,"0, 3, 32, 318, 247","0, 3, 31, 277, 225",
+v0.5.0,due_all_public,"1, 23, 400, 176, 0","1, 22, 353, 160, 0",
+v0.5.0,queue,38,37,-1
+v0.5.0,queue_Go,36,36,0
+v0.5.0,out_of_queue,562,499,-63
+v0.5.0,out_package_versions,73,60,-13
+v0.5.0,sample,20,15,-5
+v0.5.0,mal,0,0,0
+main,services,12,11,-1
+main,components,903,857,-46
+main,reported,208,200,-8
+main,eco_npm,42,42,0
+main,eco_Go,38,38,0
+main,eco_PyPI,120,120,0
+main,eco_Maven,8,0,-8
+main,package_versions,41,36,-5
+main,top5_share_pct,57.7,60.0,2.3
+main,join_alias,199,191,-8
+main,join_related,0,0,0
+main,join_none,9,9,0
+main,unique_cves,115,107,-8
+main,ghsa_critical,10,9,-1
+main,kev_rows,1,1,0
+main,signal_B_rows,1,1,0
+main,crit_and_B,1,1,0
+main,due_all_internal,"0, 0, 1, 124, 74","0, 0, 1, 119, 71",
+main,due_frontend_only,"0, 1, 9, 117, 72","0, 1, 9, 112, 69",
+main,due_all_public,"1, 13, 146, 39, 0","1, 13, 140, 37, 0",
+main,queue,10,10,0
+main,queue_Go,9,9,0
+main,out_of_queue,189,181,-8
+main,out_package_versions,37,32,-5
+main,sample,20,15,-5
+main,mal,0,0,0

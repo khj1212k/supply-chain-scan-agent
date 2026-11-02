@@ -1,0 +1,28 @@
+{
+ "file": "results/m2/vex_CVE-2023-44487.cdx.json",
+ "components": 8,
+ "services": [
+  "checkoutservice",
+  "frontend",
+  "productcatalogservice",
+  "shippingservice"
+ ],
+ "advisories": [
+  "GHSA-m425-mq94-257g",
+  "GHSA-qppj-fm5r-hxr3",
+  "GO-2023-2153"
+ ],
+ "enum_checks": {
+  "analysis.state": true,
+  "ratings.method": true,
+  "ratings.severity": true,
+  "components.type": true
+ },
+ "full_schema": {
+  "ran": true,
+  "jsonschema": "4.26.0",
+  "valid": true,
+  "errors": [],
+  "format_note": "date-time 형식 검사는 건너뜀 (rfc3339-validator 없음)"
+ }
+}

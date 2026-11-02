@@ -1,0 +1,14 @@
+source,as_of,detail
+OSV Go all.zip,2026-10-30T23:30:04.079827623Z,"records 9815, sha256 71e545dbaca2, file 2026-11-02T08:41:01Z"
+OSV npm all.zip,2026-11-02T06:30:05.234707766Z,"records 231019, sha256 6edcfd946549, file 2026-11-02T08:41:10Z"
+OSV PyPI all.zip,2026-11-02T04:45:03.386245159Z,"records 26778, sha256 185c442aaa14, file 2026-11-02T08:41:22Z"
+OSV NuGet all.zip,2026-10-28T20:00:04.871955012Z,"records 1967, sha256 1fa3623416c8, file 2026-11-02T08:41:24Z"
+OSV Maven all.zip,2026-10-31T10:55:53.653622012Z,"records 7224, sha256 d00b30a26258, file 2026-11-02T08:41:25Z"
+OSV GitHub Actions all.zip,2026-10-30T20:30:05.260372288Z,"records 57, sha256 32c7cd1b8523, file 2026-11-02T08:41:25Z"
+OSV Bitnami all.zip (별칭 조회만),2026-10-30T20:56:19.135606039Z,"records 10074, fetched 2026-11-02T08:57:07Z, sha256 ed67a6ad69e8"
+KEV,2026-10-30T17:02:45.3665Z,"catalogVersion 2026.10.30, count 1766"
+EPSS,"model_version:v2026.06.15,score_date:2026-11-01T12:00:16Z",epss_scores-2026-11-01.csv.gz
+"NVD 표 (CVSS, SSVC)",1b66e035d87d0ddf83705ff01b4382889755f89a 2026-11-02T07:05:52+00:00,"fkie-cad/nvd-json-data-feeds 복제 HEAD, m1/nvd_table.py"
+Online Boutique v0.5.0,3c0d6597809d1f40dccd24b757b7ca67d40cadf8,git worktree HEAD
+Online Boutique main,c7cb6d5bfd6ea3aed768634ebbcb98cb7a523712,git worktree HEAD
+Online Boutique v0.8.0,d54af3d2510995d33521ac543dd885b150213f95,git worktree HEAD

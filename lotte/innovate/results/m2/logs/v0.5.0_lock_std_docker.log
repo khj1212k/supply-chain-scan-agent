@@ -1,0 +1,18 @@
+Scanning dir /home/user/work/ob_v0.5.0/src
+Starting filesystem walk for root: /
+Scanned /home/user/work/ob_v0.5.0/src/loadgenerator/requirements.txt file and found 27 packages
+Scanned /home/user/work/ob_v0.5.0/src/emailservice/requirements.txt file and found 40 packages
+Scanned /home/user/work/ob_v0.5.0/src/productcatalogservice/go.mod file and found 36 packages
+Scanned /home/user/work/ob_v0.5.0/src/recommendationservice/requirements.txt file and found 35 packages
+Scanned /home/user/work/ob_v0.5.0/src/frontend/go.mod file and found 40 packages
+Scanned /home/user/work/ob_v0.5.0/src/cartservice/src/cartservice.csproj file and found 5 packages
+Scanned /home/user/work/ob_v0.5.0/src/cartservice/tests/cartservice.tests.csproj file and found 5 packages
+Scanned /home/user/work/ob_v0.5.0/src/shippingservice/go.mod file and found 22 packages
+Scanned /home/user/work/ob_v0.5.0/src/currencyservice/package-lock.json file and found 299 packages
+Scanned /home/user/work/ob_v0.5.0/src/checkoutservice/go.mod file and found 37 packages
+Scanned /home/user/work/ob_v0.5.0/src/paymentservice/package-lock.json file and found 281 packages
+End status: 48 dirs visited, 224 inodes visited, 11 Extract calls, 52.258085ms elapsed, 52.258185ms wall time
+Loaded npm local db from /home/user/work/osvdb/osv-scalibr/npm/all.zip
+Loaded NuGet local db from /home/user/work/osvdb/osv-scalibr/NuGet/all.zip
+Loaded PyPI local db from /home/user/work/osvdb/osv-scalibr/PyPI/all.zip
+Loaded Go local db from /home/user/work/osvdb/osv-scalibr/Go/all.zip

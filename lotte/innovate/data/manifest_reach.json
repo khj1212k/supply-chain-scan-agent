@@ -1,0 +1,8 @@
+{
+ "reach/docker-library-golang-236db66f2a220ba203e8cea391499d33d13124e4-Dockerfile-linux.template": {
+  "bytes": 8710,
+  "fetched_utc": "2026-11-02T08:58:08Z",
+  "sha256": "ac15b856471ac0029eed841394dc0bb595576104917080a2c84c31056098eafb",
+  "url": "https://raw.githubusercontent.com/docker-library/golang/236db66f2a220ba203e8cea391499d33d13124e4/Dockerfile-linux.template"
+ }
+}

@@ -1,0 +1,28 @@
+# 기록 시각 2026-11-02T09:22:21Z
+## syft
+/home/user/tools/bin/syft: go1.26.10
+	path	github.com/anchore/syft/cmd/syft
+	mod	github.com/anchore/syft	v1.55.0	h1:IeBZJrF/g75ba3k0ITQ8v4NCVGiGsWU3Wa1P/eSAFa0=
+## osv-scanner --version
+osv-scanner version: 2.7.0
+osv-scalibr version: 0.5.3
+commit: n/a
+built at: n/a
+## osv-scanner 빌드 모듈 (osv-scalibr 실제 버전)
+	path	github.com/google/osv-scanner/v2/cmd/osv-scanner
+	mod	github.com/google/osv-scanner/v2	v2.7.0	h1:7aOrJ9vB7qbzxC3R+QCXs03SHQiRuM80RJdqZhUEl2g=
+	dep	github.com/google/osv-scalibr	v0.5.4-0.20261009010329-5be78a00e3c2	h1:Wuc6ytG0LYkegdUfSqzg/D6JKfoK+kQnkshSTvluqFg=
+## go (lock_call 의 호출 분석이 쓰는 툴체인. GOTOOLCHAIN=auto 면 go.mod toolchain 지시어 버전으로 바뀔 수 있다)
+go version go1.24.7 linux/amd64
+auto
+https://proxy.golang.org,direct
+## OSV DB 폴더
+/home/user/work/osvdb
+100334 2026-11-02T08:41 /home/user/work/osvdb/osv-scalibr/GitHub Actions/all.zip 
+12701800 2026-11-02T08:41 /home/user/work/osvdb/osv-scalibr/Go/all.zip  
+10479272 2026-11-02T08:41 /home/user/work/osvdb/osv-scalibr/Maven/all.zip  
+2680919 2026-11-02T08:41 /home/user/work/osvdb/osv-scalibr/NuGet/all.zip  
+37605761 2026-11-02T08:41 /home/user/work/osvdb/osv-scalibr/PyPI/all.zip  
+219727466 2026-11-02T08:41 /home/user/work/osvdb/osv-scalibr/npm/all.zip  
+v0.5.0 go_image=1.19.4
+main go_image=1.27.0

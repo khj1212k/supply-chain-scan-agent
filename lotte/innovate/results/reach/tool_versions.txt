@@ -1,0 +1,12 @@
+date_utc: 2026-11-02T09:24:14Z
+go_local: go version go1.24.7 linux/amd64
+govulncheck_used: /home/user/work/reachcache/bin-go1.27.0/govulncheck
+govulncheck_used_buildinfo: /home/user/work/reachcache/bin-go1.27.0/govulncheck: go1.27.0
+govulncheck_used_module: golang.org/x/vuln v1.9.0 h1:12VaqnI9kJfqwRoPptxoqsUhQtdfrSbdksT7X/KY/sc=
+govulncheck_shared: /home/user/tools/bin/govulncheck
+govulncheck_shared_buildinfo: /home/user/tools/bin/govulncheck: go1.26.10
+govulncheck_shared_module: golang.org/x/vuln v1.9.0 h1:12VaqnI9kJfqwRoPptxoqsUhQtdfrSbdksT7X/KY/sc=
+strace: strace -- version 6.8
+unshare: unshare from util-linux 2.39.3
+repo_commit: 68242d2501cc69aba926adcc7f579d37ac640657
+repo_reach_dirty_files: 5

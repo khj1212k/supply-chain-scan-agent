@@ -1,0 +1,13 @@
+label,ecosystem,lock_package_versions,sbom_package_versions,both,only_lock,only_sbom,lock_vulnerable,sbom_vulnerable,lock_advisory_ids,sbom_advisory_ids,same_ids_on_shared
+v0.5.0,Go,40,45,40,0,5,12,14,61,65,40
+v0.5.0,NuGet,10,0,0,10,0,0,0,0,0,0
+v0.5.0,PyPI,58,58,58,0,0,17,17,116,116,58
+v0.5.0,npm,303,305,303,0,2,32,32,86,86,303
+main,Go,82,107,82,0,25,4,6,10,15,82
+main,NuGet,11,0,0,11,0,0,0,0,0,0
+main,PyPI,132,132,132,0,0,24,24,133,133,132
+main,npm,262,264,262,0,2,8,8,18,18,262
+v0.8.0,Go,39,43,39,0,4,11,11,59,59,39
+v0.8.0,NuGet,12,0,0,12,0,1,0,1,0,0
+v0.8.0,PyPI,64,64,64,0,0,19,19,110,110,64
+v0.8.0,npm,311,313,311,0,2,31,31,85,85,311

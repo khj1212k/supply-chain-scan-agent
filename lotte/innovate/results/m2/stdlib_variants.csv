@@ -1,0 +1,13 @@
+label,variant,note,stdlib_versions,stdlib_advisory_ids,components,reported,reported_Go,unique_cves,kev_rows,kev_cves,queue,queue_Go,out_of_queue,sample
+v0.5.0,lock,stdlib 제외 (osv-scanner 2.7.0 기본. 헤드라인),,0,823,545,164,183,9,CVE-2023-44487 CVE-2026-111497,37,36,499,15
+v0.5.0,lock_std_gomod,"stdlib 포함, ScanGoModVersion (go.mod toolchain 또는 go 지시어)",1.19.99,88,827,897,516,261,9,CVE-2023-44487 CVE-2026-111497,95,94,793,15
+v0.5.0,lock_std_override,"GoVersionOverride=Dockerfile 버전. 매칭 뒤 표시만 바뀜 (무효, 동작 확인용)",1.19.4,88,827,897,516,261,9,CVE-2023-44487 CVE-2026-111497,95,94,793,15
+v0.5.0,lock+std_probe,"stdlib 포함, Dockerfile golang 이미지 버전으로 매칭 (빈 모듈 탐침)",1.19.4,103,827,957,576,275,9,CVE-2023-44487 CVE-2026-111497,102,101,846,15
+main,lock,stdlib 제외 (osv-scanner 2.7.0 기본. 헤드라인),,0,857,200,38,107,1,CVE-2026-111497,10,9,181,15
+main,lock_std_gomod,"stdlib 포함, ScanGoModVersion (go.mod toolchain 또는 go 지시어)",1.27.1,14,861,256,94,116,1,CVE-2026-111497,22,21,225,15
+main,lock_std_override,"GoVersionOverride=Dockerfile 버전. 매칭 뒤 표시만 바뀜 (무효, 동작 확인용)",1.27.0,14,861,256,94,116,1,CVE-2026-111497,22,21,225,15
+main,lock+std_probe,"stdlib 포함, Dockerfile golang 이미지 버전으로 매칭 (빈 모듈 탐침)",1.27.0,14,861,256,94,116,1,CVE-2026-111497,22,21,225,15
+v0.8.0,lock,stdlib 제외 (osv-scanner 2.7.0 기본. 헤드라인),,0,843,536,159,179,9,CVE-2023-44487 CVE-2026-111497,37,36,490,16
+v0.8.0,lock_std_gomod,"stdlib 포함, ScanGoModVersion (go.mod toolchain 또는 go 지시어)",1.19.99,88,847,888,511,257,9,CVE-2023-44487 CVE-2026-111497,95,94,784,16
+v0.8.0,lock_std_override,"GoVersionOverride=Dockerfile 버전. 매칭 뒤 표시만 바뀜 (무효, 동작 확인용)",1.20.4,88,847,888,511,257,9,CVE-2023-44487 CVE-2026-111497,95,94,784,16
+v0.8.0,lock+std_probe,"stdlib 포함, Dockerfile golang 이미지 버전으로 매칭 (빈 모듈 탐침)",1.20.4,90,847,896,519,259,9,CVE-2023-44487 CVE-2026-111497,95,94,792,16

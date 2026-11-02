@@ -1,0 +1,2 @@
+{"mode":"plaintext","go_version":"go1.19.4","first_bytes":"\"HTTP/1.1 200 OK\\r\\nDate: Mon, 02 Nov 2026 09:24:26 GMT\\r\\nContent-Le\"","server_spoke_http2":false,"handler_saw_proto":"HTTP/2.0"}
+{"mode":"tls","go_version":"go1.19.4","alpn":"h2","first_bytes":"\"\\x00\\x00\\x18\\x04\\x00\\x00\\x00\\x00\\x00\\x00\\x05\\x00\\x10\\x00\\x00\\x00\\x03\\x00\\x00\\x00\\xfa\\x00\\x06\\x00\\x10\\x01@\\x00\\x04\\x00\\x10\\x00\\x00\"","server_spoke_http2":true}

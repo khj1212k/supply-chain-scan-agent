@@ -1,0 +1,3 @@
+docker_library_golang_commit: 236db66f2a220ba203e8cea391499d33d13124e4
+template_lines:
+247:ENV GOTOOLCHAIN=local
