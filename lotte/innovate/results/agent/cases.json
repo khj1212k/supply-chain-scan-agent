@@ -1,0 +1,1181 @@
+{
+ "meta": {
+  "rule": "agent/CASES_RULE.md",
+  "worktree_commit": "3c0d6597809d1f40dccd24b757b7ca67d40cadf8",
+  "osv_snapshot": {
+   "path": "/home/user/work/osvdb/osv-scalibr/Go/all.zip",
+   "records": 9815,
+   "max_modified": "2026-10-30T23:30:04.079827623Z"
+  },
+  "pool_size": 41,
+  "n_cases": 10
+ },
+ "cases": [
+  {
+   "service": "frontend",
+   "module": "golang.org/x/net",
+   "version": "0.4.0",
+   "target_group": {
+    "ids": [
+     "GHSA-4374-p667-p6c8",
+     "GO-2023-2102"
+    ],
+    "max_severity": 7.5
+   },
+   "signals": {
+    "cves": [
+     "CVE-2023-39325"
+    ],
+    "related_cves": [
+     "CVE-2023-44487"
+    ],
+    "kev": [
+     "CVE-2023-44487"
+    ],
+    "epss_max": 0.99999
+   },
+   "sort": [
+    true,
+    0.99999,
+    7.5,
+    "GHSA-4374-p667-p6c8"
+   ],
+   "n_groups_in_module": 25,
+   "case_id": "C01",
+   "candidates": {
+    "module": "golang.org/x/net",
+    "current": "v0.4.0",
+    "base_go_directive": "1.19",
+    "target_ids": [
+     "GHSA-4374-p667-p6c8",
+     "GO-2023-2102"
+    ],
+    "advisory_groups_now": [
+     [
+      "GHSA-2wrh-6pvc-2jm9",
+      "GO-2023-1988"
+     ],
+     [
+      "GHSA-4374-p667-p6c8",
+      "GO-2023-2102"
+     ],
+     [
+      "GHSA-4v7x-pqxf-cx7m",
+      "GO-2024-2687"
+     ],
+     [
+      "GHSA-5cv4-jp36-h3mw",
+      "GO-2026-5028"
+     ],
+     [
+      "GHSA-qppj-fm5r-hxr3"
+     ],
+     [
+      "GHSA-qxp5-gwg8-xv66",
+      "GO-2025-3503"
+     ],
+     [
+      "GHSA-vvgc-356p-c3xw",
+      "GO-2025-3595"
+     ],
+     [
+      "GHSA-vvpx-j8f3-3w6h",
+      "GO-2023-1571"
+     ],
+     [
+      "GO-2024-3333"
+     ],
+     [
+      "GO-2026-4440"
+     ],
+     [
+      "GO-2026-4441"
+     ],
+     [
+      "GO-2026-4918"
+     ],
+     [
+      "GO-2026-5025"
+     ],
+     [
+      "GO-2026-5026"
+     ],
+     [
+      "GO-2026-5027"
+     ],
+     [
+      "GO-2026-5029"
+     ],
+     [
+      "GO-2026-5030"
+     ],
+     [
+      "GO-2026-5942"
+     ],
+     [
+      "GO-2026-6603"
+     ],
+     [
+      "GO-2026-6610"
+     ],
+     [
+      "GO-2026-6611"
+     ],
+     [
+      "GO-2026-6612"
+     ],
+     [
+      "GO-2026-6617"
+     ],
+     [
+      "GO-2026-6860"
+     ],
+     [
+      "GO-2026-6866"
+     ]
+    ],
+    "n_newer_stable_same_major": 58,
+    "n_fix_target": 46,
+    "min_target_fix": "v0.17.0",
+    "min_all_fix": "v0.62.0",
+    "latest_stable": "v0.62.0",
+    "candidates": [
+     {
+      "version": "v0.17.0",
+      "go_directive": "1.17",
+      "raises_go_directive": false,
+      "remaining_advisory_groups_in_module": 21
+     },
+     {
+      "version": "v0.18.0",
+      "go_directive": "1.18",
+      "raises_go_directive": false,
+      "remaining_advisory_groups_in_module": 21
+     },
+     {
+      "version": "v0.19.0",
+      "go_directive": "1.18",
+      "raises_go_directive": false,
+      "remaining_advisory_groups_in_module": 21
+     },
+     {
+      "version": "v0.20.0",
+      "go_directive": "1.18",
+      "raises_go_directive": false,
+      "remaining_advisory_groups_in_module": 21
+     },
+     {
+      "version": "v0.21.0",
+      "go_directive": "1.18",
+      "raises_go_directive": false,
+      "remaining_advisory_groups_in_module": 21
+     },
+     {
+      "version": "v0.22.0",
+      "go_directive": "1.18",
+      "raises_go_directive": false,
+      "remaining_advisory_groups_in_module": 21
+     },
+     {
+      "version": "v0.23.0",
+      "go_directive": "1.18",
+      "raises_go_directive": false,
+      "remaining_advisory_groups_in_module": 20
+     },
+     {
+      "version": "v0.24.0",
+      "go_directive": "1.18",
+      "raises_go_directive": false,
+      "remaining_advisory_groups_in_module": 20
+     },
+     {
+      "version": "v0.61.0",
+      "go_directive": "1.26.0",
+      "raises_go_directive": true,
+      "remaining_advisory_groups_in_module": 2
+     },
+     {
+      "version": "v0.62.0",
+      "go_directive": "1.26.0",
+      "raises_go_directive": true,
+      "remaining_advisory_groups_in_module": 0
+     }
+    ],
+    "allowed_versions": [
+     "v0.17.0",
+     "v0.18.0",
+     "v0.19.0",
+     "v0.20.0",
+     "v0.21.0",
+     "v0.22.0",
+     "v0.23.0",
+     "v0.24.0",
+     "v0.61.0",
+     "v0.62.0"
+    ]
+   }
+  },
+  {
+   "service": "checkoutservice",
+   "module": "google.golang.org/grpc",
+   "version": "1.51.0",
+   "target_group": {
+    "ids": [
+     "GHSA-m425-mq94-257g",
+     "GO-2023-2153"
+    ],
+    "max_severity": 7.5
+   },
+   "signals": {
+    "cves": [],
+    "related_cves": [
+     "CVE-2023-44487"
+    ],
+    "kev": [
+     "CVE-2023-44487"
+    ],
+    "epss_max": 0.99999
+   },
+   "sort": [
+    true,
+    0.99999,
+    7.5,
+    "GHSA-m425-mq94-257g"
+   ],
+   "n_groups_in_module": 6,
+   "case_id": "C02",
+   "candidates": {
+    "module": "google.golang.org/grpc",
+    "current": "v1.51.0",
+    "base_go_directive": "1.19",
+    "target_ids": [
+     "GHSA-m425-mq94-257g",
+     "GO-2023-2153"
+    ],
+    "advisory_groups_now": [
+     [
+      "GHSA-2v4p-qf9q-27wj",
+      "GO-2026-6443"
+     ],
+     [
+      "GHSA-hrxh-6v49-42gf",
+      "GO-2026-6061"
+     ],
+     [
+      "GHSA-m425-mq94-257g",
+      "GO-2023-2153"
+     ],
+     [
+      "GHSA-p77j-4mvh-x3m3",
+      "GO-2026-4762"
+     ],
+     [
+      "GHSA-qc2q-p7wx-3px3",
+      "GO-2026-6441"
+     ],
+     [
+      "GHSA-vp52-pcj8-j9qc",
+      "GO-2026-6348"
+     ]
+    ],
+    "n_newer_stable_same_major": 85,
+    "n_fix_target": 70,
+    "min_target_fix": "v1.56.3",
+    "min_all_fix": "v1.83.2",
+    "latest_stable": "v1.85.0",
+    "candidates": [
+     {
+      "version": "v1.56.3",
+      "go_directive": "1.17",
+      "raises_go_directive": false,
+      "remaining_advisory_groups_in_module": 5
+     },
+     {
+      "version": "v1.57.1",
+      "go_directive": "1.17",
+      "raises_go_directive": false,
+      "remaining_advisory_groups_in_module": 5
+     },
+     {
+      "version": "v1.57.2",
+      "go_directive": "1.17",
+      "raises_go_directive": false,
+      "remaining_advisory_groups_in_module": 5
+     },
+     {
+      "version": "v1.58.3",
+      "go_directive": "1.19",
+      "raises_go_directive": false,
+      "remaining_advisory_groups_in_module": 5
+     },
+     {
+      "version": "v1.59.0",
+      "go_directive": "1.19",
+      "raises_go_directive": false,
+      "remaining_advisory_groups_in_module": 5
+     },
+     {
+      "version": "v1.60.0",
+      "go_directive": "1.19",
+      "raises_go_directive": false,
+      "remaining_advisory_groups_in_module": 5
+     },
+     {
+      "version": "v1.60.1",
+      "go_directive": "1.19",
+      "raises_go_directive": false,
+      "remaining_advisory_groups_in_module": 5
+     },
+     {
+      "version": "v1.61.0",
+      "go_directive": "1.19",
+      "raises_go_directive": false,
+      "remaining_advisory_groups_in_module": 5
+     },
+     {
+      "version": "v1.84.0",
+      "go_directive": "1.25.0",
+      "raises_go_directive": true,
+      "remaining_advisory_groups_in_module": 0
+     },
+     {
+      "version": "v1.85.0",
+      "go_directive": "1.26.0",
+      "raises_go_directive": true,
+      "remaining_advisory_groups_in_module": 0
+     }
+    ],
+    "allowed_versions": [
+     "v1.56.3",
+     "v1.57.1",
+     "v1.57.2",
+     "v1.58.3",
+     "v1.59.0",
+     "v1.60.0",
+     "v1.60.1",
+     "v1.61.0",
+     "v1.84.0",
+     "v1.85.0"
+    ]
+   }
+  },
+  {
+   "service": "frontend",
+   "module": "go.opentelemetry.io/contrib/instrumentation/net/http/otelhttp",
+   "version": "0.37.0",
+   "target_group": {
+    "ids": [
+     "GHSA-rcjv-mgp8-qvmr",
+     "GO-2023-2113"
+    ],
+    "max_severity": 7.5
+   },
+   "signals": {
+    "cves": [
+     "CVE-2023-45142"
+    ],
+    "related_cves": [
+     "CVE-2022-21698",
+     "CVE-2023-25151"
+    ],
+    "kev": [],
+    "epss_max": 0.05994
+   },
+   "sort": [
+    false,
+    0.05994,
+    7.5,
+    "GHSA-rcjv-mgp8-qvmr"
+   ],
+   "n_groups_in_module": 1,
+   "case_id": "C03",
+   "candidates": {
+    "module": "go.opentelemetry.io/contrib/instrumentation/net/http/otelhttp",
+    "current": "v0.37.0",
+    "base_go_directive": "1.19",
+    "target_ids": [
+     "GHSA-rcjv-mgp8-qvmr",
+     "GO-2023-2113"
+    ],
+    "advisory_groups_now": [
+     [
+      "GHSA-rcjv-mgp8-qvmr",
+      "GO-2023-2113"
+     ]
+    ],
+    "n_newer_stable_same_major": 37,
+    "n_fix_target": 30,
+    "min_target_fix": "v0.44.0",
+    "min_all_fix": "v0.44.0",
+    "latest_stable": "v0.72.0",
+    "candidates": [
+     {
+      "version": "v0.44.0",
+      "go_directive": "1.19",
+      "raises_go_directive": false,
+      "remaining_advisory_groups_in_module": 0
+     },
+     {
+      "version": "v0.45.0",
+      "go_directive": "1.19",
+      "raises_go_directive": false,
+      "remaining_advisory_groups_in_module": 0
+     },
+     {
+      "version": "v0.46.0",
+      "go_directive": "1.20",
+      "raises_go_directive": true,
+      "remaining_advisory_groups_in_module": 0
+     },
+     {
+      "version": "v0.46.1",
+      "go_directive": "1.20",
+      "raises_go_directive": true,
+      "remaining_advisory_groups_in_module": 0
+     },
+     {
+      "version": "v0.47.0",
+      "go_directive": "1.20",
+      "raises_go_directive": true,
+      "remaining_advisory_groups_in_module": 0
+     },
+     {
+      "version": "v0.48.0",
+      "go_directive": "1.20",
+      "raises_go_directive": true,
+      "remaining_advisory_groups_in_module": 0
+     },
+     {
+      "version": "v0.49.0",
+      "go_directive": "1.20",
+      "raises_go_directive": true,
+      "remaining_advisory_groups_in_module": 0
+     },
+     {
+      "version": "v0.50.0",
+      "go_directive": "1.21",
+      "raises_go_directive": true,
+      "remaining_advisory_groups_in_module": 0
+     },
+     {
+      "version": "v0.71.0",
+      "go_directive": "1.25.0",
+      "raises_go_directive": true,
+      "remaining_advisory_groups_in_module": 0
+     },
+     {
+      "version": "v0.72.0",
+      "go_directive": "1.26.0",
+      "raises_go_directive": true,
+      "remaining_advisory_groups_in_module": 0
+     }
+    ],
+    "allowed_versions": [
+     "v0.44.0",
+     "v0.45.0",
+     "v0.46.0",
+     "v0.46.1",
+     "v0.47.0",
+     "v0.48.0",
+     "v0.49.0",
+     "v0.50.0",
+     "v0.71.0",
+     "v0.72.0"
+    ]
+   }
+  },
+  {
+   "service": "productcatalogservice",
+   "module": "go.opentelemetry.io/contrib/instrumentation/google.golang.org/grpc/otelgrpc",
+   "version": "0.37.0",
+   "target_group": {
+    "ids": [
+     "GHSA-8pgv-569h-w5rw",
+     "GO-2023-2331"
+    ],
+    "max_severity": 7.5
+   },
+   "signals": {
+    "cves": [
+     "CVE-2023-47108"
+    ],
+    "related_cves": [],
+    "kev": [],
+    "epss_max": 0.02026
+   },
+   "sort": [
+    false,
+    0.02026,
+    7.5,
+    "GHSA-8pgv-569h-w5rw"
+   ],
+   "n_groups_in_module": 1,
+   "case_id": "C04",
+   "candidates": {
+    "module": "go.opentelemetry.io/contrib/instrumentation/google.golang.org/grpc/otelgrpc",
+    "current": "v0.37.0",
+    "base_go_directive": "1.19",
+    "target_ids": [
+     "GHSA-8pgv-569h-w5rw",
+     "GO-2023-2331"
+    ],
+    "advisory_groups_now": [
+     [
+      "GHSA-8pgv-569h-w5rw",
+      "GO-2023-2331"
+     ]
+    ],
+    "n_newer_stable_same_major": 37,
+    "n_fix_target": 28,
+    "min_target_fix": "v0.46.0",
+    "min_all_fix": "v0.46.0",
+    "latest_stable": "v0.72.0",
+    "candidates": [
+     {
+      "version": "v0.46.0",
+      "go_directive": "1.20",
+      "raises_go_directive": true,
+      "remaining_advisory_groups_in_module": 0
+     },
+     {
+      "version": "v0.46.1",
+      "go_directive": "1.20",
+      "raises_go_directive": true,
+      "remaining_advisory_groups_in_module": 0
+     },
+     {
+      "version": "v0.47.0",
+      "go_directive": "1.20",
+      "raises_go_directive": true,
+      "remaining_advisory_groups_in_module": 0
+     },
+     {
+      "version": "v0.48.0",
+      "go_directive": "1.20",
+      "raises_go_directive": true,
+      "remaining_advisory_groups_in_module": 0
+     },
+     {
+      "version": "v0.49.0",
+      "go_directive": "1.20",
+      "raises_go_directive": true,
+      "remaining_advisory_groups_in_module": 0
+     },
+     {
+      "version": "v0.50.0",
+      "go_directive": "1.21",
+      "raises_go_directive": true,
+      "remaining_advisory_groups_in_module": 0
+     },
+     {
+      "version": "v0.51.0",
+      "go_directive": "1.21",
+      "raises_go_directive": true,
+      "remaining_advisory_groups_in_module": 0
+     },
+     {
+      "version": "v0.52.0",
+      "go_directive": "1.21",
+      "raises_go_directive": true,
+      "remaining_advisory_groups_in_module": 0
+     },
+     {
+      "version": "v0.71.0",
+      "go_directive": "1.25.0",
+      "raises_go_directive": true,
+      "remaining_advisory_groups_in_module": 0
+     },
+     {
+      "version": "v0.72.0",
+      "go_directive": "1.26.0",
+      "raises_go_directive": true,
+      "remaining_advisory_groups_in_module": 0
+     }
+    ],
+    "allowed_versions": [
+     "v0.46.0",
+     "v0.46.1",
+     "v0.47.0",
+     "v0.48.0",
+     "v0.49.0",
+     "v0.50.0",
+     "v0.51.0",
+     "v0.52.0",
+     "v0.71.0",
+     "v0.72.0"
+    ]
+   }
+  },
+  {
+   "service": "shippingservice",
+   "module": "google.golang.org/protobuf",
+   "version": "1.28.1",
+   "target_group": {
+    "ids": [
+     "GHSA-8r3f-844c-mc37",
+     "GO-2024-2611"
+    ],
+    "max_severity": 7.5
+   },
+   "signals": {
+    "cves": [
+     "CVE-2024-24786"
+    ],
+    "related_cves": [],
+    "kev": [],
+    "epss_max": 0.01262
+   },
+   "sort": [
+    false,
+    0.01262,
+    7.5,
+    "GHSA-8r3f-844c-mc37"
+   ],
+   "n_groups_in_module": 1,
+   "case_id": "C05",
+   "candidates": {
+    "module": "google.golang.org/protobuf",
+    "current": "v1.28.1",
+    "base_go_directive": "1.19",
+    "target_ids": [
+     "GHSA-8r3f-844c-mc37",
+     "GO-2024-2611"
+    ],
+    "advisory_groups_now": [
+     [
+      "GHSA-8r3f-844c-mc37",
+      "GO-2024-2611"
+     ]
+    ],
+    "n_newer_stable_same_major": 25,
+    "n_fix_target": 20,
+    "min_target_fix": "v1.33.0",
+    "min_all_fix": "v1.33.0",
+    "latest_stable": "v1.36.12",
+    "candidates": [
+     {
+      "version": "v1.33.0",
+      "go_directive": "1.17",
+      "raises_go_directive": false,
+      "remaining_advisory_groups_in_module": 0
+     },
+     {
+      "version": "v1.34.0",
+      "go_directive": "1.17",
+      "raises_go_directive": false,
+      "remaining_advisory_groups_in_module": 0
+     },
+     {
+      "version": "v1.34.1",
+      "go_directive": "1.17",
+      "raises_go_directive": false,
+      "remaining_advisory_groups_in_module": 0
+     },
+     {
+      "version": "v1.34.2",
+      "go_directive": "1.20",
+      "raises_go_directive": true,
+      "remaining_advisory_groups_in_module": 0
+     },
+     {
+      "version": "v1.35.0",
+      "go_directive": "1.21",
+      "raises_go_directive": true,
+      "remaining_advisory_groups_in_module": 0
+     },
+     {
+      "version": "v1.35.1",
+      "go_directive": "1.21",
+      "raises_go_directive": true,
+      "remaining_advisory_groups_in_module": 0
+     },
+     {
+      "version": "v1.35.2",
+      "go_directive": "1.21",
+      "raises_go_directive": true,
+      "remaining_advisory_groups_in_module": 0
+     },
+     {
+      "version": "v1.36.0",
+      "go_directive": "1.21",
+      "raises_go_directive": true,
+      "remaining_advisory_groups_in_module": 0
+     },
+     {
+      "version": "v1.36.11",
+      "go_directive": "1.23",
+      "raises_go_directive": true,
+      "remaining_advisory_groups_in_module": 0
+     },
+     {
+      "version": "v1.36.12",
+      "go_directive": "1.23",
+      "raises_go_directive": true,
+      "remaining_advisory_groups_in_module": 0
+     }
+    ],
+    "allowed_versions": [
+     "v1.33.0",
+     "v1.34.0",
+     "v1.34.1",
+     "v1.34.2",
+     "v1.35.0",
+     "v1.35.1",
+     "v1.35.2",
+     "v1.36.0",
+     "v1.36.11",
+     "v1.36.12"
+    ]
+   }
+  },
+  {
+   "service": "checkoutservice",
+   "module": "golang.org/x/oauth2",
+   "version": "0.0.0-20221014153046-6fdb5e3db783",
+   "target_group": {
+    "ids": [
+     "GHSA-6v2p-p543-phr9",
+     "GO-2025-3488"
+    ],
+    "max_severity": 7.5
+   },
+   "signals": {
+    "cves": [
+     "CVE-2025-22868"
+    ],
+    "related_cves": [],
+    "kev": [],
+    "epss_max": 0.0087
+   },
+   "sort": [
+    false,
+    0.0087,
+    7.5,
+    "GHSA-6v2p-p543-phr9"
+   ],
+   "n_groups_in_module": 1,
+   "case_id": "C06",
+   "candidates": {
+    "module": "golang.org/x/oauth2",
+    "current": "v0.0.0-20221014153046-6fdb5e3db783",
+    "base_go_directive": "1.19",
+    "target_ids": [
+     "GHSA-6v2p-p543-phr9",
+     "GO-2025-3488"
+    ],
+    "advisory_groups_now": [
+     [
+      "GHSA-6v2p-p543-phr9",
+      "GO-2025-3488"
+     ]
+    ],
+    "n_newer_stable_same_major": 37,
+    "n_fix_target": 11,
+    "min_target_fix": "v0.27.0",
+    "min_all_fix": "v0.27.0",
+    "latest_stable": "v0.37.0",
+    "candidates": [
+     {
+      "version": "v0.27.0",
+      "go_directive": "1.23.0",
+      "raises_go_directive": true,
+      "remaining_advisory_groups_in_module": 0
+     },
+     {
+      "version": "v0.28.0",
+      "go_directive": "1.23.0",
+      "raises_go_directive": true,
+      "remaining_advisory_groups_in_module": 0
+     },
+     {
+      "version": "v0.29.0",
+      "go_directive": "1.23.0",
+      "raises_go_directive": true,
+      "remaining_advisory_groups_in_module": 0
+     },
+     {
+      "version": "v0.30.0",
+      "go_directive": "1.23.0",
+      "raises_go_directive": true,
+      "remaining_advisory_groups_in_module": 0
+     },
+     {
+      "version": "v0.31.0",
+      "go_directive": "1.24.0",
+      "raises_go_directive": true,
+      "remaining_advisory_groups_in_module": 0
+     },
+     {
+      "version": "v0.32.0",
+      "go_directive": "1.24.0",
+      "raises_go_directive": true,
+      "remaining_advisory_groups_in_module": 0
+     },
+     {
+      "version": "v0.33.0",
+      "go_directive": "1.24.0",
+      "raises_go_directive": true,
+      "remaining_advisory_groups_in_module": 0
+     },
+     {
+      "version": "v0.34.0",
+      "go_directive": "1.24.0",
+      "raises_go_directive": true,
+      "remaining_advisory_groups_in_module": 0
+     },
+     {
+      "version": "v0.36.0",
+      "go_directive": "1.25.0",
+      "raises_go_directive": true,
+      "remaining_advisory_groups_in_module": 0
+     },
+     {
+      "version": "v0.37.0",
+      "go_directive": "1.26.0",
+      "raises_go_directive": true,
+      "remaining_advisory_groups_in_module": 0
+     }
+    ],
+    "allowed_versions": [
+     "v0.27.0",
+     "v0.28.0",
+     "v0.29.0",
+     "v0.30.0",
+     "v0.31.0",
+     "v0.32.0",
+     "v0.33.0",
+     "v0.34.0",
+     "v0.36.0",
+     "v0.37.0"
+    ]
+   }
+  },
+  {
+   "service": "productcatalogservice",
+   "module": "github.com/sirupsen/logrus",
+   "version": "1.9.0",
+   "target_group": {
+    "ids": [
+     "GHSA-4f99-4q7p-p3gh",
+     "GO-2025-4188"
+    ],
+    "max_severity": 8.7
+   },
+   "signals": {
+    "cves": [
+     "CVE-2025-65637"
+    ],
+    "related_cves": [],
+    "kev": [],
+    "epss_max": 0.0063
+   },
+   "sort": [
+    false,
+    0.0063,
+    8.7,
+    "GHSA-4f99-4q7p-p3gh"
+   ],
+   "n_groups_in_module": 1,
+   "case_id": "C07",
+   "candidates": {
+    "module": "github.com/sirupsen/logrus",
+    "current": "v1.9.0",
+    "base_go_directive": "1.19",
+    "target_ids": [
+     "GHSA-4f99-4q7p-p3gh",
+     "GO-2025-4188"
+    ],
+    "advisory_groups_now": [
+     [
+      "GHSA-4f99-4q7p-p3gh",
+      "GO-2025-4188"
+     ]
+    ],
+    "n_newer_stable_same_major": 7,
+    "n_fix_target": 6,
+    "min_target_fix": "v1.9.1",
+    "min_all_fix": "v1.9.1",
+    "latest_stable": "v1.10.2",
+    "candidates": [
+     {
+      "version": "v1.9.1",
+      "go_directive": "1.13",
+      "raises_go_directive": false,
+      "remaining_advisory_groups_in_module": 0
+     },
+     {
+      "version": "v1.9.3",
+      "go_directive": "1.13",
+      "raises_go_directive": false,
+      "remaining_advisory_groups_in_module": 0
+     },
+     {
+      "version": "v1.9.4",
+      "go_directive": "1.17",
+      "raises_go_directive": false,
+      "remaining_advisory_groups_in_module": 0
+     },
+     {
+      "version": "v1.10.0",
+      "go_directive": "1.23",
+      "raises_go_directive": true,
+      "remaining_advisory_groups_in_module": 0
+     },
+     {
+      "version": "v1.10.1",
+      "go_directive": "1.23",
+      "raises_go_directive": true,
+      "remaining_advisory_groups_in_module": 0
+     },
+     {
+      "version": "v1.10.2",
+      "go_directive": "1.23",
+      "raises_go_directive": true,
+      "remaining_advisory_groups_in_module": 0
+     }
+    ],
+    "allowed_versions": [
+     "v1.9.1",
+     "v1.9.3",
+     "v1.9.4",
+     "v1.10.0",
+     "v1.10.1",
+     "v1.10.2"
+    ]
+   }
+  },
+  {
+   "service": "shippingservice",
+   "module": "golang.org/x/text",
+   "version": "0.5.0",
+   "target_group": {
+    "ids": [
+     "GO-2026-5970"
+    ],
+    "max_severity": null
+   },
+   "signals": {
+    "cves": [
+     "CVE-2026-56852"
+    ],
+    "related_cves": [],
+    "kev": [],
+    "epss_max": 0.00475
+   },
+   "sort": [
+    false,
+    0.00475,
+    0.0,
+    "GO-2026-5970"
+   ],
+   "n_groups_in_module": 2,
+   "case_id": "C08",
+   "candidates": {
+    "module": "golang.org/x/text",
+    "current": "v0.5.0",
+    "base_go_directive": "1.19",
+    "target_ids": [
+     "GO-2026-5970"
+    ],
+    "advisory_groups_now": [
+     [
+      "GO-2026-5970"
+     ],
+     [
+      "GO-2026-6629"
+     ]
+    ],
+    "n_newer_stable_same_major": 38,
+    "n_fix_target": 5,
+    "min_target_fix": "v0.39.0",
+    "min_all_fix": "v0.41.0",
+    "latest_stable": "v0.43.0",
+    "candidates": [
+     {
+      "version": "v0.39.0",
+      "go_directive": "1.25.0",
+      "raises_go_directive": true,
+      "remaining_advisory_groups_in_module": 1
+     },
+     {
+      "version": "v0.40.0",
+      "go_directive": "1.25.0",
+      "raises_go_directive": true,
+      "remaining_advisory_groups_in_module": 1
+     },
+     {
+      "version": "v0.41.0",
+      "go_directive": "1.25.0",
+      "raises_go_directive": true,
+      "remaining_advisory_groups_in_module": 0
+     },
+     {
+      "version": "v0.42.0",
+      "go_directive": "1.26.0",
+      "raises_go_directive": true,
+      "remaining_advisory_groups_in_module": 0
+     },
+     {
+      "version": "v0.43.0",
+      "go_directive": "1.26.0",
+      "raises_go_directive": true,
+      "remaining_advisory_groups_in_module": 0
+     }
+    ],
+    "allowed_versions": [
+     "v0.39.0",
+     "v0.40.0",
+     "v0.41.0",
+     "v0.42.0",
+     "v0.43.0"
+    ]
+   }
+  },
+  {
+   "service": "frontend",
+   "module": "go.opentelemetry.io/otel/exporters/otlp/otlptrace",
+   "version": "1.11.2",
+   "target_group": {
+    "ids": [
+     "GHSA-8wmf-6v46-5gfg",
+     "GO-2026-6505"
+    ],
+    "max_severity": 2.0
+   },
+   "signals": {
+    "cves": [
+     "CVE-2026-81870"
+    ],
+    "related_cves": [],
+    "kev": [],
+    "epss_max": 0.00266
+   },
+   "sort": [
+    false,
+    0.00266,
+    2.0,
+    "GHSA-8wmf-6v46-5gfg"
+   ],
+   "n_groups_in_module": 1,
+   "case_id": "C09",
+   "candidates": {
+    "module": "go.opentelemetry.io/otel/exporters/otlp/otlptrace",
+    "current": "v1.11.2",
+    "base_go_directive": "1.19",
+    "target_ids": [
+     "GHSA-8wmf-6v46-5gfg",
+     "GO-2026-6505"
+    ],
+    "advisory_groups_now": [
+     [
+      "GHSA-8wmf-6v46-5gfg",
+      "GO-2026-6505"
+     ]
+    ],
+    "n_newer_stable_same_major": 38,
+    "n_fix_target": 3,
+    "min_target_fix": "v1.45.0",
+    "min_all_fix": "v1.45.0",
+    "latest_stable": "v1.47.0",
+    "candidates": [
+     {
+      "version": "v1.45.0",
+      "go_directive": "1.25.0",
+      "raises_go_directive": true,
+      "remaining_advisory_groups_in_module": 0
+     },
+     {
+      "version": "v1.46.0",
+      "go_directive": "1.25.0",
+      "raises_go_directive": true,
+      "remaining_advisory_groups_in_module": 0
+     },
+     {
+      "version": "v1.47.0",
+      "go_directive": "1.26.0",
+      "raises_go_directive": true,
+      "remaining_advisory_groups_in_module": 0
+     }
+    ],
+    "allowed_versions": [
+     "v1.45.0",
+     "v1.46.0",
+     "v1.47.0"
+    ]
+   }
+  },
+  {
+   "service": "checkoutservice",
+   "module": "go.opentelemetry.io/otel/exporters/otlp/otlptrace/otlptracegrpc",
+   "version": "1.11.2",
+   "target_group": {
+    "ids": [
+     "GHSA-8wmf-6v46-5gfg",
+     "GO-2026-6505"
+    ],
+    "max_severity": 2.0
+   },
+   "signals": {
+    "cves": [
+     "CVE-2026-81870"
+    ],
+    "related_cves": [],
+    "kev": [],
+    "epss_max": 0.00266
+   },
+   "sort": [
+    false,
+    0.00266,
+    2.0,
+    "GHSA-8wmf-6v46-5gfg"
+   ],
+   "n_groups_in_module": 1,
+   "case_id": "C10",
+   "candidates": {
+    "module": "go.opentelemetry.io/otel/exporters/otlp/otlptrace/otlptracegrpc",
+    "current": "v1.11.2",
+    "base_go_directive": "1.19",
+    "target_ids": [
+     "GHSA-8wmf-6v46-5gfg",
+     "GO-2026-6505"
+    ],
+    "advisory_groups_now": [
+     [
+      "GHSA-8wmf-6v46-5gfg",
+      "GO-2026-6505"
+     ]
+    ],
+    "n_newer_stable_same_major": 38,
+    "n_fix_target": 3,
+    "min_target_fix": "v1.45.0",
+    "min_all_fix": "v1.45.0",
+    "latest_stable": "v1.47.0",
+    "candidates": [
+     {
+      "version": "v1.45.0",
+      "go_directive": "1.25.0",
+      "raises_go_directive": true,
+      "remaining_advisory_groups_in_module": 0
+     },
+     {
+      "version": "v1.46.0",
+      "go_directive": "1.25.0",
+      "raises_go_directive": true,
+      "remaining_advisory_groups_in_module": 0
+     },
+     {
+      "version": "v1.47.0",
+      "go_directive": "1.26.0",
+      "raises_go_directive": true,
+      "remaining_advisory_groups_in_module": 0
+     }
+    ],
+    "allowed_versions": [
+     "v1.45.0",
+     "v1.46.0",
+     "v1.47.0"
+    ]
+   }
+  }
+ ]
+}

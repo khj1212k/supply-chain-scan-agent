@@ -1,0 +1,2 @@
+policy,model,cases,final_pass,first_attempt_pass,mean_attempts,guardrail_trips,out_of_list_proposals,pass_keep_go_1_19,pass_module_clean,tokens_per_case,cost_usd_total,cost_usd_per_case,llm_s_per_case,judge_s_per_case,auto_approved
+agent,anthropic:claude-sonnet-5-5,1,1,1,1.0,0,0,1,1,8125,0.0215,0.0215,9.8,10.4,1
