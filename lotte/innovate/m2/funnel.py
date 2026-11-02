@@ -470,7 +470,9 @@ def git_info() -> dict:
         rc = INNO / "results" / "m1" / "REPRO_CHECK.md"
         m = re.search(r"nvd-json-data-feeds `([0-9a-f]{40})`", rc.read_text()) if rc.exists() else None
         nvd_head = f"{m[1]} (results/m1/REPRO_CHECK.md 기록. 복제 없음)" if m else "미확인"
-    return {"repo_head": g("rev-parse", "HEAD"), "m2_dirty": bool(g("status", "--porcelain", "--", "m2", "results/m2")),
+    # m2_dirty: 실행한 코드(m2/, common/)가 커밋본과 다른가. results/m2 는 scan.sh 가 먼저 로그를 다시 쓰므로 보지 않는다
+    #   (예전 정의는 results/m2 까지 봐서 코드가 깨끗해도 항상 true였다. 2026-11-02 정정 06-6)
+    return {"repo_head": g("rev-parse", "HEAD"), "m2_dirty": bool(g("status", "--porcelain", "--", "m2", "common")),
             "nvd_feed_commit": nvd_head}
 
 
