@@ -1,9 +1,9 @@
 # agent: 조치안 에이전트 (과제 2번, 3번)
 
 ## 결론
-1. Claude Sonnet 5.5 조치안 에이전트는 정답 사례 10건 중 6건을 기계 판정 통과시켰다. LLM 없는 '최소 수정 버전' 기준선도 6건이다. **통과 수 이득은 0건**이다
-2. 도구 없이 1회 호출(고정 흐름)도 6건이고 비용은 건당 $0.028로 에이전트($0.066)의 43%다. 기획안 규칙('이득이 없으면 고정 흐름으로 낮춘다')대로면 고정 흐름이 맞다
-3. 4건(otel 계열)은 모든 정책과 Opus 5.5 승격이 실패했다. 시도한 조합은 앱 코드 수정이 필요하거나 새 HIGH/CRITICAL 권고 12개를 끌어왔고, 기계 판정이 그것을 막았다
+1. Claude Sonnet 5.5 조치안 에이전트는 평가 사례 10건 중 6건을 기계 판정 통과시켰다. LLM 없는 '최소 수정 버전' 기준선도 6건이다. **통과 수 이득은 0건**이다
+2. 도구 없이 1회 호출(고정 흐름)도 6건이고 비용은 건당 $0.028로 에이전트($0.066)의 43%다. 기획안 규칙('이득이 없으면 고정 흐름으로 낮춘다')대로면 고정 흐름으로 낮춘다. 통과 수로는 LLM 없는 최소 수정과도 같다. LLM을 남길지는 설명 품질로 정할 일이고 재지 않았다
+3. 4건(otel 계열)은 모든 정책과 Opus 5.5 승격이 실패했다. 시도한 조합은 앱 코드 수정이 필요하거나(시도한 범위, 전수 탐색 아님), 같은 새 HIGH/CRITICAL 권고 12묶음을 끌어왔다. 그런 조합 4개, 시도 6회를 기계 판정이 모두 막았다
 
 - 기준 시점: OSV Go 덤프 레코드 최대 modified 2026-10-30T23:30Z, proxy.golang.org 목록 2026-11-02 08:5x UTC(`data/manifest_agent.json`), 실행 2026-11-02 08:57~09:20 UTC
 - 이 표본은 10건이고 Go 4개 서비스, 한 앱이다. 비율로 일반화하지 않는다
@@ -20,7 +20,7 @@
 |---|---|---|
 | 후보 생성 | 코드 | `candidates.py` (proxy.golang.org `@v/list`, `@v/<v>.mod`, 오프라인 OSV) |
 | 조치안 작성 | LLM | `remediation.py` 에이전트 `remediation` |
-| 입력 가드레일 | 코드 | 요청 형식(`REMEDIATION_REQUEST case=.. service=.. module=..`)과 사례 일치. 아니면 모델을 부르기 전에 차단 |
+| 입력 가드레일 | 코드 | 코드가 만든 요청의 형식 점검(`REMEDIATION_REQUEST case=.. service=.. module=..`와 사례 일치). 외부 입력 방어가 아니다. 어긋나면 모델을 부르기 전에 차단 |
 | 출력 가드레일 | 코드 | target_version이 보여 준 후보 안인지, also_bump 버전이 proxy에 있는 안정 버전인지 |
 | 기계 판정 | 코드 | `judge.py` |
 | PR 작성 | LLM | 에이전트 `pr_writer`, 도구 `open_fix_pr(needs_approval=True)` |
@@ -37,7 +37,7 @@
 | list_module_versions | 다른 모듈의 버전 목록 (also_bump 전에 확인) |
 | get_last_failure | 직전 시도의 판정 로그 |
 | submit_plan | 최종 제출. `StopAtTools`로 여기서 실행이 끝난다 |
-| open_fix_pr | PR 초안 (부작용). `needs_approval=True` |
+| open_fix_pr | 로컬 PR 초안 (부작용). LLM은 제목만 넘기고, 본문과 패치는 코드 템플릿이 쓴다. `needs_approval=True` |
 
 **LLM에 주지 않는 것**: KEV, EPSS 값(사례 고르기에만 씀), 키, 다른 서비스 코드
 
@@ -73,7 +73,7 @@
 - 비용은 토큰 x 공식 단가(Sonnet 5.5 $2/$10, Opus 5.5 $4/$20 per 100만 토큰, `model_config.PRICES`). Claude API 실제 청구서와 대조하지 않았다
 - 이번 세션의 Claude API 사용 합계: $2.14 (스모크 $0.007, 배관 확인 $0.022, Sonnet 에이전트 $0.658, 고정 흐름 $0.283, Opus 승격 $1.173). 상한 $10 안
 - 판정 1회 벽시계: 판정 기록 46개 중앙값 8.1초 (0.3~59.0초). 모듈 캐시가 데워진 뒤 값이 섞여 있다. 정책별 '판정 시간' 열은 캐시 재사용 때문에 비교 지표로 쓰지 않는다
-- 사람 승인: 통과 6건마다 `open_fix_pr`에서 실행이 멈췄고(interruptions 1회), `--auto-approve`로 6건 자동 승인했다. 실제 사람 승인은 배관 시험(거절 1건)뿐이다
+- 사람 승인: 통과 6건마다 `open_fix_pr`에서 실행이 멈췄고(interruptions 1회), `--auto-approve`로 6건 자동 승인했다. 실제 사람 승인 0건. 거절 경로는 배관 시험에서 코드로 흉내 냈다
 
 **사례별 (O 통과, X 실패, 마지막 시도의 버전)** 전체는 `results/agent/case_table.csv`
 | 사례 | 서비스 | 모듈 | 대상 권고 | min_target | min_all | latest | 고정 흐름 | 에이전트 | Opus |
@@ -92,7 +92,7 @@
 **실패에서 본 것**
 - C01 min_all, latest: x/net v0.62.0은 go 1.26 툴체인을 요구하고, 그 vet가 앱 코드 `main.go:156`의 비상수 포맷 문자열(logrus `Infof`)을 잡아 `go test`가 실패한다. 대상 권고만 고치는 v0.17.0은 go 1.19 그대로 통과
 - C03, C04: 새 otel이 들어오면 옛 otlptrace가 사라진 내부 패키지(`otel/exporters/otlp/internal/envconfig`)를 찾아 `go mod tidy`가 실패한다
-  - 에이전트는 2~3회째에 otel 계열을 함께 올려(also_bump) 빌드와 테스트를 통과시켰다. 그러나 그 조합이 `golang.org/x/crypto` 옛 버전을 새로 끌어와 재스캔에서 **새 HIGH/CRITICAL 권고 묶음 12개**(x/crypto 11, otel/sdk 1)가 생겼고 판정이 막았다 (`new_high`, Sonnet 2회, Opus 3회)
+  - 에이전트는 2~3회째에 otel 계열을 함께 올려(also_bump) 빌드와 테스트를 통과시켰다. 그러나 그 조합이 `golang.org/x/crypto` 옛 버전을 새로 끌어와 재스캔에서 **새 HIGH/CRITICAL 권고 묶음 12개**(x/crypto 11, otel/sdk 1)가 생겼고 판정이 막았다. 서로 다른 조합 4개, 시도 6회(Sonnet 에이전트 2, 1회 호출 1, Opus 3)가 모두 같은 12묶음이었다 (`new_high`)
   - 존재 확인(`oracle_check.py`, 정책 비교 아님): otel 1.43 + x/crypto v0.58.0 조합은 `google.golang.org/api` v0.126.0 빌드가 깨졌고, api 최신(v0.310.0)은 otelgrpc v0.67.0 이상을 요구했다. 앱이 쓰는 `otelgrpc.UnaryServerInterceptor` 등은 그 버전에 없다. 시도한 범위에서는 앱 코드 수정 없이 통과하는 조합을 못 찾았다(전수 탐색 아님)
 - C09, C10: 대상 권고를 고치는 가장 낮은 otlptrace v1.45.0은 go 1.25를 요구하고, `go get` 메시지대로 otelgrpc v0.61.0 이상을 끌어온다. 그 버전에는 앱이 부르는 인터셉터 함수가 없다(`undefined: otelgrpc.UnaryClientInterceptor`). 호출부 코드를 안 고치는 범위(기획안 2-2)에서는 사람에게 넘길 건이다
 - 가드레일 트립 4회: 형식 오류 1회(Sonnet 에이전트 C04, `submit_plan` 인자를 JSON 문자열로 한 번 더 감쌈), also_bump를 6개 이상 넣은 계획 3회(1회 호출 C03, Opus C03, Opus C09. 상한 5개). 후보 밖 버전 제안 0회. 원자료: 각 실행 `results.jsonl`의 `guardrail_errors`
