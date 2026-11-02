@@ -24,7 +24,7 @@ CACHE = TMP / "judge_cache"
 OSV_SCANNER = "/home/user/tools/bin/osv-scanner"
 OSV_DB = "/home/user/work/osvdb"
 BASE_GO = "1.19"
-HIGH = 7.0
+HIGH = 7.0  # 새 권고 중 max_severity 7.0 이상만 막는다. 등급 없는 권고와 7.0 미만은 통과한다
 
 
 def _env() -> dict:
