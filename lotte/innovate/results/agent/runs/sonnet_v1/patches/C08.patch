@@ -1,0 +1,19 @@
+--- a/go.mod
++++ b/go.mod
+@@ -1,6 +1,6 @@
+ module github.com/GoogleCloudPlatform/microservices-demo/src/shippingservice
+ 
+-go 1.19
++go 1.25.0
+ 
+ require (
+ 	cloud.google.com/go/profiler v0.3.1
+@@ -22,7 +22,7 @@
+ 	go.opencensus.io v0.23.0 // indirect
+ 	golang.org/x/oauth2 v0.0.0-20221014153046-6fdb5e3db783 // indirect
+ 	golang.org/x/sys v0.3.0 // indirect
+-	golang.org/x/text v0.5.0 // indirect
++	golang.org/x/text v0.41.0 // indirect
+ 	google.golang.org/api v0.102.0 // indirect
+ 	google.golang.org/appengine v1.6.7 // indirect
+ 	google.golang.org/genproto v0.0.0-20221024183307-1bc688fe9f3e // indirect
