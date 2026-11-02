@@ -141,7 +141,17 @@
 - 형식 오류: 24회 중 2회 판정 인자를 JSON 문자열로 이중 포장(조치안 C04와 같은 실수). 스키마 재요청 1회로 해결
 - 한계: 8건(exploitable 3건이라 1건이 33%p). 결과를 본 뒤 2, 3회차를 더했다. 공개 CVE와 저장소라 모델이 수정 내용을 기억했을 수 있다. code_not_present 판정은 get_advisory가 코드로 버전 범위를 계산해 준 몫이 크다. 기획안 7절 합격선(시험용 50건 x 3회)과 비교할 수 없다
 
-## 6. 재현 명령 모음
+## 6. 숫자 재확인 (⑥, 2026-11-02 09:44~10:05 UTC, 같은 컨테이너)
+| 대상 | 다시 돌린 것 | 결과 |
+|---|---|---|
+| M1 | 새 컨테이너에서 처음부터 전부(08:39~08:43), 그 뒤 `m1/backtest.py` 한 번 더 | `results/m1/` 바이트 동일 |
+| M2 | `bash m2/run.sh` (424초) | funnel, compare_proposal, findings 3개, stdlib_variants, path_compare CSV 동일. 바뀐 것은 생성 시각, HEAD, 로그의 메모리 주소뿐 |
+| 도달성 | `bash reach/run.sh` | levels.csv, cve_2023_44487.md 동일, summary.json은 실행 초만 다름. OpenVEX 12개는 (취약점, 제품, 상태) 집합이 같고 시각, ID, 순서만 다름 |
+| 조치안 | `agent.cases`, `agent.export`, 배관 시험 | cases.json, case_table.csv 동일. 시험 18개 통과(agent 6, vexpilot 12). LLM 실행은 다시 돌리지 않았다(샘플링이라 값이 조금 다를 수 있고 비용이 든다) |
+| 영향도 시범 | `vexpilot.report` | summary.csv, per_task.csv 동일 |
+- 재실행 결과 파일은 커밋본으로 되돌렸다(값이 같고 시각만 달라서)
+
+## 7. 재현 명령 모음
 ```bash
 cd lotte/innovate
 # M1 (약 5분, NVD 미러 4.1GB): results/m1/REPRO_CHECK.md
