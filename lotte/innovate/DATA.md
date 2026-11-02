@@ -36,6 +36,10 @@
 | docker-library golang 템플릿 | raw.githubusercontent.com/docker-library/golang/236db66 | 공식 이미지의 GOTOOLCHAIN=local 확인용 | 08:58:08 (`data/manifest_reach.json`) | BSD 스타일 |
 | VEX-Bench 라벨 | raw.githubusercontent.com/steven1518/vex-bench/80cddea/benchmark/tasks/vex_bench.jsonl | 75건 (Go 30) | 09:23:13 (`data/manifest_vexbench.json`) | MIT (저장소 표기 '공사 중') |
 
+| OSV Bitnami 덤프 (별칭 조회만) | `osv-vulnerabilities.storage.googleapis.com/Bitnami/all.zip` | 별칭의 별칭 조회 | 08:57:07 (`manifest_m2`) | Apache-2.0 (bitnami/vulndb) |
+| NVD 레코드 1건 CVE-2023-44487 | fkie-cad/nvd-json-data-feeds 1b66e03의 raw 파일 | VEX 예시 점수용 (nvd_table 7.5와 대조) | 09:41:40 (`manifest_m2`) | NVD 공공 자료 |
+| VEX-Bench 저장소 스냅숏 8개 | 각 repo_url의 commit_sha (git fetch --depth 1) | 시범 8건 (`vexpilot/CASES_RULE.md`) | 09:2x | 저장소별 (caddy Apache-2.0, podman Apache-2.0, testify MIT, trivy Apache-2.0) |
+
 - OSV 덤프는 앞 세션(08:12 UTC)이 아니라 이 세션에서 08:41 UTC에 새로 받은 것이다. 그래서 앞 세션 중간 관찰과 숫자가 조금 다를 수 있다
 - 모듈별 세부: `m2/NOTES.md`, `reach/NOTES.md`, `agent/NOTES.md`, `vexpilot/NOTES.md`
 
