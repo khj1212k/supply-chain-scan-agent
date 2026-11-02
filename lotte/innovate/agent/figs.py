@@ -133,9 +133,9 @@ def results(run_ids: list[str]) -> Path:
     ax.tick_params(colors=INK2)
     ax.legend(frameon=False, fontsize=8.5, loc="upper left", ncol=3)
     costs = {r["policy"]: float(r["cost_usd_per_case"]) for r in rows if r["model"] != "none"}
-    note = ("건당 LLM 비용(Sonnet 5.5 공식 단가): " + ", ".join(f"{names.get(k, k).splitlines()[0]} ${v:.3f}" for k, v in costs.items())
+    note = ("건당 LLM 비용(Sonnet 5.5 공식 단가): " + ", ".join(f"{names.get(k, k).splitlines()[0]} \\${v:.3f}" for k, v in costs.items())
             + ".  모든 정책이 실패한 4건은 otel 계열(C03, C04, C09, C10): 시도한 조합은 앱 코드 수정이 필요하거나 새 HIGH 권고를 끌어왔다.")
-    fig.text(0.01, -0.02, note, fontsize=7.8, color=INK2, ha="left", va="top")
+    fig.text(0.01, -0.07, note, fontsize=7.8, color=INK2, ha="left", va="top")
     out = FIGS / "agent_results.png"
     fig.savefig(out, facecolor=SURF, bbox_inches="tight")
     plt.close(fig)
