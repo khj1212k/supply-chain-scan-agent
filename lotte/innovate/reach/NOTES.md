@@ -3,7 +3,7 @@
 ## 결론 (세 줄)
 1. 로컬 DB로 govulncheck가 네트워크 없이 돈다. 양성 대조는 called, 음성 대조는 package 수준만 나왔다
 2. CVE-2023-44487: grpc 서버 3곳은 GO-2023-2153이 called, frontend는 grpc가 package 수준이다. 기획안 3-3 판정 초안 6칸과 모두 일치
-3. 다만 frontend의 표준 라이브러리 net/http는 ListenAndServe 때문에 called로 나온다. 직접 돌려 보니 go1.19.4 평문 서버는 HTTP/2로 답하지 않았다
+3. 다만 frontend의 표준 라이브러리 net/http는 ListenAndServe 때문에 called로 나온다. 시험 서버(h2probe)를 돌려 보니 go1.19.4 평문 서버는 HTTP/2로 답하지 않았다
 
 - 수치 기준: 실행 2026-11-02T09:24:14Z~09:32:17Z (UTC), DB modified 2026-10-30T10:55:54Z
 - 코드 커밋: 9d234e9 (수치를 낸 reach 코드와 git diff 0). 실행 시 HEAD는 68242d2였다

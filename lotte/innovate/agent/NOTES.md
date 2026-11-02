@@ -95,7 +95,7 @@
   - 에이전트는 2~3회째에 otel 계열을 함께 올려(also_bump) 빌드와 테스트를 통과시켰다. 그러나 그 조합이 `golang.org/x/crypto` 옛 버전을 새로 끌어와 재스캔에서 **새 HIGH/CRITICAL 권고 묶음 12개**(x/crypto 11, otel/sdk 1)가 생겼고 판정이 막았다 (`new_high`, Sonnet 2회, Opus 3회)
   - 존재 확인(`oracle_check.py`, 정책 비교 아님): otel 1.43 + x/crypto v0.58.0 조합은 `google.golang.org/api` v0.126.0 빌드가 깨졌고, api 최신(v0.310.0)은 otelgrpc v0.67.0 이상을 요구했다. 앱이 쓰는 `otelgrpc.UnaryServerInterceptor` 등은 그 버전에 없다. 시도한 범위에서는 앱 코드 수정 없이 통과하는 조합을 못 찾았다(전수 탐색 아님)
 - C09, C10: 대상 권고를 고치는 가장 낮은 otlptrace v1.45.0은 go 1.25를 요구하고, `go get` 메시지대로 otelgrpc v0.61.0 이상을 끌어온다. 그 버전에는 앱이 부르는 인터셉터 함수가 없다(`undefined: otelgrpc.UnaryClientInterceptor`). 호출부 코드를 안 고치는 범위(기획안 2-2)에서는 사람에게 넘길 건이다
-- 가드레일 트립 4회(Sonnet 에이전트 1, 고정 흐름 1, Opus 2)는 모두 형식 오류였다. 예: C04 1회차에서 `submit_plan`의 `plan` 인자를 객체가 아닌 JSON 문자열로 한 번 더 감싸 보냄. 후보 밖 버전을 낸 적은 0회
+- 가드레일 트립 4회: 형식 오류 1회(Sonnet 에이전트 C04, `submit_plan` 인자를 JSON 문자열로 한 번 더 감쌈), also_bump를 6개 이상 넣은 계획 3회(1회 호출 C03, Opus C03, Opus C09. 상한 5개). 후보 밖 버전 제안 0회. 원자료: 각 실행 `results.jsonl`의 `guardrail_errors`
 - 통과 6건에서 에이전트가 기준선과 다른 버전을 고른 것은 2건: C07(v1.9.3, 기준선 v1.9.1), C08(v0.41.0, 이 모듈 권고 전부 해소. 기준선 v0.39.0은 1묶음 남김. 둘 다 go 1.25로 오른다)
 
 - 대상 권고만 고치면 같은 모듈의 다른 권고가 남는다: C01 x/net v0.17.0 뒤 21묶음, C02 grpc v1.56.3 뒤 5묶음. 이 실습의 통과 기준은 '대상 묶음 소멸'이라 통과로 셌다
