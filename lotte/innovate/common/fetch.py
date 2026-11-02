@@ -19,15 +19,22 @@ RAW = ROOT / "data" / "raw"
 MANIFEST = ROOT / "data" / "manifest.json"
 
 
-def _load_manifest() -> dict:
-    if MANIFEST.exists():
-        return json.loads(MANIFEST.read_text())
+def _manifest_path(name: str | None) -> Path:
+    # 모듈마다 manifest 파일을 따로 둔다 (동시에 도는 작업이 같은 파일을 덮어쓰지 않게)
+    return MANIFEST if not name else MANIFEST.with_name(f"manifest_{name}.json")
+
+
+def _load_manifest(name: str | None = None) -> dict:
+    p = _manifest_path(name)
+    if p.exists():
+        return json.loads(p.read_text())
     return {}
 
 
-def _save_manifest(m: dict) -> None:
-    MANIFEST.parent.mkdir(parents=True, exist_ok=True)
-    MANIFEST.write_text(json.dumps(m, indent=1, ensure_ascii=False, sort_keys=True) + "\n")
+def _save_manifest(m: dict, name: str | None = None) -> None:
+    p = _manifest_path(name)
+    p.parent.mkdir(parents=True, exist_ok=True)
+    p.write_text(json.dumps(m, indent=1, ensure_ascii=False, sort_keys=True) + "\n")
 
 
 def sha256(path: Path) -> str:
@@ -38,10 +45,10 @@ def sha256(path: Path) -> str:
     return h.hexdigest()
 
 
-def fetch(url: str, rel: str, retries: int = 4, timeout: int = 300) -> Path:
-    """url 을 data/raw/rel 로 받는다. 있으면 그대로 쓴다."""
+def fetch(url: str, rel: str, retries: int = 4, timeout: int = 300, manifest: str | None = None) -> Path:
+    """url 을 data/raw/rel 로 받는다. 있으면 그대로 쓴다. manifest 이름을 주면 data/manifest_<이름>.json 에 기록."""
     dest = RAW / rel
-    m = _load_manifest()
+    m = _load_manifest(manifest)
     if dest.exists() and rel in m:
         return dest
     dest.parent.mkdir(parents=True, exist_ok=True)
@@ -63,12 +70,12 @@ def fetch(url: str, rel: str, retries: int = 4, timeout: int = 300) -> Path:
             time.sleep(2 * (2 ** i))
     else:
         raise RuntimeError(f"fetch failed: {url}: {err}")
-    m = _load_manifest()
+    m = _load_manifest(manifest)
     m[rel] = {
         "url": url,
         "fetched_utc": datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
         "sha256": sha256(dest),
         "bytes": dest.stat().st_size,
     }
-    _save_manifest(m)
+    _save_manifest(m, manifest)
     return dest

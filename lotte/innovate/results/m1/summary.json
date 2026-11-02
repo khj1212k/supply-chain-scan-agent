@@ -1,0 +1,50 @@
+{
+ "2025-06-01": {
+  "T": "2025-06-01",
+  "end": "2025-08-29",
+  "epss_header": "#model_version:v2025.03.14,score_date:2025-06-01T12:55:00Z",
+  "epss_rows": 280762,
+  "U_T": 279411,
+  "kev_added": 55,
+  "gold_published_before_T": 29,
+  "gold_in_U": 29,
+  "added_published_on_or_after_T": 26,
+  "added_missing_in_nvd": 0,
+  "U_missing_cvss3": 73301,
+  "gold_missing_cvss3": 0,
+  "not_rankable_share_of_added_pct": 47.3,
+  "cvss9_count_in_U": 31867
+ },
+ "2025-12-01": {
+  "T": "2025-12-01",
+  "end": "2026-02-28",
+  "epss_header": "#model_version:v2025.03.14,score_date:2025-12-01T12:55:00Z",
+  "epss_rows": 303485,
+  "U_T": 302021,
+  "kev_added": 65,
+  "gold_published_before_T": 23,
+  "gold_in_U": 23,
+  "added_published_on_or_after_T": 42,
+  "added_missing_in_nvd": 0,
+  "U_missing_cvss3": 74682,
+  "gold_missing_cvss3": 0,
+  "not_rankable_share_of_added_pct": 64.6,
+  "cvss9_count_in_U": 34919
+ },
+ "2026-03-31": {
+  "T": "2026-03-31",
+  "end": "2026-06-29",
+  "epss_header": "#model_version:v2025.03.14,score_date:2026-03-31T12:55:00Z",
+  "epss_rows": 323901,
+  "U_T": 322346,
+  "kev_added": 75,
+  "gold_published_before_T": 31,
+  "gold_in_U": 31,
+  "added_published_on_or_after_T": 44,
+  "added_missing_in_nvd": 0,
+  "U_missing_cvss3": 76102,
+  "gold_missing_cvss3": 0,
+  "not_rankable_share_of_added_pct": 58.7,
+  "cvss9_count_in_U": 37604
+ }
+}
