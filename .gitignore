@@ -1,0 +1,14 @@
+.env
+*.env
+.venv/
+__pycache__/
+*.pyc
+data/raw/
+**/data/raw/
+models/
+**/models/
+*.gguf
+*.safetensors
+*.bin
+.ipynb_checkpoints/
+.DS_Store
