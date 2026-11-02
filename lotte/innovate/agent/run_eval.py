@@ -104,6 +104,8 @@ async def main_async(a) -> None:
     pols = a.policies.split(",")
     meta = {"run_id": run_id, "started_utc": datetime.now(timezone.utc).isoformat(timespec="seconds"),
             "repo_commit": subprocess.run(["git", "rev-parse", "HEAD"], capture_output=True, text=True, cwd=g.INNO).stdout.strip(),
+            "dirty_files": subprocess.run(["git", "status", "--porcelain", "agent"], capture_output=True, text=True,
+                                          cwd=g.INNO).stdout.split("\n")[:20],
             "policies": pols, "cases": [c["case_id"] for c in cases], "auto_approve": a.auto_approve,
             "osv_snapshot": data["meta"]["osv_snapshot"], "availability": mc.availability()}
     rows = []
