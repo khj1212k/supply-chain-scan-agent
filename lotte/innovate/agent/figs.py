@@ -114,7 +114,7 @@ def results(run_ids: list[str]) -> Path:
     w = 0.26
     b1 = ax.bar([x - w for x in xs], first, w - 0.03, color="#9cc3ee", label="첫 시도 통과")
     b2 = ax.bar(list(xs), final, w - 0.03, color=BLUE, label="최종 통과 (최대 3회)")
-    b3 = ax.bar([x + w for x in xs], keep, w - 0.03, color=ORANGE, label="최종 통과 + go 1.19 유지")
+    b3 = ax.bar([x + w for x in xs], keep, w - 0.03, color=ORANGE, label="최종 통과 + golang:1.19.4로도 빌드, 테스트 통과")
     for bars in (b1, b2, b3):
         for b in bars:
             ax.text(b.get_x() + b.get_width() / 2, b.get_height() + 0.12, f"{int(b.get_height())}", ha="center",
