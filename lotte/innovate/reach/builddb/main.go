@@ -7,7 +7,7 @@
 //	<out>/ID/<ID>.json        원본 OSV 파일을 그대로 복사
 //
 // fixed 값은 v1.9.0 internal/semver/fixed.go NonSupersededFix와 같은 규칙으로 계산한다.
-// 사용: go run . -src <osv json 디렉터리> -out <db 디렉터리> [-prefix GO-]
+// 사용: go run . -src <osv json 디렉터리> -out <db 디렉터리> [-prefix GO-] [-modified-fallback RFC3339]
 package main
 
 import (
@@ -92,6 +92,7 @@ func main() {
 	src := flag.String("src", "", "OSV JSON 디렉터리")
 	out := flag.String("out", "", "출력 DB 디렉터리 (비어 있어야 함)")
 	prefix := flag.String("prefix", "GO-", "이 접두어로 시작하는 ID만 넣는다")
+	fallback := flag.String("modified-fallback", "", "모든 entry의 modified가 0일 때 db.json에 넣을 시각 (RFC3339). golang/vulndb 저장소 파일은 modified가 0이다")
 	flag.Parse()
 	if *src == "" || *out == "" {
 		fmt.Fprintln(os.Stderr, "usage: builddb -src DIR -out DIR")
@@ -158,6 +159,14 @@ func main() {
 	}
 	if err := os.WriteFile(filepath.Join(*out, "index", "modules.json"), mb, 0o644); err != nil {
 		panic(err)
+	}
+	if dbModified.IsZero() && *fallback != "" {
+		t, err := time.Parse(time.RFC3339, *fallback)
+		if err != nil {
+			panic(err)
+		}
+		dbModified = t.UTC()
+		fmt.Println("note: entry modified 값이 모두 0이라 db.json에 -modified-fallback 값을 넣었다")
 	}
 	db, err := json.Marshal(map[string]time.Time{"modified": dbModified})
 	if err != nil {
