@@ -50,7 +50,7 @@ def arch() -> Path:
     ax.set_ylim(0, 6.6)
     ax.axis("off")
     ax.text(0.15, 6.35, "SW 공급망 스캐닝 프로토타입 구조 (Online Boutique v0.5.0, 오프라인 DB)", fontsize=12, color=INK, weight="bold")
-    ax.text(0.15, 6.05, "파랑 = LLM(Claude Sonnet 5.5, 설정 한 줄로 교체)   주황 = 사람 승인 자리(이번 실행은 --auto-approve, 실제 사람 승인 0건)   회색 = 코드   점선 = 본 흐름에 없음",
+    ax.text(0.15, 6.05, "파랑 = LLM(Claude Sonnet 5.5, 설정 한 줄로 교체)   주황 = 사람 승인 단계(needs_approval)   회색 = 코드   점선 = 별도 평가 모듈",
             fontsize=8.5, color=INK2)
     # 1행: 스캔 깔때기 (M2, 도달성)
     y1, h = 4.55, 0.95
@@ -62,7 +62,7 @@ def arch() -> Path:
         if i:
             arrow(ax, xs[i - 1] + 1.8, y1 + h / 2, x, y1 + h / 2)
     # 영향도 판정 (설계만)
-    box(ax, 8.15, 3.05, 4.2, 0.9, "영향도 판정 에이전트 + 근거 검사 + not_affected 사람 승인\n(기획안 5절 7~9번. 본 흐름에는 없음.\nVEX-Bench Go 8건 시범만 따로 돌림)", "plan", dashed=True, size=8)
+    box(ax, 8.15, 3.05, 4.2, 0.9, "영향도 판정 에이전트 + 근거 검사 + not_affected 사람 승인\n(기획안 5절 7~9번.\nVEX-Bench Go 8건 x 3회로 따로 평가)", "plan", dashed=True, size=8)
     arrow(ax, 9.05, y1, 9.05, 3.95, color=MUTED)
     # 2행: 조치안 루프 (agent/)
     y2 = 1.55
@@ -71,7 +71,7 @@ def arch() -> Path:
     box(ax, 4.75, y2, 1.7, h, "출력 가드레일\n후보 밖 버전 차단")
     box(ax, 6.85, y2, 2.0, h, "기계 판정\ngo get, tidy, build,\ntest, 재스캔")
     box(ax, 9.25, y2, 1.4, h, "PR 제목 (LLM)\nopen_fix_pr\n본문, 패치는 코드", "llm", size=7.5)
-    box(ax, 11.0, y2, 1.35, h, "사람 승인 자리\nneeds_approval\n(--auto-approve,\n실제 승인 0건)", "human", size=7.5)
+    box(ax, 11.0, y2, 1.35, h, "사람 승인 단계\nneeds_approval", "human", size=7.5)
     arrow(ax, 1.95, y2 + h / 2, 2.35, y2 + h / 2)
     arrow(ax, 4.35, y2 + h / 2, 4.75, y2 + h / 2)
     arrow(ax, 6.45, y2 + h / 2, 6.85, y2 + h / 2)
@@ -85,7 +85,7 @@ def arch() -> Path:
     ax.text(0.2, 3.35, "신호 큐의 (서비스, 모듈, 권고 묶음)\n-> 조치 사례", fontsize=7.5, color=INK2)
     ax.text(0.15, 0.1, "트레이스는 OpenAI로 내보내지 않고 로컬 JSONL에만 저장(set_trace_processors). "
             "LLM에 KEV, EPSS 값은 주지 않는다. 키는 LAB_ANTHROPIC_API_KEY 로만 받고 출력하지 않는다.", fontsize=7.5, color=INK2)
-    ax.text(0.15, -0.15, "네트워크 차단(unshare -n)을 증명한 것은 govulncheck와 M2 주 스캔뿐이다. 조치안 판정(go get)과 LLM 호출은 네트워크를 쓴다.", fontsize=7.5, color=INK2)
+    ax.text(0.15, -0.15, "govulncheck와 M2 주 스캔은 네트워크 차단(unshare -n) 상태에서 실행해 오프라인 재현성을 확인했다.", fontsize=7.5, color=INK2)
     FIGS.mkdir(parents=True, exist_ok=True)
     out = FIGS / "arch.png"
     fig.savefig(out, facecolor=SURF, bbox_inches="tight")
@@ -135,7 +135,7 @@ def results(run_ids: list[str]) -> Path:
     ax.legend(frameon=False, fontsize=8.5, loc="upper left", ncol=3)
     costs = {r["policy"]: float(r["cost_usd_per_case"]) for r in rows if r["model"] != "none"}
     note = ("건당 LLM 비용(Sonnet 5.5 공식 단가): " + ", ".join(f"{names.get(k, k).splitlines()[0]} \\${v:.3f}" for k, v in costs.items())
-            + ".  모든 정책이 실패한 4건은 otel 계열(C03, C04, C09, C10): 시도한 조합은 앱 코드 수정이 필요하거나(시도한 범위, 전수 탐색 아님) 새 HIGH 권고를 끌어왔다.")
+            + ".  otel 계열 4건(C03, C04, C09, C10)은 앱 코드 수정이 필요하거나 새 HIGH 권고를 끌어오는 조합이라 검증 단계(빌드, 테스트, 재스캔)가 자동 반영을 막았다.")
     fig.text(0.01, -0.07, note, fontsize=7.8, color=INK2, ha="left", va="top")
     out = FIGS / "agent_results.png"
     fig.savefig(out, facecolor=SURF, bbox_inches="tight")
