@@ -1,7 +1,7 @@
 """M2 입력 준비: OSV 오프라인 DB를 개인 캐시에 고정하고, 빠진 생태계와 CycloneDX 스키마를 받는다.
 
 - OSV-Scanner 캐시 구조: <osvdb>/osv-scalibr/<생태계>/all.zip
-- Go, npm, PyPI, NuGet: 리드가 2026-11-02 08:12 UTC에 받은 /home/user/work/osvdb 사본을 복사 (스냅샷 고정)
+- Go, npm, PyPI, NuGet: 2026-11-02에 받은 /home/user/work/osvdb 사본을 복사 (스냅샷 고정, data/manifest_m2.json)
   - 사본이 없으면 OSV 공식 GCS 덤프를 새로 받는다 (그때는 스냅샷 날짜가 달라진다)
 - Maven, GitHub Actions: SBOM 경로에 나와서 필요. common.fetch 로 받고 data/manifest_m2.json 에 기록
 - 결과: results/m2/osv_db_inventory.csv (생태계, 크기, sha256, 파일 시각, 레코드 수, 레코드 최대 modified)

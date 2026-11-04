@@ -7,7 +7,7 @@
 | 데이터 | 들어 있는 곳 | 라이선스 | 표기 |
 |---|---|---|---|
 | GitHub Advisory Database | `lotte/innovate/results/m2/raw/`, `results/reach/` | CC-BY 4.0 ([LICENSE](https://github.com/github/advisory-database/blob/main/LICENSE.md)) | GitHub Advisory Database. OSV-Scanner 출력 형식으로 변환 |
-| Go Vulnerability Database | `results/reach/`, `results/agent/verdicts/`, `results/m2/raw/` | 데이터 CC-BY 4.0, 코드 BSD-3-Clause ([golang/vulndb](https://github.com/golang/vulndb#license)) | Go Vulnerability Database. OSV, govulncheck 출력 형식으로 변환 |
+| Go Vulnerability Database | `results/reach/`, `results/agent/`, `results/m2/raw/`, `results/vexpilot/` | 데이터 CC-BY 4.0, 코드 BSD-3-Clause ([golang/vulndb](https://github.com/golang/vulndb#license)) | Go Vulnerability Database. OSV, govulncheck 출력 형식으로 변환 |
 | PyPA Advisory Database | `results/m2/raw/` | CC-BY 4.0 ([LICENSE](https://github.com/pypa/advisory-database/blob/main/LICENSE)) | PyPA Advisory Database. OSV-Scanner 출력 형식으로 변환 |
 | Bitnami Vulnerability Database | `results/m2/raw/`, `results/reach/` (별칭 ID만) | Apache-2.0 | Bitnami vulndb |
 
@@ -17,7 +17,7 @@
 |---|---|---|---|
 | CISA Known Exploited Vulnerabilities | `results/m1/`, `results/m2/` | CC0 1.0 (미러 [cisagov/kev-data](https://github.com/cisagov/kev-data) 7ccba8e) | CISA KEV catalogVersion 2026.10.30 |
 | FIRST EPSS | `results/m1/`, `results/m2/` | 무료 공개, 출처 표기 요청 | EPSS data provided by FIRST.org (https://www.first.org/epss). 미러 RogoLabs/EPSS-History 9b88cf4 (Apache-2.0) |
-| NVD | `results/m1/` | 미국 정부 공개 자료 | This product uses data from the NVD API but is not endorsed or certified by the NVD. 미러 fkie-cad/nvd-json-data-feeds 1b66e03 |
+| NVD | `results/m1/`, `results/m2/` (CVSS, SSVC, VEX 예시 점수) | 미국 정부 공개 자료 | This product uses data from the NVD API but is not endorsed or certified by the NVD. 미러 fkie-cad/nvd-json-data-feeds 1b66e03 |
 
 ## 평가 데이터와 대상 앱
 

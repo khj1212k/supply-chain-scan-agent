@@ -43,7 +43,7 @@ cd lotte/innovate && bash reach/run.sh
 | 항목 | 값 |
 |---|---|
 | 주 DB 원본 | https://osv-vulnerabilities.storage.googleapis.com/Go/all.zip |
-| 받은 시각 | 2026-11-02T08:41:01Z (data/manifest_m2.json, 리드가 받음) |
+| 받은 시각 | 2026-11-02T08:41:01Z (data/manifest_m2.json) |
 | sha256 | 71e545dbaca20a60937a081582ac704f08cc96e65ebc0dd76644261fbce9303a |
 | 크기 | 12,701,800 바이트 |
 | 레코드 | 전체 9,815, 그중 GO-* 4,731 (모듈 1,449) |
@@ -170,37 +170,37 @@ cd lotte/innovate && bash reach/run.sh
 - 표준 라이브러리는 Dockerfile golang 이미지 버전으로 판정했다
   - main은 go.mod에 toolchain go1.27.1이 있지만 공식 이미지가 GOTOOLCHAIN=local이라 go1.27.0으로 봤다 (docker-library/golang 236db66 템플릿 247줄)
   - v0.5.0은 go1.20.4 로더 + GOVERSION=go1.19.4로 판정했다(go1.19.4 `go list`에 `-pgo` 플래그가 없음)
-- DB는 2026-10-30 스냅숏이다. 그 뒤 공개된 취약점은 없다
+- DB는 2026-10-30 스냅숏이다. 그 뒤 공개된 취약점은 DB에 들어 있지 않다
 - govulncheck는 빌드되는 모듈이 필요하다. 테스트 코드는 안 본다 (-test 끔)
 - 대상: 3개 커밋의 Go 서비스 4개, 소스 모드
 - `-mode query`는 버전으로 거르지 않은 목록을 돌려준다 (x/vuln v1.9.0 client.go byModule). 그래서 go.mod 기준선은 DB 파일에서 직접 계산했다. 예: v0.5.0 checkoutservice query 145, 거른 뒤 131
 
-## 결정 (DECISIONS.md D17에 병합)
+## 결정 (요약: DECISIONS.md D17)
 | # | 결정 | 고른 기본값 | 다른 안 | 근거 |
 |---|---|---|---|---|
 | 1 | govulncheck 바이너리 | v1.9.0을 go1.27.0으로 빌드한 것 하나 | 공용 go1.26.10 빌드 + main 제외 / 커밋별 바이너리 | go1.26 빌드는 main의 go1.27 파일을 타입 검사 못 함. v0.5.0 frontend는 두 빌드 결과가 같았다 (`govulncheck_build_check.json`) |
-| 2 | 표준 라이브러리 판정 | 로더 = Dockerfile 버전(안 되면 가장 가까운 go1.20.4), GOVERSION = Dockerfile 버전 | 로컬 go1.24.7 + GOVERSION (앞 워커 안) / GOVERSION 없음 | 민감도 표처럼 로더도 결과를 바꾼다 |
+| 2 | 표준 라이브러리 판정 | 로더 = Dockerfile 버전(안 되면 가장 가까운 go1.20.4), GOVERSION = Dockerfile 버전 | 로컬 go1.24.7 + GOVERSION / GOVERSION 없음 | 민감도 표처럼 로더도 결과를 바꾼다 |
 | 3 | 수준 집계 | (ID, 모듈)마다 최고 수준, 개수는 서로 다른 ID | finding 줄 수 | 사람이 다루는 단위가 ID다 |
 | 4 | 플랫폼 | 거르지 않고 세되 열과 개수로 따로 표시 | linux/amd64 아닌 ID 제외 | 도구 출력 그대로가 재현 가능하다 |
 | 5 | osv-scanner 호출 분석 | run.sh에서 뺐다 | 두 번째 도구로 비교 | M2에서 따로 대조(`m2/NOTES.md` 'Go 도달 확인') |
 | 6 | golang/vulndb 대조 | 깊이 1 전체 받기 (3초) | 생략 | blob:none 희소 받기는 느리다 |
 | 7 | 결과 크기 | JSON은 gzip, 텍스트 출력은 임시 폴더에만 | 텍스트도 커밋 | 서비스당 텍스트 약 150KB, JSON과 중복 |
 
-## 데이터 출처 (DATA.md에 병합)
+## 데이터 출처 (요약: DATA.md)
 | 데이터 | 출처 | 라이선스 | 받은 시각 (UTC) |
 |---|---|---|---|
-| OSV Go all.zip | osv-vulnerabilities.storage.googleapis.com/Go/all.zip | CC-BY 4.0 (Go 취약점 DB 항목) | 2026-11-02T08:41:01Z (리드, manifest_m2) |
+| OSV Go all.zip | osv-vulnerabilities.storage.googleapis.com/Go/all.zip | CC-BY 4.0 (Go 취약점 DB 항목) | 2026-11-02T08:41:01Z (manifest_m2) |
 | golang/vulndb data/osv | github.com/golang/vulndb 8f7e390 (git fetch --depth 1) | CC-BY 4.0 (data/LICENSE), BSD (코드) | 2026-11-02T08:50:53Z (reachcache/vulndb FETCH_HEAD, 매니페스트 없음) |
 | docker-library golang 템플릿 | raw.githubusercontent.com/docker-library/golang/236db66.../Dockerfile-linux.template | BSD 스타일 (LICENSE: Copyright 2014 Docker, Inc.) | 2026-11-02T08:58:08Z (data/manifest_reach.json) |
 | Go 툴체인 go1.19.4, go1.20.4, go1.27.0 | proxy.golang.org golang.org/toolchain | BSD | 2026-11-02 08:48쯤 (모듈 캐시) |
-| Online Boutique 소스 | 리드가 만든 워크트리 3c0d659, d54af3d, c7cb6d5 | Apache-2.0 | 리드 기록 참고 |
+| Online Boutique 소스 | 워크트리 3c0d659, d54af3d, c7cb6d5 (README '어떻게 돌리나') | Apache-2.0 | 2026-11-02T08:40Z (DATA.md 2절) |
 
 - 라이선스 칸은 각 저장소 LICENSE 파일 기준. OSV zip의 Go 항목은 Go 취약점 DB(CC-BY 4.0)에서 온다
 
 ## 실행 중 처리한 것
 | # | 오류 | 처리 |
 |---|---|---|
-| 1 | /home/user/tools, /home/user/work/ob_* 없음 ($HOME이 /root) | 리드가 심볼릭 링크를 만들었다 |
+| 1 | /home/user/tools, /home/user/work/ob_* 없음 ($HOME이 /root) | 실행 환경에 심볼릭 링크를 만들었다 |
 | 2 | go1.26.10 빌드 govulncheck + main: `x/net@v0.58.0/http2/server_wrap.go: file requires newer Go version go1.27 (application built with go1.26)`, `internal/poll/splice_linux.go:237:21: unknown field rfd` | go1.27.0으로 다시 빌드 (결정 1). run.sh가 매번 재현해 `govulncheck_build_check.json`에 남긴다 |
 | 3 | GOTOOLCHAIN=go1.19.4: `unsupported version of go: ... -pgo` | 로더 go1.20.4 + GOVERSION=go1.19.4 |
 | 4 | builddb go.mod가 go 1.26.0 요구. 원래 run.sh의 GOTOOLCHAIN=local이면 실패 | go1.27.0으로 실행 |

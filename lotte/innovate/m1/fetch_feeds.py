@@ -1,9 +1,9 @@
 """M1 데이터 받기: KEV(CISA 공식 GitHub 미러), EPSS 일별 파일(제3자 미러).
 
-환경 네트워크 정책이 www.cisa.gov, api.first.org, epss.empiricalsecurity.com 을 막아서
+같은 입력으로 다시 돌릴 수 있게
 아래 미러를 커밋 고정으로 쓴다 (DATA.md).
 
-NVD 는 fkie-cad/nvd-json-data-feeds 를 git 으로 따로 받는다 (Makefile 의 nvd 대상).
+NVD 는 fkie-cad/nvd-json-data-feeds 를 git 으로 따로 받는다 (results/m1/REPRO_CHECK.md 재현 명령).
 """
 from __future__ import annotations
 

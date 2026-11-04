@@ -65,7 +65,7 @@
 ## 사례 규칙과 목록 (`CASES_RULE.md`, 실행 전 고정)
 - Go 30건 중 큰 단일 저장소 6개(kubernetes, minikube, rancher, cilium, moby, istio) 제외 -> 14건 (exploitable 3, not_exploitable 11)
 - exploitable 전부 + not_exploitable 을 task_id 순으로 합계 8건까지
-- 사전 고정 증거: 규칙 파일은 커밋 b85f460 (2026-11-02T09:25:52Z, 이 작업이 아닌 저장소 쪽 커밋)에 들어 있다. 첫 LLM 호출 전이다. 그 뒤 바뀐 것은 고정 시각 줄 하나다 (`git diff b85f460 -- lotte/innovate/vexpilot/CASES_RULE.md`)
+- 사전 고정 증거: 규칙 파일은 커밋 b85f460 (2026-11-02T09:25:52Z)에 들어 있다. 첫 LLM 호출 전이다. 그 뒤 바뀐 것은 고정 시각 줄 하나다 (`git diff b85f460 -- lotte/innovate/vexpilot/CASES_RULE.md`)
 
 | # | task_id | 라벨 | 라벨 사유 | vendor/ |
 |---|---|---|---|---|
@@ -121,7 +121,7 @@
 - 반복 2회(run2, run3)로 판정 일관성을 쟀다. 프롬프트, 도구, 검사 규칙은 그대로다 (run.py 에 출력 폴더 인자만 추가)
 
 ## 근거 검사의 효과
-- 24회 중 강등 0건(검사 전과 후 표가 같다). 제출된 근거가 모두 실제 파일 줄과 0건 검색 재실행으로 확인됐다
+- 24회 중 강등 0건(검사 전과 후 표가 같다). 제출된 근거가 모두 실제 파일 줄, 0건 검색 재실행, go.mod 모듈 기록(code_not_present 3회)으로 확인됐다
 - 통과한 근거의 종류
   - exploitable 13회(run1 4, run2 5, run3 4): 전부 file:line 이 있고 그 줄에 심볼 이름이 있었다 (예: caddy `listeners.go:465 ListenEarly`, podman `pkg/bindings/connection.go:118 ssh.Dial`)
   - code_not_reachable 8회: 0건 검색 기록을 다시 돌려 전부 0건
@@ -189,7 +189,7 @@ nice -n 10 .venv/bin/python -m vexpilot.run --fresh --out results/vexpilot/repea
 | run1 | 2026-11-02T09:35:33 | 09:37:48 | f9cd53363fd5c73d002dcb3ee384a18139ebc3fe | $0.0254 | $0.4160 |
 | run2 | 2026-11-02T09:38:50 | 09:40:07 | b83082cacb4faac1ccac4f7da8527b299ba106e5 | $0.4160 | $0.5434 |
 | run3 | 2026-11-02T09:40:10 | 09:41:59 | 1d7967f976b8154b195535157ca6065389e9d1d9 | $0.5434 | $0.7420 |
-- HEAD 가 회차마다 다른 것은 같은 저장소에서 다른 모듈 작업이 병렬로 커밋했기 때문이다. vexpilot 코드는 아래 sha256으로 고정했다
+- HEAD 가 회차마다 다른 것은 같은 저장소에서 다른 작업(도달성 결과, DATA, README 문서)이 병렬로 커밋했기 때문이다. vexpilot 코드는 아래 sha256으로 고정했다
 - 실행 때 코드 (sha256 앞 12자리): vex_agent.py 09777e57f3b7, evidence.py ac602651bc3f, repo_tools.py 9645700c8690, cases.py 2cd72ef42598
   - run.py 는 run1 뒤에 `--out` 인자만 추가했다(현재 cf71a43f99ac). 판정 동작은 그대로
 - 각 회차 `meta.json`: 모델, 상한, max_turns, 시간 제한, OSV 스냅샷, 공급자 가용성, 스냅샷 받은 시각

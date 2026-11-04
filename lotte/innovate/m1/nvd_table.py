@@ -6,7 +6,7 @@
 
 - cvss3_max: v3.1, v3.0 점수 중 최대 (Primary, Secondary 모두). 기획안 부록 B 와 같은 규칙
 - cvss3_nvd: NVD 자체(Primary) v3 점수. 없으면 빈칸
-- CVSS 는 오늘 값이다. 시점 값이 아니다 (한계)
+- CVSS 는 미러 커밋(1b66e03) 기준 현재 값이다 (RESULTS 'CVSS는 현재 값'과 같은 정의)
 사용: python m1/nvd_table.py /home/user/work/nvd
 """
 from __future__ import annotations

@@ -2,9 +2,11 @@
 
 롯데 AX 챌린지 롯데이노베이트 과제 예선용. 기획안의 예비 결과를 **도구로 다시 돌리고**, 조치안 에이전트와 영향도 판정 에이전트를 **Claude로 실측**한 사전 프로토타입이다.
 
+- 문서의 '기획안'은 예선에 낸 과제 기획안과 그 사전 분석을 가리킨다. 대조한 기획안 숫자는 `results/m2/compare_proposal.csv`와 각 절의 표에 함께 적었다
+
 - 결과와 수치: [RESULTS.md](RESULTS.md)
 - 설계 결정과 근거: [DECISIONS.md](DECISIONS.md) / 데이터 출처: [DATA.md](DATA.md)
-- 수치 동결: 2026-11-02 23:39 KST(태그 lotte-innovate-freeze). 그 뒤에는 문서만 고쳤다. 결과 파일 동일 확인: `git diff lotte-innovate-freeze lotte-innovate-public -- lotte/innovate/results lotte/innovate/data` (출력 없음)
+- 수치 동결: 2026-11-02 23:39 KST(태그 lotte-innovate-freeze). 그 뒤에는 문서, 그림 문구, 코드 주석만 고쳤다(계산 코드와 결과 파일은 그대로). 결과 파일 동일 확인: `git diff lotte-innovate-freeze lotte-innovate-public -- lotte/innovate/results lotte/innovate/data` (출력 없음)
 
 ## 무엇을 했나
 | 모듈 | 질문 | 방법 | 폴더 |

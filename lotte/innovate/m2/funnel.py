@@ -51,7 +51,7 @@ COMMITS = {"v0.5.0": "3c0d6597809d1f40dccd24b757b7ca67d40cadf8",
 PUBLIC = "frontend"  # v0.5.0 매니페스트의 LoadBalancer 는 frontend-external 하나 (기획안 3-2)
 SEED = 20261102
 
-# (KEV, 공개 노출, 자동화, 기술적 영향) -> 기한. CERT/CC 정리표 기준 (CISA 이미지 원본 미대조). 기획안 부록 B 그대로
+# (KEV, 공개 노출, 자동화, 기술적 영향) -> 기한. CERT/CC 정리표 기준. 기획안 부록 B 그대로
 BOD = {"NNNP": "upgrade", "YNNP": "14d", "NYNP": "60d", "NNYP": "60d", "NNNT": "upgrade", "YYNP": "14d", "YNYP": "14d", "NYYP": "14d",
        "YNNT": "14d", "NYNT": "14d", "NNYT": "60d", "YYYP": "3d", "YYNT": "3d+F", "YNYT": "3d+F", "NYYT": "3d", "YYYT": "3d+F"}
 DUE_ORDER = ["3d+F", "3d", "14d", "60d", "upgrade"]
@@ -403,7 +403,7 @@ def write_csv(p: Path, rows: list[dict]) -> None:
 
 
 def reach_column(res_by_label: dict, idx: "OSVIndex") -> tuple[dict, dict]:
-    """reach/ 결과(다른 에이전트 담당)가 있으면 읽고, 없으면 'not yet'.
+    """reach/ 결과(도달성 모듈 출력)가 있으면 읽고, 없으면 'not yet'.
 
     - 맞추는 키: 커밋 해시(commit 열) + 서비스 + OSV ID + 모듈(= 보고 행의 패키지). 표준 라이브러리 행은 헤드라인 큐에 없어서 안 맞는다
     - 큐 Go 행마다 그 행 권고들의 수준 중 가장 높은 것 (symbol > package > module). levels.csv 에 없으면 none
@@ -471,7 +471,7 @@ def git_info() -> dict:
         m = re.search(r"nvd-json-data-feeds `([0-9a-f]{40})`", rc.read_text()) if rc.exists() else None
         nvd_head = f"{m[1]} (results/m1/REPRO_CHECK.md 기록. 복제 없음)" if m else "미확인"
     # m2_dirty: 실행한 코드(m2/, common/)가 커밋본과 다른가. results/m2 는 scan.sh 가 먼저 로그를 다시 쓰므로 보지 않는다
-    #   (예전 정의는 results/m2 까지 봐서 코드가 깨끗해도 항상 true였다. 2026-11-02 정정 06-6)
+    #   (예전 정의는 results/m2 까지 봐서 코드가 깨끗해도 항상 true였다. 2026-11-02 수정)
     return {"repo_head": g("rev-parse", "HEAD"), "m2_dirty": bool(g("status", "--porcelain", "--", "m2", "common")),
             "nvd_feed_commit": nvd_head}
 

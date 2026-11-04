@@ -1,5 +1,5 @@
 """존재 확인 (정책 비교 아님): 에이전트와 기준선이 모두 실패한 사례에 통과 조합이 있는지,
-결과를 본 뒤 코딩 에이전트가 고른 조합 몇 개를 같은 기계 판정에 넣어 본다. 출력: results/agent/oracle_check.json
+결과를 본 뒤 고른 조합 몇 개를 같은 기계 판정에 넣어 본다. 출력: results/agent/oracle_check.json
 """
 from __future__ import annotations
 

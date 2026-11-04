@@ -21,9 +21,9 @@
 
 ![구조도](lotte/innovate/figs/arch.png)
 
-- 코드가 신호 조인, 기한 계산, 조치안 판정을 결정하고, LLM은 코드와 설정을 읽어야 하는 영향도 판정과 조치안 설명에만 씁니다.
-- 위험 판정을 낮추는 결정과 PR 생성은 사람이 승인합니다.
-- 모델은 설정 한 줄(`LAB_MODEL`)로 바꿉니다. 사전 실측은 Claude Sonnet 5.5로 했고, 같은 코드로 OpenAI 모델을 돌립니다.
+- 코드가 후보 생성, 신호 조인, 기한 계산, 조치안 판정을 결정하고, LLM은 영향도 판정, 코드가 준 후보 안의 조치안 작성, PR 제목에 씁니다.
+- PR 생성은 사람 승인 단계(needs_approval)를 거칩니다. 위험 판정을 낮추는 not_affected는 사람 승인으로 보내도록 설계했습니다(기획안 5절).
+- 모델은 설정 한 줄(`LAB_MODEL`)로 바꿉니다. 사전 실측은 Claude Sonnet 5.5(승격 4건은 Opus 5.5)로 했고, 본선 전 같은 코드로 OpenAI 모델을 돌립니다.
 
 ## 확인 방법
 
@@ -46,14 +46,14 @@ git checkout lotte-innovate-public && cd lotte/innovate
 
 ## 수치 동결
 
-- 태그 `lotte-innovate-freeze`: 커밋 708edc5, 2026-11-02 23:39 KST. 이 시점에 결과 수치를 고정했습니다.
+- 태그 `lotte-innovate-freeze`: 커밋 f1792a5, 2026-11-02 23:39 KST. 이 시점에 결과 수치를 고정했습니다.
 - 태그 `lotte-innovate-public`: 공개용 문서를 정리한 판입니다. 결과 파일은 동결 태그와 같습니다.
 
 ```bash
 git diff lotte-innovate-freeze lotte-innovate-public -- lotte/innovate/results lotte/innovate/data   # 출력 없음
 ```
 
-- 이 저장소는 2026-11-04에 작업 저장소에서 결과 증빙만 옮긴 공개본입니다. 커밋 날짜, 작성자, 결과 파일은 그대로입니다. 문서와 결과 파일에 적힌 7자리 커밋 번호는 [COMMIT_MAP.md](COMMIT_MAP.md)로 이 저장소의 커밋과 대응합니다.
+- 이 저장소는 2026-11-04에 작업 저장소에서 결과 증빙(코드, 결과 파일, 결과 문서)을 옮긴 공개본입니다. 커밋 날짜, 작성자, 결과 파일과 데이터는 바이트 단위로 그대로이고, 문서 속 작업 메모(작업 지시와 내부 파일 참조)는 공개본에서 정리했습니다. 문서와 결과 파일에 적힌 7자리 커밋 번호는 [COMMIT_MAP.md](COMMIT_MAP.md)로 이 저장소의 커밋과 대응합니다.
 
 ## 만든 방식
 

@@ -1,7 +1,7 @@
 """그림: 구조도(figs/arch.png), 조치안 결과(figs/agent_results.png).
 
 사용: .venv/bin/python -m agent.figs [--results <run_id,...>]
-색: 참조 팔레트(dataviz 스킬) 1~2번 + 중립 회색. LLM 칸만 파랑, 사람 칸은 주황, 나머지 코드는 회색.
+색: 참조 팔레트 1~2번 + 중립 회색. LLM 칸만 파랑, 사람 칸은 주황, 나머지 코드는 회색.
 """
 from __future__ import annotations
 
@@ -61,7 +61,7 @@ def arch() -> Path:
         box(ax, x, y1, 1.8 if i < 5 else 2.0, h, t)
         if i:
             arrow(ax, xs[i - 1] + 1.8, y1 + h / 2, x, y1 + h / 2)
-    # 영향도 판정 (설계만)
+    # 영향도 판정 (VEX-Bench Go 8건 x 3회로 따로 평가, vexpilot/)
     box(ax, 8.15, 3.05, 4.2, 0.9, "영향도 판정 에이전트 + 근거 검사 + not_affected 사람 승인\n(기획안 5절 7~9번.\nVEX-Bench Go 8건 x 3회로 따로 평가)", "plan", dashed=True, size=8)
     arrow(ax, 9.05, y1, 9.05, 3.95, color=MUTED)
     # 2행: 조치안 루프 (agent/)

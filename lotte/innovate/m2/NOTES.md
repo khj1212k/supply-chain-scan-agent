@@ -142,7 +142,7 @@ cd lotte/innovate && bash m2/run.sh     # 약 7~8분 (439~484초)
 - SBOM 경로 값 (v0.5.0, 스캔 범위 `src/`): 패키지 413, 취약 63
 
 ## Go 도달 확인 (reach 결과를 읽기만 함)
-- 원본: `results/reach/levels.csv` (다른 작업이 만든다). 읽은 판: sha256 앞 12자 `af8786389b04` (09:20 판과 09:32 판이 같은 내용)
+- 원본: `results/reach/levels.csv` (도달성 모듈 `reach/run.sh`가 만든다). 읽은 판: sha256 앞 12자 `af8786389b04` (09:20 판과 09:32 판이 같은 내용)
   - reach가 다시 돌면 값이 바뀔 수 있다. 그때 `.venv/bin/python m2/funnel.py && .venv/bin/python m2/figs.py`만 다시 돌린다
 - 연결: 커밋 해시 + 서비스 + GO- 권고 ID + 모듈(= 보고 행 패키지). 행마다 가장 높은 수준
 - 보조 연결: x/net 0.4.0의 CVE-2023-44487 행(서비스 4개)은 GHSA-qppj-fm5r-hxr3로만 붙어서 GO- ID가 없다
@@ -247,7 +247,7 @@ cd lotte/innovate && bash m2/run.sh     # 약 7~8분 (439~484초)
 - 큰 원본(스캔 JSON 7종 x 3커밋, 로그): `/home/user/work/m2tmp/<라벨>/` (커밋 안 함)
 - `results/m2/osv_db_inventory.csv`는 prepare.py가 만든 것이다 (이번에 안 바꿈)
 
-## 결정 (DECISIONS.md D16에 병합)
+## 결정 (요약: DECISIONS.md D16)
 | 번호 | 정할 것 | 안 | 고른 기본값과 근거 |
 |---|---|---|---|
 | M2-1 | 헤드라인 경로 | (a) 잠금 파일 직접 (b) Syft SBOM (c) 합집합 | (a). 서비스 정보가 그대로 있고 NuGet을 읽는다. (b)는 비교로 |
@@ -260,14 +260,14 @@ cd lotte/innovate && bash m2/run.sh     # 약 7~8분 (439~484초)
 | M2-8 | 다중 CVE 권고 | (a) 첫 CVE만 (기획안) (b) 전부 | (a). 기획안과 같게. 영향은 고유 CVE -2 (v0.5.0), -1 (main) |
 | M2-9 | 별칭의 별칭 조회 원본 | (a) 받은 생태계 zip + Bitnami zip (b) api.osv.dev | (a). 오프라인 덤프로 재현 가능. 별칭 레코드 못 찾은 것 0건 |
 
-## 데이터 출처 (DATA.md에 병합)
+## 데이터 출처 (요약: DATA.md)
 | 자료 | URL | 받은 시각 (UTC) | sha256 앞 12자 | 라이선스 |
 |---|---|---|---|---|
 | NVD 레코드 1건 (CVE-2023-44487, VEX 점수용) | https://raw.githubusercontent.com/fkie-cad/nvd-json-data-feeds/1b66e035d87d0ddf83705ff01b4382889755f89a/CVE-2023/CVE-2023-444xx/CVE-2023-44487.json | 2026-11-02T09:41:40Z | f12ff7bc6855 | NVD 자료 (공공), 미러는 fkie-cad (DATA.md 기존 NVD 항목 따름) |
 | OSV Bitnami 덤프 (별칭 조회만) | https://osv-vulnerabilities.storage.googleapis.com/Bitnami/all.zip | 2026-11-02T08:57:07Z | ed67a6ad69e8 | Apache-2.0 (bitnami/vulndb `LICENSE.md`, 2026-11-02 확인) |
 | OSV Go, npm, PyPI, NuGet, Maven, GitHub Actions 덤프 | 같은 버킷 `<생태계>/all.zip` | 2026-11-02T08:41Z (prepare.py) | `data/manifest_m2.json` | 원본 DB마다 다름 (DATA.md 기존 OSV 항목 따름) |
 | CycloneDX 1.6 스키마 3종 | raw.githubusercontent.com/CycloneDX/specification/1.6/schema/ | 2026-11-02T08:41Z (prepare.py) | `data/manifest_m2.json` | Apache-2.0 (CycloneDX specification 저장소) |
-| Online Boutique | github.com/GoogleCloudPlatform/microservices-demo (git clone) | 앞 세션 | 커밋 해시 | Apache-2.0 (워크트리 LICENSE 확인) |
+| Online Boutique | github.com/GoogleCloudPlatform/microservices-demo (git clone) | 2026-11-02T08:40Z (DATA.md 2절) | 커밋 해시 | Apache-2.0 (워크트리 LICENSE 확인) |
 
 ## 범위
 - 잠금 파일 없는 Java 서비스(adservice)는 OSV-Scanner와 Syft가 모두 읽지 않는다. 기획안이 build.gradle에서 찾은 Java KEV 행(netty, CVE-2023-44487)이 그 예라, build.gradle 해석 경로를 확장 계획에 넣었다
