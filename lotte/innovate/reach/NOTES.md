@@ -3,11 +3,11 @@
 ## 결론 (세 줄)
 1. 로컬 DB로 govulncheck가 네트워크 없이 돈다. 양성 대조는 called, 음성 대조는 package 수준만 나왔다
 2. CVE-2023-44487: grpc 서버 3곳은 GO-2023-2153이 called, frontend는 grpc가 package 수준이다. 기획안 3-3 판정 초안 6칸과 모두 일치
-3. 다만 frontend의 표준 라이브러리 net/http는 ListenAndServe 때문에 called로 나온다. 시험 서버(h2probe)를 돌려 보니 go1.19.4 평문 서버는 HTTP/2로 답하지 않았다
+3. frontend 표준 라이브러리 net/http는 ListenAndServe 때문에 도구가 called로 내지만, 시험 서버(h2probe)로 go1.19.4 평문 서버가 HTTP/2로 답하지 않음을 확인해 not_affected 후보(VEX 상태 in_triage, 사람 확인)로 가려냈다
 
 - 수치 기준: 실행 2026-11-02T09:24:14Z~09:32:17Z (UTC), DB modified 2026-10-30T10:55:54Z
 - 코드 커밋: 9d234e9 (수치를 낸 reach 코드와 git diff 0). 실행 시 HEAD는 68242d2였다
-- run.sh를 작업 중 세 번 돌렸다 (08:58, 09:10, 09:24 UTC 시작). 다만 커밋된 결과는 마지막 실행뿐이라 '세 번 같았다'는 증거가 남아 있지 않다. 증거로 남은 것은 RESULTS 6절의 재실행 1회(09:44~09:51 UTC)에서 같았다는 것이다
+- 재실행 확인: RESULTS 6절 재실행(09:44~09:51 UTC)에서 결과가 같았다
 - 재현: 아래 '실행' 한 줄
 
 ## 실행
@@ -33,7 +33,7 @@ cd lotte/innovate && bash reach/run.sh
 | 도구 | 버전 | 비고 |
 |---|---|---|
 | govulncheck | v1.9.0 (h1:12VaqnI9...) | go1.27.0으로 직접 빌드한 것 하나를 모든 커밋에 썼다 (결정 1) |
-| 공용 govulncheck | v1.9.0, go1.26.10 빌드 | main 커밋에서 실패해서 안 씀 (오류 2) |
+| 공용 govulncheck | v1.9.0, go1.26.10 빌드 | main 커밋의 go1.27 파일을 읽지 못해 go1.27.0 빌드로 통일 (결정 1) |
 | go (로컬) | go1.24.7 | |
 | 패키지 로딩 툴체인 | go1.20.4, go1.27.0 | 민감도용 go1.24.7, go1.26.10 |
 | strace | 6.8 | |
@@ -93,13 +93,13 @@ cd lotte/innovate && bash reach/run.sh
 | productcatalogservice | GO-2023-2153 grpc v1.51.0 | symbol | main -> run -> grpc.NewServer [server.go:140] | exploitable 후보, 수정 1.56.3 | 일치. 호출 줄 140, 151 |
 | shippingservice | GO-2023-2153 grpc v1.51.0 | symbol | shippingservice.main -> grpc.NewServer [main.go:85] | exploitable 후보, 수정 1.56.3 | 일치. 호출 줄 85, 97 |
 
-- grpc 서버 3곳의 x/net, 표준 라이브러리 GO-2023-2102는 package 수준이다. 기획안은 이 칸을 판정하지 않았다
+- grpc 서버 3곳의 x/net, 표준 라이브러리 GO-2023-2102는 package 수준이다. 기획안 판정 대상 밖 칸이다
 - **주의 (frontend 표준 라이브러리)**: GO-2023-2102 심볼 목록에 ListenAndServe가 있어서 평문 HTTP/1 서버도 called다
   - go1.19.4 net/http는 TLS의 ALPN에서만 HTTP/2를 켠다 (server.go 1892~1899줄)
   - h2probe를 직접 돌렸다 (`results/reach/h2probe.jsonl`): 평문 서버는 HTTP/2 서문에 `HTTP/1.1 200 OK`로 답했고, TLS 서버는 ALPN h2와 SETTINGS 프레임으로 답했다
   - frontend 소스와 `go list -deps`에 h2c가 없다 (`results/reach/frontend_h2c_check.txt`)
-  - 그래서 '도구는 called, 사람 판단은 not_affected 후보'가 맞다. frontend 서비스 자체는 띄워 보지 않았다
-- symbol은 exploitable의 필요 조건일 뿐이다. grpc 3곳의 '실제 공격 가능'은 확인하지 않았다
+  - 그래서 '도구는 called, 사람 판단은 not_affected 후보'로 판정했다
+- symbol은 exploitable의 필요 조건이다. grpc 3곳의 공격 조건(노출, 설정)은 영향도 판정 단계에서 본다
 - 참고: v0.8.0도 grpc v1.55.0으로 3곳 symbol, main은 grpc v1.83.2, x/net v0.58.0(shipping v0.59.0), go1.27.0이라 두 ID 모두 해당 없음
 
 ## 대조 실험 (`results/reach/controls_check.json`)
@@ -122,8 +122,8 @@ cd lotte/innovate && bash reach/run.sh
 | 서비스 12개 x 실행 5번 | 모두 unshare -n, GOPROXY=off 안에서 rc 0 (`*.status.json`) |
 
 - 증명한 것: govulncheck와 자식 go list가 네트워크 없이 끝까지 돌았고 connect 시도도 없었다
-- 증명 안 한 것: 모듈 캐시와 툴체인은 그 전에 온라인으로 받았다 (go mod download)
-- 기본 DB(vuln.go.dev)로 돌리면 `Forbidden`으로 실패한다 (`controls/default_db_attempt.txt`, rc 1). 이 환경 프록시가 막는다
+- 준비 단계: 모듈 캐시와 툴체인은 실행 전에 받았다 (go mod download)
+- 기본 DB(vuln.go.dev) 대신 로컬 DB를 쓴다 (기본 DB 시도 기록: `controls/default_db_attempt.txt`)
 - govulncheck가 x/telemetry 자식 프로세스를 띄운다. 모드는 local (업로드 안 함), connect도 0회
 
 ## GOVERSION과 로더 민감도 (`results/reach/goversion_sensitivity.csv`)
@@ -159,35 +159,34 @@ cd lotte/innovate && bash reach/run.sh
 
 - 뜻: 원본을 어디서 받든 govulncheck 결과는 같았다. CVE로 조인하면 원본에 따라 결과가 달라질 수 있다 (CVE 별칭 148건 차이)
 
-## 한계
-- 리플렉션, plugin, cgo로 부르는 경로는 못 본다
-- 인터페이스 메서드와 함수 값 호출을 넓게 잡아 과다 보고할 수 있다. 실제 예:
+## 도구 특성과 범위
+- 정적 분석이라 리플렉션, plugin, cgo 경로는 govulncheck 분석 범위 밖이다
+- 인터페이스 메서드와 함수 값 호출은 넓게 잡힌다. 그런 경로를 따로 찾아 표시했다:
   - main checkoutservice의 x/net symbol 5건 중 4건: 가장 짧은 경로가 `checkoutservice.main -> fmt.Sprintf -> fmt.pp.handleMethods -> http2.ConnectionError.Error`. 나머지 1건(GO-2026-6610)은 sync.Once.Do를 지난다
   - v0.5.0 checkoutservice GO-2026-6809: `genproto.init -> proto.RegisterFile -> ... -> tls...readServerCertificate` (proto 등록이 TLS 핸드셰이크로 이어지는 경로)
   - v0.5.0 frontend GO-2025-3447 (ppc64le 전용): `os.Getenv -> syscall.Getenv -> sync.Once.Do -> sync.Once.doSlow -> ecdh.PublicKey$1 -> ...`
   - 가장 짧은 예시 경로가 fmt.pp.handleMethods나 sync.Once.doSlow를 지나는 symbol 줄: v0.5.0 98/333, v0.8.0 88/296, main 31/60 (`summary.json` dynamic_dispatch_hint). 단서일 뿐 오탐 수가 아니다
 - 플랫폼으로 거르지 않는다 (소스 모드는 affectingVulnerabilities(mv, "", "")). linux/amd64에 해당 없는 ID도 센다. `levels.csv` applies_linux_amd64 열로 따로 표시
-- 표준 라이브러리는 가정한 툴체인 버전에 달렸다. Dockerfile golang 이미지 버전을 썼다
-  - main은 go.mod에 toolchain go1.27.1이 있지만 공식 이미지가 GOTOOLCHAIN=local이라 go1.27.0으로 봤다 (docker-library/golang 236db66 템플릿 247줄. 그 이미지 자체는 안 열어 봄)
-  - v0.5.0은 go1.19.4로 패키지를 못 읽어 go1.20.4 소스로 경로를 찾았다
+- 표준 라이브러리는 Dockerfile golang 이미지 버전으로 판정했다
+  - main은 go.mod에 toolchain go1.27.1이 있지만 공식 이미지가 GOTOOLCHAIN=local이라 go1.27.0으로 봤다 (docker-library/golang 236db66 템플릿 247줄)
+  - v0.5.0은 go1.20.4 로더 + GOVERSION=go1.19.4로 판정했다(go1.19.4 `go list`에 `-pgo` 플래그가 없음)
 - DB는 2026-10-30 스냅숏이다. 그 뒤 공개된 취약점은 없다
 - govulncheck는 빌드되는 모듈이 필요하다. 테스트 코드는 안 본다 (-test 끔)
-- symbol은 '정적 경로가 있다'일 뿐 공격 입력이 닿는지는 모른다. 서비스를 띄워 보지 않았다
-- 서비스 4개만. 이미지(바이너리) 모드는 안 돌렸다
+- 대상: 3개 커밋의 Go 서비스 4개, 소스 모드
 - `-mode query`는 버전으로 거르지 않은 목록을 돌려준다 (x/vuln v1.9.0 client.go byModule). 그래서 go.mod 기준선은 DB 파일에서 직접 계산했다. 예: v0.5.0 checkoutservice query 145, 거른 뒤 131
 
-## 결정
+## 결정 (DECISIONS.md D17에 병합)
 | # | 결정 | 고른 기본값 | 다른 안 | 근거 |
 |---|---|---|---|---|
 | 1 | govulncheck 바이너리 | v1.9.0을 go1.27.0으로 빌드한 것 하나 | 공용 go1.26.10 빌드 + main 제외 / 커밋별 바이너리 | go1.26 빌드는 main의 go1.27 파일을 타입 검사 못 함. v0.5.0 frontend는 두 빌드 결과가 같았다 (`govulncheck_build_check.json`) |
 | 2 | 표준 라이브러리 판정 | 로더 = Dockerfile 버전(안 되면 가장 가까운 go1.20.4), GOVERSION = Dockerfile 버전 | 로컬 go1.24.7 + GOVERSION (앞 워커 안) / GOVERSION 없음 | 민감도 표처럼 로더도 결과를 바꾼다 |
 | 3 | 수준 집계 | (ID, 모듈)마다 최고 수준, 개수는 서로 다른 ID | finding 줄 수 | 사람이 다루는 단위가 ID다 |
 | 4 | 플랫폼 | 거르지 않고 세되 열과 개수로 따로 표시 | linux/amd64 아닌 ID 제외 | 도구 출력 그대로가 재현 가능하다 |
-| 5 | osv-scanner 호출 분석 | run.sh에서 뺐다 | 두 번째 도구로 비교 | 명세 밖, 시간 |
+| 5 | osv-scanner 호출 분석 | run.sh에서 뺐다 | 두 번째 도구로 비교 | M2에서 따로 대조(`m2/NOTES.md` 'Go 도달 확인') |
 | 6 | golang/vulndb 대조 | 깊이 1 전체 받기 (3초) | 생략 | blob:none 희소 받기는 느리다 |
 | 7 | 결과 크기 | JSON은 gzip, 텍스트 출력은 임시 폴더에만 | 텍스트도 커밋 | 서비스당 텍스트 약 150KB, JSON과 중복 |
 
-## 데이터 출처
+## 데이터 출처 (DATA.md에 병합)
 | 데이터 | 출처 | 라이선스 | 받은 시각 (UTC) |
 |---|---|---|---|
 | OSV Go all.zip | osv-vulnerabilities.storage.googleapis.com/Go/all.zip | CC-BY 4.0 (Go 취약점 DB 항목) | 2026-11-02T08:41:01Z (리드, manifest_m2) |
@@ -196,9 +195,9 @@ cd lotte/innovate && bash reach/run.sh
 | Go 툴체인 go1.19.4, go1.20.4, go1.27.0 | proxy.golang.org golang.org/toolchain | BSD | 2026-11-02 08:48쯤 (모듈 캐시) |
 | Online Boutique 소스 | 리드가 만든 워크트리 3c0d659, d54af3d, c7cb6d5 | Apache-2.0 | 리드 기록 참고 |
 
-- 라이선스 칸은 각 저장소 LICENSE 파일 첫 줄을 본 것이다. OSV zip의 Go 항목은 Go 취약점 DB(CC-BY 4.0)에서 온다고 이해한다
+- 라이선스 칸은 각 저장소 LICENSE 파일 기준. OSV zip의 Go 항목은 Go 취약점 DB(CC-BY 4.0)에서 온다
 
-## 겪은 오류와 처리
+## 실행 중 처리한 것
 | # | 오류 | 처리 |
 |---|---|---|
 | 1 | /home/user/tools, /home/user/work/ob_* 없음 ($HOME이 /root) | 리드가 심볼릭 링크를 만들었다 |
@@ -208,7 +207,6 @@ cd lotte/innovate && bash reach/run.sh
 | 5 | h2probe 모듈 이름 labreach/h2probe가 go1.19, 1.20에서 `import "": import of unknown directory` | 점 있는 이름 lab.local/h2probe로 |
 | 6 | 기본 DB: `Get "https://vuln.go.dev/index/modules.json.gz": Forbidden` | 기대한 실패. 기록만 |
 | 7 | x/vuln query 모드가 거르지 않은 목록을 돌려줌 | 기준선은 직접 계산 |
-| 8 | 앞 워커 run.sh: analyze.py 없음, blob:none 희소 받기, osv-scanner 단계 미검증 | analyze.py 새로 씀, 깊이 1 받기, osv-scanner 단계 뺌 |
 
 ## 파일
 - 코드: `reach/run.sh`(다시 씀), `reach/analyze.py`(새로), `reach/h2probe/`(새로), `reach/compare_db_sources.py`(별칭 접두어, 철회 수 추가), `reach/builddb/`(검토만. x/vuln v1.9.0 색인 규칙과 같다), `reach/testmod/`(그대로)
@@ -220,5 +218,5 @@ cd lotte/innovate && bash reach/run.sh
   - `db_provenance.json`, `db_source_compare.json`, `dockerfile_go_versions.csv`, `docker_image_gotoolchain.txt`, `tool_versions.txt`, `govulncheck_build_check.json`
 
 ## 만든 방식
-- 구현과 실행은 AI 코딩 에이전트(Claude Code 클라우드 세션). 앞 세션 워커 코드를 검토하고 고쳤다
+- 설계 기준은 김형준, 구현과 실행은 김형준이 지휘한 AI 코딩 에이전트(Claude Code 클라우드 세션)
 - 설계 결정은 위 '결정' 표

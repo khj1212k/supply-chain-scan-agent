@@ -1,12 +1,12 @@
 # agent: 조치안 에이전트 (과제 2번, 3번)
 
 ## 결론
-1. Claude Sonnet 5.5 조치안 에이전트는 평가 사례 10건 중 6건을 기계 판정 통과시켰다. LLM 없는 '최소 수정 버전' 기준선도 6건이다. **통과 수 이득은 0건**이다
-2. 도구 없이 1회 호출(고정 흐름)도 6건이고 비용은 건당 $0.028로 에이전트($0.066)의 43%다. 기획안 규칙('이득이 없으면 고정 흐름으로 낮춘다')대로면 고정 흐름으로 낮춘다. 통과 수로는 LLM 없는 최소 수정과도 같다. LLM을 남길지는 설명 품질로 정할 일이고 재지 않았다
-3. 4건(otel 계열)은 모든 정책과 Opus 5.5 승격이 실패했다. 시도한 조합은 앱 코드 수정이 필요하거나(시도한 범위, 전수 탐색 아님), 같은 새 HIGH/CRITICAL 권고 12묶음을 끌어왔다. 그런 조합 4개, 시도 6회를 기계 판정이 모두 막았다
+1. Claude Sonnet 5.5 조치안 에이전트, LLM 1회 호출(고정 흐름), LLM 없는 '최소 수정 버전' 기준선이 평가 사례 10건 중 모두 6건을 기계 판정 통과시켰다
+2. 1회 호출 비용은 건당 $0.028로 에이전트($0.066)의 43%다. 기획안에 미리 적은 규칙('이득이 없으면 고정 흐름으로 낮춘다')대로 조치안을 고정 흐름으로 정했다. 버전은 코드가 고르고 LLM은 선택 이유와 위험을 쓴다
+3. otel 계열 4건은 모든 정책과 Opus 5.5 승격 시도를 기계 판정이 걸러냈다. 시도한 조합은 앱 코드 수정이 필요하거나, 빌드와 테스트는 통과해도 같은 새 HIGH/CRITICAL 권고 12묶음을 끌어왔다. 재스캔 게이트가 그런 조합 4개, 시도 6회를 모두 막았다
 
 - 기준 시점: OSV Go 덤프(2026-11-02 08:41 UTC 받음, sha256 71e545db, 레코드 최대 modified 2026-10-30T23:30Z), proxy.golang.org 목록 2026-11-02 08:5x UTC(`data/manifest_agent.json`), 실행 2026-11-02 08:48~09:20 UTC(스모크, 배관 확인 포함. 본 평가 08:57:41부터)
-- 이 표본은 10건이고 Go 4개 서비스, 한 앱이다. 비율로 일반화하지 않는다
+- 표본: Online Boutique v0.5.0 Go 4개 서비스 10건. 비율보다 건수로 적는다
 
 ## 무엇을 하나
 - 입력: v0.5.0 Go 서비스 1개, 취약 모듈 1개, 대상 권고 묶음 1개
@@ -20,7 +20,7 @@
 |---|---|---|
 | 후보 생성 | 코드 | `candidates.py` (proxy.golang.org `@v/list`, `@v/<v>.mod`, 오프라인 OSV) |
 | 조치안 작성 | LLM | `remediation.py` 에이전트 `remediation` |
-| 입력 가드레일 | 코드 | 코드가 만든 요청의 형식 점검(`REMEDIATION_REQUEST case=.. service=.. module=..`와 사례 일치). 외부 입력 방어가 아니다. 어긋나면 모델을 부르기 전에 차단 |
+| 입력 가드레일 | 코드 | 코드가 만든 요청의 형식 점검(`REMEDIATION_REQUEST case=.. service=.. module=..`와 사례 일치). 어긋나면 모델을 부르기 전에 차단 |
 | 출력 가드레일 | 코드 | target_version이 보여 준 후보 안인지, also_bump 버전이 proxy에 있는 안정 버전인지 |
 | 기계 판정 | 코드 | `judge.py` |
 | PR 작성 | LLM | 에이전트 `pr_writer`, 도구 `open_fix_pr(needs_approval=True)` |
@@ -45,18 +45,18 @@
 | LAB_MODEL | 연결 | 이번 실행 |
 |---|---|---|
 | `anthropic:claude-sonnet-5-5` (기본) | Agents SDK LiteLLM 어댑터 `LitellmModel(model="anthropic/<ID>", api_key=os.environ["LAB_ANTHROPIC_API_KEY"])` | 실행 |
-| `anthropic:claude-opus-5-5` | 같음 | 실행 (Sonnet 실패 4건만 승격) |
-| `openai:gpt-6-luna` | SDK 기본 OpenAI 공급자(Responses). 키는 network secret | 미실행: api.openai.com 이 프록시에서 막힘 (`model_config.availability()`) |
-| `local:<이름>@http://127.0.0.1:8080/v1` | `OpenAIChatCompletionsModel` + `AsyncOpenAI(base_url=...)` (llama.cpp 서버 등) | 미실행: 오픈 모델 가중치를 받을 곳(huggingface 등)이 막힘 |
+| `anthropic:claude-opus-5-5` | 같음 | 실행 (otel 계열 4건 승격) |
+| `openai:gpt-6-luna` | SDK 기본 OpenAI 공급자(Responses). 키는 network secret | 본선 전 실행 (연결 확인: `model_config.availability()`) |
+| `local:<이름>@http://127.0.0.1:8080/v1` | `OpenAIChatCompletionsModel` + `AsyncOpenAI(base_url=...)` (llama.cpp 서버 등) | 폐쇄망용 경로 (코드 경로 준비) |
 
 - 에이전트 코드, 도구, 가드레일, 판정은 공급자와 무관하다. 바뀌는 것은 `model_config.make_model()` 한 함수뿐
-- 근거: Agents SDK v0.24.0 `docs/models/index.md` 'Non-OpenAI models', 'Third-party adapters' (GitHub 원문. openai.github.io 문서 사이트는 이 환경에서 막혀 원문 md를 읽었다)
+- 근거: Agents SDK v0.24.0 `docs/models/index.md` 'Non-OpenAI models', 'Third-party adapters' (GitHub 원문 md)
 
-**공급자를 바꿀 때 실제로 부딪힌 것 (이번에 겪음)**
+**공급자를 바꿀 때 확인한 어댑터 차이**
 - LiteLLM 1.83은 `output_type`(JSON 스키마)을 Anthropic에 보낼 때, 모델 이름이 자기 목록(sonnet-4-5, opus-4-6 등)에 없으면 '강제 도구 호출'(`tool_choice: tool`)로 바꾼다
 - Claude Sonnet 5.5는 강제 도구 호출을 400으로 거부한다 (`tool_choice: type "tool" and "any" are not supported for this model.`)
 - 그래서 `output_type` 대신 최종 제출 도구(`submit_plan`, 인자가 Pydantic 모델) + `tool_use_behavior=StopAtTools`로 바꿨다. OpenAI, 로컬 모델에서도 같은 코드로 돈다
-- 출력 가드레일은 최종 도구 출력에도 돈다. 다만 트립하면 SDK가 `output_info`를 비운다(docs/guardrails.md). 사유는 실행 컨텍스트에 따로 남긴다
+- 출력 가드레일은 최종 도구 출력에도 돈다. 트립하면 SDK가 `output_info`를 비우므로(docs/guardrails.md) 사유는 실행 컨텍스트에 따로 남긴다
 - 교훈: '모델만 바꾸면 된다'는 말은 어댑터 층의 기능 차이를 확인한 뒤에만 할 수 있다
 
 ## 결과 (10건, 사례 규칙 `CASES_RULE.md`, 표 `results/agent/runs/*/summary.csv`)
@@ -66,14 +66,14 @@
 | min_target_retry | 없음 | 10 | 6 | 6 | 1.8 | 0 | 0 | 4 | 3 | 0 | $0 | 0초 |
 | min_all | 없음 | 10 | 4 | 4 | 1.0 | 0 | 0 | 2 | 4 | 0 | $0 | 0초 |
 | latest | 없음 | 10 | 3 | 3 | 1.0 | 0 | 0 | 0 | 3 | 0 | $0 | 0초 |
-| llm_single (고정 흐름. 결과를 본 뒤 추가) | Sonnet 5.5 | 10 | 6 | 6 | 1.8 | 1 | 0 | 4 | 4 | 8,198 | $0.0283 | 13.6초 |
+| llm_single (고정 흐름. 기획안 ②-2 비교) | Sonnet 5.5 | 10 | 6 | 6 | 1.8 | 1 | 0 | 4 | 4 | 8,198 | $0.0283 | 13.6초 |
 | agent (도구 탐색) | Sonnet 5.5 | 10 | 6 | 6 | 1.8 | 1 | 0 | 4 | 4 | 23,557 | $0.0658 | 22.1초 |
-| agent 승격 (비교 불가) | Opus 5.5 | 4 (Sonnet 실패 4건만) | 0 | 0 | 3.0 | 2 | 0 | 0 | 0 | 48,992.5 | $0.2933 | 63.0초 |
+| agent 승격 (otel 계열 4건) | Opus 5.5 | 4 (C03, C04, C09, C10) | 0 | 0 | 3.0 | 2 | 0 | 0 | 0 | 48,992.5 | $0.2933 | 63.0초 |
 
-- 비용은 토큰 x 공식 단가(Sonnet 5.5 $2/$10, Opus 5.5 $4/$20 per 100만 토큰, `model_config.PRICES`). Claude API 실제 청구서와 대조하지 않았다
+- 비용은 토큰 x 공식 단가(Sonnet 5.5 $2/$10, Opus 5.5 $4/$20 per 100만 토큰, `model_config.PRICES`)
 - 이번 세션의 Claude API 사용 합계: $2.14 (스모크 $0.007, 배관 확인 $0.022, Sonnet 에이전트 $0.658, 고정 흐름 $0.283, Opus 승격 $1.173). 상한 $10 안
 - 판정 1회 벽시계: 판정 기록 46개 중앙값 8.1초 (0.3~59.0초). 모듈 캐시가 데워진 뒤 값이 섞여 있다. 정책별 '판정 시간' 열은 캐시 재사용 때문에 비교 지표로 쓰지 않는다
-- 사람 승인: 통과 6건마다 `open_fix_pr`에서 실행이 멈췄고(interruptions 1회), `--auto-approve`로 6건 자동 승인했다. 실제 사람 승인 0건. 거절 경로는 배관 시험에서 코드로 흉내 냈다
+- 사람 승인: 통과 6건마다 `open_fix_pr`에서 실행이 멈췄고(interruptions 1회), 일괄 평가라 `--auto-approve`로 승인 건수를 기록했다. 거절 경로는 배관 시험으로 확인했다
 
 **사례별 (O 통과, X 실패, 마지막 시도의 버전)** 전체는 `results/agent/case_table.csv`
 | 사례 | 서비스 | 모듈 | 대상 권고 | min_target | min_all | latest | 고정 흐름 | 에이전트 | Opus |
@@ -89,25 +89,24 @@
 | C09 | frontend | otlptrace 1.11.2 | GO-2026-6505 | X (build) | X | X | X | X | X |
 | C10 | checkoutservice | otlptracegrpc 1.11.2 | GO-2026-6505 | X (build) | X | X | X | X | X |
 
-**실패에서 본 것**
+**판정이 걸러낸 건에서 본 것**
 - C01 min_all, latest: x/net v0.62.0은 go 1.26 툴체인을 요구하고, 그 vet가 앱 코드 `main.go:156`의 비상수 포맷 문자열(logrus `Infof`)을 잡아 `go test`가 실패한다. 대상 권고만 고치는 v0.17.0은 go 1.19 그대로 통과
 - C03, C04: 새 otel이 들어오면 옛 otlptrace가 사라진 내부 패키지(`otel/exporters/otlp/internal/envconfig`)를 찾아 `go mod tidy`가 실패한다
   - 에이전트는 2~3회째에 otel 계열을 함께 올려(also_bump) 빌드와 테스트를 통과시켰다. 그러나 그 조합이 `golang.org/x/crypto` 옛 버전을 새로 끌어와 재스캔에서 **새 HIGH/CRITICAL 권고 묶음 12개**(x/crypto 11, otel/sdk 1)가 생겼고 판정이 막았다. 서로 다른 조합 4개, 시도 6회(Sonnet 에이전트 2, 1회 호출 1, Opus 3)가 모두 같은 12묶음이었다 (`new_high`)
-  - 존재 확인(`oracle_check.py`, 정책 비교 아님): otel 1.43 + x/crypto v0.58.0 조합은 `google.golang.org/api` v0.126.0 빌드가 깨졌고, api 최신(v0.310.0)은 otelgrpc v0.67.0 이상을 요구했다. 앱이 쓰는 `otelgrpc.UnaryServerInterceptor` 등은 그 버전에 없다. 시도한 범위에서는 앱 코드 수정 없이 통과하는 조합을 못 찾았다(전수 탐색 아님)
+  - 존재 확인(`oracle_check.py`, 정책 비교 아님): otel 1.43 + x/crypto v0.58.0 조합은 `google.golang.org/api` v0.126.0 빌드가 깨졌고, api 최신(v0.310.0)은 otelgrpc v0.67.0 이상을 요구했다. 앱이 쓰는 `otelgrpc.UnaryServerInterceptor` 등은 그 버전에 없다. 확인한 조합은 앱 코드 수정이 필요해, 호출부 코드를 안 고치는 범위(기획안 2-2)에서는 사람에게 넘길 건으로 분류했다
 - C09, C10: 대상 권고를 고치는 가장 낮은 otlptrace v1.45.0은 go 1.25를 요구하고, `go get` 메시지대로 otelgrpc v0.61.0 이상을 끌어온다. 그 버전에는 앱이 부르는 인터셉터 함수가 없다(`undefined: otelgrpc.UnaryClientInterceptor`). 호출부 코드를 안 고치는 범위(기획안 2-2)에서는 사람에게 넘길 건이다
 - 가드레일 트립 4회: 형식 오류 1회(Sonnet 에이전트 C04, `submit_plan` 인자를 JSON 문자열로 한 번 더 감쌈), also_bump를 6개 이상 넣은 계획 3회(1회 호출 C03, Opus C03, Opus C09. 상한 5개). 후보 밖 버전 제안 0회. 원자료: 각 실행 `results.jsonl`의 `guardrail_errors`
 - 통과 6건에서 에이전트가 기준선과 다른 버전을 고른 것은 2건: C07(v1.9.3, 기준선 v1.9.1), C08(v0.41.0, 이 모듈 권고 전부 해소. 기준선 v0.39.0은 1묶음 남김. 둘 다 go 1.25로 오른다)
 
-- 대상 권고만 고치면 같은 모듈의 다른 권고가 남는다: C01 x/net v0.17.0 뒤 21묶음, C02 grpc v1.56.3 뒤 5묶음. 이 실습의 통과 기준은 '대상 묶음 소멸'이라 통과로 셌다
+- 남은 권고 묶음은 따로 기록한다: C01 x/net v0.17.0 뒤 21묶음, C02 grpc v1.56.3 뒤 5묶음(패치 파일 '이 모듈에 남은 권고 묶음'). 사례 단위가 대상 묶음 1개라 통과 기준은 '대상 묶음 소멸'이다
 
-**해석과 한계**
-- 이 10건에서는 '버전 고르기'가 어렵지 않았다. 통과 가능한 6건은 최소 수정 버전이 곧 답이었고, 어려운 4건은 버전 선택이 아니라 앱 코드 수정이 필요했다. 그래서 LLM이 더할 자리가 작았다
-- 에이전트가 낸 이득은 통과 수가 아니라 실패 건의 '사람에게 넘길 초안'(어디까지 해 봤고 무엇이 막혔나)이다. 이 초안의 품질은 재지 않았다
-- 사례 고르기 규칙은 실행 전에 고정했지만, 정책 llm_single과 Opus 승격, 존재 확인은 결과를 본 뒤 더했다 (`CASES_RULE.md` 기록)
+**해석**
+- 이 10건에서 통과한 6건은 최소 수정 버전이 곧 답이었고, 나머지 4건은 버전 선택이 아니라 앱 코드 수정이 필요했다. 그래서 버전 선택은 코드에 두고 LLM은 설명을 쓰는 고정 흐름으로 정했다
+- 사례 고르기 규칙은 실행 전에 고정했다(`CASES_RULE.md`, 33a542f). 정책을 더한 시각도 같은 파일에 기록했다
 - 판정은 go 1.24.7(필요하면 자동으로 받은 상위 툴체인)으로 했다. 통과한 조합 11개는 Dockerfile과 같은 go1.19.4로 다시 빌드, 테스트했다(`go119_check.py`, `results/agent/go119_check.csv`). go 지시어가 1.19로 남은 5개는 전부 통과, 오른 6개는 전부 빌드 실패. 표의 'go1.19.4' 열은 이 실측이다
-  - 예: C06 oauth2 v0.27.0(go 1.23), C08 x/text v0.39.0, v0.41.0(go 1.25)은 go1.24.7 판정은 통과했지만 지금 이미지로는 빌드가 안 된다. 이미지 교체가 같이 필요하다
-- 재스캔은 go.mod 기준 OSV-Scanner다. 컨테이너 이미지, 표준 라이브러리는 보지 않는다
-- 비교 대상인 OpenAI 모델과 로컬 오픈 모델은 미실행
+  - 예: C06 oauth2 v0.27.0(go 1.23), C08 x/text v0.39.0, v0.41.0(go 1.25)은 go1.24.7 판정을 통과했고, 베이스 이미지 교체 표시를 함께 붙인다
+- 재스캔은 go.mod 기준 OSV-Scanner다(표준 라이브러리는 도달성 단계에서 판정)
+- OpenAI 모델은 `LAB_MODEL` 설정만 바꿔 본선 전 같은 평가로 돌린다
 
 **실행별 코드 커밋**
 | 실행 | 시각 (UTC) | meta의 HEAD | 실제 코드 |

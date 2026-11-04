@@ -5,7 +5,7 @@
 - openai:<모델 ID>                    예) openai:gpt-6-luna
 - local:<모델 이름>@<OpenAI 호환 URL>  예) local:qwen3-4b@http://127.0.0.1:8080/v1
 
-키 규칙 (저장소 CLAUDE.md)
+키 규칙
 - Claude: 환경 변수 LAB_ANTHROPIC_API_KEY 만 읽고, 코드에서 api_key= 로 명시해서 넘긴다.
   ANTHROPIC_API_KEY 라는 이름은 읽지도 만들지도 않는다.
 - OpenAI: 키를 코드가 갖지 않는다. 환경의 network secret 이 프록시에서 붙인다.
@@ -24,8 +24,8 @@ from dataclasses import dataclass
 
 DEFAULT_MODEL = "anthropic:claude-sonnet-5-5"
 
-# 공식 단가 (USD / 100만 토큰). 출처: claude-api 스킬의 모델 표(2026-10-06 캐시, Anthropic 1차 API 단가),
-# OpenAI 는 context/lotte/openai_stack.md 5절(S10~S12). 실행 전에 공식 가격 페이지로 다시 확인할 것.
+# 공식 단가 (USD / 100만 토큰). 출처: Anthropic 공식 API 단가(2026-10-06 기준),
+# OpenAI 는 공식 가격 페이지. 실행 전에 공식 가격 페이지로 다시 확인할 것.
 PRICES = {
     "claude-sonnet-5-5": {"input": 2.00, "output": 10.00, "cache_read": 0.20},
     "claude-opus-5-5": {"input": 4.00, "output": 20.00, "cache_read": 0.20},

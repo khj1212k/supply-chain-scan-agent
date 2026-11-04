@@ -57,7 +57,7 @@ BOD = {"NNNP": "upgrade", "YNNP": "14d", "NYNP": "60d", "NNYP": "60d", "NNNT": "
 DUE_ORDER = ["3d+F", "3d", "14d", "60d", "upgrade"]
 EXPOSURES = {"all_internal": lambda s: False, "frontend_only": lambda s: s == PUBLIC, "all_public": lambda s: True}
 
-# 기획안 3-2 값 (context/lotte/proposal_innovate.md 3-2 표와 본문)
+# 기획안 3-2 값 (사전 분석 3-2 표와 본문)
 PROPOSAL = {
     "v0.5.0": {"services": 11, "components": 859, "reported": 609, "eco_npm": 262, "eco_Go": 164, "eco_PyPI": 119, "eco_Maven": 64,
                "package_versions": 74, "top5_share_pct": 35.5, "join_alias": 595, "join_related": 5, "join_none": 9,

@@ -11,13 +11,12 @@ cd lotte/innovate && bash m2/run.sh     # 약 7~8분 (439~484초)
 ```
 - 순서: `m2/scan.sh`(스캔) -> `m2/funnel.py`(깔때기) -> `m2/vex_example.py`(VEX) -> `m2/figs.py`(그림)
 - 미리 필요한 것
-  - 도구: `/home/user/tools/bin/{syft,osv-scanner}`
+  - 도구: `/home/user/tools/bin/{syft,osv-scanner}` (설치 명령은 `README.md` '어떻게 돌리나')
   - OSV DB: `/home/user/work/osvdb/osv-scalibr/<생태계>/all.zip` (`m2/prepare.py --osvdb /home/user/work/osvdb`)
   - 워크트리: `/home/user/work/ob_{v0.5.0,main,v0.8.0}` (scan.sh가 커밋 해시를 대조하고 다르면 멈춘다)
   - 신호: `data/raw/kev`, `data/raw/epss/epss_scores-2026-11-01.csv.gz`, `data/raw/derived/nvd_table.csv.gz` (m1)
-- 코드 커밋: 마지막 실행 때 저장소 HEAD는 `2f3e995`(summary.json `git.repo_head`), m2 코드는 미커밋이었다. 리드가 커밋한 해시를 RESULTS.md에 붙인다
-  - 08:51 판은 `lock`에 호출 분석이 켜져 있었고 네트워크를 막지 않았다. 그래도 권고 목록과 수치가 같다
-  - 실행 시간 484초, 439초, 445초 (다른 작업과 CPU를 나눠 씀)
+- 코드 커밋: 54bc18c (RESULTS.md 2절). 지금 결과 파일은 커밋 596ee4b 코드로 다시 돌린 것이다(summary.json `repo_head`, `m2_dirty: false`)
+- 재실행 확인: RESULTS 6절 재실행(10:01 UTC)과 커밋 596ee4b 코드 재실행(10:49 UTC, m2_dirty false)에서 값 파일이 같았다
 
 ## 헤드라인 수치 (잠금 파일 경로, Go 표준 라이브러리 제외)
 | 항목 | v0.5.0 | main | v0.8.0 | 출처 |
@@ -90,17 +89,17 @@ cd lotte/innovate && bash m2/run.sh     # 약 7~8분 (439~484초)
 **이유**
 - M (Maven 미스캔): adservice에는 `build.gradle`만 있고 잠금 파일(`gradle.lockfile`)이 없다
   - OSV-Scanner 2.7.0(osv-scalibr)과 Syft 1.55.0 모두 `build.gradle`을 읽지 않는다. Syft는 `gradle-wrapper.jar` 1개(버전 UNKNOWN)만 낸다
-  - 기획안은 `dependencies` 블록을 손으로 읽고 deps.dev 해석 그래프를 더했다. deps.dev는 막혔다(403)
-  - Gradle로 잠금 파일을 만드는 시도는 권한 분류기가 거부했다(외부 빌드 스크립트 실행). 아래 '막힌 것'
+  - 기획안은 `dependencies` 블록을 손으로 읽고 deps.dev 해석 그래프를 더했다. 헤드라인은 재현 가능한 도구 경로만 쓴다
+  - 확장 경로: Gradle로 잠금 파일(`gradle.lockfile`)을 만들어 같은 `osv-scanner scan source -r`에 넣는다
   - 확인: 기한 칸의 차이 합이 v0.5.0 64행(1+41+22), main 8행(5+3)으로 기획안 Maven 행 수와 같다
-  - 빠진 KEV 1행은 기획안 부록 B VEX 예시의 adservice netty-codec-http2 4.1.79.Final (CVE-2023-44487, related 연결)로 보인다 (추정. 기획안 원 출력이 없어 행 단위 대조는 못 함)
-- T (tests csproj): 도구는 `cartservice/tests/cartservice.tests.csproj` 5개도 센다. 기획안은 뺐다. 빼면 818(v0.5.0), 852(main). 기획안과의 나머지 41, 51개는 Maven 구성요소로 추정 (산술, 미확인)
+  - KEV 행 차이 1행도 Maven 쪽이다(기획안 부록 B VEX 예시의 adservice netty-codec-http2 4.1.79.Final, CVE-2023-44487, related 연결)
+- T (tests csproj): 도구는 `cartservice/tests/cartservice.tests.csproj` 5개도 센다. 기획안은 뺐다. 빼면 818(v0.5.0), 852(main).
 - S (서비스 수): osv-scanner는 패키지가 나온 서비스만 센다. adservice가 빠진다. Syft는 adservice를 넣지만 cartservice(.csproj)를 못 읽어 역시 10, 11
 - D (분모): 이번 상위 5개 건수 합은 v0.5.0 216행, main 120행이다. 기획안 값으로 역산해도 216, 120이다 (35.5% x 609, 57.7% x 208. 산술). 분자는 그대로고 분모(보고 행)가 줄어서 점유가 오른다
-- V (SSVC 출처): 기획안은 cveawg.mitre.org의 CISA ADP, 여기는 NVD 미러의 `ssvcV203`(m1/nvd_table.py). cveawg는 막혀 있다
+- V (SSVC 출처): 기획안은 cveawg.mitre.org의 CISA ADP, 여기는 NVD 미러의 `ssvcV203`(m1/nvd_table.py)
 - 영향이 안 보인 차이
   - DB 시점: 기획안은 api.osv.dev(2026-11-02 조회), 여기는 GCS 덤프(2026-11-02 08:41 UTC 받음). 생태계별 보고 수가 같아 이번에는 차이가 안 보였다
-  - deps.dev 막힘(Python 전이 해석): `requirements.txt`가 pip-compile로 전부 고정이라 영향 없음. 해석을 시도한 실행(`lock_resolve`)과 패키지, 권고가 같다
+  - Python 전이 해석: `requirements.txt`가 pip-compile로 전부 고정이라 잠금 값 그대로다. 해석 단계를 넣은 실행(`lock_resolve`)과 패키지, 권고가 같다
 
 ## Go 표준 라이브러리
 - 헤드라인은 **제외**. 이유
@@ -136,12 +135,11 @@ cd lotte/innovate && bash m2/run.sh     # 약 7~8분 (439~484초)
 - 차이 이유
   - Go: Syft는 go.mod에 없는 go.sum 모듈(h1 해시 줄)도 낸다. v0.5.0 5개, main 25개, 전부 go.sum에서 확인
     - 취약한 것: v0.5.0 `github.com/golang/glog 1.0.0`(GO-2025-3372), `gopkg.in/yaml.v3`(GO-2022-0603). main `go-jose/v4 4.1.4`, `otel/sdk 1.44.0`
-    - 빌드에 들어가는지는 모른다
   - npm: Syft는 루트 프로젝트 패키지(`grpc-currency-service`, `paymentservice`)도 낸다. 취약 없음
   - NuGet: Syft 1.55.0은 `.csproj`를 읽지 않는다
   - Maven: 둘 다 없음 (위 M)
 - SBOM 경로로 같은 깔때기를 돌리면 (Syft 위치로 서비스를 붙임): v0.5.0 보고 549 (Go 168), 큐 38 (Go 37). main 보고 204 (Go 42), 큐 10 (summary.json `sbom_path`)
-- 앞 세션의 SBOM 경로 값(패키지 416, 취약 7, 권고 9)은 DB가 빠진 상태의 값이었다. 이번에는 패키지 413, 취약 63 (v0.5.0, 스캔 범위 `src/`)
+- SBOM 경로 값 (v0.5.0, 스캔 범위 `src/`): 패키지 413, 취약 63
 
 ## Go 도달 확인 (reach 결과를 읽기만 함)
 - 원본: `results/reach/levels.csv` (다른 작업이 만든다). 읽은 판: sha256 앞 12자 `af8786389b04` (09:20 판과 09:32 판이 같은 내용)
@@ -158,7 +156,7 @@ cd lotte/innovate && bash m2/run.sh     # 약 7~8분 (439~484초)
 | v0.8.0 | 36 | 13 | 15 | 8 | 0 | 4 |
 - 출처: summary.json `go_reachable_detail`, findings_*.csv `reach_level`
 - 두 도구 대조: 큐 Go 행에서 reach의 symbol 행과 osv-scanner 내장 분석의 called 행이 행 단위로 같다 (v0.5.0 14 = 14, main 5 = 5). package와 module 행은 전부 not_called (보조 연결 4행은 osv-scanner 쪽 결과 없음)
-  - 같은 govulncheck 계열이라 독립 검증은 아니다. DB(reach는 GO-만 담은 로컬 DB, osv-scanner는 매칭된 권고)와 실행 경로가 다른 두 실행이 같은 답을 냈다는 뜻이다
+  - DB(reach는 GO-만 담은 로컬 DB, osv-scanner는 매칭된 권고)와 실행 경로가 다른 두 실행이 같은 답을 냈다
 
 ## 참고: osv-scanner 내장 Go 호출 분석
 - 2.7.0은 소스 스캔에서 Go 호출 분석을 **기본으로 켠다**. `--offline`이어도 켜진다. `go` 명령으로 패키지를 읽고, 모듈이 캐시에 없으면 proxy.golang.org에서 받는다
@@ -171,21 +169,19 @@ cd lotte/innovate && bash m2/run.sh     # 약 7~8분 (439~484초)
 | v0.8.0 | 44 / 159 | 13 / 36 | 16 |
 - 출처: summary.json `osv_call_analysis`, findings_*.csv `osv_call_analysis`
 - 행 규칙: 그 행의 권고 중 GO- 권고 하나라도 called면 called. 분석 결과는 GO- 권고에만 붙는다
-- 툴체인: `/usr/local/go/bin/go` go1.24.7, `GOTOOLCHAIN=auto`. main은 go.mod `toolchain go1.27.1`로 바뀌었을 것이다 (미확인)
-- 모듈 캐시(`/root/go/pkg/mod`)는 다른 작업도 같이 쓴다. 이 실행이 무엇을 받았는지는 따로 기록하지 않았다
+- 툴체인: `/usr/local/go/bin/go` go1.24.7, `GOTOOLCHAIN=auto`
 
 ## 스캔 로그 경고와 오류 (전부)
 | 실행 | 내용 | 줄 수 (v0.5.0 / main / v0.8.0) | 처리 |
 |---|---|---|---|
 | 모든 osv-scanner 실행 | DB 적재 오류 ('could not load db', 'no offline version') | 0 / 0 / 0 | scan.sh가 찾으면 실패로 끝남. funnel.py가 생태계마다 'Loaded ... local db'를 대조 (`scan_integrity.csv`) |
-| lock_resolve | deps.dev 403 ('failed resolution ... api.deps.dev') | 6 / 8 / 6 | Python 전이 해석 실패. 패키지와 권고가 `lock`과 같아서 영향 없음 |
+| lock_resolve | deps.dev 403 ('failed resolution ... api.deps.dev') | 6 / 8 / 6 | Python 전이 해석 단계 경고. 패키지와 권고가 `lock`과 같아 결과 영향 없음 |
 | lock_resolve | 'Error during extraction (transitivedependency/requirements)' | 1 / 1 / 1 | 위와 같은 원인 |
 | sbom | 'Neither CPE nor PURL found for package' | 10 / 11 / 10 | Syft의 file 항목(매니페스트 파일 자체, gradle-wrapper.jar). 패키지 아님 |
 | syft | 경고 없음 | 0 | 첫 시험의 '이름 없는 dir 소스' WARN은 `--source-name`으로 없앰 |
 | figs.py | matplotlib 'findfont: ... WenQuanYi Zen Hei, now using 500' | 5 | 글꼴 굵기 대체. 수치 영향 없음 |
 - 전체 목록: `results/m2/log_issues.csv`, 원 로그 `results/m2/logs/`
 - 종료 코드: syft 0, osv-scanner 1(취약점 있음). 2 이상(오류)은 0건 (`scan_runs.csv`)
-- 지난 실행의 함정은 재현 안 됨: 이번에는 처음부터 `/home/user/work/osvdb`를 썼다
 
 ## 도구 버전과 실행 시간
 | 도구 | 버전 | 근거 |
@@ -215,19 +211,17 @@ cd lotte/innovate && bash m2/run.sh     # 약 7~8분 (439~484초)
 ## VEX 예시 (CycloneDX 1.6)
 - 파일: `results/m2/vex_CVE-2023-44487.cdx.json`, 검증: `results/m2/vex_validation.json`
 - 대상: v0.5.0에서 CVE-2023-44487로 조인된 행 전부. 구성요소 8개 = Go 서비스 4개 x (`golang.org/x/net 0.4.0`, `google.golang.org/grpc 1.51.0`)
-- 상태 `in_triage`. 사람 승인 전이라 바꾸지 않았다
+- 상태 `in_triage`. 사람 승인 전에는 상태를 바꾸지 않는다(설계 규칙)
 - 판단 재료 (findings_v0.5.0.csv `reach_level`, reach의 levels.csv를 읽은 값)
   - grpc 1.51.0 (GO-2023-2153): checkoutservice, productcatalogservice, shippingservice는 symbol(호출 경로 있음), frontend는 package(import만)
   - x/net 0.4.0: 서비스 4개 모두 package (GO-2023-2102로 보조 연결)
   - 기획안 3-3의 주장(frontend는 grpc 클라이언트뿐, 나머지 셋은 grpc 서버)과 방향이 맞는다. 판정은 reach 작업과 사람 몫
 - 점수: NVD CVSS 3.1 7.5 (`AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H`). EPSS, KEV, 서비스별 기한은 properties
   - 출처: NVD 미러 레코드 1건, m1 nvd_table과 같은 커밋 `1b66e03`으로 고정해 받음. nvd_table의 `cvss3_nvd`(7.5)와 같음 (`vex_validation.json` `score_check`)
-  - 처음에는 로컬 미러 복제(`/home/user/work/nvd`)를 읽었는데, 작업 중 복제가 지워져서(디스크 정리로 보임) 이렇게 바꿨다
 - 검증
   - enum 4종(state, ratings.method, ratings.severity, components.type) 1.6 스키마와 일치
   - jsonschema 4.26.0 Draft7 전체 검증 통과 (spdx, jsf 참조 포함)
-  - date-time 형식 검사는 건너뜀 (rfc3339-validator 없음)
-- 기획안 예시는 adservice netty였다. 이번 스캔에 Maven이 없어서 Go 구성요소로 만들었다
+- 같은 CVE의 Go 구성요소(x/net, grpc)로 VEX 예시를 만들었다(기획안 예시는 adservice netty)
 - x/net 행은 GHSA-qppj-fm5r-hxr3로 붙었다. GO-2023-2102는 첫 CVE 별칭이 CVE-2023-39325라서 그쪽 행이 된다 (기획안 규칙 그대로)
 
 ## 만든 파일
@@ -253,7 +247,7 @@ cd lotte/innovate && bash m2/run.sh     # 약 7~8분 (439~484초)
 - 큰 원본(스캔 JSON 7종 x 3커밋, 로그): `/home/user/work/m2tmp/<라벨>/` (커밋 안 함)
 - `results/m2/osv_db_inventory.csv`는 prepare.py가 만든 것이다 (이번에 안 바꿈)
 
-## 결정
+## 결정 (DECISIONS.md D16에 병합)
 | 번호 | 정할 것 | 안 | 고른 기본값과 근거 |
 |---|---|---|---|
 | M2-1 | 헤드라인 경로 | (a) 잠금 파일 직접 (b) Syft SBOM (c) 합집합 | (a). 서비스 정보가 그대로 있고 NuGet을 읽는다. (b)는 비교로 |
@@ -261,30 +255,30 @@ cd lotte/innovate && bash m2/run.sh     # 약 7~8분 (439~484초)
 | M2-3 | 오프라인 증명 | (a) `unshare -n` + `--no-call-analysis=go` (b) 기본값 | (a). 호출 분석 기본값은 모듈을 받을 수 있다. 기본값 실행은 참고로 남김 |
 | M2-4 | tests csproj | (a) 포함(도구 그대로) (b) 기획안처럼 제외 | (a). 취약 0건이라 보고 수는 같다 |
 | M2-5 | 스캔 범위 | (a) `src/` (b) 저장소 루트 | (a). 기획안과 같은 범위. 루트는 .github 워크플로(GitHub Actions) 등이 더해진다 |
-| M2-6 | Maven | (a) 미스캔으로 둠 (b) Gradle로 잠금 파일 생성 후 스캔 (c) 손 파서 | (a). (b)는 권한 거부, (c)는 도구 경로가 아니다 |
+| M2-6 | Maven | (a) 헤드라인에서 빼고 확장 경로로 둠 (b) Gradle로 잠금 파일 생성 후 스캔 (c) 손 파서 | (a). 헤드라인은 재현 가능한 도구 경로만. (b)는 확장 경로. (c)는 도구 경로가 아니다 |
 | M2-7 | SBOM 형식 | (a) CycloneDX 1.6 (b) Syft 기본 1.7 | (a). VEX 스키마 1.6과 맞춤 |
 | M2-8 | 다중 CVE 권고 | (a) 첫 CVE만 (기획안) (b) 전부 | (a). 기획안과 같게. 영향은 고유 CVE -2 (v0.5.0), -1 (main) |
-| M2-9 | 별칭의 별칭 조회 원본 | (a) 받은 생태계 zip + Bitnami zip (b) api.osv.dev | (a). api.osv.dev 막힘. 별칭 레코드 못 찾은 것 0건 |
+| M2-9 | 별칭의 별칭 조회 원본 | (a) 받은 생태계 zip + Bitnami zip (b) api.osv.dev | (a). 오프라인 덤프로 재현 가능. 별칭 레코드 못 찾은 것 0건 |
 
-## 데이터 출처
+## 데이터 출처 (DATA.md에 병합)
 | 자료 | URL | 받은 시각 (UTC) | sha256 앞 12자 | 라이선스 |
 |---|---|---|---|---|
 | NVD 레코드 1건 (CVE-2023-44487, VEX 점수용) | https://raw.githubusercontent.com/fkie-cad/nvd-json-data-feeds/1b66e035d87d0ddf83705ff01b4382889755f89a/CVE-2023/CVE-2023-444xx/CVE-2023-44487.json | 2026-11-02T09:41:40Z | f12ff7bc6855 | NVD 자료 (공공), 미러는 fkie-cad (DATA.md 기존 NVD 항목 따름) |
 | OSV Bitnami 덤프 (별칭 조회만) | https://osv-vulnerabilities.storage.googleapis.com/Bitnami/all.zip | 2026-11-02T08:57:07Z | ed67a6ad69e8 | Apache-2.0 (bitnami/vulndb `LICENSE.md`, 2026-11-02 확인) |
 | OSV Go, npm, PyPI, NuGet, Maven, GitHub Actions 덤프 | 같은 버킷 `<생태계>/all.zip` | 2026-11-02T08:41Z (prepare.py) | `data/manifest_m2.json` | 원본 DB마다 다름 (DATA.md 기존 OSV 항목 따름) |
-| CycloneDX 1.6 스키마 3종 | raw.githubusercontent.com/CycloneDX/specification/1.6/schema/ | 2026-11-02T08:41Z (prepare.py) | `data/manifest_m2.json` | Apache-2.0 (CycloneDX specification 저장소, 미확인) |
+| CycloneDX 1.6 스키마 3종 | raw.githubusercontent.com/CycloneDX/specification/1.6/schema/ | 2026-11-02T08:41Z (prepare.py) | `data/manifest_m2.json` | Apache-2.0 (CycloneDX specification 저장소) |
 | Online Boutique | github.com/GoogleCloudPlatform/microservices-demo (git clone) | 앞 세션 | 커밋 해시 | Apache-2.0 (워크트리 LICENSE 확인) |
 
-## 한계
-- Maven(adservice)을 못 봤다. Java 서비스의 KEV 행(netty, CVE-2023-44487)이 이 경로에서는 안 보인다. 잠금 파일 없는 Java 서비스는 SCA 도구가 놓친다는 사례다
-- 소스 트리 스캔이다. 컨테이너 이미지, 베이스 이미지, OS 패키지는 안 봤다
-- go.mod의 indirect 모듈까지 다 센다. 실제 바이너리에 들어가는지는 모른다 (도달성은 reach)
-- 보고 건수는 위험 건수가 아니다
+## 범위
+- 잠금 파일 없는 Java 서비스(adservice)는 OSV-Scanner와 Syft가 모두 읽지 않는다. 기획안이 build.gradle에서 찾은 Java KEV 행(netty, CVE-2023-44487)이 그 예라, build.gradle 해석 경로를 확장 계획에 넣었다
+- 소스 트리 스캔이다(컨테이너 이미지, OS 패키지는 별도 단계)
+- go.mod의 indirect 모듈까지 센다. 실제 호출 여부는 도달성(reach)에서 판정한다
+- 보고 건수는 위험 건수가 아니라서 신호와 기한으로 좁힌다
 - 첫 CVE 규칙 (기획안과 같음, 양쪽 공통이라 차이 원인은 아님): 권고마다 첫 CVE 별칭 하나만 쓴다
   - 별칭 CVE가 둘 이상인 권고: v0.5.0 3개, main 1개. 그래서 고유 CVE에서 2개, 1개가 빠진다
   - 빠진 것 중 KEV, EPSS>=0.1은 없다 (2026-11-02 별도 점검, 코드 밖 일회성 확인)
 - SSVC가 없는 CVE는 기획안처럼 automatable no, technical total로 둔다 (v0.5.0 15개, main 6개)
 - main CVE 2개는 NVD 표에 없다 (summary.json `nvd_missing_cves`). CVSS 칸이 비고 SSVC는 기본값
-- 노출 가정은 매니페스트의 LoadBalancer만 본다. Ingress, 메시 설정은 안 봤다
+- 노출은 매니페스트의 LoadBalancer로 판정하고, 세 가정(전부 내부, 프런트엔드만 공개, 전부 공개)의 기한을 같이 낸다
 - 'Go 도달 확인'은 reach 작업의 `results/reach/levels.csv`를 읽은 그 시점 값이다. reach가 바뀌면 `m2/funnel.py`를 다시 돌린다. 형식이 다르면 그 칸에 '형식 미확인'과 열 이름이 찍힌다
 - 도달 수준은 서비스 코드에서 취약 심볼까지의 정적 호출 경로다. 실제 공격 가능 여부(설정, 노출)는 따로 본다

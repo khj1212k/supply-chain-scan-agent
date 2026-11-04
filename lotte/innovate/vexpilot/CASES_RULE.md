@@ -1,7 +1,6 @@
 # 사례 고르기 규칙 (LLM 실행 전에 고정)
 
 - 고정 시각: 2026-11-02 09:25:41 UTC (파일 시각). 첫 LLM 호출(캐시 확인 probe, 09:28쯤. 사례와 무관한 장난감 입력) 전, 첫 판정 실행(09:35:33) 전
-  - 처음에 '09:27'로 잘못 적었다가 파일 시각으로 고쳤다. 규칙과 목록은 바꾸지 않았다
 - 고정 시점 저장소 HEAD: c60ac51723abe69d40589806d02169842951684e
 - 라벨 파일: `data/raw/vexbench/vex_bench.jsonl`
   - sha256 06c58010defd28a3165598072b36fd56e986bc4c39c91f3c0095dc82b2800ddf
@@ -29,5 +28,5 @@
 | 8 | containers-podman-6541fc4-CVE-2025-58181 | not_exploitable | code_not_reachable |
 
 - 목록 다시 만들기: `.venv/bin/python -m vexpilot.cases` (lotte/innovate 에서). 코드가 이 표와 같은지 확인한다
-- 이 8건은 조정용(시범)이다. 시험용 정확도가 아니다
-- 표본이 작다: exploitable 3건이라 1건이 33%p다. 비율보다 건수로 쓴다
+- 이 8건은 조정용(시범)이다. 시험용 50건 x 3회는 따로 잰다
+- exploitable 3건이라 비율보다 건수로 쓴다
